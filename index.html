@@ -1,109 +1,122 @@
 <!DOCTYPE html><html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Kutollo Chiloane - Mechanical Engineer</title>
   <style>
     :root {
+      --bg: #f4f4f4;
+      --text: #222;
+      --accent: #2f4858;
+      --steel: #6b7a8f;
+      --light: #ffffff;
       --dark: #1e1e1e;
-      --light: #f4f4f4;
-      --primary: #3f729b;
-      --steel: #4a4a4a;
-      --metal: #c0c0c0;
-      --highlight: #ffc107;
-    }body {
+      --radius: 8px;
+    }* {
   margin: 0;
-  font-family: 'Courier New', monospace;
-  background: var(--light);
-  color: var(--steel);
-  transition: background 0.3s, color 0.3s;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-body.dark-mode {
-  background: var(--dark);
-  color: var(--light);
+body {
+  font-family: Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
 }
 
 header {
-  background: var(--steel);
-  color: white;
+  background: var(--accent);
+  color: #fff;
   padding: 1rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  text-align: center;
 }
 
 nav {
-  background: var(--primary);
-  color: white;
-  padding: 0.5rem;
+  background: var(--steel);
   text-align: center;
+  padding: 0.5rem;
 }
+
 nav a {
-  margin: 0 1rem;
   color: white;
+  margin: 0 10px;
   text-decoration: none;
   font-weight: bold;
 }
 
 section {
-  max-width: 900px;
-  margin: 2rem auto;
-  background: white;
-  padding: 1.5rem;
-  border-radius: 8px;
+  padding: 2rem;
+  max-width: 1000px;
+  margin: auto;
+  background: var(--light);
+  margin-top: 1rem;
+  border-radius: var(--radius);
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
-}
-body.dark-mode section {
-  background: #2e2e2e;
 }
 
 h2 {
-  border-left: 6px solid var(--primary);
+  border-left: 5px solid var(--accent);
   padding-left: 10px;
+  margin-bottom: 1rem;
 }
 
-.logo-placeholder {
-  display: inline-block;
-  width: 100px;
+img.logo {
   height: 60px;
-  border: 2px dashed var(--primary);
-  border-radius: 4px;
-  margin: 0.5rem;
-  text-align: center;
-  line-height: 60px;
-  font-size: 0.8rem;
-  color: var(--primary);
+  margin: 10px;
 }
 
-#quote {
-  margin-top: 2rem;
-  font-style: italic;
-  text-align: center;
-}
-
-#dark-toggle {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  width: 48px;
-  height: 48px;
-  border: none;
-  border-radius: 50%;
-  background: var(--primary);
-  color: white;
-  font-size: 1.5rem;
-  cursor: pointer;
+.logos {
   display: flex;
-  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
   justify-content: center;
-  box-shadow: 0 0 6px rgba(0,0,0,0.3);
+  margin-top: 1rem;
+}
+
+#quote-box {
+  text-align: center;
+  font-style: italic;
+  margin-top: 1rem;
+  color: var(--steel);
+  min-height: 40px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 0.7rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: var(--radius);
+}
+
+.contact-form button {
+  background: var(--accent);
+  color: white;
+  padding: 0.7rem 1.2rem;
+  border: none;
+  border-radius: var(--radius);
+  font-weight: bold;
+  cursor: pointer;
 }
 
 footer {
   text-align: center;
   padding: 1rem;
   background: #ddd;
+  margin-top: 2rem;
+}
+
+@keyframes fade {
+  0% { opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+#quote-box {
+  animation: fade 10s linear infinite;
 }
 
   </style>
@@ -111,76 +124,89 @@ footer {
 <body>
   <header>
     <h1>Kutollo Chiloane</h1>
-    <span>Mechanical Engineer</span>
+    <p>Final-Year Mechanical Engineering Student | University of Johannesburg</p>
   </header>  <nav>
     <a href="#about">About</a>
-    <a href="#qualifications">Qualifications</a>
-    <a href="#experience">Experience</a>
-    <a href="#skills">Skills</a>
+    <a href="#education">Education</a>
     <a href="#projects">Projects</a>
-    <a href="#ga">GAs</a>
+    <a href="#skills">Skills</a>
+    <a href="#gas">ECSA GAs</a>
     <a href="#contact">Contact</a>
   </nav>  <section id="about">
     <h2>About Me</h2>
-    <p>I'm a hands-on mechanical engineer with a passion for machines, mechanisms and making ideas real. I like solving technical problems and finding ways to make things better.</p>
-  </section>  <section id="qualifications">
-    <h2>Qualifications</h2>
-    <p><strong>BEngTech Mechanical Engineering</strong> — UJ, 2025</p>
-    <div class="logo-placeholder">UJ Logo</div>
-    <div class="logo-placeholder">Other Logo</div>
-  </section>  <section id="experience">
-    <h2>Experience</h2>
-    <p>Intern - ABC Workshop (Jan–Mar 2024)</p>
-    <div class="logo-placeholder">ABC Logo</div>
-  </section>  <section id="skills">
-    <h2>Skills</h2>
-    <ul>
-      <li>SolidWorks</li>
-      <li>AutoCAD</li>
-      <li>Matlab</li>
-    </ul>
+    <p>I'm a final-year Mechanical Engineering student with strong technical and analytical skills. I enjoy solving real-world problems, working on mechanical designs and using tools like SolidWorks and AutoCAD. I'm punctual, detail-oriented and eager to contribute in a professional setting.</p>
+  </section>  <section id="education">
+    <h2>Education & Qualifications</h2>
+    <p><strong>BEngTech Mechanical Engineering</strong> - University of Johannesburg (2021–2025)</p>
+    <p><strong>National Senior Certificate</strong> - Mafemani-Nxumalo Secondary School (2020)</p>
+    <div class="logos">
+      <img src="uj-logo.png" alt="UJ Logo" class="logo">
+      <img src="mafemani-logo.png" alt="Mafemani Logo" class="logo">
+    </div>
   </section>  <section id="projects">
-    <h2>Projects</h2>
-    <p>Seed Sowing Robot - Designed a machine for small-scale farms that plants seeds with consistent depth and spacing.</p>
-  </section>  <section id="ga">
-    <h2>Graduate Attributes (ECSA)</h2>
-    <div class="logo-placeholder">ECSA Logo</div>
+    <h2>Key Projects</h2>
+    <p><strong>Automatic Seed Sowing Robot</strong> – Designed for small-scale farming using SolidWorks. Adjustable for seed type and spacing.</p>
+    <p><strong>Aerofoil CFD Analysis</strong> – Simulated lift and drag effects to improve aerodynamic design.</p>
+    <p><strong>Python Bootcamp (GRIT Lab Africa)</strong> – Developed problem-solving programs using Python.</p>
+  </section>  <section id="skills">
+    <h2>Skills & Competencies</h2>
     <ul>
-      <li>Apply engineering principles</li>
-      <li>Communicate clearly</li>
-      <li>Work in diverse teams</li>
-      <li>Understand professional ethics</li>
-      <li>Engage in lifelong learning</li>
+      <li>SolidWorks, AutoCAD, Python, Microsoft Office</li>
+      <li>3D Modelling, Engineering Simulations, CFD</li>
+      <li>Technical Writing, Root Cause Analysis, Teamwork</li>
     </ul>
+  </section>  <section id="gas">
+    <h2>ECSA Graduate Attributes</h2>
+    <ul>
+      <li>GA1: Problem solving</li>
+      <li>GA2: Apply engineering & scientific knowledge</li>
+      <li>GA3: Design & creativity</li>
+      <li>GA4: Investigations</li>
+      <li>GA5: Modern tools</li>
+      <li>GA6: Communication</li>
+      <li>GA7: Health, safety & environment</li>
+      <li>GA8: Teamwork</li>
+      <li>GA9: Lifelong learning</li>
+      <li>GA10: Engineering professionalism</li>
+      <li>GA11: Project management</li>
+    </ul>
+    <div class="logos">
+      <img src="ecsa-logo.png" alt="ECSA Logo" class="logo">
+    </div>
   </section>  <section id="contact">
-    <h2>Contact</h2>
-    <form action="https://formsubmit.co/your@email.com" method="POST">
-      <input type="hidden" name="_captcha" value="false" />
-      <input type="text" name="name" placeholder="Your name" required />
-      <input type="email" name="email" placeholder="Your email" required />
-      <textarea name="message" placeholder="Your message" required></textarea>
+    <h2>Contact Me</h2>
+    <form action="https://formsubmit.co/kutollochix@gmail.com" method="POST" class="contact-form">
+      <input type="hidden" name="_captcha" value="false">
+      <label>Name</label>
+      <input type="text" name="name" required>
+      <label>Email</label>
+      <input type="email" name="email" required>
+      <label>Message</label>
+      <textarea name="message" rows="5" required></textarea>
       <button type="submit">Send</button>
     </form>
-  </section>  <section id="quote">"Machines don't lie. They do exactly what you tell them to do."</section>  <footer>
-    &copy; 2025 Kutollo Chiloane
-  </footer><button id="dark-toggle">⚙️</button>
-
-  <script>
+  </section>  <section id="quote-box">
+    <!-- Rotating manual quotes -->
+  </section>  <footer>
+    &copy; 2025 Kutollo Chiloane. All rights reserved.
+  </footer>  <script>
+    // Manual quotes that change every 10 seconds
     const quotes = [
-      "Machines don't lie. They do exactly what you tell them to do.",
-      "Engineering is not only study of 45 subjects but it is moral studies of intellectual life.",
-      "Design is not just what it looks like, it's how it works.",
-      "A good engineer thinks in reverse and asks about the stylistic consequences of the components and systems."
+      "Engineering is the closest thing to magic that exists. – Elon Musk",
+      "Scientists dream about doing great things. Engineers do them. – James Michener",
+      "The engineer has been, and is, a maker of history. – James Kip Finch",
+      "Strive for excellence, not perfection."
     ];
 
-    let index = 0;
-    setInterval(() => {
-      index = (index + 1) % quotes.length;
-      document.getElementById("quote").textContent = `"${quotes[index]}"`;
-    }, 10000);
+    let quoteIndex = 0;
+    const quoteBox = document.getElementById('quote-box');
 
-    document.getElementById('dark-toggle').addEventListener('click', () => {
-      document.body.classList.toggle('dark-mode');
-    });
+    function updateQuote() {
+      quoteBox.textContent = quotes[quoteIndex];
+      quoteIndex = (quoteIndex + 1) % quotes.length;
+    }
+
+    updateQuote();
+    setInterval(updateQuote, 10000);
   </script></body>
-    </html>
+  </html>
