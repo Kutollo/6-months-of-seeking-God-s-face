@@ -1,409 +1,186 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Kutollo Chiloane - Mechanical Engineer</title>
-<style>
-  /* === Root Variables for Colors and Sizes === */
-  :root {
-    --bg-light: #f2f2f2;
-    --bg-dark: #1c1c1c;
-    --text-dark: #1f2a36;
-    --text-light: #dcdcdc;
-    --accent: #3f729b;
-    --steel: #64748b;
-    --steel-dark: #3a4450;
-    --shadow: rgba(0,0,0,0.1);
-    --radius: 8px;
-    --toggle-size: 48px;
-  }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kutollo Chiloane - Mechanical Engineer</title>
+  <style>
+    :root {
+      --dark: #1e1e1e;
+      --light: #f4f4f4;
+      --primary: #3f729b;
+      --steel: #4a4a4a;
+      --metal: #c0c0c0;
+      --highlight: #ffc107;
+    }body {
+  margin: 0;
+  font-family: 'Courier New', monospace;
+  background: var(--light);
+  color: var(--steel);
+  transition: background 0.3s, color 0.3s;
+}
 
-  /* === Basic Page Setup === */
-  body {
-    margin: 0;
-    font-family: 'Courier New', monospace;
-    background: var(--bg-light);
-    color: var(--text-dark);
-    transition: background 0.3s, color 0.3s;
-    min-height: 100vh;
-    padding-bottom: 80px; /* space for toggle button */
-  }
-  body.dark-mode {
-    background: var(--bg-dark);
-    color: var(--text-light);
-  }
+body.dark-mode {
+  background: var(--dark);
+  color: var(--light);
+}
 
-  /* === Header Section === */
-  header {
-    background: var(--steel-dark);
-    color: white;
-    padding: 1rem 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    border-bottom: 4px solid var(--accent);
-  }
-  .header-left h1 {
-    margin: 0;
-    font-size: 1.6rem;
-  }
-  .header-left span {
-    font-size: 1rem;
-    color: #ccc;
-  }
+header {
+  background: var(--steel);
+  color: white;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
-  /* === Navigation Bar === */
-  nav {
-    background: var(--accent);
-    padding: 0.6rem;
-    text-align: center;
-  }
-  nav a {
-    color: white;
-    margin: 0 1rem;
-    text-decoration: none;
-    font-weight: bold;
-  }
-  nav a:hover {
-    text-decoration: underline;
-  }
+nav {
+  background: var(--primary);
+  color: white;
+  padding: 0.5rem;
+  text-align: center;
+}
+nav a {
+  margin: 0 1rem;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
 
-  /* === Main Content Sections === */
-  section {
-    max-width: 900px;
-    margin: 2rem auto;
-    background: white;
-    padding: 1.5rem;
-    border-radius: var(--radius);
-    box-shadow: 0 0 10px var(--shadow);
-  }
-  body.dark-mode section {
-    background: #2e2e2e;
-  }
+section {
+  max-width: 900px;
+  margin: 2rem auto;
+  background: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+body.dark-mode section {
+  background: #2e2e2e;
+}
 
-  /* Section Headings */
-  h2 {
-    border-left: 6px solid var(--accent);
-    padding-left: 0.8rem;
-    font-size: 1.4rem;
-    margin-bottom: 1rem;
-    position: relative;
-  }
-  /* Removed multiple gear icons, only kept for toggle */
+h2 {
+  border-left: 6px solid var(--primary);
+  padding-left: 10px;
+}
 
-  /* Profile Image */
-  .profile-img {
-    width: 140px;
-    height: 140px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 4px solid var(--accent);
-    display: block;
-    margin-bottom: 1rem;
-  }
+.logo-placeholder {
+  display: inline-block;
+  width: 100px;
+  height: 60px;
+  border: 2px dashed var(--primary);
+  border-radius: 4px;
+  margin: 0.5rem;
+  text-align: center;
+  line-height: 60px;
+  font-size: 0.8rem;
+  color: var(--primary);
+}
 
-  /* Download CV Button */
-  .btn-cv {
-    display: inline-block;
-    padding: 0.6rem 1.2rem;
-    background: var(--accent);
-    color: white;
-    border-radius: var(--radius);
-    text-decoration: none;
-    font-weight: bold;
-    margin-top: 0.5rem;
-  }
+#quote {
+  margin-top: 2rem;
+  font-style: italic;
+  text-align: center;
+}
 
-  /* Skill Bars */
-  .skill-bar {
-    background: #ddd;
-    border-radius: var(--radius);
-    margin-bottom: 0.5rem;
-  }
-  .skill-fill {
-    height: 18px;
-    background-color: var(--steel);
-    border-radius: var(--radius);
-    transition: width 1s ease-in-out;
-  }
+#dark-toggle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 48px;
+  height: 48px;
+  border: none;
+  border-radius: 50%;
+  background: var(--primary);
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 6px rgba(0,0,0,0.3);
+}
 
-  /* Project Image */
-  .project img {
-    width: 100%;
-    border-radius: var(--radius);
-    height: 200px;
-    object-fit: cover;
-  }
+footer {
+  text-align: center;
+  padding: 1rem;
+  background: #ddd;
+}
 
-  /* Contact Form */
-  form input, form textarea {
-    width: 100%;
-    padding: 0.6rem;
-    margin: 0.5rem 0 1rem;
-    border: 1px solid #bbb;
-    border-radius: var(--radius);
-    font-family: monospace;
-    font-size: 1rem;
-    resize: vertical;
-  }
-  form button {
-    padding: 0.6rem 1.2rem;
-    background: var(--steel-dark);
-    color: white;
-    border: none;
-    border-radius: var(--radius);
-    font-weight: bold;
-    cursor: pointer;
-    transition: background 0.3s;
-  }
-  form button:hover {
-    background: var(--accent);
-  }
-
-  /* Footer */
-  footer {
-    background: #dcdde1;
-    text-align: center;
-    padding: 1rem;
-    font-size: 0.85rem;
-    margin-top: 3rem;
-  }
-
-  /* Quote styling */
-  #quote {
-    font-style: italic;
-    margin-top: 1rem;
-    text-align: center;
-    color: #444;
-    max-width: 900px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  body.dark-mode #quote {
-    color: #ccc;
-  }
-
-  /* === Placeholder Boxes for Logos === */
-  /* Used in Qualifications and Experience sections */
-  .logo-placeholder {
-    display: inline-block;
-    width: 100px;
-    height: 60px;
-    border: 2px dashed var(--accent);
-    border-radius: var(--radius);
-    margin: 0.5rem 1rem 1rem 0;
-    vertical-align: middle;
-    text-align: center;
-    line-height: 60px;
-    font-size: 0.85rem;
-    color: var(--accent);
-    font-family: monospace;
-    user-select: none;
-  }
-
-  /* ECSA Logo Placeholder */
-  .ecsa-logo {
-    width: 120px;
-    height: auto;
-    display: block;
-    margin: 1rem auto;
-  }
-
-  /* === Redesigned Dark Mode Toggle Button === */
-  #dark-toggle {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    width: var(--toggle-size);
-    height: var(--toggle-size);
-    background: var(--accent);
-    border-radius: 50%;
-    border: none;
-    color: white;
-    font-size: 1.8rem;
-    cursor: pointer;
-    box-shadow: 0 0 8px var(--shadow);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background 0.3s;
-    z-index: 1000;
-  }
-  #dark-toggle:hover {
-    background: var(--steel-dark);
-  }
-
-  /* Responsive */
-  @media (max-width: 600px) {
-    header, nav, section {
-      padding: 1rem;
-    }
-    .header-left h1 {
-      font-size: 1.3rem;
-    }
-    nav a {
-      margin: 0 0.5rem;
-    }
-    .logo-placeholder {
-      width: 80px;
-      height: 50px;
-      line-height: 50px;
-      font-size: 0.75rem;
-    }
-  }
-</style>
+  </style>
 </head>
 <body>
-
-<!-- HEADER -->
-<header>
-  <div class="header-left">
+  <header>
     <h1>Kutollo Chiloane</h1>
     <span>Mechanical Engineer</span>
-  </div>
-</header>
+  </header>  <nav>
+    <a href="#about">About</a>
+    <a href="#qualifications">Qualifications</a>
+    <a href="#experience">Experience</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#ga">GAs</a>
+    <a href="#contact">Contact</a>
+  </nav>  <section id="about">
+    <h2>About Me</h2>
+    <p>I'm a hands-on mechanical engineer with a passion for machines, mechanisms and making ideas real. I like solving technical problems and finding ways to make things better.</p>
+  </section>  <section id="qualifications">
+    <h2>Qualifications</h2>
+    <p><strong>BEngTech Mechanical Engineering</strong> — UJ, 2025</p>
+    <div class="logo-placeholder">UJ Logo</div>
+    <div class="logo-placeholder">Other Logo</div>
+  </section>  <section id="experience">
+    <h2>Experience</h2>
+    <p>Intern - ABC Workshop (Jan–Mar 2024)</p>
+    <div class="logo-placeholder">ABC Logo</div>
+  </section>  <section id="skills">
+    <h2>Skills</h2>
+    <ul>
+      <li>SolidWorks</li>
+      <li>AutoCAD</li>
+      <li>Matlab</li>
+    </ul>
+  </section>  <section id="projects">
+    <h2>Projects</h2>
+    <p>Seed Sowing Robot - Designed a machine for small-scale farms that plants seeds with consistent depth and spacing.</p>
+  </section>  <section id="ga">
+    <h2>Graduate Attributes (ECSA)</h2>
+    <div class="logo-placeholder">ECSA Logo</div>
+    <ul>
+      <li>Apply engineering principles</li>
+      <li>Communicate clearly</li>
+      <li>Work in diverse teams</li>
+      <li>Understand professional ethics</li>
+      <li>Engage in lifelong learning</li>
+    </ul>
+  </section>  <section id="contact">
+    <h2>Contact</h2>
+    <form action="https://formsubmit.co/your@email.com" method="POST">
+      <input type="hidden" name="_captcha" value="false" />
+      <input type="text" name="name" placeholder="Your name" required />
+      <input type="email" name="email" placeholder="Your email" required />
+      <textarea name="message" placeholder="Your message" required></textarea>
+      <button type="submit">Send</button>
+    </form>
+  </section>  <section id="quote">"Machines don't lie. They do exactly what you tell them to do."</section>  <footer>
+    &copy; 2025 Kutollo Chiloane
+  </footer><button id="dark-toggle">⚙️</button>
 
-<!-- NAVIGATION -->
-<nav>
-  <a href="#about">About</a>
-  <a href="#qualifications">Qualifications</a>
-  <a href="#experience">Experience</a>
-  <a href="#skills">Skills</a>
-  <a href="#projects">Projects</a>
-  <a href="#ga">Graduate Attributes</a>
-  <a href="#contact">Contact</a>
-</nav>
+  <script>
+    const quotes = [
+      "Machines don't lie. They do exactly what you tell them to do.",
+      "Engineering is not only study of 45 subjects but it is moral studies of intellectual life.",
+      "Design is not just what it looks like, it's how it works.",
+      "A good engineer thinks in reverse and asks about the stylistic consequences of the components and systems."
+    ];
 
-<!-- ABOUT SECTION -->
-<section id="about">
-  <h2>About Me</h2>
-  <!-- Replace 'your-photo.jpg' with your photo -->
-  <img src="your-photo.jpg" alt="Kutollo Photo" class="profile-img" />
-  <p>I'm Kutollo, a mechanical engineering graduate who enjoys building, fixing and improving machines and systems. I like working hands-on, solving real-world problems and learning as I go.</p>
-  <!-- Replace 'Kutollo-CV.pdf' with your actual CV -->
-  <a class="btn-cv" href="Kutollo-CV.pdf" download>Download My CV</a>
-</section>
+    let index = 0;
+    setInterval(() => {
+      index = (index + 1) % quotes.length;
+      document.getElementById("quote").textContent = `"${quotes[index]}"`;
+    }, 10000);
 
-<!-- QUALIFICATIONS SECTION -->
-<section id="qualifications">
-  <h2>Qualifications</h2>
-  <p><strong>BEngTech Mechanical Engineering</strong><br/>University of Johannesburg, 2025</p>
-
-  <!-- Institution logos placeholder -->
-  <div>
-    <span class="logo-placeholder">UJ Logo</span>
-    <span class="logo-placeholder">Other Institution</span>
-  </div>
-
-  <p>Matriculated from Mafemani-Nxumalo Secondary School in 2020</p>
-</section>
-
-<!-- EXPERIENCE SECTION -->
-<section id="experience">
-  <h2>Experience</h2>
-  <p><strong>Mechanical Intern</strong><br/>ABC Workshop, Jan 2024 – Mar 2024<br/>Helped with component assembly, 2D/3D drawing updates and basic maintenance tasks.</p>
-
-  <!-- Company logos placeholder -->
-  <div>
-    <span class="logo-placeholder">ABC Workshop Logo</span>
-    <span class="logo-placeholder">Other Company</span>
-  </div>
-</section>
-
-<!-- SKILLS SECTION -->
-<section id="skills">
-  <h2>Skills</h2>
-  <p>AutoCAD</p>
-  <div class="skill-bar"><div class="skill-fill" style="width: 85%"></div></div>
-
-  <p>SolidWorks</p>
-  <div class="skill-bar"><div class="skill-fill" style="width: 80%"></div></div>
-
-  <p>MATLAB</p>
-  <div class="skill-bar"><div class="skill-fill" style="width: 70%"></div></div>
-</section>
-
-<!-- PROJECTS SECTION -->
-<section id="projects">
-  <h2>Projects</h2>
-  <!-- Replace 'seed-robot.jpg' with your project image -->
-  <div class="project">
-    <img src="seed-robot.jpg" alt="Seed Sowing Robot" />
-    <p><strong>Seed Sowing Robot</strong><br/>A robot designed for small-scale farming to help plant seeds at the right depth and spacing automatically, while being cost-effective and easy to maintain.</p>
-  </div>
-</section>
-
-<!-- GRADUATE ATTRIBUTES SECTION -->
-<section id="ga">
-  <h2>Graduate Attributes (ECSA)</h2>
-
-  <!-- ECSA logo placeholder -->
-  <img src="ecsa-logo.png" alt="ECSA Logo" class="ecsa-logo" />
-  <!-- Replace 'ecsa-logo.png' with actual ECSA logo -->
-
-  <!-- List of ECSA Graduate Attributes -->
-  <ul>
-    <li>Apply engineering knowledge to solve problems.</li>
-    <li>Communicate effectively with stakeholders.</li>
-    <li>Demonstrate professional and ethical responsibility.</li>
-    <li>Engage in lifelong learning and development.</li>
-    <li>Work effectively in multidisciplinary teams.</li>
-  </ul>
-</section>
-
-<!-- CONTACT SECTION -->
-<section id="contact">
-  <h2>Contact</h2>
-  <form action="https://formsubmit.co/your@email.com" method="POST">
-    <!-- Turn off captcha for formsubmit -->
-    <input type="hidden" name="_captcha" value="false" />
-    <label for="name">Name</label>
-    <input id="name" type="text" name="name" required />
-
-    <label for="email">Email</label>
-    <input id="email" type="email" name="email" required />
-
-    <label for="message">Message</label>
-    <textarea id="message" name="message" rows="4" required></textarea>
-
-    <button type="submit">Send</button>
-  </form>
-</section>
-
-<!-- QUOTE SECTION -->
-<section id="quote">Loading quote...</section>
-
-<!-- FOOTER -->
-<footer>
-  &copy; 2025 Kutollo Chiloane | Mechanical Engineering Portfolio
-</footer>
-
-<!-- DARK MODE TOGGLE BUTTON -->
-<button id="dark-toggle" title="Toggle dark mode" aria-label="Toggle dark mode">⚙️</button>
-
-<script>
-  // Toggle dark mode class on body when clicking gear icon
-  const toggle = document.getElementById('dark-toggle');
-  toggle.addEventListener('click', () => {
-    document.body.classList.toggle('dark-mode');
-  });
-
-  // Fetch daily quote from zenquotes.io API
-  fetch('https://zenquotes.io/api/random')
-    .then(res => res.json())
-    .then(data => {
-      const quoteElem = document.getElementById('quote');
-      if (data && data[0] && data[0].q && data[0].a) {
-        quoteElem.textContent = `"${data[0].q}" — ${data[0].a}`;
-      } else {
-        quoteElem.textContent = "Could not load a quote at this time.";
-      }
-    })
-    .catch(() => {
-      document.getElementById('quote').textContent = "Could not load a quote at this time.";
+    document.getElementById('dark-toggle').addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
     });
-</script>
-</body>
-  </html>
+  </script></body>
+    </html>
