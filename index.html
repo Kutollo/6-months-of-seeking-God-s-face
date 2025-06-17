@@ -1,212 +1,193 @@
 <!DOCTYPE html><html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Kutollo Chiloane - Mechanical Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #f4f4f4;
-      --text: #222;
-      --accent: #2f4858;
-      --steel: #6b7a8f;
-      --light: #ffffff;
-      --dark: #1e1e1e;
+      --bg-light: #f5f5f5;
+      --bg-dark: #1c1c1c;
+      --text-dark: #1f2a36;
+      --text-light: #dcdcdc;
+      --accent: #ef6c00;
+      --steel: #64748b;
+      --steel-dark: #3a4450;
       --radius: 8px;
-    }* {
+    }body {
   margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+  font-family: 'Roboto Mono', monospace;
+  background: var(--bg-light);
+  color: var(--text-dark);
+  transition: background 0.3s, color 0.3s;
 }
 
-body {
-  font-family: Arial, sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  line-height: 1.6;
+body.dark-mode {
+  background: var(--bg-dark);
+  color: var(--text-light);
 }
 
 header {
-  background: var(--accent);
-  color: #fff;
-  padding: 1rem;
-  text-align: center;
+  background: var(--steel-dark);
+  color: white;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  border-bottom: 4px solid var(--accent);
+}
+
+.header-left h1 {
+  margin: 0;
+  font-size: 1.6rem;
+}
+
+.header-left span {
+  font-size: 1rem;
+  color: #ccc;
+}
+
+#dark-toggle {
+  background: transparent;
+  color: white;
+  border: 2px solid var(--accent);
+  padding: 0.4rem 0.8rem;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-weight: bold;
 }
 
 nav {
-  background: var(--steel);
+  background: var(--accent);
+  padding: 0.6rem;
   text-align: center;
-  padding: 0.5rem;
 }
 
 nav a {
   color: white;
-  margin: 0 10px;
+  margin: 0 1rem;
   text-decoration: none;
   font-weight: bold;
 }
 
+nav a:hover {
+  text-decoration: underline;
+}
+
 section {
-  padding: 2rem;
-  max-width: 1000px;
-  margin: auto;
-  background: var(--light);
-  margin-top: 1rem;
+  max-width: 900px;
+  margin: 2rem auto;
+  background: white;
+  padding: 1.5rem;
   border-radius: var(--radius);
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+body.dark-mode section {
+  background: #2e2e2e;
 }
 
 h2 {
-  border-left: 5px solid var(--accent);
-  padding-left: 10px;
+  border-left: 6px solid var(--accent);
+  padding-left: 0.8rem;
+  font-size: 1.4rem;
   margin-bottom: 1rem;
 }
 
-img.logo {
-  height: 60px;
-  margin: 10px;
-}
-
-.logos {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  justify-content: center;
-  margin-top: 1rem;
-}
-
-#quote-box {
-  text-align: center;
-  font-style: italic;
-  margin-top: 1rem;
-  color: var(--steel);
-  min-height: 40px;
-}
-
-.contact-form input,
-.contact-form textarea {
-  width: 100%;
-  padding: 0.7rem;
+.profile-img {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid var(--accent);
+  display: block;
   margin-bottom: 1rem;
-  border: 1px solid #ccc;
-  border-radius: var(--radius);
 }
 
-.contact-form button {
+.btn-cv {
+  display: inline-block;
+  padding: 0.6rem 1.2rem;
   background: var(--accent);
   color: white;
-  padding: 0.7rem 1.2rem;
+  border-radius: var(--radius);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+form input, form textarea {
+  width: 100%;
+  padding: 0.6rem;
+  margin: 0.5rem 0 1rem;
+  border: 1px solid #bbb;
+  border-radius: var(--radius);
+  font-family: monospace;
+}
+
+form button {
+  padding: 0.6rem 1.2rem;
+  background: var(--steel-dark);
+  color: white;
   border: none;
   border-radius: var(--radius);
   font-weight: bold;
-  cursor: pointer;
 }
 
 footer {
+  background: #dcdde1;
   text-align: center;
   padding: 1rem;
-  background: #ddd;
-  margin-top: 2rem;
-}
-
-@keyframes fade {
-  0% { opacity: 0; }
-  10% { opacity: 1; }
-  90% { opacity: 1; }
-  100% { opacity: 0; }
-}
-
-#quote-box {
-  animation: fade 10s linear infinite;
+  font-size: 0.85rem;
 }
 
   </style>
 </head>
 <body>
   <header>
-    <h1>Kutollo Chiloane</h1>
-    <p>Final-Year Mechanical Engineering Student | University of Johannesburg</p>
+    <div class="header-left">
+      <h1>Kutollo Chiloane</h1>
+      <span>Mechanical Engineer</span>
+    </div>
+    <button id="dark-toggle">Toggle Theme</button>
   </header>  <nav>
     <a href="#about">About</a>
-    <a href="#education">Education</a>
-    <a href="#projects">Projects</a>
+    <a href="#qualifications">Qualifications</a>
+    <a href="#experience">Experience</a>
     <a href="#skills">Skills</a>
-    <a href="#gas">ECSA GAs</a>
+    <a href="#projects">Projects</a>
     <a href="#contact">Contact</a>
   </nav>  <section id="about">
     <h2>About Me</h2>
-    <p>I'm a final-year Mechanical Engineering student with strong technical and analytical skills. I enjoy solving real-world problems, working on mechanical designs and using tools like SolidWorks and AutoCAD. I'm punctual, detail-oriented and eager to contribute in a professional setting.</p>
-  </section>  <section id="education">
-    <h2>Education & Qualifications</h2>
-    <p><strong>BEngTech Mechanical Engineering</strong> - University of Johannesburg (2021–2025)</p>
-    <p><strong>National Senior Certificate</strong> - Mafemani-Nxumalo Secondary School (2020)</p>
-    <div class="logos">
-      <img src="uj-logo.png" alt="UJ Logo" class="logo">
-      <img src="mafemani-logo.png" alt="Mafemani Logo" class="logo">
-    </div>
-  </section>  <section id="projects">
-    <h2>Key Projects</h2>
-    <p><strong>Automatic Seed Sowing Robot</strong> – Designed for small-scale farming using SolidWorks. Adjustable for seed type and spacing.</p>
-    <p><strong>Aerofoil CFD Analysis</strong> – Simulated lift and drag effects to improve aerodynamic design.</p>
-    <p><strong>Python Bootcamp (GRIT Lab Africa)</strong> – Developed problem-solving programs using Python.</p>
-  </section>  <section id="skills">
-    <h2>Skills & Competencies</h2>
-    <ul>
-      <li>SolidWorks, AutoCAD, Python, Microsoft Office</li>
-      <li>3D Modelling, Engineering Simulations, CFD</li>
-      <li>Technical Writing, Root Cause Analysis, Teamwork</li>
-    </ul>
-  </section>  <section id="gas">
-    <h2>ECSA Graduate Attributes</h2>
-    <ul>
-      <li>GA1: Problem solving</li>
-      <li>GA2: Apply engineering & scientific knowledge</li>
-      <li>GA3: Design & creativity</li>
-      <li>GA4: Investigations</li>
-      <li>GA5: Modern tools</li>
-      <li>GA6: Communication</li>
-      <li>GA7: Health, safety & environment</li>
-      <li>GA8: Teamwork</li>
-      <li>GA9: Lifelong learning</li>
-      <li>GA10: Engineering professionalism</li>
-      <li>GA11: Project management</li>
-    </ul>
-    <div class="logos">
-      <img src="ecsa-logo.png" alt="ECSA Logo" class="logo">
-    </div>
+    <img src="your-photo.jpg" alt="Kutollo Photo" class="profile-img" />
+    <p>I'm Kutollo, a final-year mechanical engineering student passionate about innovation, design and practical problem-solving. I enjoy hands-on engineering work, using CAD software and bringing concepts to life.</p>
+    <a class="btn-cv" href="Kutollo-CV.pdf" download>Download My CV</a>
+  </section>  <section id="qualifications">
+    <h2>Qualifications</h2>
+    <p><strong>BEngTech Mechanical Engineering</strong><br/>University of Johannesburg <img src="uj-logo.png" alt="UJ Logo" style="height: 30px; vertical-align: middle; margin-left: 10px;"></p>
+    <p>Expected Completion: November 2025</p>
+  </section>  <section id="experience">
+    <h2>Experience</h2>
+    <p>I’m currently seeking my first industry opportunity. I'm available to contribute as an intern, graduate engineer or assistant, and I bring solid academic training, CAD and design skills, and a strong work ethic.</p>
   </section>  <section id="contact">
-    <h2>Contact Me</h2>
-    <form action="https://formsubmit.co/kutollochix@gmail.com" method="POST" class="contact-form">
+    <h2>Contact</h2>
+    <form action="https://formsubmit.co/kutollochix@gmail.com" method="POST">
       <input type="hidden" name="_captcha" value="false">
       <label>Name</label>
-      <input type="text" name="name" required>
+      <input type="text" name="name" required />
       <label>Email</label>
-      <input type="email" name="email" required>
+      <input type="email" name="email" required />
       <label>Message</label>
-      <textarea name="message" rows="5" required></textarea>
+      <textarea name="message" rows="4" required></textarea>
       <button type="submit">Send</button>
     </form>
-  </section>  <section id="quote-box">
-    <!-- Rotating manual quotes -->
   </section>  <footer>
-    &copy; 2025 Kutollo Chiloane. All rights reserved.
+    &copy; 2025 Kutollo Chiloane | Mechanical Engineering Portfolio
   </footer>  <script>
-    // Manual quotes that change every 10 seconds
-    const quotes = [
-      "Engineering is the closest thing to magic that exists. – Elon Musk",
-      "Scientists dream about doing great things. Engineers do them. – James Michener",
-      "The engineer has been, and is, a maker of history. – James Kip Finch",
-      "Strive for excellence, not perfection."
-    ];
-
-    let quoteIndex = 0;
-    const quoteBox = document.getElementById('quote-box');
-
-    function updateQuote() {
-      quoteBox.textContent = quotes[quoteIndex];
-      quoteIndex = (quoteIndex + 1) % quotes.length;
-    }
-
-    updateQuote();
-    setInterval(updateQuote, 10000);
+    // Theme toggle
+    document.getElementById('dark-toggle').addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+    });
   </script></body>
-  </html>
+</html>
