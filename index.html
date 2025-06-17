@@ -2,132 +2,155 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kutollo Chiloane | Mechanical Engineer</title>
-  <link rel="stylesheet" href="styles.css" />
+  <title>Kutollo Chiloane | Mechanical Engineering Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
   <style>
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background: url('bg.jpeg') no-repeat center center fixed;
+      font-family: 'Roboto', sans-serif;
+      background-image: url('bg.jpeg');
       background-size: cover;
-      color: #fff;
+      background-position: center;
+      color: #222;
+    }
+    .container {
+      background-color: rgba(255, 255, 255, 0.95);
+      max-width: 900px;
+      margin: 20px auto;
+      padding: 40px;
+      border-radius: 10px;
     }
     header {
-      background-color: rgba(0, 0, 0, 0.7);
-      padding: 20px;
       text-align: center;
     }
     header img {
-      width: 120px;
       border-radius: 50%;
+      width: 150px;
+      height: 150px;
     }
-    header h1 {
+    h1 {
       margin: 10px 0 5px;
     }
-    .section {
-      background-color: rgba(0, 0, 0, 0.7);
-      margin: 20px auto;
-      padding: 20px;
-      max-width: 900px;
-      border-radius: 10px;
+    .subheading {
+      font-size: 1rem;
+      color: #666;
     }
-    .section h2 {
-      border-bottom: 2px solid #fff;
+    section {
+      margin-top: 30px;
+    }
+    h2 {
+      border-bottom: 2px solid #ddd;
       padding-bottom: 5px;
     }
-    .download-cv {
-      text-align: center;
-      margin: 20px;
+    .uj-logo {
+      width: 40px;
+      vertical-align: middle;
     }
-    .download-cv a {
-      padding: 10px 20px;
-      background: #f90;
-      color: #000;
+    .button {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 10px 15px;
+      background-color: #ff6600;
+      color: #fff;
       text-decoration: none;
       border-radius: 5px;
     }
-    .uj-logo {
-      float: right;
-      width: 80px;
+    ul {
+      padding-left: 20px;
     }
-    footer {
-      text-align: center;
-      padding: 10px;
-      background-color: rgba(0, 0, 0, 0.7);
+    .info {
+      margin-top: 5px;
     }
   </style>
 </head>
 <body>
-  <header>
-    <img src="kutollo.jpg" alt="Kutollo Chiloane" />
-    <h1>Kutollo Chiloane</h1>
-    <p>Johannesburg, South Africa | 076 880 0599 | kutollochix@gmail.com</p>
-  </header>  <div class="section">
-    <h2>Professional Profile</h2>
-    <p>Final-year Mechanical Engineering student with strong technical and analytical skills backed by hands-on experience in design, simulations and problem-solving. Confident in using engineering tools like Autodesk Inventor and experienced in managing projects from concept through to practical implementation. Known for being punctual, detail-oriented and a reliable team contributor. Eager to apply my knowledge in a professional setting and grow into a capable graduate engineer.</p>
-  </div>  <div class="section">
-    <h2>Education <img class="uj-logo" src="uj-logo.png" alt="UJ Logo"></h2>
-    <p><strong>BEngTech Mechanical Engineering</strong><br>University of Johannesburg<br>Expected Completion: November 2025<br>Core Subjects: Thermodynamics, Fluid Mechanics, Mechanics of Machines, Strength of Materials, Engineering Design<br>Final Year Project: Design and development of an Automatic Seed Sowing Robot for small-scale farming</p>
-    <p><strong>National Senior Certificate (Grade 12)</strong><br>Mafemani-Nxumalo Secondary School<br>Completed: 2020</p>
-  </div>  <div class="section">
-    <h2>Key Project Experience</h2>
-    <p><strong>Automatic Seed Sowing Robot – Capstone Design Project</strong><br>Designed a robot capable of planting seeds uniformly across uneven terrain. Integrated features like adjustable seed spacing and ploughing depth. Used SolidWorks for 3D design and simulations. Assessed cost, usability and sustainability in line with real-world farming needs. Demonstrated core engineering skills including design, problem solving, teamwork and communication.</p><p><strong>Aerofoil CFD Analysis – Simulation Project</strong><br>Conducted simulations on different aerofoil shapes to analyze lift and drag. Used results to make recommendations for improved aerodynamic performance. Applied engineering software to evaluate pressure distribution across surfaces.</p>
+  <div class="container">
+    <header>
+      <img src="kutollo.jpg" alt="Kutollo Chiloane profile" />
+      <h1>Kutollo Chiloane</h1>
+      <p class="subheading">Final-Year BEngTech Mechanical Engineering Student</p>
+      <div class="info">Johannesburg, South Africa | 076 880 0599 | <a href="mailto:kutollochix@gmail.com">kutollochix@gmail.com</a></div>
+      <a class="button" href="kutollo-cv.pdf" download>Download CV</a>
+    </header><section>
+  <h2>Professional Profile</h2>
+  <p>Final-year Mechanical Engineering student with strong technical and analytical skills backed by hands-on experience in design, simulations and problem-solving. Confident in using engineering tools like Autodesk Inventor and experienced in managing projects from concept through to practical implementation. Known for being punctual, detail-oriented and a reliable team contributor. Eager to apply my knowledge in a professional setting and grow into a capable graduate engineer.</p>
+</section>
 
-<p><strong>Python Programming & Algorithm Bootcamp – GRIT Lab Africa</strong><br>Completed focused training in Python for problem-solving and logic development. Built basic programs and solved real-world challenges under time constraints. Improved self-learning skills and the ability to communicate technical ideas clearly.</p>
+<section>
+  <h2>Education</h2>
+  <p><strong>BEngTech Mechanical Engineering</strong> <img class="uj-logo" src="uj-logo.png" alt="UJ logo" /><br />
+    University of Johannesburg<br />
+    Expected Completion: November 2025</p>
+  <p>Core Subjects: Thermodynamics, Fluid Mechanics, Mechanics of Machines, Strength of Materials, Engineering Design</p>
+  <p>Final Year Project: Design and development of an Automatic Seed Sowing Robot for small-scale farming</p>
 
-  </div>  <div class="section">
-    <h2>Technical Skills</h2>
-    <ul>
-      <li>Software: SolidWorks, AutoCAD, Python, Microsoft Suite</li>
-      <li>Tools: Engineering simulations, 3D modeling, CFD, report writing</li>
-      <li>Other: Technical drawing, project planning, root cause analysis</li>
-    </ul>
-  </div>  <div class="section">
-    <h2>Core Competencies</h2>
-    <ul>
-      <li>Punctual and well-organized</li>
-      <li>Effective communicator, both written and verbal</li>
-      <li>Strong attention to detail</li>
-      <li>Analytical and logical thinking</li>
-      <li>Fast learner and proactive</li>
-      <li>Team player with leadership potential</li>
-    </ul>
-  </div>  <div class="section">
-    <h2>ECSA Graduate Attributes</h2>
-    <ul>
-      <li>GA1: Problem solving</li>
-      <li>GA2: Application of engineering and scientific principles</li>
-      <li>GA3: Engineering design and creativity</li>
-      <li>GA4: Investigation and analysis</li>
-      <li>GA5: Use of modern tools and technology</li>
-      <li>GA6: Communication skills</li>
-      <li>GA7: Awareness of societal, health and environmental impact</li>
-      <li>GA8: Teamwork and collaboration</li>
-      <li>GA9: Independent learning and personal development</li>
-      <li>GA10: Professionalism and ethics</li>
-      <li>GA11: Project and resource management</li>
-    </ul>
-  </div>  <div class="section">
-    <h2>Additional Information</h2>
-    <p>Driver’s License: Code B (Valid)<br>Availability: Immediately after graduation or part-time during final semester<br>References: Available on request</p>
-  </div>  <div class="section">
-    <h2>Application Letter</h2>
-    <p><strong>Kutollo Chiloane</strong><br>Johannesburg, South Africa | 076 880 0599 | kutollochix@gmail.com<br>15 June 2025</p><p>Dear Hiring Manager,</p>
+  <p><strong>National Senior Certificate (Grade 12)</strong><br />
+    Mafemani-Nxumalo Secondary School<br />
+    Completed: 2020</p>
+</section>
 
-<p>I am applying for a Mechanical Engineering graduate position at your company. I am a final-year BEngTech Mechanical Engineering student at the University of Johannesburg, with strong technical skills, practical design experience, and a commitment to contributing meaningfully to real-world engineering challenges.</p>
+<section>
+  <h2>Key Project Experience</h2>
+  <ul>
+    <li><strong>Automatic Seed Sowing Robot – Capstone Design Project</strong><br />
+      Designed a robot capable of planting seeds uniformly across uneven terrain. Integrated features like adjustable seed spacing and ploughing depth. Used SolidWorks for 3D design and simulations. Assessed cost, usability and sustainability in line with real-world farming needs.</li>
+    <li><strong>Aerofoil CFD Analysis – Simulation Project</strong><br />
+      Conducted simulations on different aerofoil shapes to analyze lift and drag. Used results to make recommendations for improved aerodynamic performance.</li>
+    <li><strong>Python Programming & Algorithm Bootcamp – GRIT Lab Africa</strong><br />
+      Completed training in Python for problem-solving and logic development. Built programs and solved real-world challenges under time constraints.</li>
+  </ul>
+</section>
 
-<p>My academic background has equipped me with solid knowledge in thermodynamics, mechanics, fluid dynamics, and design. For my final-year capstone project, I led the design and development of an Automatic Seed Sowing Robot for small-scale farming, applying CAD (SolidWorks), simulations, and project management. I have also completed a CFD analysis on aerofoils and participated in a Python programming bootcamp through GRIT Lab Africa, further strengthening my analytical and problem-solving abilities.</p>
+<section>
+  <h2>Technical Skills</h2>
+  <ul>
+    <li>Software: SolidWorks, AutoCAD, Python, Microsoft Suite</li>
+    <li>Tools: Engineering simulations, 3D modeling, CFD, report writing</li>
+    <li>Other: Technical drawing, project planning, root cause analysis</li>
+  </ul>
+</section>
 
-<p>I am dependable, detail-oriented, and eager to learn. I work well independently and in teams, and I am confident in using tools such as AutoCAD, SolidWorks, and Microsoft Suite. I am available to start immediately part-time or full-time after graduation in November 2025.</p>
+<section>
+  <h2>Core Competencies</h2>
+  <ul>
+    <li>Punctual and well-organized</li>
+    <li>Effective communicator</li>
+    <li>Strong attention to detail</li>
+    <li>Analytical and logical thinking</li>
+    <li>Fast learner and proactive</li>
+    <li>Team player with leadership potential</li>
+  </ul>
+</section>
 
-<p>Thank you for considering my application. I would welcome the opportunity to discuss how I can contribute to your team.</p>
+<section>
+  <h2>ECSA Graduate Attributes</h2>
+  <ul>
+    <li>GA1: Problem solving</li>
+    <li>GA2: Application of engineering and scientific principles</li>
+    <li>GA3: Engineering design and creativity</li>
+    <li>GA4: Investigation and analysis</li>
+    <li>GA5: Use of modern tools and technology</li>
+    <li>GA6: Communication skills</li>
+    <li>GA7: Awareness of societal, health and environmental impact</li>
+    <li>GA8: Teamwork and collaboration</li>
+    <li>GA9: Independent learning and personal development</li>
+    <li>GA10: Professionalism and ethics</li>
+    <li>GA11: Project and resource management</li>
+  </ul>
+</section>
 
-<p>Sincerely,<br>Kutollo Chiloane</p>
+<section>
+  <h2>Additional Information</h2>
+  <ul>
+    <li>Driver’s License: Code B (Valid)</li>
+    <li>Availability: Immediately after graduation or part-time during final semester</li>
+    <li>References: Available on request</li>
+  </ul>
+</section>
 
-  </div>  <div class="download-cv">
-    <a href="kutollo-cv.pdf" download>Download My CV</a>
-  </div>  <footer>
-    <p>&copy; 2025 Kutollo Chiloane</p>
-  </footer>
+  </div>
 </body>
 </html>
