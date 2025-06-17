@@ -1,194 +1,73 @@
-<!DOCTYPE html><html lang="en">
-<head>
+<!DOCTYPE html><html lang="en"><head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kutollo Chiloane | Mechanical Engineering Portfolio</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTTXnD9xHdC9D0Wnq3s1tczn+Em7G6NnFoZ9AmM5pDZY5sKkT+Baw7E9dBhXt5RFLY/c5tdQfA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: url('bg.jpeg') no-repeat center center fixed;
-      background-size: cover;
-      color: #333;
-      transition: background 0.3s, color 0.3s;
-    }
-    header {
-      background-color: rgba(255, 255, 255, 0.95);
-      padding: 20px;
-      position: sticky;
-      top: 0;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      z-index: 1000;
-    }
-    header h1 {
-      margin: 0;
-    }
-    nav a {
-      margin: 0 15px;
-      text-decoration: none;
-      color: #333;
-      font-weight: bold;
-    }
-    .container {
-      max-width: 1000px;
-      margin: auto;
-      padding: 20px;
-      background-color: rgba(255, 255, 255, 0.95);
-    }
-    .profile {
-      display: flex;
-      gap: 20px;
-      align-items: center;
-    }
-    .profile img {
-      width: 120px;
-      border-radius: 50%;
-    }
-    .progress-bar {
-      background-color: #eee;
-      border-radius: 5px;
-      margin-bottom: 10px;
-    }
-    .progress-bar-fill {
-      height: 15px;
-      background-color: #ff6600;
-      border-radius: 5px;
-      width: 0;
-    }
-    .quote-box {
-      font-style: italic;
-      margin: 20px 0;
-    }
-    .contact-icons {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-    .contact-icons a {
-      background: #333;
-      color: white;
-      padding: 10px;
-      border-radius: 50%;
-      text-align: center;
-    }
-    .toggle-btn {
-      cursor: pointer;
-    }
-    #topBtn {
-      display: none;
-      position: fixed;
-      bottom: 60px;
-      right: 20px;
-      z-index: 99;
-      font-size: 18px;
-      background-color: #ff6600;
-      color: white;
-      border: none;
-      padding: 10px;
-      border-radius: 5px;
-    }
-  </style>
-</head>
-<body>
-  <header>
-    <h1>Kutollo Chiloane</h1>
-    <nav>
-      <a href="#profile">About</a>
-      <a href="#skills">Skills</a>
-      <a href="#projects">Projects</a>
-      <a href="#ecsa">ECSA GAs</a>
-      <a href="#contact">Contact</a>
-      <span class="toggle-btn" onclick="toggleMode()">🌓</span>
-    </nav>
-  </header>  <div class="container" id="profile">
-    <div class="profile">
-      <img src="kutollo.jpg" alt="Profile Picture">
-      <div>
-        <h2>Mechanical Engineering Final-Year Student</h2>
-        <p>Johannesburg, South Africa | 076 880 0599 | kutollochix@gmail.com</p>
-        <a href="KutolloCV.pdf" download><button>Download My CV</button></a>
-      </div>
-    </div><div class="quote-box" id="quoteBox"></div>
-
-  </div>  <div class="container" id="skills">
-    <h2>Technical Skills</h2>
-    <div>SolidWorks</div>
-    <div class="progress-bar"><div class="progress-bar-fill" style="width: 90%"></div></div>
-    <div>AutoCAD</div>
-    <div class="progress-bar"><div class="progress-bar-fill" style="width: 85%"></div></div>
-    <div>Python</div>
-    <div class="progress-bar"><div class="progress-bar-fill" style="width: 75%"></div></div>
-    <div>CFD / Simulations</div>
-    <div class="progress-bar"><div class="progress-bar-fill" style="width: 80%"></div></div>
-  </div>  <div class="container" id="projects">
-    <h2>Projects</h2>
-    <p><strong>Automatic Seed Sowing Robot</strong><br>Designed a robot to sow seeds evenly across terrain using SolidWorks. Focused on efficiency, plough depth, and spacing.</p>
-    <p><strong>Aerofoil CFD Analysis</strong><br>Ran simulations on wing profiles to analyze lift and drag using engineering software.</p>
-    <p><strong>Python Bootcamp (GRIT Lab Africa)</strong><br>Completed Python programming challenges to improve logical thinking and technical coding skills.</p>
-  </div>  <div class="container" id="ecsa">
-    <h2>ECSA Graduate Attributes</h2>
-    <p>As part of my ECSA-accredited degree, I was assessed on the following Graduate Attributes throughout my coursework, lab work and design projects:</p>
+  <title>Kutollo Chiloane | Mechanical Engineer Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+</head><body style="margin: 0; font-family: 'Roboto', sans-serif; background: #f4f4f4; color: #333;">
+  <!-- HEADER -->
+  <header style="background: #1d3557; padding: 2rem; color: white; text-align: center;">
+    <img src="kutollo.jpg" alt="Kutollo Chiloane" style="width: 140px; border-radius: 50%; border: 4px solid white; margin-bottom: 1rem;" />
+    <h1 style="margin: 0; font-size: 2rem;">Kutollo Chiloane</h1>
+    <p style="margin: 0.3rem 0 0; font-size: 1.1rem;">Final-Year BEngTech Mechanical Engineering Student</p>
+    <p>Johannesburg, South Africa | 076 880 0599 | <a href="mailto:kutollochix@gmail.com" style="color: #a8dadc; text-decoration: none;">kutollochix@gmail.com</a></p>
+    <a href="Kutollo_Chiloane_CV.pdf" download style="background: #a8dadc; color: #1d3557; padding: 0.5rem 1rem; border-radius: 5px; text-decoration: none; display: inline-block; margin-top: 1rem;">Download CV</a>
+  </header>  <!-- ABOUT ME -->  <section style="padding: 2rem; background: white;">
+    <h2>Professional Profile</h2>
+    <p>
+      Final-year Mechanical Engineering student with strong technical and analytical skills backed by hands-on experience in design, simulations and problem-solving. Confident using engineering tools like Autodesk Inventor and SolidWorks. Known for being punctual, detail-oriented and a reliable team contributor. Eager to apply knowledge in a professional setting and grow into a capable graduate engineer.
+    </p>
+  </section>  <!-- EDUCATION -->  <section style="padding: 2rem;">
+    <h2>Education</h2>
+    <div>
+      <img src="uj-logo.png" alt="UJ Logo" style="height: 40px; vertical-align: middle; margin-right: 10px;">
+      <strong>BEngTech Mechanical Engineering</strong> – University of Johannesburg (Expected: Nov 2025)
+      <p>Core Subjects: Thermodynamics, Fluid Mechanics, Mechanics of Machines, Strength of Materials, Engineering Design</p>
+    </div>
+    <div style="margin-top: 1rem;">
+      <strong>National Senior Certificate</strong> – Mafemani-Nxumalo Secondary School (2020)
+    </div>
+  </section>  <!-- PROJECTS -->  <section style="padding: 2rem; background: white;">
+    <h2>Key Projects</h2>
     <ul>
-      <li><strong>GA1:</strong> Problem Identification and Solving</li>
-      <li><strong>GA2:</strong> Application of Scientific and Engineering Knowledge</li>
-      <li><strong>GA3:</strong> Engineering Design and Innovation</li>
+      <li><strong>Automatic Seed Sowing Robot</strong> – Designed a robot for seed planting across uneven terrain using SolidWorks. Integrated adjustable spacing and ploughing depth. Focused on usability and cost efficiency.</li>
+      <li><strong>Aerofoil CFD Analysis</strong> – Ran simulations to analyze lift and drag on aerofoil shapes. Applied pressure distribution results for aerodynamic improvement.</li>
+      <li><strong>Python Bootcamp – GRIT Lab Africa</strong> – Completed problem-solving tasks with Python and built basic apps under timed constraints.</li>
+    </ul>
+  </section>  <!-- TECH SKILLS -->  <section style="padding: 2rem;">
+    <h2>Technical Skills</h2>
+    <ul>
+      <li>Software: SolidWorks, AutoCAD, Python, MS Office Suite</li>
+      <li>Tools: Engineering Simulations, CFD, 3D Modelling, Report Writing</li>
+      <li>Other: Technical Drawing, Root Cause Analysis, Project Planning</li>
+    </ul>
+  </section>  <!-- ECSA GAs -->  <section style="padding: 2rem; background: white;">
+    <h2>ECSA Graduate Attributes</h2>
+    <p>As part of an ECSA-accredited program, the following Graduate Attributes were assessed and demonstrated during the course:</p>
+    <ul>
+      <li><strong>GA1:</strong> Problem Solving</li>
+      <li><strong>GA2:</strong> Application of Engineering and Scientific Knowledge</li>
+      <li><strong>GA3:</strong> Engineering Design</li>
       <li><strong>GA4:</strong> Investigation and Research</li>
       <li><strong>GA5:</strong> Use of Modern Engineering Tools</li>
       <li><strong>GA6:</strong> Professional and Technical Communication</li>
-      <li><strong>GA7:</strong> Impact of Engineering on Society and Environment</li>
-      <li><strong>GA8:</strong> Teamwork and Multidisciplinary Collaboration</li>
-      <li><strong>GA9:</strong> Lifelong Learning and Adaptability</li>
-      <li><strong>GA10:</strong> Professionalism, Ethics and Responsibility</li>
-      <li><strong>GA11:</strong> Project and Resource Management</li>
+      <li><strong>GA7:</strong> Impact of Engineering Activity</li>
+      <li><strong>GA8:</strong> Individual and Team Work</li>
+      <li><strong>GA9:</strong> Independent Learning</li>
+      <li><strong>GA10:</strong> Engineering Professionalism</li>
+      <li><strong>GA11:</strong> Project Management</li>
     </ul>
-  </div>  <div class="container" id="contact">
+  </section>  <!-- CONTACT FORM -->  <section style="padding: 2rem;">
     <h2>Contact Me</h2>
-    <form action="https://formsubmit.co/kutollochix@gmail.com" method="POST">
-      <input type="text" name="name" placeholder="Your Name" required><br>
-      <input type="email" name="email" placeholder="Your Email" required><br>
-      <textarea name="message" placeholder="Your Message" required></textarea><br>
-      <button type="submit">Send Message</button>
+    <form action="https://formsubmit.co/kutollochix@gmail.com" method="POST" style="display: flex; flex-direction: column; max-width: 400px;">
+      <input type="text" name="name" placeholder="Your Name" required style="padding: 0.5rem; margin-bottom: 1rem;" />
+      <input type="email" name="email" placeholder="Your Email" required style="padding: 0.5rem; margin-bottom: 1rem;" />
+      <textarea name="message" rows="5" placeholder="Your Message" required style="padding: 0.5rem; margin-bottom: 1rem;"></textarea>
+      <button type="submit" style="padding: 0.7rem; background: #1d3557; color: white; border: none; cursor: pointer;">Send Message</button>
     </form>
-  </div>  <div class="contact-icons">
-    <a href="mailto:kutollochix@gmail.com"><i class="fas fa-envelope"></i></a>
-    <a href="https://www.linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
-    <a href="https://wa.me/27768800599" target="_blank"><i class="fab fa-whatsapp"></i></a>
-  </div><button onclick="topFunction()" id="topBtn">Top</button>
-
-  <script>
-    // Quote rotation
-    const quotes = [
-      "Engineering is not only study of 45 subjects but it is moral studies of intellectual life.",
-      "Design is not just what it looks like and feels like. Design is how it works.",
-      "In engineering, precision isn't optional—it's essential.",
-      "Simplicity is the ultimate sophistication in design."
-    ];
-    let quoteIndex = 0;
-    function showQuote() {
-      document.getElementById("quoteBox").textContent = quotes[quoteIndex];
-      quoteIndex = (quoteIndex + 1) % quotes.length;
-    }
-    setInterval(showQuote, 10000);
-    showQuote();
-
-    // Toggle mode
-    function toggleMode() {
-      document.body.classList.toggle('dark');
-    }
-
-    // Scroll to top button
-    const topBtn = document.getElementById("topBtn");
-    window.onscroll = function() {
-      topBtn.style.display = window.scrollY > 300 ? "block" : "none";
-    };
-    function topFunction() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-  </script></body>
-  </html>
+  </section>  <!-- FOOTER -->  <footer style="text-align: center; background: #1d3557; color: white; padding: 1rem;">
+    <p>&copy; 2025 Kutollo Chiloane</p>
+  </footer>
+</body></html>
