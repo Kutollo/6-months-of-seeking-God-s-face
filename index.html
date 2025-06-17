@@ -1,193 +1,143 @@
 <!DOCTYPE html><html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Kutollo Chiloane - Mechanical Engineer</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kutollo Chiloane - Mechanical Engineering</title>
+  <link rel="stylesheet" href="styles.css" />
   <style>
-    :root {
-      --bg-light: #f5f5f5;
-      --bg-dark: #1c1c1c;
-      --text-dark: #1f2a36;
-      --text-light: #dcdcdc;
-      --accent: #ef6c00;
-      --steel: #64748b;
-      --steel-dark: #3a4450;
-      --radius: 8px;
-    }body {
-  margin: 0;
-  font-family: 'Roboto Mono', monospace;
-  background: var(--bg-light);
-  color: var(--text-dark);
-  transition: background 0.3s, color 0.3s;
-}
-
-body.dark-mode {
-  background: var(--bg-dark);
-  color: var(--text-light);
-}
-
-header {
-  background: var(--steel-dark);
-  color: white;
-  padding: 1rem 2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  border-bottom: 4px solid var(--accent);
-}
-
-.header-left h1 {
-  margin: 0;
-  font-size: 1.6rem;
-}
-
-.header-left span {
-  font-size: 1rem;
-  color: #ccc;
-}
-
-#dark-toggle {
-  background: transparent;
-  color: white;
-  border: 2px solid var(--accent);
-  padding: 0.4rem 0.8rem;
-  border-radius: var(--radius);
-  cursor: pointer;
-  font-weight: bold;
-}
-
-nav {
-  background: var(--accent);
-  padding: 0.6rem;
-  text-align: center;
-}
-
-nav a {
-  color: white;
-  margin: 0 1rem;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-nav a:hover {
-  text-decoration: underline;
-}
-
-section {
-  max-width: 900px;
-  margin: 2rem auto;
-  background: white;
-  padding: 1.5rem;
-  border-radius: var(--radius);
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-body.dark-mode section {
-  background: #2e2e2e;
-}
-
-h2 {
-  border-left: 6px solid var(--accent);
-  padding-left: 0.8rem;
-  font-size: 1.4rem;
-  margin-bottom: 1rem;
-}
-
-.profile-img {
-  width: 140px;
-  height: 140px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 4px solid var(--accent);
-  display: block;
-  margin-bottom: 1rem;
-}
-
-.btn-cv {
-  display: inline-block;
-  padding: 0.6rem 1.2rem;
-  background: var(--accent);
-  color: white;
-  border-radius: var(--radius);
-  text-decoration: none;
-  font-weight: bold;
-}
-
-form input, form textarea {
-  width: 100%;
-  padding: 0.6rem;
-  margin: 0.5rem 0 1rem;
-  border: 1px solid #bbb;
-  border-radius: var(--radius);
-  font-family: monospace;
-}
-
-form button {
-  padding: 0.6rem 1.2rem;
-  background: var(--steel-dark);
-  color: white;
-  border: none;
-  border-radius: var(--radius);
-  font-weight: bold;
-}
-
-footer {
-  background: #dcdde1;
-  text-align: center;
-  padding: 1rem;
-  font-size: 0.85rem;
-}
-
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f4f4f4;
+      color: #333;
+    }
+    header, section {
+      padding: 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+    header {
+      text-align: center;
+      background-color: #222;
+      color: white;
+    }
+    header img {
+      width: 150px;
+      border-radius: 50%;
+    }
+    h1 {
+      margin-top: 10px;
+    }
+    .btn {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 10px 20px;
+      background: #007bff;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+    .section-title {
+      border-bottom: 2px solid #007bff;
+      padding-bottom: 5px;
+      margin-bottom: 10px;
+    }
+    .quote {
+      font-style: italic;
+      color: #555;
+    }
+    #quotes {
+      text-align: center;
+      margin-top: 10px;
+    }
   </style>
 </head>
 <body>
   <header>
-    <div class="header-left">
-      <h1>Kutollo Chiloane</h1>
-      <span>Mechanical Engineer</span>
-    </div>
-    <button id="dark-toggle">Toggle Theme</button>
-  </header>  <nav>
-    <a href="#about">About</a>
-    <a href="#qualifications">Qualifications</a>
-    <a href="#experience">Experience</a>
-    <a href="#skills">Skills</a>
-    <a href="#projects">Projects</a>
-    <a href="#contact">Contact</a>
-  </nav>  <section id="about">
-    <h2>About Me</h2>
-    <img src="your-photo.jpg" alt="Kutollo Photo" class="profile-img" />
-    <p>I'm Kutollo, a final-year mechanical engineering student passionate about innovation, design and practical problem-solving. I enjoy hands-on engineering work, using CAD software and bringing concepts to life.</p>
-    <a class="btn-cv" href="Kutollo-CV.pdf" download>Download My CV</a>
-  </section>  <section id="qualifications">
-    <h2>Qualifications</h2>
-    <p><strong>BEngTech Mechanical Engineering</strong><br/>University of Johannesburg <img src="uj-logo.png" alt="UJ Logo" style="height: 30px; vertical-align: middle; margin-left: 10px;"></p>
-    <p>Expected Completion: November 2025</p>
-  </section>  <section id="experience">
-    <h2>Experience</h2>
-    <p>I’m currently seeking my first industry opportunity. I'm available to contribute as an intern, graduate engineer or assistant, and I bring solid academic training, CAD and design skills, and a strong work ethic.</p>
-  </section>  <section id="contact">
-    <h2>Contact</h2>
-    <form action="https://formsubmit.co/kutollochix@gmail.com" method="POST">
-      <input type="hidden" name="_captcha" value="false">
-      <label>Name</label>
-      <input type="text" name="name" required />
-      <label>Email</label>
-      <input type="email" name="email" required />
-      <label>Message</label>
-      <textarea name="message" rows="4" required></textarea>
-      <button type="submit">Send</button>
-    </form>
-  </section>  <footer>
-    &copy; 2025 Kutollo Chiloane | Mechanical Engineering Portfolio
-  </footer>  <script>
-    // Theme toggle
-    document.getElementById('dark-toggle').addEventListener('click', () => {
-      document.body.classList.toggle('dark-mode');
-    });
+    <img src="kutollo.jpg" alt="Kutollo Chiloane" />
+    <h1>KUTOLLO CHILOANE</h1>
+    <p>Johannesburg, South Africa | 076 880 0599 | kutollochix@gmail.com</p>
+    <p>Final-Year BEngTech Mechanical Engineering Student | University of Johannesburg</p>
+    <a class="btn" href="Kutollo-CV.pdf" download>Download My CV</a>
+  </header>  <section>
+    <h2 class="section-title">Professional Profile</h2>
+    <p>Final-year Mechanical Engineering student with strong technical and analytical skills backed by hands-on experience in design, simulations and problem-solving. Confident in using engineering tools like Autodesk Inventor and experienced in managing projects from concept through to practical implementation. Known for being punctual, detail-oriented and a reliable team contributor. Eager to apply my knowledge in a professional setting and grow into a capable graduate engineer.</p>
+  </section>  <section>
+    <h2 class="section-title">Education</h2>
+    <p><strong>BEngTech Mechanical Engineering</strong><br>University of Johannesburg<br>Expected Completion: November 2025</p>
+    <ul>
+      <li>Core Subjects: Thermodynamics, Fluid Mechanics, Mechanics of Machines, Strength of Materials, Engineering Design</li>
+      <li>Final Year Project: Design and development of an Automatic Seed Sowing Robot for small-scale farming</li>
+    </ul>
+    <p><strong>National Senior Certificate (Grade 12)</strong><br>Mafemani-Nxumalo Secondary School<br>Completed: 2020</p>
+  </section>  <section>
+    <h2 class="section-title">Key Project Experience</h2>
+    <p><strong>Automatic Seed Sowing Robot – Capstone Design Project</strong><br>Designed a robot capable of planting seeds uniformly across uneven terrain. Integrated features like adjustable seed spacing and ploughing depth. Used SolidWorks for 3D design and simulations. Assessed cost, usability and sustainability in line with real-world farming needs. Demonstrated core engineering skills including design, problem solving, teamwork and communication.</p>
+    <p><strong>Aerofoil CFD Analysis – Simulation Project</strong><br>Conducted simulations on different aerofoil shapes to analyze lift and drag. Used results to make recommendations for improved aerodynamic performance. Applied engineering software to evaluate pressure distribution across surfaces.</p>
+    <p><strong>Python Programming & Algorithm Bootcamp – GRIT Lab Africa</strong><br>Completed focused training in Python for problem-solving and logic development. Built basic programs and solved real-world challenges under time constraints. Improved self-learning skills and the ability to communicate technical ideas clearly.</p>
+  </section>  <section>
+    <h2 class="section-title">Technical Skills</h2>
+    <ul>
+      <li>Software: SolidWorks, AutoCAD, Python, Microsoft Suite</li>
+      <li>Tools: Engineering simulations, 3D modeling, CFD, report writing</li>
+      <li>Other: Technical drawing, project planning, root cause analysis</li>
+    </ul>
+  </section>  <section>
+    <h2 class="section-title">Core Competencies</h2>
+    <ul>
+      <li>Punctual and well-organized</li>
+      <li>Effective communicator, both written and verbal</li>
+      <li>Strong attention to detail</li>
+      <li>Analytical and logical thinking</li>
+      <li>Fast learner and proactive</li>
+      <li>Team player with leadership potential</li>
+    </ul>
+  </section>  <section>
+    <h2 class="section-title">ECSA Graduate Attributes</h2>
+    <ul>
+      <li>GA1: Problem solving</li>
+      <li>GA2: Application of engineering and scientific principles</li>
+      <li>GA3: Engineering design and creativity</li>
+      <li>GA4: Investigation and analysis</li>
+      <li>GA5: Use of modern tools and technology</li>
+      <li>GA6: Communication skills</li>
+      <li>GA7: Awareness of societal, health and environmental impact</li>
+      <li>GA8: Teamwork and collaboration</li>
+      <li>GA9: Independent learning and personal development</li>
+      <li>GA10: Professionalism and ethics</li>
+      <li>GA11: Project and resource management</li>
+    </ul>
+  </section>  <section>
+    <h2 class="section-title">Additional Information</h2>
+    <ul>
+      <li>Driver’s License: Code B (Valid)</li>
+      <li>Availability: Immediately after graduation or part-time during final semester</li>
+      <li>References: Available on request</li>
+    </ul>
+  </section>  <section>
+    <h2 class="section-title">Motivation Letter</h2>
+    <p>15 June 2025</p>
+    <p>Dear Hiring Manager,</p>
+    <p>I am applying for a Mechanical Engineering graduate position at your company. I am a final-year BEngTech Mechanical Engineering student at the University of Johannesburg, with strong technical skills, practical design experience, and a commitment to contributing meaningfully to real-world engineering challenges.</p>
+    <p>My academic background has equipped me with solid knowledge in thermodynamics, mechanics, fluid dynamics, and design. For my final-year capstone project, I led the design and development of an Automatic Seed Sowing Robot for small-scale farming, applying CAD (SolidWorks), simulations, and project management. I have also completed a CFD analysis on aerofoils and participated in a Python programming bootcamp through GRIT Lab Africa, further strengthening my analytical and problem-solving abilities.</p>
+    <p>I am dependable, detail-oriented, and eager to learn. I work well independently and in teams, and I am confident in using tools such as AutoCAD, SolidWorks, and Microsoft Suite. I am available to start immediately part-time or full-time after graduation in November 2025.</p>
+    <p>Thank you for considering my application. I would welcome the opportunity to discuss how I can contribute to your team.</p>
+    <p>Sincerely,<br />Kutollo Chiloane</p>
+  </section>  <section id="quotes">
+    <h2 class="section-title">Quote</h2>
+    <p class="quote" id="quoteText">"Success is no accident. It is hard work, perseverance, learning, studying and most of all, love of what you are doing."</p>
+  </section>  <script>
+    // Rotating manual quotes every 10 seconds
+    const quotes = [
+      "Success is no accident. It is hard work, perseverance, learning, studying and most of all, love of what you are doing.",
+      "Engineering is not only study of 45 subjects but it is moral studies of intellectual life.",
+      "Design is not just what it looks like and feels like. Design is how it works.",
+      "Strive for progress, not perfection."
+    ];
+    let index = 0;
+    setInterval(() => {
+      index = (index + 1) % quotes.length;
+      document.getElementById("quoteText").textContent = quotes[index];
+    }, 10000);
   </script></body>
 </html>
