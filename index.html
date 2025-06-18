@@ -1,145 +1,122 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Mechanical Engineer Portfolio</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Roboto&display=swap" rel="stylesheet">
   <style>
-    body {
-      font-family: 'Roboto', sans-serif;
-      margin: 0;
-      background: #fff;
-      color: #333;
-    }
-    header, footer {
-      text-align: center;
-      padding: 1em;
-      background-color: #f4f4f4;
-    }
-    h1, h2, h3 {
-      font-family: 'Playfair Display', serif;
-    }
-    .container {
-      width: 90%;
-      max-width: 900px;
-      margin: auto;
-    }
-    section {
-      padding: 2em 0;
-      border-bottom: 1px solid #ccc;
-    }
-    .about-photo {
-      width: 120px;
-      border-radius: 50%;
-      float: right;
-      margin-left: 20px;
-    }
-    .experience-item, .education-item, .award-item {
-      margin-bottom: 1.5em;
-    }
-    .experience-item h4, .education-item h4 {
-      margin: 0.2em 0;
-    }
-    ul.skills, ul.interests {
-      list-style: none;
-      padding-left: 0;
-    }
-    ul.skills li, ul.interests li {
-      margin-bottom: 0.5em;
-    }
-    .contact a {
-      color: #333;
-      text-decoration: none;
-      margin: 0 0.5em;
-    }
+    body { font-family: 'Roboto', sans-serif; margin:0; color:#333; background:#fff; }
+    header, footer { text-align:center; padding:1em; background:#f4f4f4; }
+    h1,h2,h3 { font-family:'Playfair Display', serif; color:#2a2a2a; }
+    .container { max-width:900px; margin: auto; padding:1em; }
+    section { padding:2em 0; border-bottom:1px solid #ccc; }
+    .about-photo { float:right; width:120px; border-radius:50%; margin-left:20px; }
+    .experience-item, .education-item, .award-item { margin-bottom:1.5em; }
+    ul { list-style: none; padding-left:0; }
+    ul li::before { content: '• '; color: #333; }
+    ul.skills, ul.interests { columns: 2; }
+    button.resume-button { padding: .75em 1.5em; background: #444; color: #fff; border:none; border-radius:5px; cursor:pointer; }
+    .social-links a { margin:0 .5em; color:#333; text-decoration:none; font-size:1.4em; }
   </style>
 </head>
 <body>
   <header>
     <h1>Mechanical Engineer Portfolio</h1>
-    <p>Built with HTML/CSS - Inspired by a Wix site</p>
-    <button onclick="window.print()">Download My Resume</button>
-  </header>  <div class="container">
+    <button class="resume-button" onclick="window.print()">Download My Resume</button>
+  </header>
+  <div class="container">
     <section id="about">
       <h2>About</h2>
-      <img src="your-photo.jpg" alt="Profile Photo" class="about-photo">
-      <p>I am a <strong>Mechanical Engineer</strong> raised in Boston, MA, with my <strong>BSME from Northeastern University</strong>. I have professional experience in both the aerospace and robotics industries, with a focus in mechanical design, data analysis, and rapid prototyping.</p>
-      <p>Starting February 2025, I will be working at <strong>GE Aerospace</strong> as part of the <strong>Edison Engineering Development Program</strong>, contributing full-time to aircraft engine development while completing advanced engineering courses and working toward a master's degree.</p>
-    </section><section id="experience">
-  <h2>Experience</h2>
-  <div class="experience-item">
-    <h4>GE Aerospace - Lynn, MA</h4>
-    <p><em>Mechanical Engineer (Edison Engineer)</em> | Feb 2025</p>
-    <ul>
-      <li>Participate in EEDP rotations</li>
-      <li>Advanced Courses in Engineering</li>
-      <li>Master's degree track</li>
-    </ul>
+      <img src="profile.jpg" alt="Profile Photo" class="about-photo">
+      <p>I am a <strong>Mechanical Engineer</strong> from Boston with a BSME from Northeastern University, experienced in aerospace & robotics, focusing on mechanical design, data analysis, and rapid prototyping.</p>
+      <p>Starting Feb 2025, I’ll join <strong>GE Aerospace’s Edison Engineering Development Program</strong>, contributing to aircraft engine development and pursuing a master’s degree.</p>
+      <div style="clear:both;"></div>
+    </section>
+    <section id="experience">
+      <h2>Experience</h2>
+      <div class="experience-item">
+        <h3>GE Aerospace – Lynn, MA</h3>
+        <p><em>Mechanical Engineer (Edison Engineer)</em> | Feb 2025</p>
+        <ul>
+          <li>Participate in EEDP rotations</li>
+          <li>Advanced engineering coursework</li>
+          <li>Master's degree track</li>
+        </ul>
+      </div>
+      <div class="experience-item">
+        <h3>Amazon Robotics – Reading, MA</h3>
+        <p><em>Hardware Development Engineering Coop</em> | Jan–Jul 2023</p>
+        <ul>
+          <li>Prototyped hardware and did data analysis</li>
+          <li>Electromechanical system optimizations</li>
+          <li>Used SolidWorks, MATLAB, Excel</li>
+        </ul>
+      </div>
+      <div class="experience-item">
+        <h3>MatrixSpace – Burlington, MA</h3>
+        <p><em>Mechanical Engineering Coop</em> | Jan–Jul 2022</p>
+        <ul>
+          <li>Designed UAV hardware & flight-tested</li>
+          <li>Optimized thrust and efficiency</li>
+        </ul>
+      </div>
+    </section>
+    <section id="education">
+      <h2>Education</h2>
+      <div class="education-item">
+        <h3>Northeastern University – Boston, MA</h3>
+        <p><em>B.S. in Mechanical Engineering</em> | 2020–2024</p>
+        <ul>
+          <li>Dean’s List (GPA > 3.5)</li>
+          <li>Student Life Award (Digital Storytelling, 2021)</li>
+        </ul>
+      </div>
+    </section>
+    <section id="skills">
+      <h2>Skills & Tools</h2>
+      <ul class="skills">
+        <li>Python</li>
+        <li>SolidWorks, FEA</li>
+        <li>Microsoft Office Suite</li>
+        <li>MATLAB, Excel</li>
+        <li>Adobe Premiere, Photoshop</li>
+      </ul>
+    </section>
+    <section id="awards">
+      <h2>Awards</h2>
+      <div class="award-item">
+        <p><strong>Eagle Scout (2019)</strong> – Boy Scouts of America: boardwalk project and 500+ hours service</p>
+        <p><strong>Student Life Award (2021)</strong> &amp; Dean’s List – Northeastern University</p>
+      </div>
+    </section>
+    <section id="interests">
+      <h2>Interests</h2>
+      <ul class="interests">
+        <li>Drone Operating</li>
+        <li>Video Editing & Photography</li>
+        <li>Hiking & Backpacking</li>
+        <li>Formula 1 / Automotive Tech</li>
+        <li>Weightlifting, Spikeball, Travel</li>
+      </ul>
+    </section>
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>Email: <a href="mailto:jack@stevensfive.net">jack@stevensfive.net</a></p>
+      <p>Phone: 781-827-1949</p>
+      <div class="social-links">
+        <a href="#" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
+        <a href="#" title="Facebook"><i class="fab fa-facebook"></i></a>
+        <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+      </div>
+    </section>
   </div>
-  <div class="experience-item">
-    <h4>Amazon Robotics - Reading, MA</h4>
-    <p><em>Hardware Development Engineering Coop</em> | Jan - Jul 2023</p>
-    <ul>
-      <li>Prototyped network hardware solutions</li>
-      <li>Data analysis and system improvements</li>
-      <li>Used SolidWorks, MATLAB, Excel</li>
-    </ul>
-  </div>
-</section>
-
-<section id="education">
-  <h2>Education</h2>
-  <div class="education-item">
-    <h4>Northeastern University - Boston, MA</h4>
-    <p>B.S. in Mechanical Engineering | 2020-2024</p>
-  </div>
-</section>
-
-<section id="skills">
-  <h2>Skills & Tools</h2>
-  <ul class="skills">
-    <li>Python</li>
-    <li>SolidWorks, FEA</li>
-    <li>Microsoft Office Suite</li>
-    <li>MATLAB, Excel</li>
-    <li>Adobe Premiere, Photoshop</li>
-  </ul>
-</section>
-
-<section id="awards">
-  <h2>Awards</h2>
-  <div class="award-item">
-    <p><strong>Boy Scouts of America</strong>: Eagle Scout (2019) - Boardwalk project, 500+ hours of service</p>
-    <p><strong>Northeastern University</strong>: Student Life Award (2021), Dean’s List (2020–Present)</p>
-  </div>
-</section>
-
-<section id="interests">
-  <h2>Interests</h2>
-  <ul class="interests">
-    <li>Drone Operating</li>
-    <li>Video Editing</li>
-    <li>Hiking & Backpacking</li>
-    <li>Formula 1, Automotive Tech</li>
-    <li>Running, Spikeball, Travel</li>
-  </ul>
-</section>
-
-<section class="contact">
-  <h2>Contact</h2>
-  <p>Email: <a href="mailto:jack@stevensfive.net">jack@stevensfive.net</a></p>
-  <p>Phone: 781-827-1949</p>
-  <p>
-    <a href="#">LinkedIn</a> |
-    <a href="#">Instagram</a> |
-    <a href="#">YouTube</a> |
-    <a href="#">Facebook</a> |
-    <a href="#">Twitter</a>
-  </p>
-</section>
-
-  </div>  <footer>
+  <footer>
     <p>&copy; 2025 Mechanical Engineer Portfolio</p>
   </footer>
+  <!-- Include FontAwesome CDN if icons don't load -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </body>
 </html>
