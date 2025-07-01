@@ -40,6 +40,19 @@
     .month p {
       margin: 5px 0;
     }
+    .daily-verse {
+      background: #e0f2fe;
+      padding: 15px;
+      border-left: 6px solid #0284c7;
+      margin-bottom: 20px;
+      font-style: italic;
+    }
+    .downloads, .schedule {
+      background: #fef9c3;
+      padding: 15px;
+      border-left: 6px solid #eab308;
+      margin-bottom: 20px;
+    }
     footer {
       text-align: center;
       padding: 20px;
@@ -52,18 +65,54 @@
       text-decoration: none;
     }
   </style>
+  <script>
+    // Daily Verse array (manually editable)
+    const verses = [
+      "Psalm 27:8 – My heart has heard You say, 'Come and talk with Me.' And my heart responds, 'Lord, I am coming.'",
+      "James 4:8 – Come near to God and He will come near to you.",
+      "Romans 12:1 – Offer your bodies as a living sacrifice, holy and pleasing to God."
+    ];
+    window.onload = () => {
+      const verseElement = document.getElementById('dailyVerse');
+      const today = new Date();
+      const index = today.getDate() % verses.length;
+      verseElement.textContent = verses[index];
+    };
+  </script>
 </head>
 <body>
   <header>
     <h1>6-Month Journey of Seeking God's Face</h1>
     <p>July – December 2025</p>
   </header>  <div class="container">
-    <div class="month">
-      <h2>July: Consecration</h2>
-      <p><strong>Scriptures:</strong> Psalm 51, Romans 12:1–2</p>
-      <p><strong>Theme:</strong> Purity, repentance, surrender</p>
-      <p><strong>Action:</strong> Disconnect from media, 3-day fast</p>
-    </div><div class="month">
+    <div class="daily-verse">
+      <strong>Today's Verse:</strong> <span id="dailyVerse">Loading verse...</span>
+    </div><div class="downloads">
+  <strong>📝 Journal Templates:</strong>
+  <ul>
+    <li><a href="#">Download July Journal (PDF)</a></li>
+    <li><a href="#">Download August Journal (PDF)</a></li>
+    <li><a href="#">Google Docs Version</a></li>
+  </ul>
+</div>
+
+<div class="schedule">
+  <strong>📆 Weekly Prayer & Fasting Schedule</strong>
+  <ul>
+    <li>🛐 Mondays: Focused Prayer (Holiness & Identity)</li>
+    <li>🔥 Wednesdays: Fasting Day (Sunrise to Sunset)</li>
+    <li>🌌 Fridays Midnight: Intercession & Worship</li>
+  </ul>
+</div>
+
+<div class="month">
+  <h2>July: Consecration</h2>
+  <p><strong>Scriptures:</strong> Psalm 51, Romans 12:1–2</p>
+  <p><strong>Theme:</strong> Purity, repentance, surrender</p>
+  <p><strong>Action:</strong> Disconnect from media, 3-day fast</p>
+</div>
+
+<div class="month">
   <h2>August: Identity in Christ</h2>
   <p><strong>Scriptures:</strong> Ephesians 1–2, Romans 8</p>
   <p><strong>Theme:</strong> Know who you are in Christ</p>
@@ -102,4 +151,4 @@
     &copy; 2025 Kutollo C | Built for God's glory | <a href="#">Back to Top</a>
   </footer>
 </body>
-</html>
+  </html>
