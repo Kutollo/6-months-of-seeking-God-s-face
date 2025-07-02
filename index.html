@@ -1,346 +1,362 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>6-Month Spiritual Journey – July Focus</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background: #f9fafb;
-      color: #111827;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-    }
-    header {
-      background: linear-gradient(90deg, #22c55e, #16a34a);
-      color: white;
-      padding: 2rem 1rem;
-      text-align: center;
-      box-shadow: 0 3px 8px rgba(34,197,94,0.5);
-    }
-    header h1 {
-      margin: 0 0 0.5rem;
-      font-weight: 700;
-      font-size: 2rem;
-      letter-spacing: 1.5px;
-    }
-    header p {
-      margin: 0;
-      font-weight: 500;
-      font-size: 1.1rem;
-      font-style: italic;
-      opacity: 0.9;
-    }
-    main {
-      flex-grow: 1;
-      max-width: 900px;
-      margin: 2rem auto;
-      padding: 0 1rem;
-      width: 100%;
-    }
-    .intro {
-      background: white;
-      padding: 1.5rem 2rem;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-      margin-bottom: 2rem;
-      text-align: center;
-    }
-    .intro h2 {
-      margin-top: 0;
-      font-weight: 700;
-      font-size: 1.8rem;
-      color: #16a34a;
-    }
-    .intro p {
-      font-weight: 500;
-      font-size: 1.1rem;
-      margin-top: 0.5rem;
-      color: #4b5563;
-    }
-    .verses {
-      background: white;
-      border-radius: 12px;
-      padding: 1.5rem 2rem;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-      margin-bottom: 2rem;
-    }
-    .verses h3 {
-      color: #22c55e;
-      font-weight: 700;
-      margin-top: 0;
-      margin-bottom: 1rem;
-    }
-    .verse-list {
-      list-style: none;
-      padding: 0;
-      max-height: 280px;
-      overflow-y: auto;
-      border: 1px solid #d1d5db;
-      border-radius: 8px;
-    }
-    .verse-list li {
-      padding: 0.75rem 1rem;
-      border-bottom: 1px solid #e5e7eb;
-      font-size: 0.95rem;
-    }
-    .verse-list li:last-child {
-      border-bottom: none;
-    }
-    .fasting-week {
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-      padding: 1.5rem 2rem;
-      margin-bottom: 2rem;
-    }
-    .fasting-week h3 {
-      margin-top: 0;
-      margin-bottom: 1rem;
-      color: #b45309;
-      font-weight: 700;
-      border-left: 5px solid #fbbf24;
-      padding-left: 0.75rem;
-    }
-    .fasting-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>6-Month Spiritual Journey – July Focus</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  /* Reset & base */
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: #f9fafb;
+    color: #111827;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  header {
+    background: linear-gradient(90deg, #22c55e, #16a34a);
+    color: white;
+    padding: 2rem 1rem;
+    text-align: center;
+    box-shadow: 0 3px 8px rgba(34,197,94,0.5);
+  }
+  header h1 {
+    margin: 0 0 0.5rem;
+    font-weight: 700;
+    font-size: 2rem;
+    letter-spacing: 1.5px;
+  }
+  header p {
+    margin: 0;
+    font-weight: 500;
+    font-style: italic;
+    font-size: 1.1rem;
+    opacity: 0.9;
+  }
+
+  main {
+    flex-grow: 1;
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    width: 100%;
+  }
+
+  .intro {
+    background: white;
+    padding: 1.5rem 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+  .intro h2 {
+    margin-top: 0;
+    font-weight: 700;
+    font-size: 1.8rem;
+    color: #16a34a;
+  }
+  .intro p {
+    font-weight: 500;
+    font-size: 1.1rem;
+    margin-top: 0.5rem;
+    color: #4b5563;
+  }
+
+  .verses {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem 2rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    margin-bottom: 2rem;
+  }
+  .verses h3 {
+    color: #22c55e;
+    font-weight: 700;
+    margin-top: 0;
+    margin-bottom: 1rem;
+  }
+  .verse-list {
+    list-style: none;
+    padding: 0;
+    max-height: 280px;
+    overflow-y: auto;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+  }
+  .verse-list li {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid #e5e7eb;
+    font-size: 0.95rem;
+  }
+  .verse-list li:last-child {
+    border-bottom: none;
+  }
+  .verse-list::-webkit-scrollbar {
+    width: 8px;
+  }
+  .verse-list::-webkit-scrollbar-thumb {
+    background-color: #22c55e;
+    border-radius: 10px;
+  }
+  .verse-list::-webkit-scrollbar-track {
+    background: #f9fafb;
+  }
+
+  /* Fasting week redesign */
+  .fasting-week {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    padding: 1.5rem 2rem;
+    margin-bottom: 2rem;
+  }
+  .fasting-week h3 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    color: #b45309;
+    font-weight: 700;
+    border-left: 5px solid #fbbf24;
+    padding-left: 0.75rem;
+  }
+
+  .fasting-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .fasting-list li {
+    flex: 1 1 120px;
+    background: #fef3c7;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    padding: 1rem;
+    cursor: pointer;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+    user-select: none;
+    box-shadow: 0 2px 6px rgba(251, 191, 36, 0.3);
+    font-weight: 600;
+    color: #92400e;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  .fasting-list li.selected {
+    border-color: #f59e0b;
+    background-color: #fef9c3;
+    box-shadow: 0 0 12px 4px #fbbf24;
+  }
+  .fasting-list li strong {
+    font-weight: 700;
+    color: #b45309;
+  }
+  .fasting-prayer {
+    margin-top: 1rem;
+    background: #fef3c7;
+    padding: 1rem 1.5rem;
+    border-radius: 10px;
+    color: #92400e;
+    font-style: italic;
+    min-height: 4rem;
+    box-shadow: inset 0 0 6px #fbbf24;
+    transition: background-color 0.3s ease;
+  }
+  .fasting-prayer.empty {
+    color: #b45309;
+    font-style: normal;
+  }
+
+  /* Mini calendar */
+  .calendar-container {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem 2rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    margin-bottom: 2rem;
+  }
+  .calendar-container h3 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    color: #15803d;
+    font-weight: 700;
+    border-left: 5px solid #22c55e;
+    padding-left: 0.75rem;
+  }
+  .calendar {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+    user-select: none;
+  }
+  .calendar-day {
+    padding: 0.6rem 0;
+    background: #e5e7eb;
+    border-radius: 6px;
+    text-align: center;
+    font-weight: 600;
+    color: #374151;
+    font-size: 0.9rem;
+  }
+  .calendar-day.weekend {
+    color: #9ca3af;
+  }
+  .calendar-day.fasting {
+    background: #a3e635;
+    color: #365314;
+    box-shadow: 0 0 8px 2px #bef264;
+    font-weight: 700;
+  }
+  .calendar-day.today {
+    border: 2px solid #22c55e;
+  }
+
+  /* Reflection journal */
+  .reflection {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem 2rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    margin-bottom: 2rem;
+  }
+  .reflection h3 {
+    color: #15803d;
+    margin-top: 0;
+    font-weight: 700;
+  }
+  .reflection textarea {
+    width: 100%;
+    height: 140px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    padding: 1rem;
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+    resize: vertical;
+    box-sizing: border-box;
+    margin-top: 0.5rem;
+    transition: border-color 0.3s ease;
+  }
+  .reflection textarea:focus {
+    outline: none;
+    border-color: #22c55e;
+    box-shadow: 0 0 8px #bbf7d0;
+  }
+  .btn-download {
+    display: inline-block;
+    background: #22c55e;
+    color: white;
+    padding: 0.75rem 1.6rem;
+    font-weight: 700;
+    border-radius: 10px;
+    text-decoration: none;
+    box-shadow: 0 4px 10px rgba(34,197,94,0.5);
+    transition: background 0.3s ease;
+    margin-top: 1rem;
+    cursor: pointer;
+    border: none;
+  }
+  .btn-download:hover {
+    background: #15803d;
+  }
+
+  footer {
+    text-align: center;
+    padding: 1rem 1rem;
+    background: #ecfdf5;
+    color: #065f46;
+    font-weight: 600;
+    font-size: 0.9rem;
+    box-shadow: inset 0 1px 0 #bbf7d0;
+  }
+
+  /* Responsive */
+  @media (max-width: 600px) {
     .fasting-list li {
-      flex: 1 1 120px;
-      background: #fef3c7;
-      border: 2px solid transparent;
-      border-radius: 10px;
-      padding: 0.75rem 1rem;
-      cursor: pointer;
-      transition: border-color 0.3s ease, background-color 0.3s ease;
-      user-select: none;
-      box-shadow: 0 2px 6px rgba(251, 191, 36, 0.3);
-      font-weight: 600;
-      color: #92400e;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 0.3rem;
+      flex: 1 1 100%;
     }
-    .fasting-list li.selected {
-      border-color: #f59e0b;
-      background-color: #fef9c3;
-      box-shadow: 0 0 10px 3px #fbbf24;
+    .calendar {
+      grid-template-columns: repeat(7, 1fr);
+      font-size: 0.8rem;
     }
-    .fasting-list li strong {
-      font-weight: 700;
-      color: #b45309;
-    }
-    .fasting-prayer {
-      margin-top: 1rem;
-      background: #fef3c7;
-      padding: 1rem 1.5rem;
-      border-radius: 10px;
-      color: #92400e;
-      font-style: italic;
-      min-height: 3rem;
-      box-shadow: inset 0 0 5px #fbbf24;
-    }
-    .reflection {
-      background: white;
-      border-radius: 12px;
-      padding: 1.5rem 2rem;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-      margin-bottom: 2rem;
-    }
-    .reflection h3 {
-      color: #15803d;
-      margin-top: 0;
-      font-weight: 700;
-    }
-    .reflection textarea {
-      width: 100%;
-      height: 140px;
-      border: 1px solid #d1d5db;
-      border-radius: 8px;
-      padding: 1rem;
-      font-size: 1rem;
-      font-family: 'Poppins', sans-serif;
-      resize: vertical;
-      box-sizing: border-box;
-      margin-top: 0.5rem;
-      transition: border-color 0.3s ease;
-    }
-    .reflection textarea:focus {
-      outline: none;
-      border-color: #22c55e;
-      box-shadow: 0 0 8px #bbf7d0;
-    }
-    .btn-download {
-      display: inline-block;
-      background: #22c55e;
-      color: white;
-      padding: 0.75rem 1.6rem;
-      font-weight: 700;
-      border-radius: 10px;
-      text-decoration: none;
-      box-shadow: 0 4px 10px rgba(34,197,94,0.5);
-      transition: background 0.3s ease;
-      margin-top: 1rem;
-      cursor: pointer;
-      border: none;
-    }
-    .btn-download:hover {
-      background: #15803d;
-    }
-    footer {
-      text-align: center;
-      padding: 1rem 1rem;
-      background: #ecfdf5;
-      color: #065f46;
-      font-weight: 600;
-      font-size: 0.9rem;
-      box-shadow: inset 0 1px 0 #bbf7d0;
-    }
-    /* Scrollbar styling for verse list */
-    .verse-list::-webkit-scrollbar {
-      width: 8px;
-    }
-    .verse-list::-webkit-scrollbar-thumb {
-      background-color: #22c55e;
-      border-radius: 10px;
-    }
-    .verse-list::-webkit-scrollbar-track {
-      background: #f9fafb;
-    }
-  </style>
+  }
+</style>
 </head>
 <body>
-  <header>
-    <h1>6-Month Spiritual Journey</h1>
-    <p>July Focus: <em>Returning to God</em></p>
-  </header>
 
-  <main>
-    <section class="intro" aria-label="Journey overview">
-      <h2>Welcome to Your July Journey</h2>
-      <p>Spend this month seeking God’s presence daily through scripture, prayer, fasting, and reflection. Let your heart turn back to Him and grow deeper in faith.</p>
-      <p><strong>Key Verse:</strong> Hosea 6:1 - “Come, let us return to the Lord...”</p>
-    </section>
+<header>
+  <h1>6-Month Spiritual Journey</h1>
+  <p>July Focus: <em>Returning to God</em></p>
+</header>
 
-    <section class="verses" aria-label="Daily Bible verses for July">
-      <h3>Daily Bible Verses</h3>
-      <ul class="verse-list" tabindex="0" aria-live="polite">
-        <li><strong>July 1:</strong> Hosea 6:1 – “Come, let us return to the Lord...”</li>
-        <li><strong>July 2:</strong> Joel 2:13 – “Return to the Lord your God, for He is gracious and compassionate...”</li>
-        <li><strong>July 3:</strong> James 4:8 – “Come close to God, and God will come close to you.”</li>
-        <li><strong>July 4:</strong> Psalm 51:10 – “Create in me a clean heart, O God...”</li>
-        <li><strong>July 5:</strong> Isaiah 1:18 – “Though your sins are like scarlet, they shall be as white as snow.”</li>
-        <li><strong>July 6:</strong> Matthew 11:28 – “Come to me, all of you who are weary and carry heavy burdens...”</li>
-        <li><strong>July 7:</strong> Lamentations 3:40 – “Let us test and examine our ways...”</li>
-        <li><strong>July 8:</strong> Psalm 34:18 – “The Lord is close to the brokenhearted...”</li>
-        <li><strong>July 9:</strong> Jeremiah 29:13 – “You will seek me and find me when you seek me with all your heart.”</li>
-        <li><strong>July 10:</strong> Proverbs 3:5 – “Trust in the Lord with all your heart...”</li>
-        <li><strong>July 11:</strong> Psalm 119:105 – “Your word is a lamp to guide my feet...”</li>
-        <li><strong>July 12:</strong> Romans 12:2 – “Be transformed by the renewing of your mind...”</li>
-        <li><strong>July 13:</strong> Isaiah 40:31 – “But those who trust in the Lord will find new strength...”</li>
-        <li><strong>July 14:</strong> Psalm 46:10 – “Be still, and know that I am God.”</li>
-        <li><strong>July 15:</strong> John 15:5 – “I am the vine; you are the branches...”</li>
-        <li><strong>July 16:</strong> Philippians 4:13 – “I can do all things through Christ who strengthens me.”</li>
-        <li><strong>July 17:</strong> Psalm 23:1 – “The Lord is my shepherd; I have all that I need.”</li>
-        <li><strong>July 18:</strong> Hebrews 11:1 – “Faith shows the reality of what we hope for...”</li>
-        <li><strong>July 19:</strong> Matthew 6:33 – “Seek the Kingdom of God above all else...”</li>
-        <li><strong>July 20:</strong> 2 Chronicles 7:14 – “If my people humble themselves and pray...”</li>
-        <li><strong>July 21:</strong> Psalm 37:4 – “Take delight in the Lord, and he will give you your heart’s desires.”</li>
-        <li><strong>July 22:</strong> 1 John 4:7 – “Let us love one another, for love comes from God.”</li>
-        <li><strong>July 23:</strong> Colossians 3:23 – “Work willingly at whatever you do...”</li>
-        <li><strong>July 24:</strong> Isaiah 41:10 – “Don’t be afraid, for I am with you.”</li>
-        <li><strong>July 25:</strong> Joel 2:12 – “Turn to me now, while there is time...”</li>
-        <li><strong>July 26:</strong> Isaiah 58:6 – “This is the kind of fasting I want...”</li>
-        <li><strong>July 27:</strong> Daniel 9:3 – “So I turned to the Lord God and pleaded...”</li>
-        <li><strong>July 28:</strong> Matthew 6:17-18 – “But when you fast, anoint your head and wash your face...”</li>
-        <li><strong>July 29:</strong> Nehemiah 1:4 – “When I heard this, I sat down and wept...”</li>
-        <li><strong>July 30:</strong> Ezra 8:23 – “So we fasted and earnestly prayed...”</li>
-        <li><strong>July 31:</strong> Psalm 63:1 – “O God, you are my God; I earnestly search for you.”</li>
-      </ul>
-    </section>
+<main>
+  <section class="intro" aria-label="Journey overview">
+    <h2>Welcome to Your July Journey</h2>
+    <p>Spend this month seeking God’s presence daily through scripture, prayer, fasting, and reflection. Let your heart turn back to Him and grow deeper in faith.</p>
+    <p><strong>Key Verse:</strong> Hosea 6:1 - “Come, let us return to the Lord...”</p>
+  </section>
 
-    <section class="fasting-week" aria-label="Fasting week details">
-      <h3>Fasting Week: July 25–31</h3>
-      <ul class="fasting-list" role="list" aria-label="Fasting days list">
-        <li tabindex="0" role="button" aria-pressed="false" data-prayer="Turn to me now, while there is time. — Joel 2:12"><strong>July 25</strong><br/>Joel 2:12</li>
-        <li tabindex="0" role="button" aria-pressed="false" data-prayer="This is the kind of fasting I want. — Isaiah 58:6"><strong>July 26</strong><br/>Isaiah 58:6</li>
-        <li tabindex="0" role="button" aria-pressed="false" data-prayer="So I turned to the Lord God... — Daniel 9:3"><strong>July 27</strong><br/>Daniel 9:3</li>
-        <li tabindex="0" role="button" aria-pressed="false" data-prayer="But when you fast... — Matthew 6:17-18"><strong>July 28</strong><br/>Matthew 6:17-18</li>
-        <li tabindex="0" role="button" aria-pressed="false" data-prayer="When I heard this, I sat down and wept... — Nehemiah 1:4"><strong>July 29</strong><br/>Nehemiah 1:4</li>
-        <li tabindex="0" role="button" aria-pressed="false" data-prayer="So we fasted and earnestly prayed... — Ezra 8:23"><strong>July 30</strong><br/>Ezra 8:23</li>
-        <li tabindex="0" role="button" aria-pressed="false" data-prayer="O God, you are my God; I earnestly search for you. — Psalm 63:1"><strong>July 31</strong><br/>Psalm 63:1</li>
-      </ul>
-      <div class="fasting-prayer" aria-live="polite" aria-atomic="true" role="region" id="fastingPrayer" tabindex="0" aria-label="Selected fasting day prayer">
-        <em>Click or focus a fasting day above to see its prayer or reflection here.</em>
-      </div>
-    </section>
+  <section class="verses" aria-label="Daily Bible verses for July">
+    <h3>Daily Bible Verses</h3>
+    <ul class="verse-list" tabindex="0" aria-live="polite">
+      <li><strong>July 1:</strong> Hosea 6:1 – “Come, let us return to the Lord...”</li>
+      <li><strong>July 2:</strong> Joel 2:13 – “Return to the Lord your God, for He is gracious and compassionate...”</li>
+      <li><strong>July 3:</strong> James 4:8 – “Come close to God, and God will come close to you.”</li>
+      <li><strong>July 4:</strong> Psalm 51:10 – “Create in me a clean heart, O God...”</li>
+      <li><strong>July 5:</strong> Isaiah 1:18 – “Though your sins are like scarlet, they shall be as white as snow.”</li>
+      <li><strong>July 6:</strong> Matthew 11:28 – “Come to me, all of you who are weary and carry heavy burdens...”</li>
+      <li><strong>July 7:</strong> Lamentations 3:40 – “Let us test and examine our ways...”</li>
+      <li><strong>July 8:</strong> Psalm 34:18 – “The Lord is close to the brokenhearted...”</li>
+      <li><strong>July 9:</strong> Jeremiah 29:13 – “You will seek me and find me when you seek me with all your heart.”</li>
+      <li><strong>July 10:</strong> Proverbs 3:5 – “Trust in the Lord with all your heart...”</li>
+      <li><strong>July 11:</strong> Psalm 119:105 – “Your word is a lamp to guide my feet...”</li>
+      <li><strong>July 12:</strong> Romans 12:2 – “Be transformed by the renewing of your mind...”</li>
+      <li><strong>July 13:</strong> Isaiah 40:31 – “But those who trust in the Lord will find new strength...”</li>
+      <li><strong>July 14:</strong> Psalm 46:10 – “Be still, and know that I am God.”</li>
+      <li><strong>July 15:</strong> John 15:5 – “I am the vine; you are the branches...”</li>
+      <li><strong>July 16:</strong> Philippians 4:13 – “I can do all things through Christ who strengthens me.”</li>
+      <li><strong>July 17:</strong> Psalm 23:1 – “The Lord is my shepherd; I have all that I need.”</li>
+      <li><strong>July 18:</strong> Hebrews 11:1 – “Faith shows the reality of what we hope for...”</li>
+      <li><strong>July 19:</strong> Matthew 6:33 – “Seek the Kingdom of God above all else...”</li>
+      <li><strong>July 20:</strong> 2 Chronicles 7:14 – “If my people humble themselves and pray...”</li>
+      <li><strong>July 21:</strong> Psalm 37:4 – “Take delight in the Lord, and he will give you your heart’s desires.”</li>
+      <li><strong>July 22:</strong> 1 John 4:7 – “Let us love one another, for love comes from God.”</li>
+      <li><strong>July 23:</strong> Colossians 3:23 – “Work willingly at whatever you do...”</li>
+      <li><strong>July 24:</strong> Isaiah 41:10 – “Don’t be afraid, for I am with you.”</li>
+      <li><strong>July 25:</strong> Joel 2:12 – “Turn to me now, while there is time...”</li>
+      <li><strong>July 26:</strong> Isaiah 58:6 – “This is the kind of fasting I want...”</li>
+      <li><strong>July 27:</strong> Daniel 9:3 – “So I turned to the Lord God and pleaded...”</li>
+      <li><strong>July 28:</strong> Matthew 6:17-18 – “But when you fast, anoint your head and wash your face...”</li>
+      <li><strong>July 29:</strong> Nehemiah 1:4 – “When I heard this, I sat down and wept...”</li>
+      <li><strong>July 30:</strong> Ezra 8:23 – “So we fasted and earnestly prayed...”</li>
+      <li><strong>July 31:</strong> Psalm 63:1 – “O God, you are my God; I earnestly search for you.”</li>
+    </ul>
+  </section>
 
-    <section aria-label="Reflection and prayer journal" class="reflection">
-      <h3>Reflection & Prayer Journal</h3>
-      <textarea id="reflectionInput" placeholder="Write your reflections and prayers here..."></textarea>
-      <button class="btn-download" id="downloadBtn" aria-label="Download reflection as PDF">Download Reflection as PDF</button>
-    </section>
-  </main>
+  <section class="fasting-week" aria-label="Fasting week details">
+    <h3>Fasting Week: July 25–31</h3>
+    <ul class="fasting-list" role="list" aria-label="Fasting days list">
+      <li tabindex="0" role="checkbox" aria-checked="false" data-prayer="Turn to me now, while there is time. — Joel 2:12"><strong>July 25</strong><br/>Joel 2:12</li>
+      <li tabindex="0" role="checkbox" aria-checked="false" data-prayer="This is the kind of fasting I want. — Isaiah 58:6"><strong>July 26</strong><br/>Isaiah 58:6</li>
+      <li tabindex="0" role="checkbox" aria-checked="false" data-prayer="So I turned to the Lord God... — Daniel 9:3"><strong>July 27</strong><br/>Daniel 9:3</li>
+      <li tabindex="0" role="checkbox" aria-checked="false" data-prayer="But when you fast... — Matthew 6:17-18"><strong>July 28</strong><br/>Matthew 6:17-18</li>
+      <li tabindex="0" role="checkbox" aria-checked="false" data-prayer="When I heard this, I sat down and wept... — Nehemiah 1:4"><strong>July 29</strong><br/>Nehemiah 1:4</li>
+      <li tabindex="0" role="checkbox" aria-checked="false" data-prayer="So we fasted and earnestly prayed... — Ezra 8:23"><strong>July 30</strong><br/>Ezra 8:23</li>
+      <li tabindex="0" role="checkbox" aria-checked="false" data-prayer="O God, you are my God; I earnestly search for you. — Psalm 63:1"><strong>July 31</strong><br/>Psalm 63:1</li>
+    </ul>
+    <div class="fasting-prayer empty" aria-live="polite" aria-atomic="true" role="region" id="fastingPrayer" tabindex="0">
+      <em>Select a fasting day above to see its prayer/reflection here.</em>
+    </div>
+  </section>
 
-  <footer>
-    <p>&copy; 2025 Kutollo C – Spiritual Journey</p>
-  </footer>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-  <script>
-    // Handle fasting day selection and display prayer
-    const fastingListItems = document.querySelectorAll('.fasting-list li');
-    const prayerDiv = document.getElementById('fastingPrayer');
-
-    fastingListItems.forEach(item => {
-      item.addEventListener('click', () => {
-        // Clear all selections
-        fastingListItems.forEach(i => {
-          i.classList.remove('selected');
-          i.setAttribute('aria-pressed', 'false');
-        });
-        // Select clicked
-        item.classList.add('selected');
-        item.setAttribute('aria-pressed', 'true');
-        prayerDiv.textContent = item.getAttribute('data-prayer');
-        prayerDiv.focus();
-      });
-      item.addEventListener('keydown', (e) => {
-        if(e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          item.click();
-        }
-      });
-    });
-
-    // PDF download for reflections using jsPDF
-    const { jsPDF } = window.jspdf;
-    const downloadBtn = document.getElementById('downloadBtn');
-
-    downloadBtn.addEventListener('click', () => {
-      const text = document.getElementById('reflectionInput').value.trim();
-      if (!text) {
-        alert('Please write some reflections before downloading.');
-        return;
-      }
-      const doc = new jsPDF();
-      const pageWidth = doc.internal.pageSize.getWidth();
-      const margin = 15;
-      const maxLineWidth = pageWidth - margin * 2;
-      doc.setFont('helvetica', 'normal');
-      doc.setFontSize(12);
-      doc.text("July Reflection & Prayer Journal", pageWidth / 2, 20, { align: 'center' });
-
-      // Split text into lines fitting page width
-      const lines = doc.splitTextToSize(text, maxLineWidth);
-      doc.text(lines, margin, 35);
+  <section class="calendar-container" aria-label="July calendar with fasting days highlighted">
+    <h3>July Calendar</h3
