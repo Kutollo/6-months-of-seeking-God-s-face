@@ -1,154 +1,183 @@
 <!DOCTYPE html><html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>6-Month Journey: Seeking God's Face</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>6-Month Spiritual Journey</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Roboto&display=swap" rel="stylesheet">
   <style>
     body {
-      font-family: 'Inter', sans-serif;
       margin: 0;
-      padding: 0;
-      background-color: #f4f4f4;
-      color: #333;
+      font-family: 'Roboto', sans-serif;
+      background: #f3f4f6;
+      color: #1f2937;
     }
     header {
-      background-color: #1e293b;
-      color: #fff;
-      padding: 20px;
+      background: #10b981;
+      color: white;
+      padding: 2rem;
       text-align: center;
     }
-    h1 {
-      margin: 0;
-      font-size: 2rem;
-    }
-    .container {
+    main {
       max-width: 900px;
-      margin: 20px auto;
-      padding: 20px;
-      background-color: #fff;
-      border-radius: 12px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      margin: auto;
+      padding: 1rem;
     }
-    .month {
-      margin-bottom: 30px;
+    section {
+      margin-bottom: 2rem;
     }
-    .month h2 {
-      color: #1e40af;
-      margin-bottom: 5px;
+    h1, h2, h3 {
+      font-family: 'Playfair Display', serif;
     }
-    .month p {
-      margin: 5px 0;
+    .verse-table {
+      width: 100%;
+      border-collapse: collapse;
     }
-    .daily-verse {
-      background: #e0f2fe;
-      padding: 15px;
-      border-left: 6px solid #0284c7;
-      margin-bottom: 20px;
-      font-style: italic;
+    .verse-table th, .verse-table td {
+      border: 1px solid #d1d5db;
+      padding: 0.5rem;
+      text-align: left;
     }
-    .downloads, .schedule {
+    .fasting-week {
       background: #fef9c3;
-      padding: 15px;
-      border-left: 6px solid #eab308;
-      margin-bottom: 20px;
+      border-left: 5px solid #facc15;
+      padding: 1rem;
     }
     footer {
       text-align: center;
-      padding: 20px;
-      background-color: #e2e8f0;
-      font-size: 0.9rem;
-      color: #555;
+      padding: 1rem;
+      background: #e5e7eb;
     }
-    a {
-      color: #1d4ed8;
+    .journal-entry {
+      background: white;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      margin-bottom: 1rem;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+    textarea {
+      width: 100%;
+      height: 100px;
+      border: 1px solid #9ca3af;
+      border-radius: 0.5rem;
+      padding: 0.5rem;
+      margin-top: 0.5rem;
+      font-family: inherit;
+    }
+    .intro-box {
+      background: #fff;
+      border-left: 5px solid #10b981;
+      padding: 1rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      border-radius: 0.5rem;
+    }
+    nav {
+      margin: 1rem 0;
+      text-align: center;
+    }
+    nav a {
+      margin: 0 0.5rem;
+      color: #065f46;
       text-decoration: none;
+      font-weight: bold;
+    }
+    .download-tab {
+      text-align: center;
+      margin: 2rem 0;
+    }
+    .download-tab a {
+      background: #10b981;
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.5rem;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .download-tab a:hover {
+      background: #059669;
     }
   </style>
-  <script>
-    // Daily Verse array (manually editable)
-    const verses = [
-      "Psalm 27:8 – My heart has heard You say, 'Come and talk with Me.' And my heart responds, 'Lord, I am coming.'",
-      "James 4:8 – Come near to God and He will come near to you.",
-      "Romans 12:1 – Offer your bodies as a living sacrifice, holy and pleasing to God."
-    ];
-    window.onload = () => {
-      const verseElement = document.getElementById('dailyVerse');
-      const today = new Date();
-      const index = today.getDate() % verses.length;
-      verseElement.textContent = verses[index];
-    };
-  </script>
 </head>
 <body>
   <header>
-    <h1>6-Month Journey of Seeking God's Face</h1>
-    <p>July – December 2025</p>
-  </header>  <div class="container">
-    <div class="daily-verse">
-      <strong>Today's Verse:</strong> <span id="dailyVerse">Loading verse...</span>
-    </div><div class="downloads">
-  <strong>📝 Journal Templates:</strong>
-  <ul>
-    <li><a href="#">Download July Journal (PDF)</a></li>
-    <li><a href="#">Download August Journal (PDF)</a></li>
-    <li><a href="#">Google Docs Version</a></li>
-  </ul>
+    <h1>6-Month Spiritual Journey</h1>
+    <p>"Draw near to God, and He will draw near to you." — James 4:8 (NLT)</p>
+  </header>
+  <main>
+    <section class="intro-box">
+      <h2>Overview</h2>
+      <p><strong>Duration:</strong> July – December 2025</p>
+      <p><strong>Focus:</strong> Prayer, Verse Journaling, Midnight Intercession, Weekly Fasting, and Giving.</p>
+      <p><strong>Routine:</strong></p>
+      <ul>
+        <li>📖 5 AM – Verse Journaling</li>
+        <li>🙏 Morning & Midnight Prayer</li>
+        <li>💧 Weekly Fasting</li>
+        <li>🎁 Giving & Service</li>
+      </ul>
+    </section><div class="download-tab">
+  <a href="journaling_july_2025.pdf" download>📥 Download July PDF Journal</a>
 </div>
 
-<div class="schedule">
-  <strong>📆 Weekly Prayer & Fasting Schedule</strong>
-  <ul>
-    <li>🛐 Mondays: Focused Prayer (Holiness & Identity)</li>
-    <li>🔥 Wednesdays: Fasting Day (Sunrise to Sunset)</li>
-    <li>🌌 Fridays Midnight: Intercession & Worship</li>
-  </ul>
-</div>
+<nav>
+  <a href="#july">July</a>
+  <a href="#august">August</a>
+  <a href="#september">September</a>
+  <a href="#october">October</a>
+  <a href="#november">November</a>
+  <a href="#december">December</a>
+</nav>
 
-<div class="month">
-  <h2>July: Consecration</h2>
-  <p><strong>Scriptures:</strong> Psalm 51, Romans 12:1–2</p>
-  <p><strong>Theme:</strong> Purity, repentance, surrender</p>
-  <p><strong>Action:</strong> Disconnect from media, 3-day fast</p>
-</div>
+<!-- Monthly Section: JULY -->
+<section id="july">
+  <h2>July 2025 - Returning to God</h2>
+  <p><em>Key Verse:</em> "Come, let us return to the Lord." – Hosea 6:1 (NLT)</p>
 
-<div class="month">
-  <h2>August: Identity in Christ</h2>
-  <p><strong>Scriptures:</strong> Ephesians 1–2, Romans 8</p>
-  <p><strong>Theme:</strong> Know who you are in Christ</p>
-  <p><strong>Action:</strong> Declare daily affirmations</p>
-</div>
+  <section>
+    <h3>Daily Bible Verses</h3>
+    <table class="verse-table">
+      <thead>
+        <tr><th>Date</th><th>Verse</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>July 1</td><td>Hosea 6:1 – "Come, let us return to the Lord..."</td></tr>
+        <tr><td>July 2</td><td>Joel 2:13 – "Return to the Lord your God, for He is gracious..."</td></tr>
+        <tr><td>July 3</td><td>James 4:8 – "Come close to God..."</td></tr>
+        <tr><td>July 4</td><td>Psalm 51:10 – "Create in me a clean heart..."</td></tr>
+        <tr><td>July 5</td><td>Isaiah 1:18 – "Though your sins are like scarlet..."</td></tr>
+        <!-- Continue for rest of July -->
+      </tbody>
+    </table>
+  </section>
 
-<div class="month">
-  <h2>September: God’s Voice & Word</h2>
-  <p><strong>Scriptures:</strong> Psalm 119, John 10</p>
-  <p><strong>Theme:</strong> Hear and obey God's voice</p>
-  <p><strong>Action:</strong> 30-day Bible reading challenge</p>
-</div>
+  <section class="fasting-week">
+    <h3>Fasting Week: July 25 – 31</h3>
+    <ul>
+      <li>July 25: Joel 2:12</li>
+      <li>July 26: Isaiah 58:6</li>
+      <li>July 27: Daniel 9:3</li>
+      <li>July 28: Matthew 6:17-18</li>
+      <li>July 29: Nehemiah 1:4</li>
+      <li>July 30: Ezra 8:23</li>
+      <li>July 31: Psalm 63:1</li>
+    </ul>
+  </section>
 
-<div class="month">
-  <h2>October: Spiritual Warfare & Authority</h2>
-  <p><strong>Scriptures:</strong> Ephesians 6, Luke 10:19</p>
-  <p><strong>Theme:</strong> Break strongholds</p>
-  <p><strong>Action:</strong> Create a family warfare prayer</p>
-</div>
+  <section>
+    <h3>Daily Journal</h3>
+    <div class="journal-entry">
+      <h4>Journal for July 1</h4>
+      <p><strong>Verse:</strong> Hosea 6:1</p>
+      <textarea placeholder="Write your thoughts, prayers, or reflections..."></textarea>
+    </div>
+    <!-- Add journal-entry blocks for each day or dynamically with JS later -->
+  </section>
+</section>
 
-<div class="month">
-  <h2>November: Purpose & Direction</h2>
-  <p><strong>Scriptures:</strong> Jeremiah 29:11–13</p>
-  <p><strong>Theme:</strong> Seek God’s will for your life</p>
-  <p><strong>Action:</strong> Write your 2026 vision statement</p>
-</div>
-
-<div class="month">
-  <h2>December: Kingdom Mindset & Impact</h2>
-  <p><strong>Scriptures:</strong> Matthew 6, Isaiah 61</p>
-  <p><strong>Theme:</strong> Live for eternity</p>
-  <p><strong>Action:</strong> Sow into someone’s life</p>
-</div>
-
-  </div>  <footer>
-    &copy; 2025 Kutollo C | Built for God's glory | <a href="#">Back to Top</a>
+  </main>
+  <footer>
+    <p>&copy; 2025 Kutollo C – Spiritual Journey</p>
   </footer>
 </body>
   </html>
