@@ -31,8 +31,9 @@
       background: #059669;
       padding: 0.75rem 1rem;
       display: flex;
+      flex-wrap: wrap;
       justify-content: center;
-      gap: 2rem;
+      gap: 1rem;
     }
     nav a {
       color: white;
@@ -92,12 +93,14 @@
       grid-template-columns: repeat(7, 1fr);
       gap: 10px;
       padding-top: 1rem;
+      overflow-x: auto;
     }
     .calendar div {
       padding: 0.75rem;
       text-align: center;
       border-radius: 6px;
       background: #f3f4f6;
+      min-width: 40px;
     }
     .calendar .fasting {
       background: #d1fae5;
@@ -115,6 +118,7 @@
     <a href="#fasting">Fasting</a>
     <a href="#calendar">Calendar</a>
     <a href="#download">Download Journal</a>
+    <a href="#reflection">Reflection</a>
   </nav>  <main>
     <section id="verses">
       <h2>Daily Bible Verses</h2>
@@ -153,6 +157,14 @@
 
 <section id="download" class="download-tab">
   <a href="journaling_july_2025.pdf" download>📥 Download July Journal (PDF)</a>
+</section>
+
+<section id="reflection">
+  <h2>July Reflection</h2>
+  <p>Take time to reflect on what God has revealed to you during this month. Use this guided reflection journal to write down your prayers, testimonies, and lessons.</p>
+  <div class="download-tab">
+    <a href="reflection_july_2025.pdf" download>📘 Download Reflection Guide (PDF)</a>
+  </div>
 </section>
 
   </main>  <footer>
