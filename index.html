@@ -1,183 +1,252 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>6-Month Spiritual Journey</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Roboto&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>6-Month Spiritual Journey – July Focus</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
   <style>
     body {
       margin: 0;
-      font-family: 'Roboto', sans-serif;
-      background: #f3f4f6;
-      color: #1f2937;
+      font-family: 'Poppins', sans-serif;
+      background: #f9fafb;
+      color: #111827;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
     }
     header {
-      background: #10b981;
+      background: linear-gradient(90deg, #22c55e, #16a34a);
       color: white;
-      padding: 2rem;
+      padding: 2rem 1rem;
       text-align: center;
+      box-shadow: 0 3px 8px rgba(34,197,94,0.5);
+    }
+    header h1 {
+      margin: 0 0 0.5rem;
+      font-weight: 700;
+      font-size: 2rem;
+      letter-spacing: 1.5px;
+    }
+    header p {
+      margin: 0;
+      font-weight: 500;
+      font-size: 1.1rem;
+      font-style: italic;
+      opacity: 0.9;
     }
     main {
+      flex-grow: 1;
       max-width: 900px;
-      margin: auto;
-      padding: 1rem;
+      margin: 2rem auto;
+      padding: 0 1rem;
+      width: 100%;
     }
-    section {
+    .intro {
+      background: white;
+      padding: 1.5rem 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+    .intro h2 {
+      margin-top: 0;
+      font-weight: 700;
+      font-size: 1.8rem;
+      color: #16a34a;
+    }
+    .intro p {
+      font-weight: 500;
+      font-size: 1.1rem;
+      margin-top: 0.5rem;
+      color: #4b5563;
+    }
+    .verses {
+      background: white;
+      border-radius: 12px;
+      padding: 1.5rem 2rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
       margin-bottom: 2rem;
     }
-    h1, h2, h3 {
-      font-family: 'Playfair Display', serif;
+    .verses h3 {
+      color: #22c55e;
+      font-weight: 700;
+      margin-top: 0;
+      margin-bottom: 1rem;
     }
-    .verse-table {
-      width: 100%;
-      border-collapse: collapse;
-    }
-    .verse-table th, .verse-table td {
+    .verse-list {
+      list-style: none;
+      padding: 0;
+      max-height: 280px;
+      overflow-y: auto;
       border: 1px solid #d1d5db;
-      padding: 0.5rem;
-      text-align: left;
+      border-radius: 8px;
+    }
+    .verse-list li {
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid #e5e7eb;
+      font-size: 0.95rem;
+    }
+    .verse-list li:last-child {
+      border-bottom: none;
     }
     .fasting-week {
-      background: #fef9c3;
-      border-left: 5px solid #facc15;
+      background: #fef3c7;
+      border-left: 6px solid #f59e0b;
+      border-radius: 12px;
+      padding: 1rem 1.5rem;
+      margin-bottom: 2rem;
+      font-weight: 600;
+      color: #92400e;
+    }
+    .fasting-week h3 {
+      margin-top: 0;
+      margin-bottom: 0.5rem;
+    }
+    .fasting-week ul {
+      margin: 0;
+      padding-left: 1.2rem;
+    }
+    .reflection {
+      background: white;
+      border-radius: 12px;
+      padding: 1.5rem 2rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      margin-bottom: 2rem;
+    }
+    .reflection h3 {
+      color: #15803d;
+      margin-top: 0;
+      font-weight: 700;
+    }
+    .reflection textarea {
+      width: 100%;
+      height: 140px;
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
       padding: 1rem;
+      font-size: 1rem;
+      font-family: 'Poppins', sans-serif;
+      resize: vertical;
+      box-sizing: border-box;
+      margin-top: 0.5rem;
+      transition: border-color 0.3s ease;
+    }
+    .reflection textarea:focus {
+      outline: none;
+      border-color: #22c55e;
+      box-shadow: 0 0 8px #bbf7d0;
+    }
+    .btn-download {
+      display: inline-block;
+      background: #22c55e;
+      color: white;
+      padding: 0.75rem 1.6rem;
+      font-weight: 700;
+      border-radius: 10px;
+      text-decoration: none;
+      box-shadow: 0 4px 10px rgba(34,197,94,0.5);
+      transition: background 0.3s ease;
+      margin-top: 1rem;
+      cursor: pointer;
+    }
+    .btn-download:hover {
+      background: #15803d;
     }
     footer {
       text-align: center;
-      padding: 1rem;
-      background: #e5e7eb;
-    }
-    .journal-entry {
-      background: white;
-      padding: 1rem;
-      border-radius: 0.5rem;
-      margin-bottom: 1rem;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-    }
-    textarea {
-      width: 100%;
-      height: 100px;
-      border: 1px solid #9ca3af;
-      border-radius: 0.5rem;
-      padding: 0.5rem;
-      margin-top: 0.5rem;
-      font-family: inherit;
-    }
-    .intro-box {
-      background: #fff;
-      border-left: 5px solid #10b981;
-      padding: 1rem;
-      margin-bottom: 2rem;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-      border-radius: 0.5rem;
-    }
-    nav {
-      margin: 1rem 0;
-      text-align: center;
-    }
-    nav a {
-      margin: 0 0.5rem;
+      padding: 1rem 1rem;
+      background: #ecfdf5;
       color: #065f46;
-      text-decoration: none;
-      font-weight: bold;
+      font-weight: 600;
+      font-size: 0.9rem;
+      box-shadow: inset 0 1px 0 #bbf7d0;
     }
-    .download-tab {
-      text-align: center;
-      margin: 2rem 0;
+    /* Scrollbar styling for verse list */
+    .verse-list::-webkit-scrollbar {
+      width: 8px;
     }
-    .download-tab a {
-      background: #10b981;
-      color: white;
-      padding: 0.75rem 1.5rem;
-      border-radius: 0.5rem;
-      text-decoration: none;
-      font-weight: bold;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    .verse-list::-webkit-scrollbar-thumb {
+      background-color: #22c55e;
+      border-radius: 10px;
     }
-    .download-tab a:hover {
-      background: #059669;
+    .verse-list::-webkit-scrollbar-track {
+      background: #f9fafb;
     }
   </style>
 </head>
 <body>
   <header>
     <h1>6-Month Spiritual Journey</h1>
-    <p>"Draw near to God, and He will draw near to you." — James 4:8 (NLT)</p>
+    <p>July Focus: <em>Returning to God</em></p>
   </header>
+
   <main>
-    <section class="intro-box">
-      <h2>Overview</h2>
-      <p><strong>Duration:</strong> July – December 2025</p>
-      <p><strong>Focus:</strong> Prayer, Verse Journaling, Midnight Intercession, Weekly Fasting, and Giving.</p>
-      <p><strong>Routine:</strong></p>
-      <ul>
-        <li>📖 5 AM – Verse Journaling</li>
-        <li>🙏 Morning & Midnight Prayer</li>
-        <li>💧 Weekly Fasting</li>
-        <li>🎁 Giving & Service</li>
+    <section class="intro" aria-label="Journey overview">
+      <h2>Welcome to Your July Journey</h2>
+      <p>Spend this month seeking God’s presence daily through scripture, prayer, fasting, and reflection. Let your heart turn back to Him and grow deeper in faith.</p>
+      <p><strong>Key Verse:</strong> Hosea 6:1 - “Come, let us return to the Lord...”</p>
+    </section>
+
+    <section class="verses" aria-label="Daily Bible verses for July">
+      <h3>Daily Bible Verses</h3>
+      <ul class="verse-list" tabindex="0" aria-live="polite">
+        <li><strong>July 1:</strong> Hosea 6:1 – “Come, let us return to the Lord...”</li>
+        <li><strong>July 2:</strong> Joel 2:13 – “Return to the Lord your God, for He is gracious...”</li>
+        <li><strong>July 3:</strong> James 4:8 – “Come close to God, and God will come close to you.”</li>
+        <li><strong>July 4:</strong> Psalm 51:10 – “Create in me a clean heart, O God...”</li>
+        <li><strong>July 5:</strong> Isaiah 1:18 – “Though your sins are like scarlet...”</li>
+        <li><strong>July 6:</strong> Matthew 11:28 – “Come to me, all of you who are weary...”</li>
+        <li><strong>July 7:</strong> Lamentations 3:40 – “Let us test and examine our ways...”</li>
+        <!-- Add remaining days as needed -->
       </ul>
-    </section><div class="download-tab">
-  <a href="journaling_july_2025.pdf" download>📥 Download July PDF Journal</a>
-</div>
+    </section>
 
-<nav>
-  <a href="#july">July</a>
-  <a href="#august">August</a>
-  <a href="#september">September</a>
-  <a href="#october">October</a>
-  <a href="#november">November</a>
-  <a href="#december">December</a>
-</nav>
+    <section class="fasting-week" aria-label="Fasting week details">
+      <h3>Fasting Week: July 25–31</h3>
+      <ul>
+        <li>July 25: Joel 2:12 - “Turn to me now, while there is time...”</li>
+        <li>July 26: Isaiah 58:6 - “This is the kind of fasting I want...”</li>
+        <li>July 27: Daniel 9:3 - “So I turned to the Lord God...”</li>
+        <li>July 28: Matthew 6:17-18 - “But when you fast...”</li>
+        <li>July 29: Nehemiah 1:4 - “When I heard this, I sat down and wept...”</li>
+        <li>July 30: Ezra 8:23 - “So we fasted and earnestly prayed...”</li>
+        <li>July 31: Psalm 63:1 - “O God, you are my God; I earnestly search for you.”</li>
+      </ul>
+    </section>
 
-<!-- Monthly Section: JULY -->
-<section id="july">
-  <h2>July 2025 - Returning to God</h2>
-  <p><em>Key Verse:</em> "Come, let us return to the Lord." – Hosea 6:1 (NLT)</p>
-
-  <section>
-    <h3>Daily Bible Verses</h3>
-    <table class="verse-table">
-      <thead>
-        <tr><th>Date</th><th>Verse</th></tr>
-      </thead>
-      <tbody>
-        <tr><td>July 1</td><td>Hosea 6:1 – "Come, let us return to the Lord..."</td></tr>
-        <tr><td>July 2</td><td>Joel 2:13 – "Return to the Lord your God, for He is gracious..."</td></tr>
-        <tr><td>July 3</td><td>James 4:8 – "Come close to God..."</td></tr>
-        <tr><td>July 4</td><td>Psalm 51:10 – "Create in me a clean heart..."</td></tr>
-        <tr><td>July 5</td><td>Isaiah 1:18 – "Though your sins are like scarlet..."</td></tr>
-        <!-- Continue for rest of July -->
-      </tbody>
-    </table>
-  </section>
-
-  <section class="fasting-week">
-    <h3>Fasting Week: July 25 – 31</h3>
-    <ul>
-      <li>July 25: Joel 2:12</li>
-      <li>July 26: Isaiah 58:6</li>
-      <li>July 27: Daniel 9:3</li>
-      <li>July 28: Matthew 6:17-18</li>
-      <li>July 29: Nehemiah 1:4</li>
-      <li>July 30: Ezra 8:23</li>
-      <li>July 31: Psalm 63:1</li>
-    </ul>
-  </section>
-
-  <section>
-    <h3>Daily Journal</h3>
-    <div class="journal-entry">
-      <h4>Journal for July 1</h4>
-      <p><strong>Verse:</strong> Hosea 6:1</p>
-      <textarea placeholder="Write your thoughts, prayers, or reflections..."></textarea>
-    </div>
-    <!-- Add journal-entry blocks for each day or dynamically with JS later -->
-  </section>
-</section>
-
+    <section aria-label="Reflection and prayer journal">
+      <h3>Reflection & Prayer Journal</h3>
+      <textarea id="reflectionInput" placeholder="Write your reflections and prayers here..."></textarea>
+      <button class="btn-download" id="downloadBtn" aria-label="Download reflection as text file">Download Reflection</button>
+    </section>
   </main>
+
   <footer>
     <p>&copy; 2025 Kutollo C – Spiritual Journey</p>
   </footer>
+
+  <script>
+    // Download textarea content as .txt file
+    document.getElementById('downloadBtn').addEventListener('click', () => {
+      const text = document.getElementById('reflectionInput').value.trim();
+      if (!text) {
+        alert('Please write something before downloading.');
+        return;
+      }
+      const blob = new Blob([text], { type: 'text/plain' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'July_Reflection.txt';
+      document.body.appendChild(a);
+      a.click();
+      setTimeout(() => {
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+      }, 0);
+    });
+  </script>
 </body>
   </html>
