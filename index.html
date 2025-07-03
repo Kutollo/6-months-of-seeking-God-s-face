@@ -26,7 +26,7 @@ body {
 }
 
 header {
-  background: url('https://images.unsplash.com/photo-1612178991733-5f6a7b02652b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover;
+  background: url('https://images.unsplash.com/photo-1505685296765-3a2736de412f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover;
   color: var(--white);
   text-align: center;
   padding: 5rem 2rem;
@@ -137,12 +137,13 @@ footer {
 }
 
 @media (max-width: 768px) {
-  .calendar {
-    grid-template-columns: repeat(7, 1fr);
-  }
-}
 
-  </style>
+.calendar { grid-template-columns: repeat(7, 1fr); overflow-x: hidden; width: 100%; } } } .today { background-color: #facc15 !important; color: #1f2937; font-weight: bold; border: 2px solid #d97706; }
+
+.calendar div { transition: all 0.3s ease-in-out; }
+
+.calendar div:hover { transform: scale(1.05); background-color: #d1fae5; } </style>
+
 </head>
 <body>
   <header>
@@ -224,6 +225,15 @@ footer {
   </p>
 </section>
 
+<section id="legend">
+  <h2>Calendar Legend</h2>
+  <ul>
+    <li><span style="display:inline-block;width:20px;height:20px;background:#bbf7d0;border-radius:4px;margin-right:10px;"></span>Fasting Days (July 25–31)</li>
+    <li><span style="display:inline-block;width:20px;height:20px;background:#facc15;border:2px solid #d97706;border-radius:4px;margin-right:10px;"></span>Today</li>
+    <li><span style="display:inline-block;width:20px;height:20px;background:#ecfdf5;text-decoration:line-through;border-radius:4px;margin-right:10px;opacity:0.6;"></span>Past Days</li>
+  </ul>
+</section>
+
   </main>  <footer>
     &copy; 2025 FaithSteps. Built by Kutollo C. — Walk in purpose, power, and peace.
   </footer>  <script>
@@ -258,8 +268,9 @@ footer {
       const dateDiv = document.createElement('div');
       dateDiv.textContent = i;
       if (i >= 25 && i <= 31) dateDiv.classList.add('fasting');
+      if (today.getFullYear() === 2025 && today.getMonth() === 6 && today.getDate() === i) dateDiv.classList.add('today');
       if (today.getMonth() === 6 && today.getDate() > i) dateDiv.classList.add('past-day');
       calendarContainer.appendChild(dateDiv);
     }
   </script></body>
-                                            </html>
+</html>
