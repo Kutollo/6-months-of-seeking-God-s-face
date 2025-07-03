@@ -1,31 +1,39 @@
 <!DOCTYPE html><html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>FaithSteps – A Journey with God</title>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }body {
+    :root {
+      --bg: #f4fdfc;
+      --primary: #065f46;
+      --secondary: #10b981;
+      --highlight: #bbf7d0;
+      --text: #333;
+      --white: #fff;
+    }* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
   font-family: 'DM Sans', sans-serif;
-  background-color: #f4fdfc;
-  color: #333;
+  background-color: var(--bg);
+  color: var(--text);
   line-height: 1.6;
 }
 
 header {
   background: url('https://images.unsplash.com/photo-1612178991733-5f6a7b02652b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover;
-  color: white;
-  padding: 5rem 2rem;
+  color: var(--white);
   text-align: center;
+  padding: 5rem 2rem;
 }
 
 header h1 {
   font-size: 3rem;
-  font-weight: 700;
 }
 
 header p {
@@ -34,61 +42,66 @@ header p {
 }
 
 nav {
-  background-color: #065f46;
-  padding: 1rem;
+  background: var(--primary);
   display: flex;
-  justify-content: center;
-  gap: 2rem;
   flex-wrap: wrap;
+  justify-content: center;
+  padding: 1rem;
 }
 
 nav a {
-  color: white;
-  font-weight: bold;
+  color: var(--white);
+  margin: 0.5rem 1rem;
   text-decoration: none;
-  padding: 0.5rem 1rem;
-  border-radius: 6px;
+  font-weight: bold;
 }
 
 nav a:hover {
-  background-color: #10b981;
+  text-decoration: underline;
 }
 
 main {
-  max-width: 1000px;
+  max-width: 1100px;
   margin: auto;
   padding: 2rem;
 }
 
 section {
-  margin-bottom: 3rem;
-  background-color: white;
-  padding: 2rem;
+  margin-bottom: 2.5rem;
+  background: var(--white);
   border-radius: 10px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+  padding: 1.5rem;
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
 }
 
 h2 {
-  color: #065f46;
+  color: var(--primary);
   margin-bottom: 1rem;
 }
 
-.calendar {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 10px;
-  margin-top: 1rem;
-}
-
-.calendar div {
-  background: #ecfdf5;
-  text-align: center;
+.scrollbox {
+  max-height: 300px;
+  overflow-y: auto;
+  border: 1px solid #ccc;
   padding: 1rem;
   border-radius: 8px;
 }
 
+.calendar {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(40px, 1fr));
+  gap: 8px;
+  text-align: center;
+}
+
+.calendar div {
+  background-color: #ecfdf5;
+  padding: 0.8rem;
+  border-radius: 6px;
+}
+
 .fasting {
-  background-color: #bbf7d0 !important;
+  background-color: var(--highlight) !important;
   font-weight: bold;
 }
 
@@ -98,30 +111,34 @@ h2 {
 }
 
 .download a {
-  background-color: #10b981;
-  color: white;
+  background: var(--secondary);
+  color: var(--white);
   padding: 0.75rem 1.5rem;
-  border-radius: 6px;
-  font-weight: 600;
   text-decoration: none;
-  display: inline-block;
-  margin-top: 1rem;
+  font-weight: bold;
+  border-radius: 6px;
 }
 
-.scrollbox {
-  max-height: 300px;
-  overflow-y: scroll;
-  padding-right: 1rem;
-  border: 1px solid #ddd;
-  border-radius: 8px;
+.download a:hover {
+  background: #0f9e6b;
 }
 
 footer {
-  background-color: #ecfdf5;
-  padding: 2rem;
+  background: #e0f7f1;
   text-align: center;
+  padding: 2rem 1rem;
   font-size: 0.9rem;
-  color: #065f46;
+  color: var(--primary);
+}
+
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 2.2rem;
+  }
+
+  .calendar {
+    grid-template-columns: repeat(7, 1fr);
+  }
 }
 
   </style>
@@ -195,8 +212,8 @@ footer {
     <div>6</div><div>7</div><div>8</div><div>9</div><div>10</div><div>11</div><div>12</div>
     <div>13</div><div>14</div><div>15</div><div>16</div><div>17</div><div>18</div><div>19</div>
     <div>20</div><div>21</div><div>22</div><div>23</div><div>24</div>
-    <div class="fasting">25</div><div class="fasting">26</div>
-    <div class="fasting">27</div><div class="fasting">28</div><div class="fasting">29</div><div class="fasting">30</div><div class="fasting">31</div>
+    <div class="fasting">25</div><div class="fasting">26</div><div class="fasting">27</div>
+    <div class="fasting">28</div><div class="fasting">29</div><div class="fasting">30</div><div class="fasting">31</div>
   </div>
 </section>
 
@@ -231,4 +248,4 @@ footer {
     &copy; 2025 FaithSteps. Built by Kutollo C. — Walk in purpose, power, and peace.
   </footer>
 </body>
-      </html>
+    </html>
