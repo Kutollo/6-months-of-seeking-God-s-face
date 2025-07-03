@@ -88,11 +88,8 @@ h2 {
 }
 
 .calendar {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 8px;
-  text-align: center;
-}
+
+display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; text-align: center; width: 100%; max-width: 100%; font-size: 0.8rem; }
 
 .calendar div {
 
@@ -251,11 +248,19 @@ footer {
     // Generate calendar
     const weekDays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
     weekDays.forEach(day => {
-      const dayDiv = document.createElement('div');
-      dayDiv.textContent = day;
-      dayDiv.style.fontWeight = 'bold';
-      calendarContainer.appendChild(dayDiv);
-    });
+  const dayDiv = document.createElement('div');
+  dayDiv.textContent = day[0];
+  dayDiv.style.fontWeight = 'bold';
+  dayDiv.style.borderRadius = '50%';
+  dayDiv.style.background = '#d1fae5';
+  dayDiv.style.width = '30px';
+  dayDiv.style.height = '30px';
+  dayDiv.style.display = 'flex';
+  dayDiv.style.alignItems = 'center';
+  dayDiv.style.justifyContent = 'center';
+  dayDiv.style.margin = 'auto';
+  calendarContainer.appendChild(dayDiv);
+});
 
     const firstDay = new Date(2025, 6, 1).getDay();
     for (let i = 0; i < firstDay; i++) {
@@ -270,5 +275,22 @@ footer {
       if (today.getMonth() === 6 && today.getDate() > i) dateDiv.classList.add('past-day');
       calendarContainer.appendChild(dateDiv);
     }
-  </script></body>
-                               </html>
+  // Add tooltips for verses
+const verses = [
+  "Hosea 6:1", "Joel 2:13", "James 4:8", "Isaiah 55:6", "Jeremiah 29:13",
+  "Psalm 27:8", "Matthew 6:33", "Hebrews 11:6", "Psalm 63:1", "Isaiah 26:9",
+  "Luke 11:9", "Philippians 3:10", "Jeremiah 33:3", "Deuteronomy 4:29", "Psalm 34:10",
+  "Romans 12:2", "Matthew 5:6", "Colossians 3:1–2", "Psalm 42:1–2", "Isaiah 40:31",
+  "Psalm 37:4", "Galatians 2:20", "Ephesians 3:16–19", "Psalm 119:105", "Joel 2:12",
+  "Isaiah 58:6", "Daniel 9:3", "Matthew 6:17–18", "Nehemiah 1:4", "Ezra 8:23", "Psalm 63:1"
+];
+
+const allDates = document.querySelectorAll(".calendar div");
+let offset = 7 + new Date(2025, 6, 1).getDay();
+for (let i = offset; i < offset + 31; i++) {
+  if (allDates[i]) {
+    allDates[i].setAttribute("title", verses[i - offset]);
+  }
+}
+</script></body>
+  </html>
