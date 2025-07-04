@@ -2,7 +2,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FaithSteps – A Journey with God</title>
+  <title>FaithSteps – July Journey</title>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -33,12 +33,13 @@ header {
 }
 
 header h1 {
-  font-size: 3rem;
+  font-size: 2.8rem;
+  text-shadow: 1px 1px 4px #000;
 }
 
 header p {
   margin-top: 1rem;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
 }
 
 nav {
@@ -61,15 +62,15 @@ nav a:hover {
 }
 
 main {
-  max-width: 1100px;
+  max-width: 1000px;
   margin: auto;
   padding: 2rem;
 }
 
 section {
-  margin-bottom: 2.5rem;
+  margin-bottom: 2rem;
   background: var(--white);
-  border-radius: 10px;
+  border-radius: 8px;
   padding: 1.5rem;
   box-shadow: 0 0 10px rgba(0,0,0,0.05);
 }
@@ -84,39 +85,19 @@ h2 {
   overflow-y: auto;
   border: 1px solid #ccc;
   padding: 1rem;
-  border-radius: 8px;
-}
-
-.calendar {
-
-display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; text-align: center; width: 100%; max-width: 100%; font-size: 0.8rem; }
-
-.calendar div {
-
-background-color: #ecfdf5; padding: 0.6rem; font-size: 0.9rem; border-radius: 6px; transition: all 0.3s ease-in-out; min-height: 45px; }
-
-.fasting {
-  background-color: var(--highlight) !important;
-  font-weight: bold;
-}
-
-.past-day {
-  text-decoration: line-through;
-  opacity: 0.6;
-}
-
-.download {
-  text-align: center;
-  margin-top: 1rem;
+  border-radius: 6px;
+  background-color: #f9fafb;
 }
 
 .download a {
+  display: inline-block;
   background: var(--secondary);
   color: var(--white);
   padding: 0.75rem 1.5rem;
   text-decoration: none;
   font-weight: bold;
   border-radius: 6px;
+  margin-top: 1rem;
 }
 
 .download a:hover {
@@ -126,29 +107,22 @@ background-color: #ecfdf5; padding: 0.6rem; font-size: 0.9rem; border-radius: 6p
 footer {
   background: #e0f7f1;
   text-align: center;
-  padding: 2rem 1rem;
+  padding: 1.5rem;
   font-size: 0.9rem;
   color: var(--primary);
 }
 
-@media (max-width: 768px) {
-
-.calendar { grid-template-columns: repeat(7, 1fr); overflow-x: hidden; width: 100%; } } } .today { background-color: #facc15 !important; color: #1f2937; font-weight: bold; border: 2px solid #d97706; }
-
-.calendar div { transition: all 0.3s ease-in-out; }
-
-.calendar div:hover { transform: scale(1.05); background-color: #d1fae5; } </style>
-
+  </style>
 </head>
 <body>
   <header>
-    <h1>FaithSteps: Your Walk with God</h1>
-    <p>Inspired by Scripture • Anchored in Prayer • Moved by Purpose</p>
+    <h1>FaithSteps: July with God</h1>
+    <p>31 Days of Seeking God's Face • Scripture • Fasting • Prayer</p>
   </header>  <nav>
     <a href="#verses">Verses</a>
     <a href="#fasting">Fasting</a>
     <a href="#journal">Journal</a>
-    <a href="#prayer">Lord’s Prayer</a>
+    <a href="#prayer">Prayer</a>
   </nav>  <main>
     <section id="verses">
       <h2>Daily Verses for July</h2>
@@ -187,16 +161,23 @@ footer {
           <li><strong>July 31:</strong> Psalm 63:1</li>
         </ul>
       </div>
-    </section><section id="journal">
-  <h2>Download Your July Journal</h2>
-  <p>Document your prayers, insights, and revelations throughout this month.</p>
+    </section><section id="fasting">
+  <h2>Fasting Week</h2>
+  <p><strong>🗓 July 21–27, 2025</strong></p>
+  <p><strong>⏱ Water Fast:</strong> From 12 AM to 5 PM daily</p>
+  <p><strong>🙏 Prayer Focus:</strong> "Lord, I dedicate this fast to seek Your presence and align with Your will. Strengthen me in spirit. Amen."</p>
+</section>
+
+<section id="journal">
+  <h2>Download Your Journal</h2>
+  <p>Document your thoughts, prayers, and breakthroughs.</p>
   <div class="download">
-    <a href="journaling_july_2025.pdf" download>📥 Download Journal (PDF)</a>
+    <a href="journaling_july_2025.pdf" download>📥 Download July Journal (PDF)</a>
   </div>
 </section>
 
 <section id="prayer">
-  <h2>The Lord's Prayer</h2>
+  <h2>The Lord’s Prayer</h2>
   <p>
     Our Father, who art in heaven,<br>
     hallowed be thy name;<br>
@@ -214,75 +195,18 @@ footer {
   </p>
 </section>
 
-<section id="fasting-details">
-
-  <h2>Fasting Week (July 2025)</h2>
-  <p><strong>🗓 Dates:</strong> Monday, July 21 – Sunday, July 27</p>
-  <p><strong>⏱ Type:</strong> Water Fast — From 12 AM to 5 PM daily</p>
-  <p><strong>🙏 Prayer Point:</strong> "Lord, renew my spirit and help me seek You with all my heart. May this fast draw me closer to Your will."</p>
-</section>
   </main>  <footer>
-    &copy; 2025 FaithSteps. Built by Kutollo C. — Walk in purpose, power, and peace.
+    &copy; 2025 FaithSteps. Designed by Kutollo C. — Walk in purpose.
   </footer>  <script>
+    // Mark past verses
     const today = new Date();
     const verseList = document.querySelectorAll("#verseList li");
-    const calendarContainer = document.getElementById("calendarDays");
-    const daysInMonth = 31;
-
-    // Mark past verses
     verseList.forEach((li, index) => {
       const day = index + 1;
       if (today.getMonth() === 6 && today.getDate() > day) {
-        li.classList.add("past-day");
+        li.style.textDecoration = "line-through";
+        li.style.opacity = "0.6";
       }
     });
-
-    // Generate calendar
-    const weekDays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-    weekDays.forEach(day => {
-  const dayDiv = document.createElement('div');
-  dayDiv.textContent = day[0];
-  dayDiv.style.fontWeight = 'bold';
-  dayDiv.style.borderRadius = '50%';
-  dayDiv.style.background = '#d1fae5';
-  dayDiv.style.width = '30px';
-  dayDiv.style.height = '30px';
-  dayDiv.style.display = 'flex';
-  dayDiv.style.alignItems = 'center';
-  dayDiv.style.justifyContent = 'center';
-  dayDiv.style.margin = 'auto';
-  calendarContainer.appendChild(dayDiv);
-});
-
-    const firstDay = new Date(2025, 6, 1).getDay();
-    for (let i = 0; i < firstDay; i++) {
-      calendarContainer.appendChild(document.createElement('div'));
-    }
-
-    for (let i = 1; i <= daysInMonth; i++) {
-      const dateDiv = document.createElement('div');
-      dateDiv.textContent = i;
-      if (i >= 25 && i <= 31) dateDiv.classList.add('fasting');
-      if (today.getFullYear() === 2025 && today.getMonth() === 6 && today.getDate() === i) dateDiv.classList.add('today');
-      if (today.getMonth() === 6 && today.getDate() > i) dateDiv.classList.add('past-day');
-      calendarContainer.appendChild(dateDiv);
-    }
-  // Add tooltips for verses
-const verses = [
-  "Hosea 6:1", "Joel 2:13", "James 4:8", "Isaiah 55:6", "Jeremiah 29:13",
-  "Psalm 27:8", "Matthew 6:33", "Hebrews 11:6", "Psalm 63:1", "Isaiah 26:9",
-  "Luke 11:9", "Philippians 3:10", "Jeremiah 33:3", "Deuteronomy 4:29", "Psalm 34:10",
-  "Romans 12:2", "Matthew 5:6", "Colossians 3:1–2", "Psalm 42:1–2", "Isaiah 40:31",
-  "Psalm 37:4", "Galatians 2:20", "Ephesians 3:16–19", "Psalm 119:105", "Joel 2:12",
-  "Isaiah 58:6", "Daniel 9:3", "Matthew 6:17–18", "Nehemiah 1:4", "Ezra 8:23", "Psalm 63:1"
-];
-
-const allDates = document.querySelectorAll(".calendar div");
-let offset = 7 + new Date(2025, 6, 1).getDay();
-for (let i = offset; i < offset + 31; i++) {
-  if (allDates[i]) {
-    allDates[i].setAttribute("title", verses[i - offset]);
-  }
-}
-</script></body>
-</html>
+  </script></body>
+                                </html>
