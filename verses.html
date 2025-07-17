@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>FaithSteps – Daily Verses for July</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #f4fdfc;
+    --primary: #065f46;
+    --secondary: #10b981;
+    --highlight-today: #bbf7d0;
+    --highlight-past: #d1fae5;
+    --text: #333;
+    --white: #fff;
+    --shadow: rgba(0, 0, 0, 0.07);
+  }
+
+  * {
+    margin: 0; padding: 0; box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  header {
+    background: url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover;
+    color: var(--white);
+    text-align: center;
+    padding: 5rem 2rem;
+    box-shadow: inset 0 0 200px rgba(6,95,70,0.75);
+  }
+
+  header h1 {
+    font-size: 3rem;
+    text-shadow: 2px 2px 6px #000;
+    margin-bottom: 0.3rem;
+  }
+
+  nav {
+    background: var(--primary);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 1rem;
+    box-shadow: 0 4px 8px var(--shadow);
+  }
+
+  nav a {
+    color: var(--white);
+    margin: 0.5rem 1.2rem;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+  }
+
+  nav a:hover {
+    color: var(--secondary);
+    text-decoration: underline;
+  }
+
+  main {
+    max-width: 900px;
+    margin: 2rem auto 4rem;
+    padding: 0 1rem;
+    flex-grow: 1;
+  }
+
+  h2 {
+    color: var(--primary);
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+
+  ul.verse-list {
+    list-style: none;
+  }
+
+  ul.verse-list li {
+    background: var(--white);
+    margin-bottom: 0.6rem;
+    padding: 1rem 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px var(--shadow);
+    font-weight: 600;
+    font-size: 1.1rem;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  ul.verse-list li.past {
+    background: var(--highlight-past);
+    color: #064e3b;
+  }
+
+  ul.verse-list li.today {
+    background: var(--highlight-today);
+    color: #065f46;
+    font-weight: 700;
+    box-shadow: 0 0 10px 2px var(--secondary);
+  }
+
+  ul.verse-list li.future {
+    color: #666;
+  }
+
+  @media (max-width: 600px) {
+    header h1 {
+      font-size: 2rem;
+    }
+    nav a {
+      margin: 0.5rem 0.8rem;
+      font-size: 1rem;
+    }
+    ul.verse-list li {
+      font-size: 1rem;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+  }
+</style>
+</head>
+<body>
+  <header>
+    <h1>FaithSteps: Daily Verses for July 2025</h1>
+    <p>Walk with God day by day through His Word</p>
+  </header>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="journal.html">Journal</a>
+    <a href="verses.html" aria-current="page">Verses</a>
+    <a href="fasting.html">Fasting</a>
+  </nav>
+
+  <main>
+    <h2>Daily Verses for July</h2>
+    <ul class="verse-list" id="verseList">
+      <!-- Verse items populated by JS -->
+    </ul>
+  </main>
+
+  <script>
+    // Array of verse objects with day and scripture
+    const verses = [
+      { day: 1, ref: "Hosea 6:1" },
+      { day: 2, ref: "Joel 2:13" },
+      { day: 3, ref: "James 4:8" },
+      { day: 4, ref: "Isaiah 55:6" },
+      { day: 5, ref: "Jeremiah 29:13" },
+      { day: 6, ref: "Psalm 27:8" },
+      { day: 7, ref: "Matthew 6:33" },
+      { day: 8, ref: "Hebrews 11:6" },
+      { day: 9, ref: "Psalm 63:1" },
+      { day: 10, ref: "Isaiah 26:9" },
+      { day: 11, ref: "Luke 11:9" },
+      { day: 12, ref: "Philippians 3:10" },
+      { day: 13, ref: "Jeremiah 33:3" },
+      { day: 14, ref: "Deuteronomy 4:29" },
+      { day: 15, ref: "Psalm 34:10" },
+      { day: 16, ref: "Romans 12:2" },
+      { day: 17, ref: "Matthew 5:6" },
+      { day: 18, ref: "Colossians 3:1–2" },
+      { day: 19, ref: "Psalm 42:1–2" },
+      { day: 20, ref: "Isaiah 40:31" },
+      { day: 21, ref: "Psalm 37:4" },
+      { day: 22, ref: "Galatians 2:20" },
+      { day: 23, ref: "Ephesians 3:16–19" },
+      { day: 24, ref: "Psalm 119:105" },
+      { day: 25, ref: "Joel 2:12" },
+      { day: 26, ref: "Isaiah 58:6" },
+      { day: 27, ref: "Daniel 9:3" },
+      { day: 28, ref: "Matthew 6:17–18" },
+      { day: 29, ref: "Nehemiah 1:4" },
+      { day: 30, ref: "Ezra 8:23" },
+      { day: 31, ref: "Psalm 63:1" },
+    ];
+
+    function buildVerseList() {
+      const list = document.getElementById('verseList');
+      const today = new Date();
+
+      // Get current day of July or clamp to 31
+      const currentMonth = today.getMonth(); // July is 6 (0-based)
+      const currentDay = today.getDate();
+
+      // We'll highlight only if it's July, else highlight none
+      const isJuly = currentMonth === 6;
+
+      verses.forEach(({day, ref}) => {
+        const li = document.createElement('li');
+        li.textContent = `July ${day}: ${ref}`;
+
+        if (isJuly) {
+          if (day < currentDay) {
+            li.classList.add('past');
+          } else if (day === currentDay) {
+            li.classList.add('today');
+          } else {
+            li.classList.add('future');
+          }
+        } else {
+          // If not July, no highlight
+          li.classList.add('future');
+        }
+        list.appendChild(li);
+      });
+    }
+
+    window.addEventListener('DOMContentLoaded', buildVerseList);
+  </script>
+</body>
+</html>

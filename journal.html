@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>FaithSteps – Journal</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #f4fdfc;
+    --primary: #065f46;
+    --secondary: #10b981;
+    --highlight: #bbf7d0;
+    --text: #333;
+    --white: #fff;
+    --shadow: rgba(0, 0, 0, 0.07);
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  header {
+    background: url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover;
+    color: var(--white);
+    text-align: center;
+    padding: 5rem 2rem;
+    box-shadow: inset 0 0 200px rgba(6,95,70,0.75);
+    position: relative;
+  }
+
+  header h1 {
+    font-size: 3rem;
+    text-shadow: 2px 2px 6px #000;
+    margin-bottom: 0.3rem;
+  }
+
+  header p {
+    font-size: 1.3rem;
+    font-weight: 500;
+    text-shadow: 1px 1px 5px #000;
+  }
+
+  nav {
+    background: var(--primary);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 1rem;
+    box-shadow: 0 4px 8px var(--shadow);
+  }
+
+  nav a {
+    color: var(--white);
+    margin: 0.5rem 1.2rem;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+  }
+
+  nav a:hover {
+    text-decoration: underline;
+    color: var(--secondary);
+  }
+
+  main {
+    max-width: 900px;
+    margin: 2rem auto 4rem;
+    padding: 0 1rem;
+    flex-grow: 1;
+  }
+
+  section {
+    background: var(--white);
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0 4px 15px var(--shadow);
+    margin-bottom: 2rem;
+  }
+
+  section h2 {
+    color: var(--primary);
+    margin-bottom: 1rem;
+    font-weight: 700;
+    font-size: 1.8rem;
+  }
+
+  #journal-date,
+  #journal-verse {
+    margin-bottom: 0.7rem;
+    font-weight: 600;
+    color: var(--secondary);
+  }
+
+  /* Journaling sections container */
+  .journaling-section {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 1.6rem;
+  }
+
+  .journaling-letter {
+    font-size: 3rem;
+    font-weight: 900;
+    color: var(--primary);
+    flex-shrink: 0;
+    width: 60px;
+    line-height: 1;
+    user-select: none;
+  }
+
+  .journaling-content {
+    flex-grow: 1;
+  }
+
+  .journaling-content label {
+    font-weight: 700;
+    color: var(--secondary);
+    margin-bottom: 0.3rem;
+    display: block;
+    font-size: 1.1rem;
+  }
+
+  textarea {
+    width: 100%;
+    min-height: 120px;
+    padding: 0.8rem 1rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1.1rem;
+    border-radius: 10px;
+    border: 2px solid var(--highlight);
+    resize: vertical;
+    color: var(--text);
+    line-height: 1.4;
+    transition: border-color 0.3s ease;
+  }
+
+  textarea:focus {
+    outline: none;
+    border-color: var(--secondary);
+  }
+
+  .buttons {
+    margin-top: 1rem;
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+  }
+
+  button {
+    background: var(--secondary);
+    color: var(--white);
+    border: none;
+    padding: 0.8rem 1.8rem;
+    font-weight: 700;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    font-size: 1rem;
+  }
+
+  button:hover {
+    background: #0c7d52;
+  }
+
+  button.clear {
+    background: #e74c3c;
+  }
+
+  button.clear:hover {
+    background: #c0392b;
+  }
+
+  .footer-prayer {
+    background: #e0f7f1;
+    color: var(--primary);
+    text-align: center;
+    padding: 1.5rem 2rem;
+    font-size: 1rem;
+    line-height: 1.6;
+    border-top: 1px solid var(--highlight);
+    white-space: pre-line;
+    user-select: text;
+    font-weight: 500;
+    box-shadow: 0 -2px 8px var(--shadow);
+    border-radius: 0 0 10px 10px;
+    max-width: 900px;
+    margin: 0 auto 2rem;
+  }
+
+  /* Explanation links */
+  .info-link {
+    color: var(--primary);
+    text-decoration: underline;
+    cursor: pointer;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    display: inline-block;
+  }
+
+  /* Explanation box */
+  .info-box {
+    background: var(--highlight);
+    border-radius: 10px;
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+    color: var(--primary);
+    line-height: 1.4;
+    box-shadow: inset 0 0 6px #86efac;
+    display: none;
+    margin-bottom: 1.5rem;
+  }
+
+  /* Method selector */
+  #method-select {
+    font-size: 1.2rem;
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
+    border: 2px solid var(--highlight);
+    margin-bottom: 1.5rem;
+    color: var(--primary);
+    font-weight: 600;
+  }
+
+  @media (max-width: 600px) {
+    header h1 {
+      font-size: 2rem;
+    }
+    nav a {
+      margin: 0 0.7rem;
+      font-size: 1rem;
+    }
+    .journaling-letter {
+      font-size: 2.4rem;
+      width: 45px;
+    }
+    textarea {
+      min-height: 100px;
+    }
+  }
+</style>
+</head>
+<body>
+  <header>
+    <h1>FaithSteps: Journal</h1>
+    <p>31 Days of Seeking God's Face • Scripture • Fasting • Prayer • Journaling</p>
+  </header>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="journal.html" aria-current="page">Journal</a>
+    <a href="verses.html">Verses</a>
+    <a href="fasting.html">Fasting</a>
+  </nav>
+
+  <main>
+    <section>
+      <h2>Your Daily Journal Entry</h2>
+      <div id="journal-date"></div>
+      <div id="journal-verse"></div>
+
+      <!-- Method selector dropdown -->
+      <label for="method-select" style="font-weight:700; color: var(--primary); margin-bottom: 0.7rem; display: block;">Choose Journaling Method:</label>
+      <select id="method-select" aria-label="Select journaling method">
+        <option value="acts">ACTS</option>
+        <option value="fivefinger">5 Finger Prayer</option>
+        <option value="soap">SOAP</option>
+      </select>
+
+      <!-- Explanation toggles -->
+      <a id="acts-info-link" class="info-link" tabindex="0" role="button" aria-expanded="false" style="display:none;">What is the ACTS Journaling Method? (Click to learn more)</a>
+      <div id="acts-info-box" class="info-box" role="region" aria-live="polite" style="display:none;">
+        <p><strong>ACTS</strong> is a popular prayer and journaling method to guide your time with God:</p>
+        <ul>
+          <li><strong>A</strong> — <em>Adoration:</em> Praise and worship God for who He is.</li>
+          <li><strong>C</strong> — <em>Comprehension:</em> Understand and meditate on the Scripture.</li>
+          <li><strong>T</strong> — <em>Thanksgiving:</em> Give thanks for blessings and answered prayers.</li>
+          <li><strong>S</strong> — <em>Supplication:</em> Bring your requests and needs before God.</li>
+        </ul>
+        <p>This method helps you grow closer to God by reflecting on His Word and your relationship with Him.</p>
+      </div>
+
+      <a id="fivefinger-info-link" class="info-link" tabindex="0" role="button" aria-expanded="false" style="display:none;">What is the 5 Finger Prayer Method? (Click to learn more)</a>
+      <div id="fivefinger-info-box" class="info-box" role="region" aria-live="polite" style="display:none;">
+        <p><strong>5 Finger Prayer</strong> is a journaling method adapted from prayer fingers to help you pray intentionally:</p>
+        <ul>
+          <li><strong>Thumb</strong> — Who does this verse remind me to pray for or bless?</li>
+          <li><strong>Index</strong> — What direction or guidance does this verse give?</li>
+          <li><strong>Middle</strong> — What authority or truth is taught here?</li>
+          <li><strong>Ring</strong> — What promises or hope are found in this verse?</li>
+          <li><strong>Pinky</strong> — How can I personally respond or act?</li>
+        </ul>
+        <p>This method encourages a structured and personal prayer journaling experience.</p>
+      </div>
+
+      <a id="soap-info-link" class="info-link" tabindex="0" role="button" aria-expanded="false" style="display:none;">What is the SOAP Journaling Method? (Click to learn more)</a>
+      <div id="soap-info-box" class="info-box" role="region" aria-live="polite" style="display:none;">
+        <p><strong>SOAP</strong> is a journaling method focused on Scripture meditation:</p>
+        <ul>
+          <li><strong>S</strong> — Scripture: Write out the verse.</li>
+          <li><strong>O</strong> — Observation: What stands out or what is happening?</li>
+          <li><strong>A</strong> — Application: How does this speak to me today?</li>
+          <li><strong>P</strong> — Prayer: Pray based on what you’ve learned.</li>
+        </ul>
+        <p>This method helps deepen your understanding and application of God’s Word.</p>
+      </div>
+
+      <!-- Journaling sections containers (all hidden by default) -->
+      <!-- ACTS -->
+      <div id="journaling-acts" style="display:none;">
+        <div class="journaling-section">
+          <div class="journaling-letter" aria-hidden="true">A</div>
+          <div class="journaling-content">
+            <label for="adoration">Adoration (Praise God):</label>
+            <textarea id="adoration" rows="4" placeholder="What do I praise God for today?"></textarea>
+          </div>
+        </div>
+
+        <div class="journaling-section">
+          <div class="journaling-letter" aria-hidden="true">C</div>
+          <div class="journaling-content">
+            <label for="comprehension">Comprehension (Understand the Verse):</label>
+            <textarea id="comprehension" rows="4" placeholder="What does today's verse mean to me?"></textarea>
+          </div>
+        </div>
+
+        <div class="journaling-section">
+          <div class="journaling-letter" aria-hidden="true">T</div>
+          <div class="journaling-content">
+            <label for="thanksgiving">Thanksgiving (Give Thanks):</label>
+            <textarea id="thanksgiving" rows="4" placeholder="What blessings or answered prayers can I thank God for?"></textarea>
+          </div>
+        </div>
+
+        <div class="journaling-section">
+          <div class="journaling-letter" aria-hidden="true">S</div>
+          <div class="journaling-content">
+            <label for="supplication">Supplication (Prayers & Requests):</label>
+            <textarea id="supplication" rows="4" placeholder="What requests or needs do I want to pray for?"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5 Finger -->
+      <div id="journaling-fivefinger" style="display:none;">
+        <div class="journaling-section">
+          <div class="journaling-letter" aria-hidden="true">👍</div>
+          <div class="journaling-content">
+            <label for="thumb">Thumb (Pray for others):</label>
+            <textarea id="thumb" rows="4" placeholder="Who does this verse remind me to pray for or bless?"></textarea>
+          </div>
+        </div>
+
+        <div class="journaling-section">
+          <div class="journaling-letter" aria-hidden="true">👆</div>
+          <div class="journaling-content">
+            <label for="index">Index (Guidance):</label>
+            <textarea id="index" rows="4" placeholder="What direction or guidance does this verse give?"></textarea>
+          </div>
+        </div>
+
+        <div class="journaling-section">
+          <div class="journaling-letter" aria-hidden="true">✊</div>
+          <div class="journaling-content">
+            <label for="middle">Middle (Authority/Truth):</label>
+            <textarea id="middle" rows="4" placeholder="What authority or truth is taught here?"></textarea>
+          </div>
+        </div>
+
+        <div class="journaling-section">
+          <div class="journaling-letter" aria-hidden="true">💍</div>
+          <div class="journaling-content">
+            <label for="ring">Ring (Promises/Hope):</label>
+            <textarea id="ring" rows="4" placeholder="What promises or hope are found in this verse?"></textarea>
+          </div>
+        </div>
+
+        <div class="journaling-section">
+          <div class="journaling-letter" aria-hidden="true">👶</div>
+          <div class="journaling-content">
+            <label for="pinky">Pinky (Personal Response):</label>
+            <textarea id="pinky" rows="4" placeholder="How can I personally respond or act?"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <!-- SOAP -->
+      <div id="journaling-soap" style="display:none;">
+        <div class="journaling-section">
+          <div class="journaling-letter" aria-hidden="true">S</div>
+          <div class="journaling-content">
+            <label for="soap-scripture">Scripture:</label>
+            <textarea id="soap-scripture" rows="4" placeholder="Write out the verse."></textarea>
+          </div>
+        </div>
+
+        <div class="journaling-section">
+          <div class="journaling-letter" aria-hidden="true">O</div>
+          <div class="journaling-content">
+            <label for="soap-observation">Observation:</label>
+            <textarea id="soap-observation" rows="4" placeholder="What stands out or what is happening?"></textarea>
+          </div>
+        </div>
+
+        <div class="journaling-section">
+          <div class="journaling-letter" aria-hidden="true">A</div>
+          <div class="journaling-content">
+            <label for="soap-application">Application:</label>
+            <textarea id="soap-application" rows="4" placeholder="How does this speak to me today?"></textarea>
+          </div>
+        </div>
+
+        <div class="journaling-section">
+          <div class="journaling-letter" aria-hidden="true">P</div>
+          <div class="journaling-content">
+            <label for="soap-prayer">Prayer:</label>
+            <textarea id="soap-prayer" rows="4" placeholder="Pray based on what you’ve learned."></textarea>
+          </div>
+        </div>
+      </div>
+
+      <div class="buttons">
+        <button id="savePDFBtn">Save as PDF</button>
+        <button id="clearBtn" class="clear">Clear All</button>
+      </div>
+    </section>
+  </main>
+
+  <section class="footer-prayer" aria-label="The Lord's Prayer">
+    <strong>The Lord's Prayer</strong><br /><br />
+    Our Father, who art in heaven,  
+    hallowed be thy name;  
+    thy kingdom come;  
+    thy will be done;  
+    on earth as it is in heaven.  
+    Give us this day our daily bread.  
+    And forgive us our trespasses,  
+    as we forgive those who trespass against us.  
+    And lead us not into temptation;  
+    but deliver us from the evil one.  
+    For thine is the kingdom,  
+    the power and the glory,  
+    for ever and ever. Amen.
+  </section>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script>
+    (function(){
+      const { jsPDF } = window.jspdf;
+
+      // Elements
+      const journalDateDiv = document.getElementById('journal-date');
+      const journalVerseDiv = document.getElementById('journal-verse');
+
+      const methodSelect = document.getElementById('method-select');
+
+      // Explanation toggles & boxes
+      const infoLinks = {
+        acts: document.getElementById('acts-info-link'),
+        fivefinger: document.getElementById('fivefinger-info-link'),
+        soap: document.getElementById('soap-info-link')
+      };
+      const infoBoxes = {
+        acts: document.getElementById('acts-info-box'),
+        fivefinger: document.getElementById('fivefinger-info-box'),
+        soap: document.getElementById('soap-info-box')
+      };
+
+      // Journaling containers
+      const journalingContainers = {
+        acts: document.getElementById('journaling-acts'),
+        fivefinger: document.getElementById('journaling-fivefinger'),
+        soap: document.getElementById('journaling-soap')
+      };
+
+      // All textareas by method keys and ids
+      const textareasByMethod = {
+        acts: ['adoration', 'comprehension', 'thanksgiving', 'supplication'],
+        fivefinger: ['thumb', 'index', 'middle', 'ring', 'pinky'],
+        soap: ['soap-scripture', 'soap-observation', 'soap-application', 'soap-prayer']
+      };
+
+      // Date display
+      const today = new Date();
+      const dateStr = today.toLocaleDateString(undefined, {year:'numeric', month:'long', day:'numeric'});
+      journalDateDiv.textContent = `Date: ${dateStr}`;
+
+      // Verses dictionary (expand as needed)
+      const verses = {
+        "2025-07-17": "Blessed are those who hunger and thirst for righteousness, for they will be filled. — Matthew 5:6 (NIV)",
+        "2025-07-18": "Since, then, you have been raised with Christ, set your hearts on things above, where Christ is, seated at the right hand of God. 2 Set your minds on things above, not on earthly things. — Colossians 3:1-2 New International Version ",
+        // add more as needed
+      };
+      const isoDate = today.toISOString().split('T')[0];
+      const verseText = verses[isoDate] || "Stay rooted in the Word. Verse coming soon.";
+      journalVerseDiv.textContent = `Verse: ${verseText}`;
+
+      // Load saved data from localStorage by method and date
+      function loadAllEntries(method) {
+        const ids = textareasByMethod[method];
+        ids.forEach(id => {
+          const el = document.getElementById(id);
+          if(el) {
+            el.value = localStorage.getItem(`${id}_${isoDate}`) || '';
+          }
+        });
+      }
+
+      // Save on input for all textareas by method
+      function addInputListeners(method) {
+        const ids = textareasByMethod[method];
+        ids.forEach(id => {
+          const el = document.getElementById(id);
+          if(el) {
+            el.addEventListener('input', () => {
+              localStorage.setItem(`${id}_${isoDate}`, el.value);
+            });
+          }
+        });
+      }
+
+      // Remove input listeners for all textareas
+      function removeInputListeners(method) {
+        const ids = textareasByMethod[method];
+        ids.forEach(id => {
+          const el = document.getElementById(id);
+          if(el) {
+            el.replaceWith(el.cloneNode(true)); // Remove all event listeners by cloning node
+          }
+        });
+      }
+
+      // Clear all fields of the current method
+      function clearFields(method) {
+        const ids = textareasByMethod[method];
+        ids.forEach(id => {
+          const el = document.getElementById(id);
+          if(el) {
+            el.value = '';
+            localStorage.removeItem(`${id}_${isoDate}`);
+          }
+        });
+      }
+
+      // Hide all journaling containers & info links & boxes
+      function hideAll() {
+        Object.values(journalingContainers).forEach(div => div.style.display = 'none');
+        Object.values(infoLinks).forEach(link => {
+          link.style.display = 'none';
+          link.setAttribute('aria-expanded', 'false');
+        });
+        Object.values(infoBoxes).forEach(box => box.style.display = 'none');
+      }
+
+      // Show selected journaling container & info link
+      function showMethod(method) {
+        hideAll();
+        journalingContainers[method].style.display = 'block';
+        infoLinks[method].style.display = 'inline-block';
+      }
+
+      // Toggle explanation box for a method
+      function toggleInfoBox(method) {
+        if (infoBoxes[method].style.display === 'block') {
+          infoBoxes[method].style.display = 'none';
+          infoLinks[method].setAttribute('aria-expanded', 'false');
+        } else {
+          infoBoxes[method].style.display = 'block';
+          infoLinks[method].setAttribute('aria-expanded', 'true');
+        }
+      }
+
+      // Initial load method
+      let currentMethod = methodSelect.value;
+      showMethod(currentMethod);
+      loadAllEntries(currentMethod);
+      addInputListeners(currentMethod);
+
+      // Method select change event
+      methodSelect.addEventListener('change', (e) => {
+        // Remove old listeners to prevent duplicates
+        removeInputListeners(currentMethod);
+
+        // Clear any open explanation boxes
+        infoBoxes[currentMethod].style.display = 'none';
+        infoLinks[currentMethod].setAttribute('aria-expanded', 'false');
+
+        // Switch method
+        currentMethod = e.target.value;
+        showMethod(currentMethod);
+        loadAllEntries(currentMethod);
+        addInputListeners(currentMethod);
+      });
+
+      // Explanation toggle click events
+      Object.keys(infoLinks).forEach(method => {
+        infoLinks[method].addEventListener('click', () => toggleInfoBox(method));
+      });
+
+      // Save as PDF
+      const saveBtn = document.getElementById('savePDFBtn');
+      saveBtn.addEventListener('click', () => {
+        const doc = new jsPDF();
+        const margin = 15;
+        const pageWidth = doc.internal.pageSize.getWidth();
+        const maxLineWidth = pageWidth - margin * 2;
+        const lineHeight = 7;
+        let y = margin;
+
+        doc.setFontSize(16);
+        doc.setTextColor(6, 95, 70);
+        doc.text(`FaithSteps Journal - ${dateStr}`, margin, y);
+        y += lineHeight + 5;
+
+        doc.setFontSize(12);
+        doc.setTextColor(16, 185, 129);
+        doc.text('Verse:', margin, y);
+        y += lineHeight;
+        const verseLines = doc.splitTextToSize(verseText, maxLineWidth);
+        doc.setTextColor(0, 0, 0);
+        doc.text(verseLines, margin, y);
+        y += verseLines.length * lineHeight + 10;
+
+        // Write explanation for current method
+        const explanations = {
+          acts: [
+            { letter: 'A', title: 'Adoration', desc: 'Praise and worship God for who He is.' },
+            { letter: 'C', title: 'Comprehension', desc: 'Understand and meditate on the Scripture.' },
+            { letter: 'T', title: 'Thanksgiving', desc: 'Give thanks for blessings and answered prayers.' },
+            { letter: 'S', title: 'Supplication', desc: 'Bring your requests and needs before God.' },
+          ],
+          fivefinger: [
+            { letter: '👍', title: 'Thumb (Pray for others)', desc: 'Who does this verse remind me to pray for or bless?' },
+            { letter: '👆', title: 'Index (Guidance)', desc: 'What direction or guidance does this verse give?' },
+            { letter: '✊', title: 'Middle (Authority/Truth)', desc: 'What authority or truth is taught here?' },
+            { letter: '💍', title: 'Ring (Promises/Hope)', desc: 'What promises or hope are found in this verse?' },
+            { letter: '👶', title: 'Pinky (Personal Response)', desc: 'How can I personally respond or act?' },
+          ],
+          soap: [
+            { letter: 'S', title: 'Scripture', desc: 'Write out the verse.' },
+            { letter: 'O', title: 'Observation', desc: 'What stands out or what is happening?' },
+            { letter: 'A', title: 'Application', desc: 'How does this speak to me today?' },
+            { letter: 'P', title: 'Prayer', desc: 'Pray based on what you’ve learned.' },
+          ]
+        };
+
+        const entries = textareasByMethod[currentMethod];
+        const explanation = explanations[currentMethod];
+
+        doc.setFontSize(14);
+        doc.setTextColor(6, 95, 70);
+        doc.text(`${currentMethod.toUpperCase()} Journaling Method Explanation:`, margin, y);
+        y += lineHeight + 3;
+
+        doc.setFontSize(11);
+        doc.setTextColor(16, 185, 129);
+        explanation.forEach(({letter, title, desc}) => {
+          doc.setFont(undefined, 'bold');
+          doc.text(`${letter} — ${title}:`, margin, y);
+          y += lineHeight;
+          doc.setFont(undefined, 'normal');
+          const descLines = doc.splitTextToSize(desc, maxLineWidth - 20);
+          doc.text(descLines, margin + 10, y);
+          y += descLines.length * lineHeight + 5;
+        });
+
+        y += 5;
+        doc.setFontSize(14);
+        doc.setTextColor(6, 95, 70);
+        doc.text('Your Journal Entry:', margin, y);
+        y += lineHeight + 3;
+
+        const addSection = (letter, title, text) => {
+          doc.setFont(undefined, 'bold');
+          doc.text(`${letter} — ${title}:`, margin, y);
+          y += lineHeight;
+          doc.setFont(undefined, 'normal');
+          let lines = doc.splitTextToSize(text.trim() || "(No entry)", maxLineWidth);
+          doc.text(lines, margin + 10, y);
+          y += lines.length * lineHeight + 10;
+        };
+
+        // Map for PDF labels matching textarea ids
+        const pdfLabels = {
+          acts: {
+            adoration: 'Adoration',
+            comprehension: 'Comprehension',
+            thanksgiving: 'Thanksgiving',
+            supplication: 'Supplication',
+          },
+          fivefinger: {
+            thumb: 'Thumb (Pray for others)',
+            index: 'Index (Guidance)',
+            middle: 'Middle (Authority/Truth)',
+            ring: 'Ring (Promises/Hope)',
+            pinky: 'Pinky (Personal Response)',
+          },
+          soap: {
+            'soap-scripture': 'Scripture',
+            'soap-observation': 'Observation',
+            'soap-application': 'Application',
+            'soap-prayer': 'Prayer',
+          }
+        };
+
+        entries.forEach(id => {
+          const text = document.getElementById(id).value;
+          addSection(id[0].toUpperCase(), pdfLabels[currentMethod][id], text);
+        });
+
+        doc.save(`FaithSteps_Journal_${isoDate}_${currentMethod}.pdf`);
+      });
+
+      // Clear button
+      const clearBtn = document.getElementById('clearBtn');
+      clearBtn.addEventListener('click', () => {
+        if(confirm('Are you sure you want to clear your entire journal entry for today?')) {
+          clearFields(currentMethod);
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
