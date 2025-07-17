@@ -38,8 +38,7 @@
       color: var(--white);
       text-align: center;
       padding: 5rem 2rem;
-      box-shadow: inset 0 0 200px rgba(6,95,70,0.75);
-      position: relative;
+      box-shadow: inset 0 0 200px rgba(6, 95, 70, 0.75);
     }
 
     header h1 {
@@ -185,24 +184,26 @@
       header h1 {
         font-size: 2.2rem;
       }
+
       nav a {
         margin: 0.5rem 0.8rem;
         font-size: 1rem;
       }
+
       main {
         margin: 1rem auto 3rem;
       }
-      @media (max-width: 600px) {
-  header h1 {
-    font-size: 2.2rem;
-  }
-  nav a {
-    margin: 0.5rem 0.8rem;
-    font-size: 1rem;
-  }
-  main {
-    margin: 1rem auto 3rem;
-  }
+
+      .verse-image {
+        max-width: 100%;
+      }
+
+      section {
+        padding: 1rem 1rem;
+      }
+
+      section h2 {
+        font-size: 1.5rem;
       }
     }
   </style>
@@ -210,8 +211,8 @@
 
 <body>
   <!-- 🎵 Background Music -->
-  <audio id="bgAudio" src="bgsong.mp3" autoplay loop muted></audio>
-  <button id="toggleSound" aria-label="Toggle Background Music">🔇</button>
+  <audio id="bgAudio" src="bgsong.mp3" autoplay loop></audio>
+  <button id="toggleSound" aria-label="Toggle Background Music">🔊</button>
 
   <header>
     <h1>FaithSteps: Walk With God</h1>
@@ -224,6 +225,7 @@
     <a href="verses.html">Verses</a>
     <a href="fasting.html">Fasting</a>
   </nav>
+
   <main>
     <section class="reminder" aria-label="Scrolling Reminder">
       <span>🙏 Remember: Stay consistent in prayer and fasting. Daily journaling brings clarity and growth! 🙏</span>
@@ -279,72 +281,58 @@
       const toggleBtn = document.getElementById("toggleSound");
       const today = new Date();
       const dateStr = today.toISOString().split('T')[0];
+
       const verses = {
         "2025-07-17": {
           text: "Blessed are those who hunger and thirst for righteousness, for they will be filled. — Matthew 5:6 (NIV)"
         },
         "2025-07-18": {
-          text: "Since, then, you have been raised with Christ, set your hearts on things above, where Christ is, seated at the right hand of God. 2 Set your minds on things above, not on earthly things. — Colossians 3:1-2 New International Version "
+          text: "Since, then, you have been raised with Christ, set your hearts on things above... — Colossians 3:1-2 (NIV)"
         }
       };
 
-      // Show today's verse
       const verseData = verses[dateStr];
       const verseBox = document.getElementById('todaysVerseBox');
-      if (verseBox) {
-        verseBox.textContent = verseData ? verseData.text : "Stay rooted in the Word. Verse coming soon.";
-      }
+      verseBox.textContent = verseData ? verseData.text : "Stay rooted in the Word. Verse coming soon.";
 
-      // Initialize audio for fade-in
+      // Auto play with fade-in workaround
       let volume = 0;
       audio.volume = 0;
       audio.muted = false;
       toggleBtn.textContent = "🔊";
 
-      // Fade-in audio over ~3 seconds
-      const fadeInInterval = setInterval(() => {
+      const fadeIn = setInterval(() => {
         if (volume < 1) {
           volume += 0.02;
-          if (volume > 1) volume = 1;
-          audio.volume = volume;
+          audio.volume = Math.min(volume, 1);
         } else {
-          clearInterval(fadeInInterval);
+          clearInterval(fadeIn);
         }
       }, 60);
 
-      // Toggle mute/unmute with fade
       toggleBtn.addEventListener("click", () => {
         if (audio.muted || audio.volume === 0) {
           audio.muted = false;
-          // Fade in if volume is 0
-          if (audio.volume === 0) {
-            volume = 0;
-            audio.volume = 0;
-            const fadeInAgain = setInterval(() => {
-              if (volume < 1) {
-                volume += 0.02;
-                if (volume > 1) volume = 1;
-                audio.volume = volume;
-              } else {
-                clearInterval(fadeInAgain);
-              }
-            }, 60);
-          }
+          volume = 0;
+          const fadeUp = setInterval(() => {
+            if (volume < 1) {
+              volume += 0.02;
+              audio.volume = Math.min(volume, 1);
+            } else {
+              clearInterval(fadeUp);
+            }
+          }, 60);
           toggleBtn.textContent = "🔊";
         } else {
-          // Fade out and then mute
-          let fadeOutVol = audio.volume;
-          const fadeOutInterval = setInterval(() => {
-            if (fadeOutVol > 0) {
-              fadeOutVol -= 0.05;
-              if (fadeOutVol < 0) fadeOutVol = 0;
-              audio.volume = fadeOutVol;
+          const fadeOut = setInterval(() => {
+            if (audio.volume > 0) {
+              audio.volume = Math.max(audio.volume - 0.05, 0);
             } else {
-              clearInterval(fadeOutInterval);
+              clearInterval(fadeOut);
               audio.muted = true;
               toggleBtn.textContent = "🔇";
             }
-          }, 40);
+          }, 50);
         }
       });
     });
