@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
   <title>FaithSteps – Walk with God</title>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap" rel="stylesheet" />
   <style>
@@ -60,6 +60,7 @@
       justify-content: center;
       padding: 1rem;
       box-shadow: 0 4px 8px var(--shadow);
+      gap: 0.6rem;
     }
 
     nav a {
@@ -162,8 +163,8 @@
 
     #toggleSound {
       position: fixed;
-      bottom: 20px;
-      right: 20px;
+      bottom: 16px;
+      right: 16px;
       background: var(--primary);
       color: var(--white);
       border: none;
@@ -204,6 +205,24 @@
 
       section h2 {
         font-size: 1.5rem;
+      }
+      header p {
+        font-size: 1rem;
+      }
+      section {
+        padding: 1rem;
+      }
+      #todaysVerseBox {
+        font-size: 1rem;
+        padding: 0.8rem 1rem;
+      }
+      .verse-image {
+        max-width: 100%;
+        height: auto;
+      }
+      .footer-prayer {
+        padding: 1rem;
+        font-size: 0.95rem;
       }
     }
   </style>
