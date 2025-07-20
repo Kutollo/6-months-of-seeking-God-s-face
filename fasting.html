@@ -227,5 +227,74 @@
       setInterval(update, 1000);
     })();
   </script>
+   <section id="fastingTips" style="
+  max-width: 700px; 
+  margin: 2rem auto; 
+  padding: 2rem; 
+  background: var(--highlight); 
+  border-radius: 12px; 
+  font-family: 'DM Sans', sans-serif; 
+  color: var(--primary);
+  box-shadow: inset 0 0 10px #86efac;
+">
+  <h2 id="typingHeading" style="text-align: center; margin-bottom: 1.2rem; font-weight: 700; white-space: nowrap; overflow: hidden; border-right: .15em solid var(--primary);"></h2>
+  <ul id="typingList" style="line-height: 1.6; font-size: 1.1rem; list-style-type: disc; padding-left: 1.5rem;">
+  </ul>
+</section>
+
+<script>
+  const headingText = "Fasting Tips";
+  const tips = [
+    "Read the Bible Throughout the Day: Keep a Bible verse or passage with you. Meditate on God’s Word often to keep your spirit focused.",
+    "Pray Regularly: Set reminders to pray multiple times a day — morning, midday and evening. Pour out your heart and listen to God.",
+    "Stay Away from Social Media and Distractions: Limit phone, social media, TV and unnecessary internet use to avoid distractions and temptation.",
+    "Journal Your Thoughts and Prayers: Write down what God reveals to you, your feelings and prayers during the fast.",
+    "Surround Yourself with Encouragement: Spend time with godly friends or listen to worship music and sermons that uplift you.",
+    "Avoid Negative or Stressful Situations: Try to stay peaceful and calm, so your mind stays focused on God.",
+    "Keep Yourself Busy with Spiritual Activities: Engage in worship, reading devotionals instead of thinking about food.",
+    "Stay Hydrated: Drink plenty of water unless your fast says otherwise.",
+    "Rest and Take Care of Your Body: Your body may feel weak; honor it by resting when needed.",
+    "Remember Your Purpose: Constantly remind yourself why you’re fasting — to draw closer to God and grow spiritually."
+  ];
+
+  // Typing animation for heading
+  const headingEl = document.getElementById("typingHeading");
+  let hIndex = 0;
+  function typeHeading() {
+    if (hIndex < headingText.length) {
+      headingEl.textContent += headingText.charAt(hIndex);
+      hIndex++;
+      setTimeout(typeHeading, 120);
+    } else {
+      headingEl.style.borderRight = "none";
+      typeListItems(0);
+    }
+  }
+
+  // Typing animation for list items, one by one
+  const listEl = document.getElementById("typingList");
+  function typeListItems(i) {
+    if (i >= tips.length) return;
+    let li = document.createElement("li");
+    listEl.appendChild(li);
+
+    let tipText = tips[i];
+    let charIndex = 0;
+
+    function typeChar() {
+      if (charIndex < tipText.length) {
+        li.textContent += tipText.charAt(charIndex);
+        charIndex++;
+        setTimeout(typeChar, 20);
+      } else {
+        setTimeout(() => typeListItems(i + 1), 300); // pause before next li
+      }
+    }
+    typeChar();
+  }
+
+  typeHeading();
+</script>
+
 </body>
 </html>
