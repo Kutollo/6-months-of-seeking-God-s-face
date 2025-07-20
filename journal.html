@@ -499,12 +499,23 @@
       journalDateDiv.textContent = `Date: ${dateStr}`;
 
       // Verses dictionary (expand as needed)
-      const verses = {
-        "2025-07-17": "Blessed are those who hunger and thirst for righteousness, for they will be filled. — Matthew 5:6 (NIV)",
-        "2025-07-18": "Since, then, you have been raised with Christ, set your hearts on things above, where Christ is, seated at the right hand of God. 2 Set your minds on things above, not on earthly things. — Colossians 3:1-2 New International Version ",
-        "2025-07-20": "'Isaiah 40:31 NIV [31] but those who hope in the Lord will renew their strength. They will soar on wings like eagles; they will run and not grow weary, they will walk and not be faint.'",
-        // add more as needed
-      };
+     const verses = {
+  "2025-07-17": "\"Blessed are those who hunger and thirst for righteousness, for they will be filled.\" — Matthew 5:6 (NIV)",
+  "2025-07-18": "\"Since, then, you have been raised with Christ, set your hearts on things above, where Christ is, seated at the right hand of God. Set your minds on things above, not on earthly things.\" — Colossians 3:1-2 (NIV)",
+  "2025-07-20": "\"But those who hope in the Lord will renew their strength. They will soar on wings like eagles; they will run and not grow weary, they will walk and not be faint.\" — Isaiah 40:31 (NIV)",
+  "2025-07-21": "\"Take delight in the Lord, and he will give you the desires of your heart.\" — Psalm 37:4 (NIV)",
+  "2025-07-22": "\"I have been crucified with Christ and I no longer live, but Christ lives in me.\" — Galatians 2:20 (NIV)",
+  "2025-07-23": "\"I pray that out of his glorious riches he may strengthen you with power through his Spirit in your inner being...\" — Ephesians 3:16–19 (NIV)",
+  "2025-07-24": "\"Your word is a lamp for my feet, a light on my path.\" — Psalm 119:105 (NIV)",
+  "2025-07-25": "\"Even now,\" declares the Lord, \"return to me with all your heart, with fasting and weeping and mourning.\" — Joel 2:12 (NIV)",
+  "2025-07-26": "\"Is not this the kind of fasting I have chosen: to loose the chains of injustice and untie the cords of the yoke...?\" — Isaiah 58:6 (NIV)",
+  "2025-07-27": "\"So I turned to the Lord God and pleaded with him in prayer and petition, in fasting, and in sackcloth and ashes.\" — Daniel 9:3 (NIV)",
+  "2025-07-28": "\"But when you fast, anoint your head and wash your face, so that it will not be obvious to others that you are fasting...\" — Matthew 6:17–18 (NIV)",
+  "2025-07-29": "\"When I heard these things, I sat down and wept. For some days I mourned and fasted and prayed before the God of heaven.\" — Nehemiah 1:4 (NIV)",
+  "2025-07-30": "\"So we fasted and petitioned our God about this, and he answered our prayer.\" — Ezra 8:23 (NIV)",
+  "2025-07-31": "\"You, God, are my God, earnestly I seek you; I thirst for you, my whole being longs for you...\" — Psalm 63:1 (NIV)"
+};
+
       const isoDate = today.toISOString().split('T')[0];
       const verseText = verses[isoDate] || "Stay rooted in the Word. Verse coming soon.";
       journalVerseDiv.textContent = `Verse: ${verseText}`;
