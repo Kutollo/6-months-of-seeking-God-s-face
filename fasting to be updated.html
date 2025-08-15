@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FaithSteps – Fasting Week</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+  --bg: #fefae0;
+  --primary: #6b21a8;
+  --secondary: #a855f7;
+  --highlight: #f3e8ff;
+  --text: #333;
+  --white: #fff;
+  --shadow: rgba(0, 0, 0, 0.07);
+}
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: url('https://images.unsplash.com/photo-1535440216424-0e374e613ee5?q=80&w=1033&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center/cover;
+      color: var(--white);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      text-align: center;
+      padding: 4rem 2rem;
+      box-shadow: inset 0 0 200px rgba(247, 255, 253, 0.75);
+      color: var(--white);
+      font-weight: 700;
+      font-size: 1.3rem;
+    }
+    nav {
+      background: var(--primary);
+      display: flex;
+      justify-content: center;
+      padding: 1rem;
+      box-shadow: 0 4px 8px var(--shadow);
+    }
+    nav a {
+      color: var(--white);
+      margin: 0.5rem 1.2rem;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+    main {
+      background: rgba(255, 255, 255, 0.9);
+      color: var(--primary);
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    }
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.4rem;
+    }
+    h2, h3 {
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    #countdown {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+    #countdownLabel {
+      font-weight: 600;
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+    #theme, #dailyVerse, #prayerPoint, #previewTheme, #previewVerse, #previewPrayers {
+      background: var(--highlight);
+      padding: 1rem 1.5rem;
+      border-radius: 10px;
+      margin-bottom: 1.5rem;
+      box-shadow: inset 0 0 6px #86efac;
+      color: var(--primary);
+      line-height: 1.5;
+      font-size: 1.1rem;
+    }
+    #prayerPoint ul, #previewPrayers ul {
+      padding-left: 1.2rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Fasting Week: August 18 – 24, 2025</h1>
+    <div id="fastingInfo">Water Fast: From 12:00 AM to 5:00 PM daily</div>
+  </header>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="journal.html">Journal</a>
+    <a href="verses.html">Verses</a>
+    <a href="fasting.html">Fasting</a>
+  </nav>
+  <main>
+    <div id="countdownLabel">Loading countdown...</div>
+    <div id="countdown">--:--:--</div>
+    <section id="theme">Loading theme...</section>
+    <section id="dailyVerse">Loading daily scripture...</section>
+    <section id="prayerPoint">Loading prayer points...</section>
+    <h3>Next Day Preview</h3>
+    <section id="previewTheme">Loading...</section>
+    <section id="previewVerse">Loading...</section>
+    <section id="previewPrayers">Loading...</section>
+    <!-- New Link Section -->
+    <section style="margin-top: 2rem; padding: 1rem; background: var(--highlight); border-radius: 10px;">
+      <h3 style="color: var(--primary); margin-bottom: 0.5rem;">🔗 Fasting to Move God</h3>
+      <p>
+        <a href="https://drive.google.com/file/d/1Lyrj6DrEyJ7I6MEvvZufs495qiZzujrZ/view" target="_blank" style="color: var(--secondary); font-weight: bold; text-decoration: none;">
+          Click here to view Fasting Biblical Guide
+        </a>
+      </p>
+    </section>
+  </main>
+
+  <script>
+    (() => {
+      const fastingStartDate = new Date('2025-08-18T00:00:00');
+      const fastingEndDate = new Date('2025-08-24T23:59:59');
+
+      const dailyThemes = {
+        "2025-08-18": "Spiritual Renewal",
+        "2025-08-19": "Surrender & Alignment",
+        "2025-08-20": "Endurance & Faith",
+        "2025-08-21": "Diligence & Excellence",
+        "2025-08-22": "Repentance & Growth",
+        "2025-08-23": "Divine Connections",
+        "2025-08-24": "Thanksgiving"
+      };
+
+      const dailyVerses = {
+        "2025-08-18": "Matthew 5:6",
+        "2025-08-19": "Romans 12:2",
+        "2025-08-20": "Isaiah 40:31",
+        "2025-08-21": "Colossians 3:23",
+        "2025-08-22": "2 Corinthians 7:10",
+        "2025-08-23": "Proverbs 13:20",
+        "2025-08-24": "1 Thessalonians 5:18"
+      };
+
+      const prayerPoints = {
+        "2025-08-18": ["Spiritual growth and discipline", "God to help us be consistent in prayer and reading the Word more"],
+        "2025-08-19": ["Alignment to God’s will over my life", "Putting God first in everything"],
+        "2025-08-20": ["Guidance and strength to keep going", "Not losing faith and hope when faced with hurdles"],
+        "2025-08-21": ["Academic excellence", "Praying against the spirit of procrastination"],
+        "2025-08-22": ["Staying away from our wicked ways", "Personal growth – self-discipline, self-awareness, emotional intelligence"],
+        "2025-08-23": ["Meaningful connections that’ll help me grow", "Protection and guidance", "Good health"],
+        "2025-08-24": ["Thanksgiving for God’s goodness, protection, and love", "Praise for answered prayers and lessons learned"]
+      };
+
+      function formatTime(ms) {
+        const totalSeconds = Math.floor(ms / 1000);
+        const hours = Math.floor(totalSeconds / 3600).toString().padStart(2, '0');
+        const minutes = Math.floor((totalSeconds % 3600) / 60).toString().padStart(2, '0');
+        const seconds = (totalSeconds % 60).toString().padStart(2, '0');
+        return `${hours}:${minutes}:${seconds}`;
+      }
+
+      function update() {
+        const now = new Date();
+        const countdownLabel = document.getElementById('countdownLabel');
+        const countdown = document.getElementById('countdown');
+        const theme = document.getElementById('theme');
+        const dailyVerse = document.getElementById('dailyVerse');
+        const prayerPoint = document.getElementById('prayerPoint');
+        const previewTheme = document.getElementById('previewTheme');
+        const previewVerse = document.getElementById('previewVerse');
+        const previewPrayers = document.getElementById('previewPrayers');
+
+        if (now < fastingStartDate) {
+          countdownLabel.textContent = `Fasting week begins on August 18, 2025 at 12:00 AM`;
+          countdown.textContent = formatTime(fastingStartDate - now);
+          theme.textContent = "Get Ready";
+          dailyVerse.textContent = "Prepare your heart to seek God.";
+          prayerPoint.innerHTML = "";
+          return;
+        }
+
+        if (now > fastingEndDate) {
+          countdownLabel.textContent = "Fasting week has ended. Praise God for His faithfulness!";
+          countdown.textContent = "";
+          theme.textContent = "";
+          dailyVerse.textContent = "";
+          prayerPoint.innerHTML = "";
+          return;
+        }
+
+        const todayStr = now.toISOString().split('T')[0];
+        const nextDay = new Date(now);
+        nextDay.setDate(now.getDate() + 1);
+        const nextDayStr = nextDay.toISOString().split('T')[0];
+
+        theme.textContent = `Day Theme: ${dailyThemes[todayStr] || "Fasting Day"}`;
+        dailyVerse.textContent = `Scripture: ${dailyVerses[todayStr] || "Stay rooted in the Word"}`;
+
+        const points = prayerPoints[todayStr];
+        prayerPoint.innerHTML = points && points.length ? `<ul>${points.map(p => `<li>${p}</li>`).join("")}</ul>` :
+          "<ul><li>We're working on updating today's content. Please check back later. We'll fix this ASAP!</li></ul>";
+
+        // Preview for next day
+        previewTheme.textContent = `Tomorrow's Theme: ${dailyThemes[nextDayStr] || "--"}`;
+        previewVerse.textContent = `Verse: ${dailyVerses[nextDayStr] || "--"}`;
+        const nextPoints = prayerPoints[nextDayStr];
+        previewPrayers.innerHTML = nextPoints && nextPoints.length ? `<ul>${nextPoints.map(p => `<li>${p}</li>`).join("")}</ul>` : "<ul><li>No preview yet.</li></ul>";
+
+        const fastingStartToday = new Date(todayStr + "T00:00:00");
+        const fastingEndToday = new Date(todayStr + "T17:00:00");
+
+        if (now < fastingStartToday) {
+          countdownLabel.textContent = `Fasting today starts at 12:00 AM`;
+          countdown.textContent = formatTime(fastingStartToday - now);
+        } else if (now <= fastingEndToday) {
+          countdownLabel.textContent = `Fasting ends at 5:00 PM`;
+          countdown.textContent = formatTime(fastingEndToday - now);
+        } else {
+          countdownLabel.textContent = `Next fasting day starts at 12:00 AM on ${nextDay.toLocaleDateString(undefined, { month: 'long', day: 'numeric' })}`;
+          countdown.textContent = formatTime(new Date(nextDayStr + "T00:00:00") - now);
+        }
+      }
+
+      update();
+      setInterval(update, 1000);
+    })();
+  </script>
+  
+</body>
+</html>
