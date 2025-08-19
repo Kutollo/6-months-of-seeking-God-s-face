@@ -131,35 +131,70 @@
       const fastingStartDate = new Date('2025-08-18T00:00:00');
       const fastingEndDate = new Date('2025-08-24T23:59:59');
 
-      const dailyThemes = {
-        "2025-08-18": "Spiritual Renewal",
-        "2025-08-19": "Surrender & Alignment",
-        "2025-08-20": "Endurance & Faith",
-        "2025-08-21": "Diligence & Excellence",
-        "2025-08-22": "Repentance & Growth",
-        "2025-08-23": "Divine Connections",
-        "2025-08-24": "Thanksgiving"
-      };
+    const dailyThemes = {
+  "2025-08-18": "Spiritual Renewal",
+  "2025-08-19": "Surrender & Alignment",
+  "2025-08-20": "Endurance & Faith",
+  "2025-08-21": "Diligence & Excellence",
+  "2025-08-22": "Repentance & Growth",
+  "2025-08-23": "Divine Connections",
+  "2025-08-24": "Thanksgiving"
+};
 
-      const dailyVerses = {
-        "2025-08-18": "Matthew 5:6",
-        "2025-08-19": "Romans 12:2",
-        "2025-08-20": "Isaiah 40:31",
-        "2025-08-21": "Colossians 3:23",
-        "2025-08-22": "2 Corinthians 7:10",
-        "2025-08-23": "Proverbs 13:20",
-        "2025-08-24": "1 Thessalonians 5:18"
-      };
+const dailyVerses = {
+  "2025-08-18": ["Matthew 5:6", "Psalm 51:10-12", "Romans 8:5-6"],
+  "2025-08-19": ["Romans 12:2", "Proverbs 3:5-6", "Jeremiah 29:11"],
+  "2025-08-20": ["Isaiah 40:31", "James 1:2-4", "Hebrews 11:1"],
+  "2025-08-21": ["Colossians 3:23", "Proverbs 22:29", "Daniel 6:3"],
+  "2025-08-22": ["2 Corinthians 7:10", "1 John 1:9", "Ezekiel 36:26-27"],
+  "2025-08-23": ["Proverbs 13:20", "Ecclesiastes 4:9-10", "Ruth 1:16-17"],
+  "2025-08-24": ["1 Thessalonians 5:18", "Psalm 100:4-5", "Philippians 4:6-7"]
+};
 
-      const prayerPoints = {
-        "2025-08-18": ["Spiritual growth and discipline", "God to help us be consistent in prayer and reading the Word more"],
-        "2025-08-19": ["Alignment to God’s will over my life", "Putting God first in everything"],
-        "2025-08-20": ["Guidance and strength to keep going", "Not losing faith and hope when faced with hurdles"],
-        "2025-08-21": ["Academic excellence", "Praying against the spirit of procrastination"],
-        "2025-08-22": ["Staying away from our wicked ways", "Personal growth – self-discipline, self-awareness, emotional intelligence"],
-        "2025-08-23": ["Meaningful connections that’ll help me grow", "Protection and guidance", "Good health"],
-        "2025-08-24": ["Thanksgiving for God’s goodness, protection, and love", "Praise for answered prayers and lessons learned"]
-      };
+const prayerPoints = {
+  "2025-08-18": [
+    "Pray for spiritual growth and deeper intimacy with God.",
+    "Pray for discipline to remain consistent in prayer, fasting, and studying the Word.",
+    "Ask God to renew your heart and fill you with His Spirit.",
+    "Pray against distractions that steal spiritual hunger."
+  ],
+  "2025-08-19": [
+    "Pray for alignment with God’s will in every area of your life.",
+    "Ask for the grace to put God first in every decision and action.",
+    "Pray for wisdom and clarity in making life and career choices.",
+    "Surrender every plan to God and trust His timing."
+  ],
+  "2025-08-20": [
+    "Pray for strength and endurance to keep going despite challenges.",
+    "Ask God for unshakable faith when trials come.",
+    "Pray against discouragement and hopelessness.",
+    "Pray for patience and perseverance while waiting on God’s promises."
+  ],
+  "2025-08-21": [
+    "Pray for focus, discipline, and understanding in studies and work.",
+    "Pray against procrastination, laziness, and distractions.",
+    "Ask for excellence in assignments, tests, and exams.",
+    "Pray for wisdom to use your gifts and talents for God’s glory."
+  ],
+  "2025-08-22": [
+    "Pray for true repentance and a heart that hates sin.",
+    "Ask God for cleansing and renewal in areas of weakness.",
+    "Pray for personal growth – self-discipline, emotional maturity, and awareness.",
+    "Pray for humility and a teachable heart."
+  ],
+  "2025-08-23": [
+    "Pray for meaningful friendships and connections that help you grow.",
+    "Pray for protection from toxic, ungodly relationships.",
+    "Ask God to bring divine mentors, destiny helpers, and partners.",
+    "Pray for guidance, protection, and good health."
+  ],
+  "2025-08-24": [
+    "Thank God for His goodness, protection, and love throughout the week.",
+    "Praise Him for answered prayers and lessons learned.",
+    "Thank Him for your family, studies, relationships, and opportunities.",
+    "Pray with joy and expectation for the new week ahead."
+  ]
+};
 
       function formatTime(ms) {
         const totalSeconds = Math.floor(ms / 1000);
@@ -238,4 +273,5 @@
   
 </body>
 </html>
+
 
