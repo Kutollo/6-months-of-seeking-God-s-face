@@ -29,7 +29,7 @@
     }
 
     header {
-       background: url('https://images.unsplash.com/photo-1535440216424-0e374e613ee5?q=80&w=1033&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center/cover;
+      background: url('https://images.unsplash.com/photo-1535440216424-0e374e613ee5?q=80&w=1033&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center/cover;
       color: var(--white);
       text-align: center;
       padding: 5rem 2rem;
@@ -87,34 +87,39 @@
       line-height: 1.4;
     }
 
-    /* ---------- Announcement Bar ---------- */
+    /* ---------- Announcement ---------- */
     .reminder {
       background: var(--secondary);
       color: var(--white);
       font-weight: 700;
-      padding: 1rem 1.5rem;
+      padding: 1rem;
       border-radius: 8px;
       overflow: hidden;
+      white-space: pre-wrap;
+      box-shadow: 0 4px 8px var(--shadow);
       position: relative;
       margin-bottom: 2rem;
-      min-height: 50px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
       text-align: center;
+      min-height: 50px;
+      animation: flash 1s ease-in-out 5; /* flash for 5 seconds */
+    }
+
+    @keyframes flash {
+      0%, 50%, 100% { opacity: 1; }
+      25%, 75% { opacity: 0.3; }
     }
 
     .reminder span {
       display: inline-block;
       white-space: pre-wrap;
-      animation: fade-in-out 6s infinite;
+      word-wrap: break-word;
+      border-right: 2px solid var(--white);
+      padding-right: 2px;
+      animation: blink-caret 0.7s step-end infinite;
+      width: 100%;
     }
 
-    @keyframes fade-in-out {
-      0%,20% { opacity: 0; transform: translateY(20px);}
-      30%,70% { opacity: 1; transform: translateY(0);}
-      80%,100% { opacity: 0; transform: translateY(-20px);}
-    }
+    @keyframes blink-caret { 50% { border-color: transparent; } }
 
     .footer-prayer {
       background: #f5f3ff;
@@ -226,11 +231,43 @@
   </section>
 
   <script>
-    // ---------- Announcement ----------
+    // ---------- Announcement Typing Line by Line ----------
     const announcementMessage = "Check the Fasting tab for the September fasting schedule and plan your days of prayer and reflection!";
     const announcementEl = document.getElementById("announcement");
+    const reminderSection = document.querySelector(".reminder");
 
-    announcementEl.textContent = announcementMessage;
+    if (!announcementMessage || announcementMessage.trim() === "") {
+      reminderSection.style.display = "none";
+    } else {
+      let lines = [];
+      const words = announcementMessage.split(' ');
+      let currentLine = '';
+      words.forEach(word => {
+        if ((currentLine + word).length > 50) {
+          lines.push(currentLine.trim());
+          currentLine = word + ' ';
+        } else {
+          currentLine += word + ' ';
+        }
+      });
+      if (currentLine) lines.push(currentLine.trim());
+
+      let lineIndex = 0, charIndex = 0;
+
+      function typeLine() {
+        if (lineIndex >= lines.length) return;
+        announcementEl.textContent = lines.slice(0, lineIndex).join('\n') + (lineIndex > 0 ? '\n' : '') + lines[lineIndex].substring(0, charIndex);
+        charIndex++;
+        if (charIndex <= lines[lineIndex].length) {
+          setTimeout(typeLine, 50);
+        } else {
+          lineIndex++;
+          charIndex = 0;
+          setTimeout(typeLine, 200);
+        }
+      }
+      typeLine();
+    }
 
     // ---------- Verse of the Day ----------
     const verseBox = document.getElementById('todaysVerseBox');
@@ -255,11 +292,10 @@
       "2025-08-30": { text: "“All Scripture is inspired by God and is useful to teach us what is true...” — 2 Timothy 3:16 (MSG)" },
       "2025-08-31": { text: "“Obedience is better than sacrifice, and submission is better than offering the fat of rams.” — 1 Samuel 15:22 & Job 22:28 (MSG)" }
     };
-
     verseBox.textContent = verses[dateStr]?.text || "Stay rooted in the Word. Verse coming soon.";
 
     // ---------- Daily Resource ----------
-    const resourceUrl = "";  // Add link here if needed
+    const resourceUrl = "";  // ← Add your link here
     const resourceSection = document.getElementById("dailyResourceSection");
     const resourceContent = document.getElementById("resourceContent");
 
