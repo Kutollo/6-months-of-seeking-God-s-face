@@ -243,15 +243,40 @@
   verseImage.src = imagePath;
   verseImage.onerror = ()=>{verseImage.style.display='none';};
 
-  const verses = {
-    "2025-08-01":"“The Spirit of the Lord is upon me...” — Luke 4:18–19",
-    "2025-08-02":"“Listen to my prayer for mercy...” — Psalm 28:2",
-    "2025-08-03":"“Dear friends, if we deliberately continue sinning...” — Hebrews 10:26",
-    "2025-08-04":"“Imitate God, therefore, in everything you do...” — Ephesians 5:1–2",
-    "2025-08-25":"“O Lord, how long will you forget me?” — Psalm 13:1–2",
-    // ... add all days ...
-    "2025-08-31":"“Obedience is better than sacrifice...” — 1 Samuel 15:22"
-  };
+ const verses = {
+  "2025-08-01": { text: "“The Spirit of the Lord is upon me, for he has anointed me to bring Good News to the poor... and that the time of the Lord’s favor has come.” — Luke 4:18–19" },
+  "2025-08-02": { text: "“Listen to my prayer for mercy as I cry out to you for help, as I lift my hands toward your holy sanctuary.” — Psalm 28:2" },
+  "2025-08-03": { text: "“Dear friends, if we deliberately continue sinning after we have received knowledge of the truth, there is no longer any sacrifice that will cover these sins.” — Hebrews 10:26" },
+  "2025-08-04": { text: "“Imitate God, therefore, in everything you do... Live a life filled with love, following the example of Christ.” — Ephesians 5:1–2" },
+  "2025-08-05": { text: "“O Lord, how long will you forget me? Forever? How long will you look the other way?” — Psalm 13:1–2" },
+  "2025-08-06": { text: "“For God has not given us a spirit of fear and timidity, but of power, love, and self-discipline.” — 2 Timothy 1:7" },
+  "2025-08-07": { text: "“Finally, I confessed all my sins to you and stopped trying to hide my guilt... And you forgave me! All my guilt is gone.” — Psalm 32:5" },
+  "2025-08-08": { text: "“Those who say they live in God should live their lives as Jesus did.” — 1 John 2:6" },
+  "2025-08-09": { text: "“Christ suffered for you. He is your example, and you must follow in his steps.” — 1 Peter 2:21–23" },
+  "2025-08-10": { text: "“If you love me, obey my commandments.” — John 14:15" },
+  "2025-08-11": { text: "“Trust in the Lord with all your heart... and he will show you which path to take.” — Proverbs 3:5–6" },
+  "2025-08-12": { text: "“But consider the joy of those corrected by God! Do not despise the discipline of the Almighty when you sin.” — Job 5:17" },
+  "2025-08-13": { text: "“But even more blessed are all who hear the word of God and put it into practice.” — Luke 11:28" },
+  "2025-08-14": { text: "“My grace is all you need. My power works best in weakness.” — 2 Corinthians 12:9" },
+  "2025-08-15": { text: "“Make allowance for each other’s faults... the Lord forgave you, so you must forgive others.” — Colossians 3:13" },
+  "2025-08-16": { text: "“And you should imitate me, just as I imitate Christ.” — 1 Corinthians 11:1" },
+  "2025-08-17": { text: "“You must love the Lord your God and always obey his requirements, decrees, regulations, and commands.” — Deuteronomy 11:1" },
+  "2025-08-18": { text: "“The Lord says, ‘I will guide you along the best pathway for your life.’” — Psalm 32:8" },
+  "2025-08-19": { text: "“The Holy Spirit… will teach you everything... I am leaving you with a gift—peace of mind and heart...” — John 14:26–27" },
+  "2025-08-20": { text: "“To learn, you must love discipline; it is stupid to hate correction.” — Proverbs 12:1" },
+  "2025-08-21": { text: "“If any of you wants to be my follower, you must give up your own way, take up your cross daily, and follow me.” — Luke 9:23–24" },
+  "2025-08-22": { text: "“Study this Book of Instruction continually... Only then will you prosper and succeed in all you do.” — Joshua 1:8" },
+  "2025-08-23": { text: "“Your word is a lamp to guide my feet and a light for my path.” — Psalm 119:105" },
+  "2025-08-24": { text: "“It is not by force nor by strength, but by my Spirit, says the Lord of Heaven’s Armies.” — Zechariah 4:6" },
+  "2025-08-25": { text: "“But don’t just listen to God’s word. You must do what it says.” — James 1:22" },
+  "2025-08-26": { text: "“Your own ears will hear him. Right behind you a voice will say, ‘This is the way you should go.’” — Isaiah 30:21" },
+  "2025-08-27": { text: "“My child, don’t reject the Lord’s discipline... For wisdom is more profitable than silver.” — Proverbs 3:11–15" },
+  "2025-08-28": { text: "“No discipline is enjoyable while it is happening—it’s painful! But afterward... a peaceful harvest...” — Hebrews 12:11" },
+  "2025-08-29": { text: "“I correct and discipline everyone I love. So be diligent and turn from your indifference.” — Revelation 3:19" },
+  "2025-08-30": { text: "“All Scripture is inspired by God and is useful to teach us what is true...” — 2 Timothy 3:16" },
+  "2025-08-31": { text: "“Obedience is better than sacrifice, and submission is better than offering the fat of rams.” — 1 Samuel 15:22 and Job 22:28" }
+};
+  
   verseBox.textContent = verses[dateStr] || "Stay rooted in the Word. Verse coming soon.";
 
 </script>
