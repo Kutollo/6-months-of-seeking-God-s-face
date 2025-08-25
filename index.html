@@ -167,15 +167,16 @@
     verseImage.src = `images/${month}${day}.jpg`;
     verseImage.onerror = ()=>{verseImage.style.display="none";};
 
-    const verses = {
-      "2025-08-01":"“The Spirit of the Lord is upon me...” — Luke 4:18–19",
-      "2025-08-02":"“Listen to my prayer for mercy...” — Psalm 28:2",
-      "2025-08-03":"“Dear friends, if we deliberately continue sinning...” — Hebrews 10:26",
-      "2025-08-04":"“Imitate God, therefore, in everything you do...” — Ephesians 5:1–2",
-      "2025-08-05":"“O Lord, how long will you forget me?” — Psalm 13:1–2",
-      // ... add the rest
-      "2025-08-31":"“Obedience is better than sacrifice...” — 1 Samuel 15:22"
-    };
+  const verses = {
+  "2025-08-25": "“But don’t just listen to God’s word. You must do what it says.” — James 1:22",
+  "2025-08-26": "“Your own ears will hear him. Right behind you a voice will say, ‘This is the way you should go.’” — Isaiah 30:21",
+  "2025-08-27": "“My child, don’t reject the Lord’s discipline... For wisdom is more profitable than silver.” — Proverbs 3:11–15",
+  "2025-08-28": "“No discipline is enjoyable while it is happening—it’s painful! But afterward... a peaceful harvest...” — Hebrews 12:11",
+  "2025-08-29": "“I correct and discipline everyone I love. So be diligent and turn from your indifference.” — Revelation 3:19",
+  "2025-08-30": "“All Scripture is inspired by God and is useful to teach us what is true...” — 2 Timothy 3:16",
+  "2025-08-31": "“Obedience is better than sacrifice, and submission is better than offering the fat of rams.” — 1 Samuel 15:22 and Job 22:28"
+};
+
     verseBox.textContent = verses[dateStr] || "Stay rooted in the Word. Verse coming soon.";
   });
 </script>
