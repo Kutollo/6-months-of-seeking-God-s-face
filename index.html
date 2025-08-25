@@ -1,145 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>FaithSteps – Walk with God</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap" rel="stylesheet" />
-<style>
-  :root {
-    --bg: #fdfcf9;
-    --primary: #5b21b6;
-    --secondary: #c084fc;
-    --highlight: #ede9fe;
-    --text: #2d1e45;
-    --white: #fff;
-    --shadow: rgba(0,0,0,0.07);
-  }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <title>FaithSteps – Walk with God</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #fdfcf9;
+      --primary: #5b21b6;
+      --secondary: #c084fc;
+      --highlight: #ede9fe;
+      --text: #2d1e45;
+      --white: #fff;
+      --shadow: rgba(0, 0, 0, 0.07);
+    }
 
-  * { margin:0; padding:0; box-sizing:border-box; }
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    overflow-x: hidden;
-  }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family: 'DM Sans', sans-serif; background-color: var(--bg); color: var(--text); line-height:1.6; min-height:100vh; display:flex; flex-direction:column; justify-content:space-between; }
 
-  header {
-    background: url('https://images.unsplash.com/photo-1535440216424-0e374e613ee5?q=80&w=1033&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center/cover;
-    color: var(--white);
-    text-align: center;
-    padding: 5rem 2rem;
-  }
-  header h1 { font-size:3rem; text-shadow:2px 2px 6px #000; margin-bottom:0.3rem;}
-  header p { font-size:1.3rem; text-shadow:1px 1px 5px #000; }
+    header { background: url('https://images.unsplash.com/photo-1535440216424-0e374e613ee5?q=80&w=1033&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center/cover; color: var(--white); text-align:center; padding:5rem 2rem; }
+    header h1 { font-size:3rem; text-shadow:2px 2px 6px #000; margin-bottom:0.3rem; }
+    header p { font-size:1.3rem; font-weight:500; text-shadow:1px 1px 5px #000; }
 
-  nav {
-    background: var(--primary);
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    padding: 1rem;
-    box-shadow: 0 4px 8px var(--shadow);
-    gap:0.6rem;
-  }
-  nav a {
-    color: var(--white);
-    margin:0.5rem 1.2rem;
-    text-decoration:none;
-    font-weight:700;
-    font-size:1.1rem;
-  }
-  nav a:hover { color: var(--secondary); text-decoration: underline; }
+    nav { background: var(--primary); display:flex; flex-wrap:wrap; justify-content:center; padding:1rem; box-shadow:0 4px 8px var(--shadow); gap:0.6rem; }
+    nav a { color: var(--white); margin:0.5rem 1.2rem; text-decoration:none; font-weight:700; font-size:1.1rem; transition:all 0.3s ease; }
+    nav a:hover { text-decoration:underline; color: var(--secondary); }
 
-  main { max-width:900px; margin:2rem auto 4rem; padding:0 1rem; }
+    main { max-width:900px; margin:2rem auto 4rem; padding:0 1rem; }
+    section { background: var(--white); border-radius:10px; padding:1.8rem 2rem; margin-bottom:2rem; box-shadow:0 0 15px var(--shadow); }
+    section h2 { color: var(--primary); margin-bottom:1rem; font-weight:700; font-size:1.8rem; }
 
-  section { background: var(--white); border-radius:10px; padding:1.8rem 2rem; margin-bottom:2rem; box-shadow:0 0 15px var(--shadow);}
-  section h2 { color: var(--primary); margin-bottom:1rem; font-weight:700; font-size:1.8rem; }
+    #todaysVerseBox { font-size:1.1rem; font-weight:500; background: var(--highlight); padding:1rem 1.5rem; border-radius:8px; box-shadow:inset 0 0 6px #ddd6fe; margin-bottom:1.5rem; line-height:1.4; }
 
-  #todaysVerseBox {
-    font-size:1.1rem;
-    font-weight:500;
-    background: var(--highlight);
-    padding:1rem 1.5rem;
-    border-radius:8px;
-    box-shadow: inset 0 0 6px #ddd6fe;
-    margin-bottom:1.5rem;
-    line-height:1.4;
-    word-wrap: break-word;
-  }
+    /* Updated Announcement Bar */
+    .reminder {
+      background: var(--secondary);
+      color: var(--white);
+      font-weight:700;
+      padding:0.8rem 1rem;
+      border-radius:8px;
+      overflow:hidden;
+      white-space:pre-wrap;
+      box-shadow:0 4px 8px var(--shadow);
+      position:relative;
+      margin-bottom:2rem;
+      min-height:50px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+    }
+    #announcement {
+      display:inline-block;
+      border-right:2px solid var(--white);
+      padding-right:2px;
+      animation: blink-caret 0.7s step-end infinite;
+      word-wrap: break-word;
+    }
+    @keyframes blink-caret { 50% { border-color: transparent; } }
 
-  /* Announcement Bar */
-  .reminder {
-    background: var(--secondary);
-    color: var(--white);
-    font-weight: 700;
-    padding: 0.8rem 1rem;
-    border-radius: 8px;
-    margin-bottom:2rem;
-    position: relative;
-    max-width: 100%;
-    overflow: hidden;
-    min-height: 50px;
-    display:flex;
-    align-items: center;
-    flex-direction: column;
-    white-space: pre-wrap; /* allow line breaks */
-    text-align: center;
-  }
-  #announcement {
-    display: inline-block;
-    border-right:2px solid var(--white);
-    padding-right:2px;
-    white-space: pre-wrap;
-    overflow-wrap: break-word;
-    animation: blink-caret 0.7s step-end infinite;
-    width: 100%;
-  }
+    .footer-prayer { background:#f5f3ff; color: var(--primary); text-align:center; padding:1.5rem 2rem; font-size:1rem; line-height:1.6; border-top:1px solid var(--highlight); white-space: pre-line; user-select:text; font-weight:500; box-shadow:0 -2px 8px var(--shadow); border-radius:0 0 10px 10px; max-width:900px; margin:0 auto 2rem; }
 
-  @keyframes blink-caret { 50% { border-color: transparent; } }
+    .verse-image { display:block; max-width:320px; width:100%; margin:1rem auto 2rem; border-radius:12px; box-shadow:0 4px 12px var(--shadow); object-fit:cover; }
 
-  .footer-prayer {
-    background:#f5f3ff;
-    color: var(--primary);
-    text-align:center;
-    padding:1.5rem 2rem;
-    font-size:1rem;
-    line-height:1.6;
-    border-top:1px solid var(--highlight);
-    white-space: pre-line;
-    user-select: text;
-    font-weight:500;
-    box-shadow:0 -2px 8px var(--shadow);
-    border-radius:0 0 10px 10px;
-    max-width:900px;
-    margin:0 auto 2rem;
-  }
-
-  .verse-image {
-    display:block;
-    max-width:320px;
-    width:100%;
-    margin:1rem auto 2rem;
-    border-radius:12px;
-    box-shadow:0 4px 12px var(--shadow);
-    object-fit:cover;
-  }
-
-  @media(max-width:600px){
-    header h1{font-size:2.2rem;}
-    nav a{margin:0.5rem 0.8rem;font-size:1rem;}
-    main{margin:1rem auto 3rem;}
-    section{padding:1rem 1rem;}
-    section h2{font-size:1.5rem;}
-    header p{font-size:1rem;}
-    #todaysVerseBox{font-size:1rem;padding:0.8rem 1rem;}
-    .verse-image{max-width:100%;height:auto;}
-    .footer-prayer{padding:1rem;font-size:0.95rem;}
-  }
-</style>
+    @media(max-width:600px){
+      header h1{font-size:2.2rem;}
+      nav a{margin:0.5rem 0.8rem;font-size:1rem;}
+      main{margin:1rem auto 3rem;}
+      section{padding:1rem 1rem;}
+      section h2{font-size:1.5rem;}
+      header p{font-size:1rem;}
+      #todaysVerseBox{font-size:1rem;padding:0.8rem 1rem;}
+      .verse-image{max-width:100%;height:auto;}
+      .footer-prayer{padding:1rem;font-size:0.95rem;}
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -155,7 +91,7 @@
   </nav>
 
   <main>
-    <section class="reminder" id="reminderSection">
+    <section class="reminder">
       <span id="announcement"></span>
     </section>
 
@@ -169,40 +105,32 @@
       <div id="resourceContent"></div>
     </section>
 
-    <img id="dailyVerseImage" src="" alt="Verse of the Day Image" class="verse-image"/>
+    <img id="dailyVerseImage" src="" alt="Verse of the Day Image" class="verse-image" />
 
-      <section id="purpose">
+    <section id="purpose">
       <h2>Purpose of the Journey</h2>
-      <p>
-        This journey from July to December is a sacred commitment to seek God's face with intentionality. Through fasting, daily scripture, prayer, and reflection, we aim to deepen our relationship with the Lord, grow in spiritual discipline, and align our lives with His divine purpose. 
-        Each month will focus on a theme rooted in God's Word, guiding us to live with faith, purpose and love. Let this season be a spiritual reset and revival for your soul.
-      </p>
-      <p>
-        August focuses on turning back to God with humble hearts, walking in obedience and aligning with His Word.
-        Let this month be one of repentance, renewal, and redirection.
-      </p>
+      <p>This journey from July to December is a sacred commitment to seek God's face...</p>
     </section>
   </main>
 
   <section class="footer-prayer">
-    <strong>The Lord's Prayer</strong><br><br>
-    Our Father, who art in heaven...
+    <strong>The Lord's Prayer</strong><br /><br />
+    Our Father, who art in heaven, hallowed be thy name...
   </section>
 
 <script>
   // ---------- Announcement Typing Line by Line ----------
   const announcementMessage = "Check the Fasting tab for the September fasting schedule and plan your days of prayer and reflection!";
   const announcementEl = document.getElementById("announcement");
-  const reminderSection = document.getElementById("reminderSection");
 
-  if(!announcementMessage || announcementMessage.trim()===""){
-    reminderSection.style.display="none";
+  if(announcementMessage.trim()===""){
+    document.querySelector(".reminder").style.display="none";
   } else {
+    let words = announcementMessage.split(' ');
     let lines = [];
-    const words = announcementMessage.split(' ');
     let currentLine = '';
     words.forEach(word=>{
-      if((currentLine+word).length > 50){ // approx max chars per line
+      if((currentLine+word).length>45){ // max chars per line
         lines.push(currentLine.trim());
         currentLine = word + ' ';
       } else {
@@ -210,75 +138,46 @@
       }
     });
     if(currentLine) lines.push(currentLine.trim());
-    
-    let lineIndex=0;
-    let charIndex=0;
 
+    let lineIndex=0, charIndex=0;
     function typeLine(){
-      if(lineIndex >= lines.length) return;
+      if(lineIndex>=lines.length) return;
       announcementEl.textContent = lines.slice(0,lineIndex).join('\n') + '\n' + lines[lineIndex].substring(0,charIndex);
       charIndex++;
-      if(charIndex <= lines[lineIndex].length){
-        setTimeout(typeLine, 50);
+      if(charIndex<=lines[lineIndex].length){
+        setTimeout(typeLine,50);
       } else {
         lineIndex++;
         charIndex=0;
-        setTimeout(typeLine, 200); // small pause between lines
+        setTimeout(typeLine,200);
       }
     }
     typeLine();
   }
 
   // ---------- Verse of the Day ----------
-  const verseBox = document.getElementById('todaysVerseBox');
-  const verseImage = document.getElementById('dailyVerseImage');
+  window.addEventListener("DOMContentLoaded",()=>{
+    const verseBox = document.getElementById('todaysVerseBox');
+    const verseImage = document.getElementById('dailyVerseImage');
 
-  const today = new Date();
-  const year = today.getFullYear();
-  const month = String(today.getMonth()+1).padStart(2,'0');
-  const day = String(today.getDate()).padStart(2,'0');
-  const dateStr = `${year}-${month}-${day}`;
+    const today = new Date();
+    const dateStr = today.toISOString().split('T')[0];
+    const day = String(today.getDate()).padStart(2,'0');
+    const month = String(today.getMonth()+1).padStart(2,'0');
+    verseImage.src = `images/${month}${day}.jpg`;
+    verseImage.onerror = ()=>{verseImage.style.display="none";};
 
-  const imagePath = `images/${month}${day}.jpg`;
-  verseImage.src = imagePath;
-  verseImage.onerror = ()=>{verseImage.style.display='none';};
-
- const verses = {
-  "2025-08-01": { text: "“The Spirit of the Lord is upon me, for he has anointed me to bring Good News to the poor... and that the time of the Lord’s favor has come.” — Luke 4:18–19" },
-  "2025-08-02": { text: "“Listen to my prayer for mercy as I cry out to you for help, as I lift my hands toward your holy sanctuary.” — Psalm 28:2" },
-  "2025-08-03": { text: "“Dear friends, if we deliberately continue sinning after we have received knowledge of the truth, there is no longer any sacrifice that will cover these sins.” — Hebrews 10:26" },
-  "2025-08-04": { text: "“Imitate God, therefore, in everything you do... Live a life filled with love, following the example of Christ.” — Ephesians 5:1–2" },
-  "2025-08-05": { text: "“O Lord, how long will you forget me? Forever? How long will you look the other way?” — Psalm 13:1–2" },
-  "2025-08-06": { text: "“For God has not given us a spirit of fear and timidity, but of power, love, and self-discipline.” — 2 Timothy 1:7" },
-  "2025-08-07": { text: "“Finally, I confessed all my sins to you and stopped trying to hide my guilt... And you forgave me! All my guilt is gone.” — Psalm 32:5" },
-  "2025-08-08": { text: "“Those who say they live in God should live their lives as Jesus did.” — 1 John 2:6" },
-  "2025-08-09": { text: "“Christ suffered for you. He is your example, and you must follow in his steps.” — 1 Peter 2:21–23" },
-  "2025-08-10": { text: "“If you love me, obey my commandments.” — John 14:15" },
-  "2025-08-11": { text: "“Trust in the Lord with all your heart... and he will show you which path to take.” — Proverbs 3:5–6" },
-  "2025-08-12": { text: "“But consider the joy of those corrected by God! Do not despise the discipline of the Almighty when you sin.” — Job 5:17" },
-  "2025-08-13": { text: "“But even more blessed are all who hear the word of God and put it into practice.” — Luke 11:28" },
-  "2025-08-14": { text: "“My grace is all you need. My power works best in weakness.” — 2 Corinthians 12:9" },
-  "2025-08-15": { text: "“Make allowance for each other’s faults... the Lord forgave you, so you must forgive others.” — Colossians 3:13" },
-  "2025-08-16": { text: "“And you should imitate me, just as I imitate Christ.” — 1 Corinthians 11:1" },
-  "2025-08-17": { text: "“You must love the Lord your God and always obey his requirements, decrees, regulations, and commands.” — Deuteronomy 11:1" },
-  "2025-08-18": { text: "“The Lord says, ‘I will guide you along the best pathway for your life.’” — Psalm 32:8" },
-  "2025-08-19": { text: "“The Holy Spirit… will teach you everything... I am leaving you with a gift—peace of mind and heart...” — John 14:26–27" },
-  "2025-08-20": { text: "“To learn, you must love discipline; it is stupid to hate correction.” — Proverbs 12:1" },
-  "2025-08-21": { text: "“If any of you wants to be my follower, you must give up your own way, take up your cross daily, and follow me.” — Luke 9:23–24" },
-  "2025-08-22": { text: "“Study this Book of Instruction continually... Only then will you prosper and succeed in all you do.” — Joshua 1:8" },
-  "2025-08-23": { text: "“Your word is a lamp to guide my feet and a light for my path.” — Psalm 119:105" },
-  "2025-08-24": { text: "“It is not by force nor by strength, but by my Spirit, says the Lord of Heaven’s Armies.” — Zechariah 4:6" },
-  "2025-08-25": { text: "“But don’t just listen to God’s word. You must do what it says.” — James 1:22" },
-  "2025-08-26": { text: "“Your own ears will hear him. Right behind you a voice will say, ‘This is the way you should go.’” — Isaiah 30:21" },
-  "2025-08-27": { text: "“My child, don’t reject the Lord’s discipline... For wisdom is more profitable than silver.” — Proverbs 3:11–15" },
-  "2025-08-28": { text: "“No discipline is enjoyable while it is happening—it’s painful! But afterward... a peaceful harvest...” — Hebrews 12:11" },
-  "2025-08-29": { text: "“I correct and discipline everyone I love. So be diligent and turn from your indifference.” — Revelation 3:19" },
-  "2025-08-30": { text: "“All Scripture is inspired by God and is useful to teach us what is true...” — 2 Timothy 3:16" },
-  "2025-08-31": { text: "“Obedience is better than sacrifice, and submission is better than offering the fat of rams.” — 1 Samuel 15:22 and Job 22:28" }
-};
-  
-  verseBox.textContent = verses[dateStr] || "Stay rooted in the Word. Verse coming soon.";
-
+    const verses = {
+      "2025-08-01":"“The Spirit of the Lord is upon me...” — Luke 4:18–19",
+      "2025-08-02":"“Listen to my prayer for mercy...” — Psalm 28:2",
+      "2025-08-03":"“Dear friends, if we deliberately continue sinning...” — Hebrews 10:26",
+      "2025-08-04":"“Imitate God, therefore, in everything you do...” — Ephesians 5:1–2",
+      "2025-08-05":"“O Lord, how long will you forget me?” — Psalm 13:1–2",
+      // ... add the rest
+      "2025-08-31":"“Obedience is better than sacrifice...” — 1 Samuel 15:22"
+    };
+    verseBox.textContent = verses[dateStr] || "Stay rooted in the Word. Verse coming soon.";
+  });
 </script>
 </body>
 </html>
