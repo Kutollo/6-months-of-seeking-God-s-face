@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>FaithSteps – Walk with God</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: linear-gradient(to bottom right, #fde2ff, #ffe6f0);
+    --primary: #d63384;
+    --secondary: #ff69b4;
+    --highlight: #fff0f5;
+    --text: #2d1e45;
+    --white: #fff;
+    --shadow: rgba(0,0,0,0.07);
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+  }
+
+  header {
+    position: relative;
+    background: url('https://images.unsplash.com/photo-1554355409-7d69eaad80d9?q=80&w=1200&auto=format&fit=crop') no-repeat center/cover;
+    color: var(--white);
+    text-align: center;
+    padding: 5rem 2rem;
+  }
+  header::after {
+    content: '';
+    position: absolute;
+    top:0; left:0; right:0; bottom:0;
+    
+    z-index:0;
+  }
+  header h1, header p { position: relative; z-index:1; }
+  header h1 { font-size:3rem; text-shadow:2px 2px 6px #000; margin-bottom:0.3rem;}
+  header p { font-size:1.3rem; text-shadow:1px 1px 5px #000; }
+
+  nav {
+    position: sticky; top:0;
+    background: var(--primary);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 1rem;
+    box-shadow: 0 4px 8px var(--shadow);
+    gap:0.6rem;
+    z-index:10;
+  }
+  nav a {
+    color: var(--white);
+    margin:0.5rem 1.2rem;
+    text-decoration:none;
+    font-weight:700;
+    font-size:1.1rem;
+  }
+  nav a:hover { color: var(--secondary); text-decoration: underline; }
+
+  main { max-width:900px; margin:2rem auto 4rem; padding:0 1rem; }
+
+  section {
+    background: var(--white);
+    border-radius:12px;
+    padding:2rem;
+    margin-bottom:2rem;
+    box-shadow:0 6px 18px var(--shadow);
+  }
+  section h2 {
+    color: var(--primary);
+    margin-bottom:1rem;
+    font-weight:700;
+    font-size:1.8rem;
+    text-align:center;
+  }
+
+  #todaysVerseBox {
+    font-size:1.1rem;
+    font-weight:500;
+    background: var(--highlight);
+    padding:1.2rem 1.8rem;
+    border-radius:10px;
+    box-shadow: inset 0 0 10px #ffd6f0;
+    margin-bottom:1.5rem;
+    line-height:1.5;
+    word-wrap: break-word;
+    text-align:center;
+  }
+
+  /* Announcement */
+  .reminder {
+    background: linear-gradient(to right, var(--secondary), var(--primary));
+    color: var(--white);
+    font-weight: 700;
+    padding: 1rem 1.2rem;
+    border-radius: 10px;
+    margin-bottom:2rem;
+    position: relative;
+    max-width: 100%;
+    overflow: hidden;
+    min-height: 60px;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    white-space: pre-wrap;
+    text-align: center;
+    border: 2px dotted var(--white);
+  }
+  #announcement {
+    display:inline-block;
+    border-right:2px solid var(--white);
+    padding-right:2px;
+    animation: blink-caret 0.7s step-end infinite;
+    width: 100%;
+  }
+
+  @keyframes blink-caret { 50% { border-color: transparent; } }
+
+  .footer-prayer {
+    background: var(--highlight);
+    color: var(--primary);
+    text-align:center;
+    padding:2rem;
+    font-size:1rem;
+    line-height:1.8;
+    border-top:2px solid var(--secondary);
+    white-space: pre-line;
+    font-weight:500;
+    box-shadow:0 -2px 12px var(--shadow);
+    border-radius:0 0 12px 12px;
+    max-width:900px;
+    margin:0 auto 2rem;
+  }
+  .footer-prayer strong {
+    display:block;
+    margin-bottom:1rem;
+    font-size:1.3rem;
+  }
+
+  .verse-image {
+    display:block;
+    max-width:320px;
+    width:100%;
+    margin:1rem auto 2rem;
+    border-radius:12px;
+    box-shadow:0 6px 16px var(--shadow);
+    object-fit:cover;
+  }
+
+  @media(max-width:600px){
+    header h1{font-size:2.2rem;}
+    nav a{margin:0.5rem 0.8rem;font-size:1rem;}
+    main{margin:1rem auto 3rem;}
+    section{padding:1.2rem 1.2rem;}
+    section h2{font-size:1.5rem;}
+    header p{font-size:1rem;}
+    #todaysVerseBox{font-size:1rem;padding:1rem 1.2rem;}
+    .verse-image{max-width:100%;height:auto;}
+    .footer-prayer{padding:1.5rem;font-size:0.95rem;}
+  }
+</style>
+</head>
+<body>
+  <header>
+    <h1>FaithSteps: Walk With God</h1>
+    <p>6 months of Seeking God's Face • Scripture • Fasting • Prayer • Journaling</p>
+  </header>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="journal.html">Journal</a>
+    <a href="verses.html">Verses</a>
+    <a href="fasting.html">Fasting</a>
+  </nav>
+
+  <main>
+    <section class="reminder" id="reminderSection">
+      <span id="announcement"></span>
+    </section>
+
+    <section id="todaysVerse">
+      <h2>📖 Today's Verse</h2>
+      <div id="todaysVerseBox">Loading verse…</div>
+    </section>
+
+    <section id="dailyResourceSection" style="display:none;">
+      <h2>📘 Daily Resource</h2>
+      <div id="resourceContent"></div>
+    </section>
+
+    <img id="dailyVerseImage" src="" alt="Verse of the Day Image" class="verse-image"/>
+
+    <section id="purpose">
+  <h2>Purpose of the Journey</h2>
+  <p>
+    This journey from July to December is a sacred commitment to seek God's face with intentionality. Through fasting, daily scripture, prayer, and reflection, we aim to deepen our relationship with the Lord, grow in spiritual discipline, and align our lives with His divine purpose.
+  </p>
+  <p>
+    July focuses on seeking God's face, developing a habit of daily intimacy through prayer, scripture, and reflection. Let this month be one of connection, focus, and intentional pursuit of His presence.
+  </p>
+  <p>
+    August focuses on turning back to God with humble hearts, walking in obedience, and aligning with His Word. Let this month be one of repentance, renewal, and redirection.
+  </p>
+  <p>
+    September centers on cultivating intimacy with God and building spiritual strength. This month encourages us to draw near to Him, rely on His power, and grow in steadfast faith, allowing His presence to shape our daily lives and decisions.
+  </p>
+</section>
+ <section id="month-theme">
+      <h2>Month & Theme</h2>
+      <p><strong>July 2025</strong></p>
+      <p><em>Theme: Seeking God's Face</em></p>
+      <p><strong>August 2025</strong></p>
+      <p><em>Theme: Repentance, Obedience, Discipline, Following Christ's Examples & Following God's Instructions</em></p>
+      <p><strong>September 2025</strong></p>
+      <p><em>Theme: Intimacy with God and Spiritual Strength</em></p>
+    </section>
+  </main>
+
+  <section class="footer-prayer">
+    <strong>The Lord's Prayer</strong>
+    <div id="lordsPrayer"></div>
+  </section>
+
+<script>
+  // Announcement typing
+  const announcementMessage = "Check the Fasting tab for the September fasting schedule and plan your days of prayer and reflection!";
+  const announcementEl = document.getElementById("announcement");
+  const reminderSection = document.getElementById("reminderSection");
+  if(!announcementMessage.trim()){ reminderSection.style.display="none"; } 
+  else {
+    let words=announcementMessage.split(' '), lines=[], currentLine='';
+    words.forEach(word=>{
+      if((currentLine+word).length>50){ lines.push(currentLine.trim()); currentLine=word+' '; } 
+      else currentLine+=word+' ';
+    });
+    if(currentLine) lines.push(currentLine.trim());
+    let lineIndex=0, charIndex=0;
+    function typeLine(){
+      if(lineIndex>=lines.length) return;
+      announcementEl.textContent = lines.slice(0,lineIndex).join('\n') + '\n' + lines[lineIndex].substring(0,charIndex);
+      charIndex++;
+      if(charIndex<=lines[lineIndex].length) setTimeout(typeLine,50);
+      else { lineIndex++; charIndex=0; setTimeout(typeLine,200);}
+    }
+    typeLine();
+  }
+
+  // Verse of the Day
+  const verseBox=document.getElementById('todaysVerseBox');
+  const verseImage=document.getElementById('dailyVerseImage');
+  const today=new Date(), year=today.getFullYear(), month=String(today.getMonth()+1).padStart(2,'0'), day=String(today.getDate()).padStart(2,'0');
+  const dateStr=`${year}-${month}-${day}`;
+  const imagePath=`images/${month}${day}.jpg`;
+  verseImage.src=imagePath;
+  verseImage.onerror=()=>{verseImage.style.display='none';};
+  const verses = {
+    "2025-08-28": "“No discipline is enjoyable while it is happening—it’s painful! But afterward... a peaceful harvest...” — Hebrews 12:11 (MSG)",
+    "2025-08-29": "“I correct and discipline everyone I love. So be diligent and turn from your indifference.” — Revelation 3:19 (MSG)",
+    "2025-08-30": "“All Scripture is inspired by God and is useful to teach us what is true...” — 2 Timothy 3:16 (MSG)",
+    "2025-08-31": "“Obedience is better than sacrifice, and submission is better than offering the fat of rams.” — 1 Samuel 15:22 & Job 22:28 (MSG)",
+    "2025-09-01": "“One thing I ask of the Lord… that I may dwell in the house of the Lord all the days of my life…” — Psalm 27:4",
+    "2025-09-02": "“Draw near to God, and He will draw near to you.” — James 4:8",
+    "2025-09-03": "“But those who hope in the Lord will renew their strength. They will soar on wings like eagles…” — Isaiah 40:31",
+    "2025-09-04": "“God is our refuge and strength, an ever-present help in trouble.” — Psalm 46:1",
+    "2025-09-05": "“I can do all this through Him who gives me strength.” — Philippians 4:13",
+    "2025-09-06": "“Remain in me, and I will remain in you.” — John 15:4",
+    "2025-09-07": "“I pray that out of His glorious riches He may strengthen you with power through His Spirit in your inner being.” — Ephesians 3:16",
+    "2025-09-08": "“You, God, are my God, earnestly I seek you; I thirst for you, my whole being longs for you…” — Psalm 63:1",
+    "2025-09-09": "“My grace is sufficient for you, for my power is made perfect in weakness.” — 2 Corinthians 12:9",
+    "2025-09-10": "“Trust in the Lord with all your heart and lean not on your own understanding…” — Proverbs 3:5–6",
+    "2025-09-11": "“My flesh and my heart may fail, but God is the strength of my heart and my portion forever.” — Psalm 73:26",
+    "2025-09-12": "“Continue to live your lives in Him, rooted and built up in Him…” — Colossians 2:6–7",
+    "2025-09-13": "“Let us consider how we may spur one another on toward love and good deeds, not giving up meeting together…” — Hebrews 10:24–25",
+    "2025-09-14": "“It is God who arms me with strength and keeps my way secure.” — Psalm 18:32",
+    "2025-09-15": "“Nothing can separate us from the love of God that is in Christ Jesus our Lord.” — Romans 8:38–39",
+    "2025-09-16": "“Your word is a lamp to my feet and a light for my path.” — Psalm 119:105",
+    "2025-09-17": "“So do not fear, for I am with you; do not be dismayed, for I am your God…” — Isaiah 41:10",
+    "2025-09-18": "“Be on your guard; stand firm in the faith; be courageous; be strong.” — 1 Corinthians 16:13",
+    "2025-09-19": "“Whoever dwells in the shelter of the Most High will rest in the shadow of the Almighty…” — Psalm 91:1–2",
+    "2025-09-20": "“But the fruit of the Spirit is love, joy, peace, patience, kindness, goodness, faithfulness…” — Galatians 5:22–23",
+    "2025-09-21": "“Be strong and courageous. Do not be afraid; do not be discouraged, for the Lord your God will be with you wherever you go.” — Joshua 1:9",
+    "2025-09-22": "“The righteous cry out, and the Lord hears them; He delivers them from all their troubles.” — Psalm 34:17",
+    "2025-09-23": "“If any of you lacks wisdom, you should ask God, who gives generously to all without finding fault…” — James 1:5",
+    "2025-09-24": "“Do not be anxious about anything, but in every situation, by prayer and petition, with thanksgiving, present your requests to God…” — Philippians 4:6–7",
+    "2025-09-25": "“For the Spirit God gave us does not make us timid, but gives us power, love and self-discipline.” — 2 Timothy 1:7",
+    "2025-09-26": "“You make known to me the path of life; you will fill me with joy in your presence…” — Psalm 16:11",
+    "2025-09-27": "“May the God of hope fill you with all joy and peace as you trust in Him, so that you may overflow with hope by the power of the Holy Spirit.” — Romans 15:13",
+    "2025-09-28": "“Finally, be strong in the Lord and in His mighty power.” — Ephesians 6:10",
+    "2025-09-29": "“Yes, my soul, find rest in God; my hope comes from Him. Truly He is my rock and my salvation…” — Psalm 62:5–6",
+    "2025-09-30": "“God is love. Whoever lives in love lives in God, and God in them.” — 1 John 4:16"
+};
+  verseBox.textContent = verses[dateStr] || "Stay rooted in the Word. Verse coming soon.";
+
+  // Animate Lord's Prayer with fade
+  const prayerLines=[
+    "Our Father, who art in heaven,",
+    "hallowed be Thy name.",
+    "Thy kingdom come,",
+    "Thy will be done,",
+    "on earth as it is in heaven.",
+    "",
+    "Give us this day our daily bread,",
+    "and forgive us our debts,",
+    "as we forgive our debtors.",
+    "",
+    "And lead us not into temptation,",
+    "but deliver us from evil.",
+    "",
+    "For Thine is the kingdom,",
+    "and the power,",
+    "and the glory, forever.",
+    "Amen."
+  ];
+  const prayerEl=document.getElementById("lordsPrayer");
+  let pLine=0, pChar=0, built=[];
+  function typePrayer(){
+    if(pLine>=prayerLines.length) return;
+    built[pLine]=prayerLines[pLine].substring(0,pChar);
+    prayerEl.textContent = built.join("\n");
+    pChar++;
+    if(pChar<=prayerLines[pLine].length) setTimeout(typePrayer,60);
+    else { pLine++; pChar=0; setTimeout(typePrayer,400);}
+  }
+  typePrayer();
+</script>
+</body>
+</html>
