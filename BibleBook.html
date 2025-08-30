@@ -1,69 +1,285 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bible Reading Tracker</title>
-  <style>
-    body { font-family: Arial, sans-serif; margin: 20px; }
-    .day { border: 1px solid #ccc; padding: 10px; margin: 10px 0; border-radius: 8px; }
-    .day-header { display: flex; justify-content: space-between; align-items: center; }
-    textarea { width: 100%; margin-top: 8px; height: 60px; }
-    .btn { padding: 6px 12px; background: #4CAF50; color: white; border: none; border-radius: 4px; cursor: pointer; }
-    .btn:hover { background: #45a049; }
-    .progress { margin: 15px 0; font-weight: bold; }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>FaithSteps – Walk with God</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: linear-gradient(to bottom right, #fde2ff, #ffe6f0);
+    --primary: #d63384;
+    --secondary: #ff69b4;
+    --highlight: #fff0f5;
+    --text: #2d1e45;
+    --white: #fff;
+    --shadow: rgba(0,0,0,0.07);
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+  }
+
+  header {
+    position: relative;
+    background: url('https://images.unsplash.com/photo-1554355409-7d69eaad80d9?q=80&w=1200&auto=format&fit=crop') no-repeat center/cover;
+    color: var(--white);
+    text-align: center;
+    padding: 5rem 2rem;
+  }
+  header h1 { font-size:3rem; text-shadow:2px 2px 6px #000; margin-bottom:0.3rem;}
+  header p { font-size:1.3rem; text-shadow:1px 1px 5px #000; }
+
+  nav {
+    position: sticky; top:0;
+    background: var(--primary);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 1rem;
+    box-shadow: 0 4px 8px var(--shadow);
+    gap:0.6rem;
+    z-index:10;
+  }
+  nav a {
+    color: var(--white);
+    margin:0.5rem 1.2rem;
+    text-decoration:none;
+    font-weight:700;
+    font-size:1.1rem;
+  }
+  nav a:hover { color: var(--secondary); text-decoration: underline; }
+
+  main { max-width:900px; margin:2rem auto 4rem; padding:0 1rem; }
+
+  section {
+    background: var(--white);
+    border-radius:12px;
+    padding:2rem;
+    margin-bottom:2rem;
+    box-shadow:0 6px 18px var(--shadow);
+  }
+  section h2 {
+    color: var(--primary);
+    margin-bottom:1rem;
+    font-weight:700;
+    font-size:1.8rem;
+    text-align:center;
+  }
+
+  label { display:block; margin-top:1rem; font-weight:700; }
+
+  select {
+    margin:0.5rem 0;
+    padding:0.5rem;
+    border:1px solid #ccc;
+    border-radius:8px;
+    width:100%;
+    font-size:1rem;
+  }
+
+  .day {
+    display: flex;
+    flex-direction: column;
+    background: var(--highlight);
+    margin: 10px 0;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px var(--shadow);
+  }
+  .day-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap:0.5rem;
+  }
+  .day-header input { margin-right: 10px; }
+  .day textarea {
+    margin-top:8px;
+    width:100%;
+    min-height:80px;
+    padding:10px;
+    border-radius:8px;
+    border:1px solid #ccc;
+    font-size:0.95rem;
+  }
+  .btn {
+    background: var(--primary);
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+    padding:0.6rem 1.2rem;
+    border-radius:8px;
+    font-weight:700;
+    margin-top:5px;
+  }
+  .btn:hover { background: var(--secondary); }
+
+  .progress-container {
+    margin: 15px 0;
+    background: #ddd;
+    border-radius: 8px;
+    height: 20px;
+    width: 100%;
+    overflow: hidden;
+  }
+  .progress-bar {
+    height: 100%;
+    width: 0%;
+    background: var(--primary);
+    text-align: center;
+    color: white;
+    line-height: 20px;
+    font-size: 12px;
+    font-weight:700;
+    transition: width 0.4s ease-in-out;
+  }
+
+  @media(max-width:600px){
+    header h1{font-size:2.2rem;}
+    nav a{margin:0.5rem 0.8rem;font-size:1rem;}
+    main{margin:1rem auto 3rem;}
+    section{padding:1.2rem 1.2rem;}
+    section h2{font-size:1.5rem;}
+    header p{font-size:1rem;}
+  }
+</style>
 </head>
 <body>
-  <h1>📖 Bible Reading Tracker</h1>
+  <header>
+    <h1>FaithSteps: Walk With God</h1>
+    <p>6 months of Seeking God's Face • Scripture • Fasting • Prayer • Journaling</p>
+  </header>
 
-  <label for="bookSelect">Choose a Book:</label>
-  <select id="bookSelect">
-    <option value="">--Select--</option>
-    <option value="Genesis">Genesis (50)</option>
-    <option value="Exodus">Exodus (40)</option>
-    <option value="Psalms">Psalms (150)</option>
-    <option value="Proverbs">Proverbs (31)</option>
-    <option value="Ruth">Ruth (4)</option>
-  </select>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="journal.html">Journal</a>
+    <a href="verses.html">Verses</a>
+    <a href="fasting.html">Fasting</a>
+    <a href="#">Monthly Bible Reading</a>
+  </nav>
 
-  <label for="monthSelect">Choose a Month:</label>
-  <select id="monthSelect">
-    <option value="">--Select--</option>
-    <option value="January">January</option>
-    <option value="February">February</option>
-    <option value="March">March</option>
-    <option value="April">April</option>
-    <option value="May">May</option>
-    <option value="June">June</option>
-    <option value="July">July</option>
-    <option value="August">August</option>
-    <option value="September">September</option>
-    <option value="October">October</option>
-    <option value="November">November</option>
-    <option value="December">December</option>
-  </select>
+  <main>
+    <section>
+      <h2>📖 Monthly Bible Reading Tracker</h2>
+      <p style="text-align:center; font-size:1rem; line-height:1.5; color:var(--text);">
+        Select a book and month to generate your daily reading plan. Tick each day as you complete it and write your reflections below. Use the buttons to download daily or monthly PDFs. Track your progress with the bar above and stay consistent!
+      </p>
+    </section>
 
-  <button class="btn" onclick="generatePlan()">Generate Plan</button>
-  <button class="btn" onclick="exportPDF()">Download Full PDF</button>
+    <!-- Book + Month Selection -->
+    <section>
+      <label for="bookSelect">Choose a Book:</label>
+      <select id="bookSelect" onchange="generatePlan()"></select>
 
-  <div class="progress" id="progressTracker"></div>
-  <div id="planContainer"></div>
+      <label for="monthSelect">Choose a Month:</label>
+      <select id="monthSelect" onchange="generatePlan()"></select>
 
-  <!-- jsPDF -->
+      <!-- Progress Bar -->
+      <div class="progress-container">
+        <div id="progressBar" class="progress-bar">0%</div>
+      </div>
+    </section>
+
+    <!-- Daily Plan -->
+    <section>
+      <h2>Daily Plan & Reflections</h2>
+      <div id="planContainer"></div>
+      <button class="btn" onclick="exportPDF()">📄 Export Monthly Reflections</button>
+    </section>
+  </main>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <script>
+    const { jsPDF } = window.jspdf;
     const bibleChapters = {
-      "Genesis": 50,
-      "Exodus": 40,
-      "Psalms": 150,
-      "Proverbs": 31,
-      "Ruth": 4
+      "Genesis": 50, "Exodus": 40, "Leviticus": 27, "Numbers": 36, "Deuteronomy": 34,
+      "Joshua": 24, "Judges": 21, "Ruth": 4, "1 Samuel": 31, "2 Samuel": 24,
+      "1 Kings": 22, "2 Kings": 25, "1 Chronicles": 29, "2 Chronicles": 36,
+      "Ezra": 10, "Nehemiah": 13, "Esther": 10, "Job": 42, "Psalms": 150,
+      "Proverbs": 31, "Ecclesiastes": 12, "Song of Solomon": 8, "Isaiah": 66,
+      "Jeremiah": 52, "Lamentations": 5, "Ezekiel": 48, "Daniel": 12,
+      "Hosea": 14, "Joel": 3, "Amos": 9, "Obadiah": 1, "Jonah": 4,
+      "Micah": 7, "Nahum": 3, "Habakkuk": 3, "Zephaniah": 3, "Haggai": 2,
+      "Zechariah": 14, "Malachi": 4,
+      "Matthew": 28, "Mark": 16, "Luke": 24, "John": 21,
+      "Acts": 28, "Romans": 16, "1 Corinthians": 16, "2 Corinthians": 13,
+      "Galatians": 6, "Ephesians": 6, "Philippians": 4, "Colossians": 4,
+      "1 Thessalonians": 5, "2 Thessalonians": 3, "1 Timothy": 6, "2 Timothy": 4,
+      "Titus": 3, "Philemon": 1, "Hebrews": 13, "James": 5,
+      "1 Peter": 5, "2 Peter": 3, "1 John": 5, "2 John": 1,
+      "3 John": 1, "Jude": 1, "Revelation": 22
     };
 
+    window.onload = () => {
+      const bookSelect = document.getElementById("bookSelect");
+      for(let book in bibleChapters){
+        const opt = document.createElement("option");
+        opt.value = book; opt.innerText = book; bookSelect.appendChild(opt);
+      }
+
+      const monthSelect = document.getElementById("monthSelect");
+      const months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+      months.forEach(m=>{ const opt=document.createElement("option"); opt.value=m; opt.innerText=m; monthSelect.appendChild(opt); });
+      monthSelect.value = months[new Date().getMonth()];
+
+      generatePlan();
+    };
+
+    function generatePlan(){
+      const book = document.getElementById("bookSelect").value;
+      const month = document.getElementById("monthSelect").value;
+      if(!book||!month) return;
+
+      const planContainer = document.getElementById("planContainer");
+      planContainer.innerHTML = "";
+      const chaptersPerDay = Math.ceil(bibleChapters[book]/30);
+      let chapter=1;
+
+      for(let day=1;day<=30;day++){
+        if(chapter>bibleChapters[book]) break;
+        const start=chapter;
+        const end=Math.min(chapter+chaptersPerDay-1,bibleChapters[book]);
+        chapter=end+1;
+
+        const div=document.createElement("div");
+        div.className="day";
+        div.innerHTML=`
+          <div class="day-header">
+            <div><input type="checkbox" id="day${day}" onchange="saveProgress('${book}','${month}',${day})">
+            <label for="day${day}">Day ${day}: Read ${book} ${start}${start!==end?' - '+end:''}</label></div>
+            <button class="btn" onclick="exportDayPDF(${day})">📄 Day PDF</button>
+          </div>
+          <textarea id="reflection${day}" placeholder="Reflection for Day ${day}..."></textarea>
+        `;
+        planContainer.appendChild(div);
+
+        const savedCheck = localStorage.getItem(`${book}_${month}_2025_day${day}`);
+        if(savedCheck==="true") document.getElementById("day"+day).checked=true;
+
+        const savedRef = localStorage.getItem(`${book}_${month}_2025_reflection_day${day}`);
+        if(savedRef) document.getElementById("reflection"+day).value=savedRef;
+
+        document.getElementById("reflection"+day).addEventListener('input',()=>{ 
+          localStorage.setItem(`${book}_${month}_2025_reflection_day${day}`,document.getElementById("reflection"+day).value); 
+        });
+      }
+
+      updateProgress();
+    }
+
     function saveProgress(book,month,day){
-      const key=`${book}_${month}_2025_day${day}`;
-      localStorage.setItem(key, document.getElementById("day"+day).checked);
+      const checked=document.getElementById("day"+day).checked;
+      localStorage.setItem(`${book}_${month}_2025_day${day}`,checked);
       updateProgress();
     }
 
@@ -71,111 +287,65 @@
       const book=document.getElementById("bookSelect").value;
       const month=document.getElementById("monthSelect").value;
       if(!book||!month) return;
-      let total=30, done=0;
-      for(let i=1;i<=30;i++){
-        if(localStorage.getItem(`${book}_${month}_2025_day${i}`)==="true") done++;
-      }
-      document.getElementById("progressTracker").innerText=`Progress: ${done}/30 days completed (${Math.round(done/30*100)}%)`;
-    }
 
-    function generatePlan(){
-      const book=document.getElementById("bookSelect").value;
-      const month=document.getElementById("monthSelect").value;
-      if(!book||!month) return;
-
-      const planContainer=document.getElementById("planContainer");
-      planContainer.innerHTML="";
-
-      const totalChapters=bibleChapters[book];
-      const base=Math.floor(totalChapters/30);
-      let remainder=totalChapters%30;
-      let chapter=1;
-
-      for(let day=1; day<=30; day++){
-        let chaptersToday=base;
-
-        if(remainder>0){
-          chaptersToday+=1;
-          remainder--;
-        }
-
-        let readingText;
-
-        if(chapter<=totalChapters){
-          let start=chapter;
-          let end=Math.min(chapter+chaptersToday-1,totalChapters);
-
-          // last day: dump all remaining chapters
-          if(day===30 && end<totalChapters){
-            end=totalChapters;
-          }
-
-          chapter=end+1;
-          readingText=`Read ${book} ${start}${start!==end?' - '+end:''}`;
-        } else {
-          readingText="✨ Reflection / Catch-up Day";
-        }
-
-        const div=document.createElement("div");
-        div.className="day";
-        div.innerHTML=`
-          <div class="day-header">
-            <div>
-              <input type="checkbox" id="day${day}" onchange="saveProgress('${book}','${month}',${day})">
-              <label for="day${day}">Day ${day}: ${readingText}</label>
-            </div>
-            <button class="btn" onclick="exportDayPDF(${day})">Download Day PDF</button>
-          </div>
-          <textarea id="reflection${day}" placeholder="Reflection for Day ${day}..."></textarea>
-        `;
-        planContainer.appendChild(div);
-
-        // restore
-        const savedCheck=localStorage.getItem(`${book}_${month}_2025_day${day}`);
-        if(savedCheck==="true") document.getElementById("day"+day).checked=true;
-
-        const savedRef=localStorage.getItem(`${book}_${month}_2025_reflection_day${day}`);
-        if(savedRef) document.getElementById("reflection"+day).value=savedRef;
-
-        document.getElementById("reflection"+day).addEventListener('input',()=>{
-          localStorage.setItem(`${book}_${month}_2025_reflection_day${day}`,document.getElementById("reflection"+day).value);
-        });
-      }
-
-      updateProgress();
-    }
-
-    async function exportPDF(){
-      const { jsPDF }=window.jspdf;
-      const doc=new jsPDF();
-      const book=document.getElementById("bookSelect").value;
-      const month=document.getElementById("monthSelect").value;
-      doc.text(`Bible Reading Plan - ${book} (${month} 2025)`,10,10);
-
-      let y=20;
+      let total=0, checked=0;
       for(let day=1;day<=30;day++){
-        const label=document.querySelector("label[for='day"+day+"']");
-        if(!label) continue;
-        const reflection=document.getElementById("reflection"+day).value;
-        doc.text(`${label.innerText}`,10,y); y+=8;
-        if(reflection){ doc.text(`Reflection: ${reflection}`,10,y); y+=8; }
-        if(y>270){ doc.addPage(); y=20; }
+        if(document.getElementById("day"+day)){
+          total++;
+          if(document.getElementById("day"+day).checked) checked++;
+        }
       }
-
-      doc.save(`${book}_${month}_2025_Plan.pdf`);
+      const percent=total>0?Math.round((checked/total)*100):0;
+      const bar=document.getElementById("progressBar");
+      bar.style.width=percent+"%"; bar.textContent=percent+"%";
     }
 
-    async function exportDayPDF(day){
-      const { jsPDF }=window.jspdf;
-      const doc=new jsPDF();
+    function exportPDF(){
       const book=document.getElementById("bookSelect").value;
       const month=document.getElementById("monthSelect").value;
-      const label=document.querySelector("label[for='day"+day+"']");
-      const reflection=document.getElementById("reflection"+day).value;
-      doc.text(`Bible Reading - ${book} (${month} 2025)`,10,10);
-      doc.text(`${label.innerText}`,10,20);
-      if(reflection){ doc.text(`Reflection: ${reflection}`,10,30); }
-      doc.save(`${book}_${month}_2025_Day${day}.pdf`);
+      if(!book||!month){ alert("Choose book and month"); return; }
+      const doc=new jsPDF();
+      doc.setFontSize(16); doc.setFont("helvetica","bold");
+      doc.text(`Bible Reading Reflections - ${book} (${month} 2025)`,105,15,{align:"center"});
+      let y=30;
+
+      for(let day=1;day<=30;day++){
+        const savedCheck=localStorage.getItem(`${book}_${month}_2025_day${day}`);
+        if(!savedCheck) continue;
+        const done=savedCheck==="true"?"✔":"✘";
+        const ref=localStorage.getItem(`${book}_${month}_2025_reflection_day${day}`)||"No reflection written.";
+
+        doc.setFont("helvetica","bold"); doc.setFontSize(12);
+        doc.text(`Day ${day}: ${done}`,15,y);
+        y+=6;
+
+        doc.setFont("helvetica","normal"); doc.setFontSize(11);
+        const lines=doc.splitTextToSize(ref,180);
+        doc.text(lines,15,y);
+        y+=lines.length*6 + 10;
+
+        if(y>270 && day<30){ doc.addPage(); y=20; }
+      }
+      doc.save(`${book}_${month}_2025.pdf`);
+    }
+
+    function exportDayPDF(day){
+      const book=document.getElementById("bookSelect").value;
+      const month=document.getElementById("monthSelect").value;
+      if(!book||!month){ alert("Choose book and month"); return; }
+      const ref=localStorage.getItem(`${book}_${month}_2025_reflection_day${day}`)||"No reflection written.";
+      const savedCheck=localStorage.getItem(`${book}_${month}_2025_day${day}`) || "false";
+      const done=savedCheck==="true"?"✔":"✘";
+
+      const doc=new jsPDF();
+      doc.setFontSize(16); doc.setFont("helvetica","bold");
+      doc.text(`Day ${day} - ${book} (${month} 2025)`,105,15,{align:"center"});
+      doc.setFontSize(12); doc.setFont("helvetica","bold");
+      doc.text(`Status: ${done}`,15,30);
+      doc.setFont("helvetica","normal");
+      const lines=doc.splitTextToSize(ref,180);
+      doc.text(lines,15,40);
+      doc.save(`${book}_${month}_day${day}_2025.pdf`);
     }
   </script>
 </body>
