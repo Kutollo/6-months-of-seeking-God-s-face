@@ -183,7 +183,7 @@
 
         theme.textContent = `Day Theme: ${dailyThemes[todayStr] || "Theme updating soon"}`;
         dailyVerse.textContent = `Scripture: ${dailyVerses[todayStr] || "Stay rooted in the Word, verses updating soon"}`;
-        const points = prayerPoints[todayStr];
+        const points = `Prayer Points: ${prayerPoints[todayStr] || "Theme updating soon"}`;
         prayerPointElem.innerHTML = points && points.length ? `<ul>${points.map(p=>`<li>${p}</li>`).join('')}</ul>` : "<ul><li>Prayer points updating soon.</li></ul>";
 
         // Preview for next day
@@ -221,4 +221,5 @@
   </script>
 </body>
 </html>
+
 
