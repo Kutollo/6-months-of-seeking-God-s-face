@@ -176,15 +176,10 @@
 
   <!-- Daily Plan -->
   <section>
-    <h2>Daily Plan</h2>
-    <div id="planContainer"></div>
-  </section>
-
- <section>
       <h2>Daily Plan & Reflections</h2>
       <div id="planContainer"></div>
       <button class="btn" onclick="exportPDF()">📄 Export Monthly Reflections</button>
-    </section>
+  </section>
 </main>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
@@ -231,27 +226,38 @@
 
       const planContainer = document.getElementById("planContainer");
       planContainer.innerHTML = "";
-      const chaptersPerDay = Math.ceil(bibleChapters[book]/30);
-      let chapter=1;
 
-      for(let day=1;day<=30;day++){
-        if(chapter>bibleChapters[book]) break;
-        const start=chapter;
-        const end=Math.min(chapter+chaptersPerDay-1,bibleChapters[book]);
-        chapter=end+1;
+      const totalChapters = bibleChapters[book];
+      const chaptersPerDay = Math.ceil(totalChapters / 30);
+      let chapter = 1;
+
+      for(let day=1; day<=30; day++){
+        let readingText;
+
+        if(chapter <= totalChapters){
+          const start = chapter;
+          const end = Math.min(chapter + chaptersPerDay - 1, totalChapters);
+          chapter = end + 1;
+          readingText = `Read ${book} ${start}${start !== end ? ' - ' + end : ''}`;
+        } else {
+          readingText = `✨ Reflection / Catch-up Day`;
+        }
 
         const div=document.createElement("div");
         div.className="day";
         div.innerHTML=`
           <div class="day-header">
-            <div><input type="checkbox" id="day${day}" onchange="saveProgress('${book}','${month}',${day})">
-            <label for="day${day}">Day ${day}: Read ${book} ${start}${start!==end?' - '+end:''}</label></div>
+            <div>
+              <input type="checkbox" id="day${day}" onchange="saveProgress('${book}','${month}',${day})">
+              <label for="day${day}">Day ${day}: ${readingText}</label>
+            </div>
             <button class="btn" onclick="exportDayPDF(${day})">Download Day PDF</button>
           </div>
           <textarea id="reflection${day}" placeholder="Reflection for Day ${day}..."></textarea>
         `;
         planContainer.appendChild(div);
 
+        // Restore saved state
         const savedCheck = localStorage.getItem(`${book}_${month}_2025_day${day}`);
         if(savedCheck==="true") document.getElementById("day"+day).checked=true;
 
@@ -295,7 +301,7 @@
       if(!book||!month){ alert("Choose book and month"); return; }
       const doc=new jsPDF();
       doc.setFontSize(16); doc.setFont("helvetica","bold");
-      doc.text(`* Bible Reading Reflections - ${book} (${month} 2025)`,105,15,{align:"center"});
+      doc.text(`Bible Reading Reflections - ${book} (${month} 2025)`,105,15,{align:"center"});
       let y=30;
 
       for(let day=1;day<=30;day++){
