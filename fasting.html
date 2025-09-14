@@ -217,10 +217,90 @@
 
       update();
       setInterval(update, 1000);
+   /* =======================
+         ANNOUNCER: Broadcast fasting state across tabs
+         - Uses BroadcastChannel when available (preferred)
+         - Falls back to localStorage key 'faithsteps_fasting'
+         - Announces only on state change to reduce noise
+         - State definition: fasting window is 00:00 to 17:00 of a fasting day
+         ======================= */
+
+      (function announcer() {
+        const channelName = 'faithsteps_fast';
+        const storageKey = 'faithsteps_fasting';
+        const bc = ('BroadcastChannel' in window) ? new BroadcastChannel(channelName) : null;
+        let lastState = null; // null = unknown, true/false = fasting or not
+
+        function fastingNow(date = new Date()) {
+          // fasting if it's a fasting day and time between 00:00 and 17:00 local
+          if (!isFastingDay(date)) return false;
+          const dStr = date.toISOString().split('T')[0];
+          const start = new Date(dStr + 'T00:00:00');
+          const end = new Date(dStr + 'T17:00:00');
+          return date >= start && date <= end;
+        }
+
+        function buildPayload(fasting) {
+          return { fasting: !!fasting, ts: Date.now(), message: fasting ? 'Fasting started' : 'Fasting ended' };
+        }
+
+        function broadcast(payload) {
+          try {
+            if (bc) bc.postMessage(payload);
+          } catch (e) { /* ignore */ }
+          try {
+            localStorage.setItem(storageKey, JSON.stringify(payload));
+          } catch (e) { /* ignore */ }
+        }
+
+        // check state and announce only when changed
+        function checkAndAnnounce() {
+          const now = new Date();
+          const current = fastingNow(now);
+          if (lastState === null || current !== lastState) {
+            lastState = current;
+            const payload = buildPayload(current);
+            broadcast(payload);
+          }
+        }
+
+        // Initial read from storage to set lastState (so page opened later will still read)
+        try {
+          const raw = localStorage.getItem(storageKey);
+          if (raw) {
+            const parsed = JSON.parse(raw);
+            lastState = !!parsed.fasting;
+          } else {
+            // initialize lastState to current state so we will broadcast once on load
+            lastState = fastingNow(new Date());
+            broadcast(buildPayload(lastState));
+          }
+        } catch (e) {
+          // if parse fails, just perform a broadcast of current state
+          lastState = fastingNow(new Date());
+          broadcast(buildPayload(lastState));
+        }
+
+        // Re-check periodically: every 30 seconds (keeps it responsive at boundaries)
+        const ticker = setInterval(checkAndAnnounce, 30_000);
+
+        // Also listen for visibility change: when page becomes visible re-evaluate immediately
+        document.addEventListener('visibilitychange', () => {
+          if (document.visibilityState === 'visible') checkAndAnnounce();
+        });
+
+        // Clean up on unload
+        window.addEventListener('beforeunload', () => {
+          try { if (bc) bc.close(); } catch (e) {}
+          clearInterval(ticker);
+        });
+      })();
+
     })();
   </script>
 </body>
 </html>
+
 
 
 
