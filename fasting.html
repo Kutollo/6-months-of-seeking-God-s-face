@@ -7,10 +7,10 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg: #ffe4e1;         
-      --primary: #d63384;    
-      --secondary: #ff69b4;  
-      --highlight: #fff0f5;  
+      --bg: #ffe4e1;
+      --primary: #d63384;
+      --secondary: #ff69b4;
+      --highlight: #fff0f5;
       --highlightFullWeek: #ffc0cb; /* darker pink for full fasting week */
       --text: #333;
       --white: #fff;
@@ -121,7 +121,16 @@
       };
 
       const prayerPoints = {
-        "2025-09-01": ["Thanksgiving: Thank God for salvation and the gift of knowing Him", "Hunger for God: Ask for a deeper hunger and thirst for His presence", "Surrender: Surrender every area of your life to Him", "Cleansing: Pray for purity of heart, thoughts and motives", "Holy Spirit: Invite the Holy Spirit to fill and guide you", " Obedience: Ask for grace to walk in daily obedience", "Revival: Pray for revival in your prayer, worship and devotion", "Personal Encounter: Pray for a fresh encounter with God's love, peace and voice",""],
+        "2025-09-01": [
+          "Thanksgiving: Thank God for salvation and the gift of knowing Him",
+          "Hunger for God: Ask for a deeper hunger and thirst for His presence",
+          "Surrender: Surrender every area of your life to Him",
+          "Cleansing: Pray for purity of heart, thoughts and motives",
+          "Holy Spirit: Invite the Holy Spirit to fill and guide you",
+          "Obedience: Ask for grace to walk in daily obedience",
+          "Revival: Pray for revival in your prayer, worship and devotion",
+          "Personal Encounter: Pray for a fresh encounter with God's love, peace and voice"
+        ],
         "2025-09-08": ["Strengthen faith", "Practice spiritual discipline"],
         "2025-09-15": ["A deeper thirst for God’s presence", "Discipline to stay rooted in prayer and scripture"],
         "2025-09-16": ["Clear direction and alignment with God’s plan", "Grace to put Him first in every choice"],
@@ -129,13 +138,13 @@
         "2025-09-18": ["Excellence in academics, work, and service", "Victory over laziness and procrastination"],
         "2025-09-19": ["A repentant heart that seeks renewal", "Growth in character, self-control, and wisdom"],
         "2025-09-20": ["God’s guidance in building the right friendships & relationships", "Covering of protection over family and loved ones", "Good health and strength to serve Him"],
-        "2025-09-21": ["Gratitude for God’s mercy, love, and provision", "Praising Him for past victories and future promises"]
-        "2025-09-22": ["A willing heart to follow God’s instructions", "Grace to obey even when it’s not easy", "Walking in God’s ways instead of my own"];
+        "2025-09-21": ["Gratitude for God’s mercy, love, and provision", "Praising Him for past victories and future promises"],
+        "2025-09-22": ["A willing heart to follow God’s instructions", "Grace to obey even when it’s not easy", "Walking in God’s ways instead of my own"],
         "2025-09-29": ["Gratitude for the month", "Reflect and thank God"]
       };
 
       function formatTime(ms) {
-        const totalSeconds = Math.floor(ms / 1000);
+        const totalSeconds = Math.max(0, Math.floor(ms / 1000));
         const hours = Math.floor(totalSeconds / 3600).toString().padStart(2,'0');
         const minutes = Math.floor((totalSeconds % 3600)/60).toString().padStart(2,'0');
         const seconds = (totalSeconds % 60).toString().padStart(2,'0');
@@ -146,15 +155,19 @@
         const yyyy = date.getFullYear();
         const mm = date.getMonth() + 1;
         const dd = date.getDate();
-        if (yyyy === 2025 && mm === 9 && date.getDay() === 1 && !(dd >=15 && dd <=21)) return true;
+        // Mondays in September 2025, excluding the full-week 15-21 (those are handled separately)
+        if (yyyy === 2025 && mm === 9 && date.getDay() === 1 && !(dd >= 15 && dd <= 21)) return true;
+        // Full fasting week 15-21 Sept
         if (yyyy === 2025 && mm === 9 && dd >= 15 && dd <= 21) return true;
         return false;
       }
 
       function getNextFastingDay(fromDate) {
         let d = new Date(fromDate);
-        for (let i = 0; i < 40; i++) {
-          if (isFastingDay(d)) return d;
+        // start from the day AFTER fromDate
+        d.setDate(d.getDate() + 1);
+        for (let i = 0; i < 60; i++) {
+          if (isFastingDay(d)) return new Date(d);
           d.setDate(d.getDate() + 1);
         }
         return null;
@@ -173,25 +186,30 @@
         const previewVerse = document.getElementById('previewVerse');
         const previewPrayers = document.getElementById('previewPrayers');
 
-        // Highlight full week section if today is within fasting week
+        // Highlight full week section if today is within fasting week (Sept 15-21, 2025)
+        const y = now.getFullYear();
+        const m = now.getMonth() + 1;
+        const dday = now.getDate();
         const mainSections = [document.getElementById('theme'), document.getElementById('dailyVerse'), document.getElementById('prayerPoint')];
-        if (new Date(todayStr).getDate() >= 15 && new Date(todayStr).getDate() <= 21) {
+        if (y === 2025 && m === 9 && dday >= 15 && dday <= 21) {
           mainSections.forEach(s => s.classList.add('full-week'));
         } else {
           mainSections.forEach(s => s.classList.remove('full-week'));
         }
 
         theme.textContent = `Day Theme: ${dailyThemes[todayStr] || "Theme updating soon"}`;
-        dailyVerse.textContent = `Scripture: ${dailyVerses[todayStr] || "Stay rooted in the Word, verses updating soon"}`;
+        const verseVal = dailyVerses[todayStr];
+        dailyVerse.textContent = `Scripture: ${Array.isArray(verseVal) ? verseVal.join(' • ') : (verseVal || "Stay rooted in the Word, verses updating soon")}`;
         const points = prayerPoints[todayStr];
         prayerPointElem.innerHTML = points && points.length ? `<ul>${points.map(p=>`<li>${p}</li>`).join('')}</ul>` : "<ul><li>Prayer points updating soon.</li></ul>";
 
-        // Preview for next day
-        const nextDay = new Date();
-        nextDay.setDate(now.getDate() + 1);
-        const nextStr = nextDay.toISOString().split('T')[0];
+        // Preview for next day (tomorrow)
+        const tomorrow = new Date(now);
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        const nextStr = tomorrow.toISOString().split('T')[0];
         previewTheme.textContent = `Tomorrow's Theme: ${dailyThemes[nextStr] || "--"}`;
-        previewVerse.textContent = `Verse: ${dailyVerses[nextStr] || "--"}`;
+        const nextVerseVal = dailyVerses[nextStr];
+        previewVerse.textContent = `Verse: ${Array.isArray(nextVerseVal) ? nextVerseVal.join(' • ') : (nextVerseVal || "--")}`;
         const nextPoints = prayerPoints[nextStr];
         previewPrayers.innerHTML = nextPoints && nextPoints.length ? `<ul>${nextPoints.map(p=>`<li>${p}</li>`).join('')}</ul>` : "<ul><li>No preview yet.</li></ul>";
 
@@ -204,7 +222,8 @@
             return;
           }
         }
-        const nextFast = getNextFastingDay(new Date(now.setDate(now.getDate() + 1)));
+
+        const nextFast = getNextFastingDay(new Date());
         if (nextFast) {
           countdownLabel.textContent = `Next fasting day: ${nextFast.toLocaleDateString(undefined,{weekday:'long', month:'long', day:'numeric'})}`;
           const startFast = new Date(nextFast.toISOString().split('T')[0] + "T00:00:00");
@@ -217,7 +236,8 @@
 
       update();
       setInterval(update, 1000);
-   /* =======================
+
+      /* =======================
          ANNOUNCER: Broadcast fasting state across tabs
          - Uses BroadcastChannel when available (preferred)
          - Falls back to localStorage key 'faithsteps_fasting'
@@ -300,14 +320,3 @@
   </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
