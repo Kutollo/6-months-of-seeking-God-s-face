@@ -375,8 +375,112 @@
   }
   typePrayer();
 </script>
+  <script>
+  (function() {
+    const channelName = 'faithsteps_fast';
+    const bannerId = 'fasting-banner-auto';
+    const soundId = 'fasting-sound-element';
+
+    // create (or remove) banner
+    function makeBanner() {
+      if (document.getElementById(bannerId)) return;
+      const banner = document.createElement('div');
+      banner.id = bannerId;
+      banner.style.position = 'fixed';
+      banner.style.bottom = '20px';
+      banner.style.right = '20px';
+      banner.style.zIndex = 99999;
+      banner.style.padding = '14px 18px';
+      banner.style.borderRadius = '10px';
+      banner.style.boxShadow = '0 8px 30px rgba(0,0,0,0.18)';
+      banner.style.background = '#6b21a8';
+      banner.style.color = '#fff';
+      banner.style.fontFamily = "'DM Sans',sans-serif";
+      banner.style.fontWeight = '700';
+      banner.style.cursor = 'pointer';
+      banner.innerHTML = `<div style="font-size:1rem">Fasting Day</div><div style="font-weight:400; font-size:0.85rem; margin-top:4px">Water fast: 12:00 AM – 5:00 PM — click for details</div>`;
+      banner.addEventListener('click', () => {
+        // Customize behavior — navigate or open fasting page
+        window.location.href = 'fasting.html';
+      });
+      document.body.appendChild(banner);
+      // optional small auto-hide after N seconds (comment out if you don't want)
+      // setTimeout(removeBanner, 20_000);
+    }
+
+    function removeBanner() {
+      const el = document.getElementById(bannerId);
+      if (el) el.remove();
+    }
+
+    // optional: play a short beep (autoplay policies may block sound until user interacts
+    // with page; if blocked, it fails silently)
+    function playBeep() {
+      if (document.getElementById(soundId)) return;
+      const audio = document.createElement('audio');
+      audio.id = soundId;
+      // tiny data URI beep (short). Replace with your file if you prefer.
+      audio.src = "data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAESsAACJWAAACABAAZGF0YQAAAAA=";
+      audio.play().catch(()=>{/*autoplay blocked — ignore*/});
+    }
+
+    // handle incoming payload
+    function handlePayload(payload) {
+      if (!payload) return;
+      if (payload.fasting) {
+        makeBanner();
+        playBeep();
+        // also optionally flash the document title once
+        flashTitle('Fasting Day — Click for details');
+      } else {
+        removeBanner();
+        restoreTitle();
+      }
+    }
+
+    // flash title helper
+    let titleInterval = null;
+    const origTitle = document.title;
+    function flashTitle(msg) {
+      if (titleInterval) clearInterval(titleInterval);
+      let on = false;
+      titleInterval = setInterval(() => {
+        document.title = on ? msg : origTitle;
+        on = !on;
+      }, 1200);
+      // stop flashing after 20s
+      setTimeout(() => { if (titleInterval) { clearInterval(titleInterval); titleInterval = null; document.title = origTitle; } }, 20_000);
+    }
+    function restoreTitle() { if (titleInterval) { clearInterval(titleInterval); titleInterval = null; document.title = origTitle; } }
+
+    // BroadcastChannel listener (preferred)
+    if ('BroadcastChannel' in window) {
+      const bc = new BroadcastChannel(channelName);
+      bc.addEventListener('message', ev => handlePayload(ev.data));
+      // keep reference to close if needed
+      window._faith_bc = bc;
+    }
+
+    // storage event fallback (works across tabs)
+    window.addEventListener('storage', (e) => {
+      if (e.key === 'faithsteps_fasting' && e.newValue) {
+        try { handlePayload(JSON.parse(e.newValue)); } catch(e){/*ignore*/}
+      }
+    });
+
+    // on load, check value in localStorage (so index opened later still sees fasting)
+    try {
+      const raw = localStorage.getItem('faithsteps_fasting');
+      if (raw) handlePayload(JSON.parse(raw));
+    } catch(e) { /*ignore*/ }
+
+    // Expose removeBanner for debugging
+    window.removeFastingBanner = removeBanner;
+  })();
+</script>
 </body>
 </html>
+
 
 
 
