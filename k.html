@@ -6,301 +6,451 @@
 <title>FaithSteps – Walk with God</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap" rel="stylesheet" />
 <style>
-:root {
-  --bg: linear-gradient(to bottom right, #fde2ff, #ffe6f0);
-  --primary: #d63384;
-  --secondary: #ff69b4;
-  --highlight: #fff0f5;
-  --text: #2d1e45;
-  --white: #fff;
-  --shadow: rgba(0,0,0,0.07);
-}
-* { margin:0; padding:0; box-sizing:border-box; }
-body {
-  font-family: 'DM Sans', sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  overflow-x: hidden;
-}
-header {
-  position: relative;
-  background: url('https://images.unsplash.com/photo-1554355409-7d69eaad80d9?q=80&w=1200&auto=format&fit=crop') no-repeat center/cover;
-  color: var(--white);
-  text-align: center;
-  padding: 4rem 2rem;
-}
-header::after { content: ''; position: absolute; top:0; left:0; right:0; bottom:0; z-index:0; }
-header h1, header p { position: relative; z-index:1; }
-header h1 { font-size:2.5rem; text-shadow:2px 2px 6px #000; margin-bottom:0.3rem; }
-header p { font-size:1.2rem; text-shadow:1px 1px 5px #000; }
+  :root {
+    --bg: linear-gradient(to bottom right, #fde2ff, #ffe6f0);
+    --primary: #d63384;
+    --secondary: #ff69b4;
+    --highlight: #fff0f5;
+    --text: #2d1e45;
+    --white: #fff;
+    --shadow: rgba(0,0,0,0.07);
+  }
 
-nav {
-  position: sticky; top:0;
-  background: var(--primary);
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  padding: 1rem;
-  box-shadow: 0 4px 8px var(--shadow);
-  gap:0.6rem;
-  z-index:10;
-}
-nav a {
-  color: var(--white);
-  margin:0.5rem 1.2rem;
-  text-decoration:none;
-  font-weight:700;
-  font-size:1.1rem;
-}
-nav a:hover { color: var(--secondary); text-decoration: underline; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+  }
 
-main { max-width:900px; margin:2rem auto 4rem; padding:0 1rem; }
+  header {
+    position: relative;
+    background: url('https://images.unsplash.com/photo-1554355409-7d69eaad80d9?q=80&w=1200&auto=format&fit=crop') no-repeat center/cover;
+    color: var(--white);
+    text-align: center;
+    padding: 5rem 2rem;
+  }
+  header::after {
+    content: '';
+    position: absolute;
+    top:0; left:0; right:0; bottom:0;
+    z-index:0;
+  }
+  header h1, header p { position: relative; z-index:1; }
+  header h1 { font-size:3rem; text-shadow:2px 2px 6px #000; margin-bottom:0.3rem;}
+  header p { font-size:1.3rem; text-shadow:1px 1px 5px #000; }
 
-section {
-  background: var(--white);
-  border-radius:12px;
-  padding:2rem;
-  margin-bottom:2rem;
-  box-shadow:0 6px 18px var(--shadow);
-}
-section h2 {
-  color: var(--primary);
-  margin-bottom:1rem;
-  font-weight:700;
-  font-size:1.6rem;
-  text-align:center;
-}
-#todaysVerseBox {
-  font-size:1.1rem;
-  font-weight:500;
-  background: var(--highlight);
-  padding:1.2rem 1.8rem;
-  border-radius:10px;
-  box-shadow: inset 0 0 10px #ffd6f0;
-  margin-bottom:1.5rem;
-  line-height:1.5;
-  word-wrap: break-word;
-  text-align:center;
-}
-#translationSection {
-  text-align:center;
-  margin-bottom:1rem;
-}
-#translationSelect {
-  padding:0.6rem 1rem;
-  border-radius:6px;
-  border:1px solid var(--primary);
-  font-size:1rem;
-  font-weight:500;
-  cursor:pointer;
-}
-.verse-image {
-  display:block;
-  max-width:320px;
-  width:100%;
-  margin:1rem auto 2rem;
-  border-radius:12px;
-  box-shadow:0 6px 16px var(--shadow);
-  object-fit:cover;
-}
-.footer-prayer {
-  background: var(--highlight);
-  color: var(--primary);
-  text-align:center;
-  padding:2rem;
-  font-size:1rem;
-  line-height:1.8;
-  border-top:2px solid var(--secondary);
-  white-space: pre-line;
-  font-weight:500;
-  box-shadow:0 -2px 12px var(--shadow);
-  border-radius:0 0 12px 12px;
-  max-width:900px;
-  margin:0 auto 2rem;
-}
-.footer-prayer strong { display:block; margin-bottom:1rem; font-size:1.3rem; }
+  nav {
+    position: sticky; top:0;
+    background: var(--primary);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 1rem;
+    box-shadow: 0 4px 8px var(--shadow);
+    gap:0.6rem;
+    z-index:10;
+  }
+  nav a {
+    color: var(--white);
+    margin:0.5rem 1.2rem;
+    text-decoration:none;
+    font-weight:700;
+    font-size:1.1rem;
+  }
+  nav a:hover { color: var(--secondary); text-decoration: underline; }
 
-@media(max-width:600px){
-  header h1{font-size:2rem;}
-  nav a{margin:0.5rem 0.8rem;font-size:1rem;}
-  main{margin:1rem auto 3rem;}
-  section{padding:1.2rem 1.2rem;}
-  section h2{font-size:1.4rem;}
-  header p{font-size:1rem;}
-  #todaysVerseBox{font-size:1rem;padding:1rem 1.2rem;}
-  .verse-image{max-width:100%;height:auto;}
-  .footer-prayer{padding:1.5rem;font-size:0.95rem;}
-}
+  main { max-width:900px; margin:2rem auto 4rem; padding:0 1rem; }
+
+  section {
+    background: var(--white);
+    border-radius:12px;
+    padding:2rem;
+    margin-bottom:2rem;
+    box-shadow:0 6px 18px var(--shadow);
+  }
+  section h2 {
+    color: var(--primary);
+    margin-bottom:1rem;
+    font-weight:700;
+    font-size:1.8rem;
+    text-align:center;
+  }
+
+  #todaysVerseBox {
+    font-size:1.1rem;
+    font-weight:500;
+    background: var(--highlight);
+    padding:1.2rem 1.8rem;
+    border-radius:10px;
+    box-shadow: inset 0 0 10px #ffd6f0;
+    margin-bottom:1.5rem;
+    line-height:1.5;
+    word-wrap: break-word;
+    text-align:center;
+  }
+
+  /* Announcement */
+  .reminder {
+    background: linear-gradient(to right, var(--secondary), var(--primary));
+    color: var(--white);
+    font-weight: 700;
+    padding: 1rem 1.2rem;
+    border-radius: 10px;
+    margin-bottom:2rem;
+    position: relative;
+    max-width: 100%;
+    overflow: hidden;
+    min-height: 60px;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    white-space: pre-wrap;
+    text-align: center;
+    border: 2px dotted var(--white);
+  }
+  #announcement {
+    display:inline-block;
+    border-right:2px solid var(--white);
+    padding-right:2px;
+    animation: blink-caret 0.7s step-end infinite;
+    width: 100%;
+  }
+
+  @keyframes blink-caret { 50% { border-color: transparent; } }
+
+  .footer-prayer {
+    background: var(--highlight);
+    color: var(--primary);
+    text-align:center;
+    padding:2rem;
+    font-size:1rem;
+    line-height:1.8;
+    border-top:2px solid var(--secondary);
+    white-space: pre-line;
+    font-weight:500;
+    box-shadow:0 -2px 12px var(--shadow);
+    border-radius:0 0 12px 12px;
+    max-width:900px;
+    margin:0 auto 2rem;
+  }
+  .footer-prayer strong {
+    display:block;
+    margin-bottom:1rem;
+    font-size:1.3rem;
+  }
+
+  .verse-image {
+    display:block;
+    max-width:320px;
+    width:100%;
+    margin:1rem auto 2rem;
+    border-radius:12px;
+    box-shadow:0 6px 16px var(--shadow);
+    object-fit:cover;
+  }
+
+  @media(max-width:600px){
+    header h1{font-size:2.2rem;}
+    nav a{margin:0.5rem 0.8rem;font-size:1rem;}
+    main{margin:1rem auto 3rem;}
+    section{padding:1.2rem 1.2rem;}
+    section h2{font-size:1.5rem;}
+    header p{font-size:1rem;}
+    #todaysVerseBox{font-size:1rem;padding:1rem 1.2rem;}
+    .verse-image{max-width:100%;height:auto;}
+    .footer-prayer{padding:1.5rem;font-size:0.95rem;}
+  }
 </style>
 </head>
 <body>
+  <header>
+    <h1>FaithSteps: Walk With God</h1>
+    <p>6 months of Seeking God's Face • Scripture • Fasting • Prayer • Journaling</p>
+  </header>
 
-<header>
-  <h1>FaithSteps: Walk with God</h1>
-  <p>Verse of the Day • Multi-Translation</p>
-</header>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="journal.html">Journal</a>
+    <a href="verses.html">Verses</a>
+    <a href="fasting.html">Fasting</a>
+    <a href="BibleBook.html">Monthly Bible Reading</a>
+  </nav>
 
-<nav>
-  <a href="index.html">Home</a>
-  <a href="journal.html">Journal</a>
-  <a href="verses.html">Verses</a>
-  <a href="fasting.html">Fasting</a>
-</nav>
+  <main>
+    <section class="reminder" id="reminderSection">
+      <span id="announcement"></span>
+    </section>
 
-<main>
-  <section id="todaysVerse">
-    <h2>📖 Verse of the Day</h2>
-    <div id="translationSection">
-      <select id="translationSelect">
-        <option value="MSG">MSG</option>
-        <option value="NLT">NLT</option>
-        <option value="GNT">GNT</option>
-        <option value="NIV">NIV</option>
-        <option value="NKJV">NKJV</option>
-        <option value="NORTHERN SOUTH">Northern Sotho</option>
-        <option value="SISWATI">Siswati</option>
-      </select>
-    </div>
-    <div id="todaysVerseBox">Loading verse…</div>
+    <section id="todaysVerse">
+      <h2>📖 Today's Verse</h2>
+      <div id="todaysVerseBox">Loading verse…</div>
+    </section>
+
+    <section id="dailyResourceSection" style="display:none;">
+      <h2>📘 Daily Resource</h2>
+      <div id="resourceContent"></div>
+    </section>
+
     <img id="dailyVerseImage" src="" alt="Verse of the Day Image" class="verse-image"/>
-  </section>
-</main>
 
-<section class="footer-prayer">
-  <strong>The Lord's Prayer</strong>
-  <div id="lordsPrayer"></div>
-</section>
+    <section id="purpose">
+      <h2>Purpose of the Journey</h2>
+      <p>
+        This journey from July to December is a sacred commitment to seek God's face with intentionality. Through fasting, daily scripture, prayer, and reflection, we aim to deepen our relationship with the Lord, grow in spiritual discipline, and align our lives with His divine purpose.
+      </p>
+      <p>
+        July focuses on seeking God's face, developing a habit of daily intimacy through prayer, scripture, and reflection. Let this month be one of connection, focus, and intentional pursuit of His presence.
+      </p>
+      <p>
+        August focuses on turning back to God with humble hearts, walking in obedience, and aligning with His Word. Let this month be one of repentance, renewal, and redirection.
+      </p>
+      <p>
+        September centers on cultivating intimacy with God and building spiritual strength. This month encourages us to draw near to Him, rely on His power, and grow in steadfast faith, allowing His presence to shape our daily lives and decisions.
+      </p>
+    </section>
+
+    <section id="month-theme">
+      <h2>Month & Theme</h2>
+      <p><strong>July 2025</strong></p>
+      <p><em>Theme: Seeking God's Face</em></p>
+      <p><strong>August 2025</strong></p>
+      <p><em>Theme: Repentance, Obedience, Discipline, Following Christ's Examples & Following God's Instructions</em></p>
+      <p><strong>September 2025</strong></p>
+      <p><em>Theme: Intimacy with God, Spiritual Heart Check and Keeping the Faith, Endurance and Obedience</em></p>
+    </section>
+  </main>
+
+  <section class="footer-prayer">
+    <strong>The Lord's Prayer</strong>
+    <div id="lordsPrayer"></div>
+  </section>
 
 <script>
-// Date
-const today = new Date();
-const month = String(today.getMonth()+1).padStart(2,'0');
-const day = String(today.getDate()).padStart(2,'0');
-const dateStr = `${today.getFullYear()}-${month}-${day}`;
-const verses = {
-  "2025-09-23": {
-    "reference": "1 Corinthians 15:58",
-    "MSG": "With all this going for us, my dear friends, stand your ground...",
-    "NLT": "With all this in your favor, my dear friends, stand your ground...",
-    "GNT": "With all this going for us, dear friends, be firm...",
-    "NIV": "Therefore, my dear brothers and sisters, stand firm...",
-    "NKJV": "Therefore, my beloved, be steadfast, immovable...",
-    "NORTHERN SOUTH": "Ka tsohle tseo di leng le rona, bagwera ba ratehang, ema fatše...",
-    "SISWATI": "Ngoba tonkhe letinye litje lelikhona, bangani bami labathandekayo, yimise kahle..."
-  },
-  "2025-09-24": {
-    "reference": "James 2:14-26",
-    "MSG": "Does merely talking about faith indicate that a person really has it?...",
-    "NLT": "What good is it, my brothers and sisters, if someone claims to have faith but has no deeds?...",
-    "GNT": "What good is it, my brothers and sisters, if someone says they have faith but does not have works?...",
-    "NIV": "What good is it, my brothers and sisters, if someone claims to have faith but has no deeds?...",
-    "NKJV": "What does it profit, my brethren, if someone says he has faith but does not have works?...",
-    "NORTHERN SOUTH": "Ke molemo ofe, bagwera, ge motho a bolela gore o na le tumelo eupša a se na ditiro?...",
-    "SISWATI": "Kuphumelela kuphi, bangani, uma umuntu ethi unetsemba kodvwa angenawo emisebenti?..."
-  },
-  "2025-09-25": {
-    "reference": "Matthew 24:13",
-    "MSG": "Staying with it—that’s what God requires. Stay with it to the end...",
-    "NLT": "But the one who endures to the end will be saved.",
-    "GNT": "The one who perseveres to the end will be saved.",
-    "NIV": "But the one who stands firm to the end will be saved.",
-    "NKJV": "But he who endures to the end shall be saved.",
-    "NORTHERN SOUTH": "Yo a dulago go fihla bofelong o tla bolawa...",
-    "SISWATI": "Lowati loya lihlala kuze kube sekupheleni uyakutjengisa kutsi uyasalindza..."
-  },
-  "2025-09-26": {
-    "reference": "2 Thessalonians 3:13",
-    "MSG": "And don’t get tired of doing what is good. Don’t get discouraged...",
-    "NLT": "Never tire of doing what is good.",
-    "GNT": "Don’t grow weary of doing good.",
-    "NIV": "Never tire of doing what is good.",
-    "NKJV": "Do not grow weary in doing good.",
-    "NORTHERN SOUTH": "O se ke wa khathala go dira se se molemo...",
-    "SISWATI": "Ungakhatali ekuzenzeni kuhle..."
-  },
-  "2025-09-27": {
-    "reference": "1 Peter 1:6-7",
-    "MSG": "Pure gold put in the fire comes out of it proved pure...",
-    "NLT": "These trials will show that your faith is genuine.",
-    "GNT": "Your faith is tested and refined through trials.",
-    "NIV": "In this you greatly rejoice, though now for a little while you may have had to suffer...",
-    "NKJV": "That the genuineness of your faith, being much more precious than gold...",
-    "NORTHERN SOUTH": "Gore selefera sa nnete se se tla phagamelela...",
-    "SISWATI": "Lemali lekhetsiwe ligcwele licutshungulwe..."
-  },
-  "2025-09-28": {
-    "reference": "Romans 10:17",
-    "MSG": "The point is, before you trust, you have to listen...",
-    "NLT": "Faith comes from hearing the message, and the message is heard through the Word of Christ.",
-    "GNT": "Faith comes from hearing the message about Christ.",
-    "NIV": "Consequently, faith comes from hearing the message...",
-    "NKJV": "So then faith comes by hearing, and hearing by the word of God.",
-    "NORTHERN SOUTH": "Tumelo e tla ka go reetsa molaetsa...",
-    "SISWATI": "Kwetsemba kufika ekuvakalelweni kwelitsemba..."
-  },
-  "2025-09-29": {
-    "reference": "Mark 11:22-25",
-    "MSG": "Jesus was matter-of-fact: ‘Embrace this God-life. Really embrace it...'",
-    "NLT": "Have faith in God. Truly believe that God will act.",
-    "GNT": "Jesus said, 'Have faith in God.'",
-    "NIV": "Have faith in God. Truly believe...",
-    "NKJV": "Have faith in God.",
-    "NORTHERN SOUTH": "Bolelwa ke Jesu, 'Ela tumelo go Modimo.'",
-    "SISWATI": "Jesu watsi, 'Kwetsemba kuNkulunkulu.'"
-  },
-  "2025-09-30": {
-    "reference": "2 Corinthians 5:7 & Colossians 1:11-12",
-    "MSG": "It’s what we trust in but don’t yet see that keeps us going...",
-    "NLT": "We live by faith, not by sight. Be strengthened with all power...",
-    "GNT": "We walk by faith, not by sight.",
-    "NIV": "For we live by faith, not by sight...",
-    "NKJV": "For we walk by faith, not by sight...",
-    "NORTHERN SOUTH": "Re phela ka tumelo, e seng ka pono...",
-    "SISWATI": "Siphila netsemba, hhayi ngekubona..."
+  // Announcement typing
+  const announcementMessage = "";
+  const announcementEl = document.getElementById("announcement");
+  const reminderSection = document.getElementById("reminderSection");
+  if(!announcementMessage.trim()){ reminderSection.style.display="none"; } 
+  else {
+    let words=announcementMessage.split(' '), lines=[], currentLine='';
+    words.forEach(word=>{
+      if((currentLine+word).length>50){ lines.push(currentLine.trim()); currentLine=word+' '; } 
+      else currentLine+=word+' ';
+    });
+    if(currentLine) lines.push(currentLine.trim());
+    let lineIndex=0, charIndex=0;
+    function typeLine(){
+      if(lineIndex>=lines.length) return;
+      announcementEl.textContent = lines.slice(0,lineIndex).join('\n') + '\n' + lines[lineIndex].substring(0,charIndex);
+      charIndex++;
+      if(charIndex<=lines[lineIndex].length) setTimeout(typeLine,50);
+      else { lineIndex++; charIndex=0; setTimeout(typeLine,200);}
+    }
+    typeLine();
   }
-};
-// Image with fallback
-const verseImage = document.getElementById('dailyVerseImage');
-verseImage.src = `images/${month}${day}.jpg`;
-verseImage.onerror = () => { verseImage.src = 'images/fallback.jpg'; };
 
-// Display verse function
-const verseBox = document.getElementById('todaysVerseBox');
-const translationSelect = document.getElementById('translationSelect');
-function displayVerse(){
-  const translation = translationSelect.value;
-  const todayVerse = verses[dateStr];
-  if(todayVerse){
-    verseBox.innerHTML = `<strong>${todayVerse.reference}</strong><br>${todayVerse[translation]}`;
-  } else {
-    verseBox.textContent = "Verse coming soon.";
-  }
-}
-translationSelect.addEventListener('change', displayVerse);
+  // Verse of the Day
+  const verseBox = document.getElementById('todaysVerseBox');
+  const verseImage = document.getElementById('dailyVerseImage');
+  const today = new Date(), year = today.getFullYear(), month = String(today.getMonth()+1).padStart(2,'0'), day = String(today.getDate()).padStart(2,'0');
+  const dateStr = `${year}-${month}-${day}`;
+  const imagePath = `images/${month}${day}.jpg`;
+  verseImage.src = imagePath;
+  verseImage.onerror = () => { verseImage.style.display = 'none'; };
 
-// Lord's Prayer animation
-const prayerLines=[
-  "Our Father in heaven, hallowed be your name.",
-  "Your kingdom come, your will be done, on earth as it is in heaven.",
-  "Give us today our daily bread.",
-  "Forgive us our debts, as we also have forgiven our debtors.",
-  "And lead us not into temptation, but deliver us from the evil one.",
-  "For yours is the kingdom and the power and the glory forever. Amen."
-];
-const prayerContainer = document.getElementById('lordsPrayer');
-let i = 0;
-function showPrayer(){
-  if(i<prayerLines.length){
-    prayerContainer.textContent += prayerLines[i] + "\n";
-    i++;
-    setTimeout(showPrayer, 1200);
+  // Bible translations selector
+  const translationSelect = document.createElement('select');
+  translationSelect.id = 'translationSelect';
+  ['MSG','NLT','GNT','NIV','NKJV','NORTHERN SOUTH','SISWATI'].forEach(tr => {
+    const opt = document.createElement('option');
+    opt.value = tr;
+    opt.textContent = tr;
+    translationSelect.appendChild(opt);
+  });
+  document.getElementById('todaysVerse').insertBefore(translationSelect, verseBox);
+
+  // Verses
+  const verses = {
+    "2025-09-23": {
+      "reference":"1 Corinthians 15:58",
+      "MSG":"With all this going for us, my dear, dear friends, stand your ground. And don’t hold back. Throw yourselves into the work of the Master, confident that nothing you do for him is a waste of time or effort.",
+      "NLT":"Therefore, my dear friends, stand firm. Let nothing move you. Always give yourselves fully to the work of the Lord.",
+      "GNT":"Stand firm, my beloved friends. Never tire of doing what is good.",
+      "NIV":"Therefore, my dear brothers and sisters, stand firm. Let nothing move you.",
+      "NKJV":"Therefore, my beloved, be steadfast, immovable, always abounding in the work of the Lord.",
+      "NORTHERN SOUTH":"Ka tsotlhe tseo di leng le rona, bagwera ba ratehang, ema fatše le go se seke wa itlhoka.",
+      "SISWATI":"Ngoba tonkhe letinye litje lelikhona, bangani bami labathandekayo, yimise kahle njalo."
+    },
+    "2025-09-24": {
+      "reference":"James 2:14-26",
+      "MSG":"Does merely talking about faith indicate that a person really has it? ... Faith and works, works and faith, fit together, hand in glove.",
+      "NLT":"What good is it, my brothers and sisters, if someone claims to have faith but has no deeds?",
+      "GNT":"What good is it, my brothers and sisters, if someone says they have faith but does not have works?",
+      "NIV":"What good is it, my brothers and sisters, if someone claims to have faith but has no deeds?",
+      "NKJV":"What does it profit, my brethren, if someone says he has faith but does not have works?",
+      "NORTHERN SOUTH":"Ke molemo ofe, bagwera, ge motho a bolela gore o na le tumelo eupša a se na ditiro?",
+      "SISWATI":"Kuphumelela kuphi, bangani, uma umuntu ethi unetsemba kodvwa angenawo emisebenti?"
+    },
+    "2025-09-25": {
+      "reference":"Matthew 24:13",
+      "MSG":"Staying with it—that’s what God requires. Stay with it to the end. You won’t be sorry, and you’ll be saved.",
+      "NLT":"But the one who endures to the end will be saved.",
+      "GNT":"The one who perseveres to the end will be saved.",
+      "NIV":"But the one who stands firm to the end will be saved.",
+      "NKJV":"But he who endures to the end shall be saved.",
+      "NORTHERN SOUTH":"Yo a dulago go fihla bofelong o tla bolawa.",
+      "SISWATI":"Lowati loya lihlala kuze kube sekupheleni uyakutjengisa kutsi uyasalindza."
+    },
+    "2025-09-26": {
+      "reference":"2 Thessalonians 3:13",
+      "MSG":"And don’t get tired of doing what is good. Don’t get discouraged and give up, for we will reap a harvest of blessing at the appropriate time.",
+      "NLT":"Never tire of doing what is good.",
+      "GNT" : "Never become weary in doing good.",
+      "NIV":"Never give up on doing what is good.",
+      "NKJV":"Do not grow weary in well doing.",
+      "NORTHERN SOUTH":"O se ka kgalema go dira tse di molemo.",
+      "SISWATI":"Ungadli emandla ekwenteni lokuhle."
+    }
+    // Add more dates/verses as needed
+  };
+
+  function updateVerse() {
+    const translation = translationSelect.value;
+    const v = verses[dateStr];
+    if(v && v[translation]){
+      verseBox.textContent = `“${v[translation]}” — ${v.reference} (${translation})`;
+    } else {
+      verseBox.textContent = "Stay rooted in the Word. Verse coming soon.";
+    }
   }
-}
-showPrayer();
+
+  translationSelect.addEventListener('change', updateVerse);
+  updateVerse();
+
+  // Animate Lord's Prayer
+  const prayerLines=[
+    "Our Father, who art in heaven,",
+    "hallowed be Thy name.",
+    "Thy kingdom come,",
+    "Thy will be done,",
+    "on earth as it is in heaven.",
+    "",
+    "Give us this day our daily bread,",
+    "and forgive us our debts,",
+    "as we forgive our debtors.",
+    "",
+    "And lead us not into temptation,",
+    "but deliver us from evil.",
+    "",
+    "For Thine is the kingdom,",
+    "and the power,",
+    "and the glory, forever.",
+    "Amen."
+  ];
+  const prayerEl=document.getElementById("lordsPrayer");
+  let pLine=0, pChar=0, built=[];
+  function typePrayer(){
+    if(pLine>=prayerLines.length) return;
+    built[pLine]=prayerLines[pLine].substring(0,pChar);
+    prayerEl.textContent = built.join("\n");
+    pChar++;
+    if(pChar<=prayerLines[pLine].length) setTimeout(typePrayer,60);
+    else { pLine++; pChar=0; setTimeout(typePrayer,400);}
+  }
+  typePrayer();
 </script>
 
+<script>
+  (function() {
+    const channelName = 'faithsteps_fast';
+    const bannerId = 'fasting-banner-auto';
+    const soundId = 'fasting-sound-element';
+
+    function makeBanner() {
+      if (document.getElementById(bannerId)) return;
+      const banner = document.createElement('div');
+      banner.id = bannerId;
+      banner.style.position = 'fixed';
+      banner.style.bottom = '20px';
+      banner.style.right = '20px';
+      banner.style.zIndex = 99999;
+      banner.style.padding = '14px 18px';
+      banner.style.borderRadius = '10px';
+      banner.style.boxShadow = '0 8px 30px rgba(0,0,0,0.18)';
+      banner.style.background = '#6b21a8';
+      banner.style.color = '#fff';
+      banner.style.fontFamily = "'DM Sans',sans-serif";
+      banner.style.fontWeight = '700';
+      banner.style.cursor = 'pointer';
+      banner.innerHTML = `<div style="font-size:1rem">Fasting Day</div><div style="font-weight:400; font-size:0.85rem; margin-top:4px">Water fast: 12:00 AM – 5:00 PM — click for details</div>`;
+      banner.addEventListener('click', () => {
+        window.location.href = 'fasting.html';
+      });
+      document.body.appendChild(banner);
+    }
+
+    function removeBanner() {
+      const el = document.getElementById(bannerId);
+      if (el) el.remove();
+    }
+
+    function playBeep() {
+      if (document.getElementById(soundId)) return;
+      const audio = document.createElement('audio');
+      audio.id = soundId;
+      audio.src = "data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAESsAACJWAAACABAAZGF0YQAAAAA=";
+      audio.play().catch(()=>{});
+    }
+
+    function handlePayload(payload) {
+      if (!payload) return;
+      if (payload.fasting) {
+        makeBanner();
+        playBeep();
+        flashTitle('Fasting Day — Click for details');
+      } else {
+        removeBanner();
+        restoreTitle();
+      }
+    }
+
+    let titleInterval = null;
+    const origTitle = document.title;
+    function flashTitle(msg) {
+      if (titleInterval) clearInterval(titleInterval);
+      let on = false;
+      titleInterval = setInterval(() => {
+        document.title = on ? msg : origTitle;
+        on = !on;
+      }, 1200);
+      setTimeout(() => { if (titleInterval) { clearInterval(titleInterval); titleInterval = null; document.title = origTitle; } }, 20_000);
+    }
+    function restoreTitle() { if (titleInterval) { clearInterval(titleInterval); titleInterval = null; document.title = origTitle; } }
+
+    if ('BroadcastChannel' in window) {
+      const bc = new BroadcastChannel(channelName);
+      bc.addEventListener('message', ev => handlePayload(ev.data));
+      window._faith_bc = bc;
+    }
+
+    window.addEventListener('storage', (e) => {
+      if (e.key === 'faithsteps_fasting' && e.newValue) {
+        try { handlePayload(JSON.parse(e.newValue)); } catch(e){ }
+      }
+    });
+
+    try {
+      const raw = localStorage.getItem('faithsteps_fasting');
+      if (raw) handlePayload(JSON.parse(raw));
+    } catch(e) { }
+
+    window.removeFastingBanner = removeBanner;
+  })();
+</script>
 </body>
 </html>
