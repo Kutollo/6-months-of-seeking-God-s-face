@@ -6,7 +6,6 @@
 <title>FaithSteps – Walk with God</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap" rel="stylesheet" />
 <style>
-/* -------------  YOUR EXISTING STYLES ------------- */
 :root {
   --bg: linear-gradient(to bottom right, #fde2ff, #ffe6f0);
   --primary: #d63384;
@@ -33,6 +32,13 @@ header {
   text-align: center;
   padding: 5rem 2rem;
 }
+header::after {
+  content: '';
+  position: absolute;
+  top:0; left:0; right:0; bottom:0;
+  z-index:0;
+}
+header h1, header p { position: relative; z-index:1; }
 header h1 { font-size:3rem; text-shadow:2px 2px 6px #000; margin-bottom:0.3rem;}
 header p { font-size:1.3rem; text-shadow:1px 1px 5px #000; }
 nav {
@@ -81,14 +87,44 @@ section h2 {
   word-wrap: break-word;
   text-align:center;
 }
-select#translationSelect{
-  display:block;
-  margin:1rem auto;
-  padding:0.6rem 1rem;
-  border-radius:8px;
-  border:1px solid #ccc;
-  font-size:1rem;
+#translationSection {
+  text-align:center;
+  margin-bottom:1.5rem;
 }
+#translationSelect {
+  padding:0.6rem 1rem;
+  border-radius:6px;
+  border:1px solid var(--primary);
+  font-size:1rem;
+  font-weight:500;
+  cursor:pointer;
+}
+.reminder {
+  background: linear-gradient(to right, var(--secondary), var(--primary));
+  color: var(--white);
+  font-weight: 700;
+  padding: 1rem 1.2rem;
+  border-radius: 10px;
+  margin-bottom:2rem;
+  position: relative;
+  max-width: 100%;
+  overflow: hidden;
+  min-height: 60px;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  white-space: pre-wrap;
+  text-align: center;
+  border: 2px dotted var(--white);
+}
+#announcement {
+  display:inline-block;
+  border-right:2px solid var(--white);
+  padding-right:2px;
+  animation: blink-caret 0.7s step-end infinite;
+  width: 100%;
+}
+@keyframes blink-caret { 50% { border-color: transparent; } }
 .footer-prayer {
   background: var(--highlight);
   color: var(--primary);
@@ -105,7 +141,26 @@ select#translationSelect{
   margin:0 auto 2rem;
 }
 .footer-prayer strong { display:block; margin-bottom:1rem; font-size:1.3rem; }
-/* other styles (birthday, confetti) remain unchanged */
+.verse-image {
+  display:block;
+  max-width:320px;
+  width:100%;
+  margin:1rem auto 2rem;
+  border-radius:12px;
+  box-shadow:0 6px 16px var(--shadow);
+  object-fit:cover;
+}
+@media(max-width:600px){
+  header h1{font-size:2.2rem;}
+  nav a{margin:0.5rem 0.8rem;font-size:1rem;}
+  main{margin:1rem auto 3rem;}
+  section{padding:1.2rem 1.2rem;}
+  section h2{font-size:1.5rem;}
+  header p{font-size:1rem;}
+  #todaysVerseBox{font-size:1rem;padding:1rem 1.2rem;}
+  .verse-image{max-width:100%;height:auto;}
+  .footer-prayer{padding:1.5rem;font-size:0.95rem;}
+}
 </style>
 </head>
 <body>
@@ -129,16 +184,33 @@ select#translationSelect{
 
   <section id="todaysVerse">
     <h2>📖 Today's Verse</h2>
-    <!-- 🔽 NEW DROPDOWN -->
-    <select id="translationSelect">
-      <option disabled selected>Loading versions…</option>
-    </select>
+    <div id="translationSection">
+      <select id="translationSelect">
+        <option value="MSG">The Message (MSG)</option>
+        <option value="NLT">New Living Translation (NLT)</option>
+        <option value="GNT">Good News Translation (GNT)</option>
+        <option value="NIV">New International Version (NIV)</option>
+        <option value="NKJV">New King James Version (NKJV)</option>
+        <option value="NORTHERN SOUTH">Northern Sotho</option>
+        <option value="SISWATI">Siswati</option>
+      </select>
+    </div>
     <div id="todaysVerseBox">Loading verse…</div>
   </section>
 
   <img id="dailyVerseImage" src="" alt="Verse of the Day Image" class="verse-image"/>
 
-  <!-- your other sections unchanged -->
+  <section id="purpose">
+    <h2>Purpose of the Journey</h2>
+    <p>This journey from July to December is a sacred commitment to seek God's face with intentionality, incorporating daily scripture reading, prayer, fasting, and journaling.</p>
+  </section>
+
+  <section id="month-theme">
+    <h2>Month & Theme</h2>
+    <p><strong>July 2025</strong> - Theme: Seeking God's Face</p>
+    <p><strong>August 2025</strong> - Theme: Repentance, Obedience, Discipline, Following Christ's Examples & Following God's Instructions</p>
+    <p><strong>September 2025</strong> - Theme: Intimacy with God, Spiritual Heart Check, Keeping the Faith, Endurance, and Obedience</p>
+  </section>
 </main>
 
 <section class="footer-prayer">
@@ -147,72 +219,82 @@ select#translationSelect{
 </section>
 
 <script>
-/* ----------------- Announcement typing (unchanged) ----------------- */
+// Announcement typing
 const announcementMessage = "";
 const announcementEl = document.getElementById("announcement");
 const reminderSection = document.getElementById("reminderSection");
 if(!announcementMessage.trim()){ reminderSection.style.display="none"; } 
-else { /* typing code here if needed */ }
+else {
+  let words=announcementMessage.split(' '), lines=[], currentLine='';
+  words.forEach(word=>{
+    if((currentLine+word).length>50){ lines.push(currentLine.trim()); currentLine=word+' '; } 
+    else currentLine+=word+' ';
+  });
+  if(currentLine) lines.push(currentLine.trim());
+  let lineIndex=0, charIndex=0;
+  function typeLine(){
+    if(lineIndex>=lines.length) return;
+    announcementEl.textContent = lines.slice(0,lineIndex).join('\n') + '\n' + lines[lineIndex].substring(0,charIndex);
+    charIndex++;
+    if(charIndex<=lines[lineIndex].length) setTimeout(typeLine,50);
+    else { lineIndex++; charIndex=0; setTimeout(typeLine,200);}
+  }
+  typeLine();
+}
 
-/* ----------------- Verse of the Day with fallback ----------------- */
-const verseBox=document.getElementById('todaysVerseBox');
-const verseImage=document.getElementById('dailyVerseImage');
-const today=new Date();
-const year=today.getFullYear(), month=String(today.getMonth()+1).padStart(2,'0'), day=String(today.getDate()).padStart(2,'0');
-const dateStr=`${year}-${month}-${day}`;
-const imagePath=`images/${month}${day}.jpg`;
-verseImage.src=imagePath;
-verseImage.onerror=()=>{verseImage.style.display='none';};
+// Verse of the Day
+const verseBox = document.getElementById('todaysVerseBox');
+const translationSelect = document.getElementById('translationSelect');
+const today = new Date();
+const year = today.getFullYear();
+const month = String(today.getMonth()+1).padStart(2,'0');
+const day = String(today.getDate()).padStart(2,'0');
+const dateStr = `${year}-${month}-${day}`;
+const verseImage = document.getElementById('dailyVerseImage');
+const imagePath = `images/${month}${day}.jpg`;
+verseImage.src = imagePath;
+verseImage.onerror = ()=>{verseImage.style.display='none';};
 
-// your local verse fallback object
 const verses = {
-  "2025-09-23": "“With all this going for us, my dear, dear friends, stand your ground... — 1 Corinthians 15:58 (MSG)"
-  // ... keep your existing verses here
+  "2025-09-23": {
+    "MSG": "With all this going for us, my dear friends, stand your ground...",
+    "NLT": "With all this in your favor, my dear friends, stand your ground...",
+    "GNT": "With all this going for us, dear friends, be firm...",
+    "NIV": "With all this in mind, dear friends, stand firm...",
+    "NKJV": "Therefore, my beloved, be steadfast, immovable...",
+    "NORTHERN SOUTH": "Ka tsotlhe tseo di leng le rona, bagwera ba ratehang, ema fatše...",
+    "SISWATI": "Ngoba tonkhe letinye litje lelikhona, bangani bami labathandekayo, yimise kahle..."
+  }
 };
 
-// show fallback first
-verseBox.textContent = verses[dateStr] || "Stay rooted in the Word. Verse coming soon.";
-
-/* ----------------- AO Lab Bible API: load translations ----------------- */
-async function loadTranslations(){
-  const select = document.getElementById('translationSelect');
-  try {
-    const r = await fetch('https://bible.helloao.org/api/available_translations.json');
-    if (!r.ok) throw new Error('Network response not ok');
-    const data = await r.json();
-    select.innerHTML = '';
-    data.translations.forEach(t=>{
-      const opt = document.createElement('option');
-      opt.value = t.id;
-      opt.textContent = `${t.name} (${t.language})`;
-      if (t.id === 'MSG') opt.selected = true; // default
-      select.appendChild(opt);
-    });
-  } catch(err){
-    console.error('Could not load translations:', err);
-    // fallback option
-    select.innerHTML = '';
-    const fallback = document.createElement('option');
-    fallback.value = 'MSG';
-    fallback.textContent = 'The Message (fallback)';
-    fallback.selected = true;
-    select.appendChild(fallback);
-  }
+function displayVerse() {
+  const translation = translationSelect.value;
+  verseBox.textContent = verses[dateStr]?.[translation] || "Stay rooted in the Word. Verse coming soon.";
 }
-document.addEventListener('DOMContentLoaded', loadTranslations);
 
-/* optional: track chosen translation for future fetches */
-let currentTranslation = 'MSG';
-document.getElementById('translationSelect').addEventListener('change', e => {
-  currentTranslation = e.target.value;
-  // here you could re-fetch a verse from AO Lab using currentTranslation
-});
+displayVerse();
+translationSelect.addEventListener('change', displayVerse);
 
-/* ----------------- Lord's Prayer typing (unchanged) ----------------- */
-const prayerLines=[ "Our Father, who art in heaven,", "hallowed be Thy name.", "Thy kingdom come,", "Thy will be done,", "on earth as it is in heaven.", "",
-"Give us this day our daily bread,", "and forgive us our debts,", "as we forgive our debtors.", "",
-"And lead us not into temptation,", "but deliver us from evil.", "",
-"For Thine is the kingdom,", "and the power,", "and the glory, forever.", "Amen."];
+// Lord's Prayer animation
+const prayerLines=[
+  "Our Father, who art in heaven,",
+  "hallowed be Thy name.",
+  "Thy kingdom come,",
+  "Thy will be done,",
+  "on earth as it is in heaven.",
+  "",
+  "Give us this day our daily bread,",
+  "and forgive us our debts,",
+  "as we forgive our debtors.",
+  "",
+  "And lead us not into temptation,",
+  "but deliver us from evil.",
+  "",
+  "For Thine is the kingdom,",
+  "and the power,",
+  "and the glory, forever.",
+  "Amen."
+];
 const prayerEl=document.getElementById("lordsPrayer");
 let pLine=0, pChar=0, built=[];
 function typePrayer(){
@@ -224,6 +306,64 @@ function typePrayer(){
   else { pLine++; pChar=0; setTimeout(typePrayer,400);}
 }
 typePrayer();
+
+// Fasting Banner
+(function() {
+  const channelName = 'faithsteps_fast';
+  const bannerId = 'fasting-banner-auto';
+  const soundId = 'fasting-sound-element';
+
+  function makeBanner() {
+    if (document.getElementById(bannerId)) return;
+    const banner = document.createElement('div');
+    banner.id = bannerId;
+    banner.style.position = 'fixed';
+    banner.style.bottom = '20px';
+    banner.style.right = '20px';
+    banner.style.zIndex = 99999;
+    banner.style.padding = '14px 18px';
+    banner.style.borderRadius = '10px';
+    banner.style.boxShadow = '0 8px 30px rgba(0,0,0,0.18)';
+    banner.style.background = '#6b21a8';
+    banner.style.color = '#fff';
+    banner.style.fontFamily = "'DM Sans',sans-serif";
+    banner.style.fontWeight = '700';
+    banner.style.cursor = 'pointer';
+    banner.innerHTML = `<div style="font-size:1rem">Fasting Day</div><div style="font-weight:400; font-size:0.85rem; margin-top:4px">Water fast: 12:00 AM – 5:00 PM — click for details</div>`;
+    banner.addEventListener('click', () => { window.location.href = 'fasting.html'; });
+    document.body.appendChild(banner);
+  }
+
+  function removeBanner() { const el = document.getElementById(bannerId); if(el) el.remove(); }
+  function playBeep() {
+    if(document.getElementById(soundId)) return;
+    const audio = document.createElement('audio');
+    audio.id = soundId;
+    audio.src = "data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAESsAACJWAAACABAAZGF0YQAAAAA=";
+    audio.play().catch(()=>{});
+  }
+
+  function handlePayload(payload) {
+    if(!payload) return;
+    if(payload.fasting) { makeBanner(); playBeep(); flashTitle('Fasting Day — Click for details'); }
+    else { removeBanner(); restoreTitle(); }
+  }
+
+  let titleInterval=null; const origTitle=document.title;
+  function flashTitle(msg){
+    if(titleInterval) clearInterval(titleInterval);
+    let on=false;
+    titleInterval=setInterval(()=>{ document.title=on?msg:origTitle; on=!on; },1200);
+    setTimeout(()=>{ if(titleInterval){ clearInterval(titleInterval); titleInterval=null; document.title=origTitle; } },20000);
+  }
+  function restoreTitle(){ if(titleInterval){ clearInterval(titleInterval); titleInterval=null; document.title=origTitle; } }
+
+  if('BroadcastChannel' in window){
+    const bc=new BroadcastChannel(channelName);
+    bc.addEventListener('message', ev=>handlePayload(ev.data));
+    window._faith_bc=bc;
+  }
+})();
 </script>
 </body>
 </html>
