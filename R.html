@@ -306,8 +306,8 @@
     translationSelect.appendChild(option);
   });
 
-  // Set default translation to MSG or first available
-  const defaultTranslation="MSG";
+  // Set default translation to NLT or first available
+  const defaultTranslation="NLT";
   translationSelect.value=defaultTranslation in todaysVerses && todaysVerses[defaultTranslation]!=="Verse not available"? defaultTranslation:Object.keys(todaysVerses).find(v=>todaysVerses[v]!=="Verse not available");
   verseBox.textContent=todaysVerses[translationSelect.value];
 
