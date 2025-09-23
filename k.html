@@ -180,7 +180,88 @@ const today = new Date();
 const month = String(today.getMonth()+1).padStart(2,'0');
 const day = String(today.getDate()).padStart(2,'0');
 const dateStr = `${today.getFullYear()}-${month}-${day}`;
-
+const verses = {
+  "2025-09-23": {
+    "reference": "1 Corinthians 15:58",
+    "MSG": "With all this going for us, my dear friends, stand your ground...",
+    "NLT": "With all this in your favor, my dear friends, stand your ground...",
+    "GNT": "With all this going for us, dear friends, be firm...",
+    "NIV": "Therefore, my dear brothers and sisters, stand firm...",
+    "NKJV": "Therefore, my beloved, be steadfast, immovable...",
+    "NORTHERN SOUTH": "Ka tsohle tseo di leng le rona, bagwera ba ratehang, ema fatše...",
+    "SISWATI": "Ngoba tonkhe letinye litje lelikhona, bangani bami labathandekayo, yimise kahle..."
+  },
+  "2025-09-24": {
+    "reference": "James 2:14-26",
+    "MSG": "Does merely talking about faith indicate that a person really has it?...",
+    "NLT": "What good is it, my brothers and sisters, if someone claims to have faith but has no deeds?...",
+    "GNT": "What good is it, my brothers and sisters, if someone says they have faith but does not have works?...",
+    "NIV": "What good is it, my brothers and sisters, if someone claims to have faith but has no deeds?...",
+    "NKJV": "What does it profit, my brethren, if someone says he has faith but does not have works?...",
+    "NORTHERN SOUTH": "Ke molemo ofe, bagwera, ge motho a bolela gore o na le tumelo eupša a se na ditiro?...",
+    "SISWATI": "Kuphumelela kuphi, bangani, uma umuntu ethi unetsemba kodvwa angenawo emisebenti?..."
+  },
+  "2025-09-25": {
+    "reference": "Matthew 24:13",
+    "MSG": "Staying with it—that’s what God requires. Stay with it to the end...",
+    "NLT": "But the one who endures to the end will be saved.",
+    "GNT": "The one who perseveres to the end will be saved.",
+    "NIV": "But the one who stands firm to the end will be saved.",
+    "NKJV": "But he who endures to the end shall be saved.",
+    "NORTHERN SOUTH": "Yo a dulago go fihla bofelong o tla bolawa...",
+    "SISWATI": "Lowati loya lihlala kuze kube sekupheleni uyakutjengisa kutsi uyasalindza..."
+  },
+  "2025-09-26": {
+    "reference": "2 Thessalonians 3:13",
+    "MSG": "And don’t get tired of doing what is good. Don’t get discouraged...",
+    "NLT": "Never tire of doing what is good.",
+    "GNT": "Don’t grow weary of doing good.",
+    "NIV": "Never tire of doing what is good.",
+    "NKJV": "Do not grow weary in doing good.",
+    "NORTHERN SOUTH": "O se ke wa khathala go dira se se molemo...",
+    "SISWATI": "Ungakhatali ekuzenzeni kuhle..."
+  },
+  "2025-09-27": {
+    "reference": "1 Peter 1:6-7",
+    "MSG": "Pure gold put in the fire comes out of it proved pure...",
+    "NLT": "These trials will show that your faith is genuine.",
+    "GNT": "Your faith is tested and refined through trials.",
+    "NIV": "In this you greatly rejoice, though now for a little while you may have had to suffer...",
+    "NKJV": "That the genuineness of your faith, being much more precious than gold...",
+    "NORTHERN SOUTH": "Gore selefera sa nnete se se tla phagamelela...",
+    "SISWATI": "Lemali lekhetsiwe ligcwele licutshungulwe..."
+  },
+  "2025-09-28": {
+    "reference": "Romans 10:17",
+    "MSG": "The point is, before you trust, you have to listen...",
+    "NLT": "Faith comes from hearing the message, and the message is heard through the Word of Christ.",
+    "GNT": "Faith comes from hearing the message about Christ.",
+    "NIV": "Consequently, faith comes from hearing the message...",
+    "NKJV": "So then faith comes by hearing, and hearing by the word of God.",
+    "NORTHERN SOUTH": "Tumelo e tla ka go reetsa molaetsa...",
+    "SISWATI": "Kwetsemba kufika ekuvakalelweni kwelitsemba..."
+  },
+  "2025-09-29": {
+    "reference": "Mark 11:22-25",
+    "MSG": "Jesus was matter-of-fact: ‘Embrace this God-life. Really embrace it...'",
+    "NLT": "Have faith in God. Truly believe that God will act.",
+    "GNT": "Jesus said, 'Have faith in God.'",
+    "NIV": "Have faith in God. Truly believe...",
+    "NKJV": "Have faith in God.",
+    "NORTHERN SOUTH": "Bolelwa ke Jesu, 'Ela tumelo go Modimo.'",
+    "SISWATI": "Jesu watsi, 'Kwetsemba kuNkulunkulu.'"
+  },
+  "2025-09-30": {
+    "reference": "2 Corinthians 5:7 & Colossians 1:11-12",
+    "MSG": "It’s what we trust in but don’t yet see that keeps us going...",
+    "NLT": "We live by faith, not by sight. Be strengthened with all power...",
+    "GNT": "We walk by faith, not by sight.",
+    "NIV": "For we live by faith, not by sight...",
+    "NKJV": "For we walk by faith, not by sight...",
+    "NORTHERN SOUTH": "Re phela ka tumelo, e seng ka pono...",
+    "SISWATI": "Siphila netsemba, hhayi ngekubona..."
+  }
+};
 // Image with fallback
 const verseImage = document.getElementById('dailyVerseImage');
 verseImage.src = `images/${month}${day}.jpg`;
