@@ -165,7 +165,7 @@ section h2 {
 </head>
 <body>
 <header>
-  <h1>FaithSteps: Walk With God</h1>
+  <h1>FaithSteps: Walk with God</h1>
   <p>6 months of Seeking God's Face • Scripture • Fasting • Prayer • Journaling</p>
 </header>
 
@@ -224,23 +224,6 @@ const announcementMessage = "";
 const announcementEl = document.getElementById("announcement");
 const reminderSection = document.getElementById("reminderSection");
 if(!announcementMessage.trim()){ reminderSection.style.display="none"; } 
-else {
-  let words=announcementMessage.split(' '), lines=[], currentLine='';
-  words.forEach(word=>{
-    if((currentLine+word).length>50){ lines.push(currentLine.trim()); currentLine=word+' '; } 
-    else currentLine+=word+' ';
-  });
-  if(currentLine) lines.push(currentLine.trim());
-  let lineIndex=0, charIndex=0;
-  function typeLine(){
-    if(lineIndex>=lines.length) return;
-    announcementEl.textContent = lines.slice(0,lineIndex).join('\n') + '\n' + lines[lineIndex].substring(0,charIndex);
-    charIndex++;
-    if(charIndex<=lines[lineIndex].length) setTimeout(typeLine,50);
-    else { lineIndex++; charIndex=0; setTimeout(typeLine,200);}
-  }
-  typeLine();
-}
 
 // Verse of the Day
 const verseBox = document.getElementById('todaysVerseBox');
@@ -255,6 +238,7 @@ const imagePath = `images/${month}${day}.jpg`;
 verseImage.src = imagePath;
 verseImage.onerror = ()=>{verseImage.style.display='none';};
 
+// Multi-translation verses
 const verses = {
   "2025-09-23": {
     "MSG": "With all this going for us, my dear friends, stand your ground...",
@@ -309,60 +293,25 @@ typePrayer();
 
 // Fasting Banner
 (function() {
-  const channelName = 'faithsteps_fast';
   const bannerId = 'fasting-banner-auto';
-  const soundId = 'fasting-sound-element';
-
-  function makeBanner() {
-    if (document.getElementById(bannerId)) return;
-    const banner = document.createElement('div');
-    banner.id = bannerId;
-    banner.style.position = 'fixed';
-    banner.style.bottom = '20px';
-    banner.style.right = '20px';
-    banner.style.zIndex = 99999;
-    banner.style.padding = '14px 18px';
-    banner.style.borderRadius = '10px';
-    banner.style.boxShadow = '0 8px 30px rgba(0,0,0,0.18)';
-    banner.style.background = '#6b21a8';
-    banner.style.color = '#fff';
-    banner.style.fontFamily = "'DM Sans',sans-serif";
-    banner.style.fontWeight = '700';
-    banner.style.cursor = 'pointer';
-    banner.innerHTML = `<div style="font-size:1rem">Fasting Day</div><div style="font-weight:400; font-size:0.85rem; margin-top:4px">Water fast: 12:00 AM – 5:00 PM — click for details</div>`;
-    banner.addEventListener('click', () => { window.location.href = 'fasting.html'; });
-    document.body.appendChild(banner);
-  }
-
-  function removeBanner() { const el = document.getElementById(bannerId); if(el) el.remove(); }
-  function playBeep() {
-    if(document.getElementById(soundId)) return;
-    const audio = document.createElement('audio');
-    audio.id = soundId;
-    audio.src = "data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAESsAACJWAAACABAAZGF0YQAAAAA=";
-    audio.play().catch(()=>{});
-  }
-
-  function handlePayload(payload) {
-    if(!payload) return;
-    if(payload.fasting) { makeBanner(); playBeep(); flashTitle('Fasting Day — Click for details'); }
-    else { removeBanner(); restoreTitle(); }
-  }
-
-  let titleInterval=null; const origTitle=document.title;
-  function flashTitle(msg){
-    if(titleInterval) clearInterval(titleInterval);
-    let on=false;
-    titleInterval=setInterval(()=>{ document.title=on?msg:origTitle; on=!on; },1200);
-    setTimeout(()=>{ if(titleInterval){ clearInterval(titleInterval); titleInterval=null; document.title=origTitle; } },20000);
-  }
-  function restoreTitle(){ if(titleInterval){ clearInterval(titleInterval); titleInterval=null; document.title=origTitle; } }
-
-  if('BroadcastChannel' in window){
-    const bc=new BroadcastChannel(channelName);
-    bc.addEventListener('message', ev=>handlePayload(ev.data));
-    window._faith_bc=bc;
-  }
+  if(!localStorage.getItem('faithsteps_fasting')) return;
+  const banner = document.createElement('div');
+  banner.id = bannerId;
+  banner.style.position = 'fixed';
+  banner.style.bottom = '20px';
+  banner.style.right = '20px';
+  banner.style.zIndex = 99999;
+  banner.style.padding = '14px 18px';
+  banner.style.borderRadius = '10px';
+  banner.style.boxShadow = '0 8px 30px rgba(0,0,0,0.18)';
+  banner.style.background = '#6b21a8';
+  banner.style.color = '#fff';
+  banner.style.fontFamily = "'DM Sans',sans-serif";
+  banner.style.fontWeight = '700';
+  banner.style.cursor = 'pointer';
+  banner.innerHTML = `<div style="font-size:1rem">Fasting Day</div><div style="font-weight:400; font-size:0.85rem; margin-top:4px">Water fast: 12:00 AM – 5:00 PM — click for details</div>`;
+  banner.addEventListener('click', ()=>{ window.location.href='fasting.html'; });
+  document.body.appendChild(banner);
 })();
 </script>
 </body>
