@@ -98,10 +98,9 @@
     object-fit:cover;
   }
 
-  /* Translation selector */
   #translationSelect {
     display:block;
-    margin:0 auto 1.5rem;
+    margin:0 auto 1rem;
     padding:0.6rem 1rem;
     border-radius:8px;
     border:2px solid var(--primary);
@@ -117,6 +116,55 @@
     box-shadow: 0 0 8px var(--shadow);
   }
 
+  /* Announcement */
+  .reminder {
+    background: linear-gradient(to right, var(--secondary), var(--primary));
+    color: var(--white);
+    font-weight: 700;
+    padding: 1rem 1.2rem;
+    border-radius: 10px;
+    margin-bottom:2rem;
+    position: relative;
+    max-width: 100%;
+    overflow: hidden;
+    min-height: 60px;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    white-space: pre-wrap;
+    text-align: center;
+    border: 2px dotted var(--white);
+  }
+  #announcement {
+    display:inline-block;
+    border-right:2px solid var(--white);
+    padding-right:2px;
+    animation: blink-caret 0.7s step-end infinite;
+    width: 100%;
+  }
+  @keyframes blink-caret { 50% { border-color: transparent; } }
+
+  .footer-prayer {
+    background: var(--highlight);
+    color: var(--primary);
+    text-align:center;
+    padding:2rem;
+    font-size:1rem;
+    line-height:1.8;
+    border-top:2px solid var(--secondary);
+    white-space: pre-line;
+    font-weight:500;
+    box-shadow:0 -2px 12px var(--shadow);
+    border-radius:0 0 12px 12px;
+    max-width:900px;
+    margin:0 auto 2rem;
+  }
+  .footer-prayer strong {
+    display:block;
+    margin-bottom:1rem;
+    font-size:1.3rem;
+  }
+
   @media(max-width:600px){
     header h1{font-size:2.2rem;}
     nav a{margin:0.5rem 0.8rem;font-size:1rem;}
@@ -127,156 +175,149 @@
     #todaysVerseBox{font-size:1rem;padding:1rem 1.2rem;}
     .verse-image{max-width:100%;height:auto;}
   }
-
 </style>
 </head>
 <body>
-  <header>
-    <h1>FaithSteps: Walk With God</h1>
-    <p>6 months of Seeking God's Face • Scripture • Fasting • Prayer • Journaling</p>
-  </header>
+<header>
+  <h1>FaithSteps: Walk With God</h1>
+  <p>6 months of Seeking God's Face • Scripture • Fasting • Prayer • Journaling</p>
+</header>
 
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="journal.html">Journal</a>
-    <a href="verses.html">Verses</a>
-    <a href="fasting.html">Fasting</a>
-    <a href="BibleBook.html">Monthly Bible Reading</a>
-  </nav>
+<nav>
+  <a href="index.html">Home</a>
+  <a href="journal.html">Journal</a>
+  <a href="verses.html">Verses</a>
+  <a href="fasting.html">Fasting</a>
+  <a href="BibleBook.html">Monthly Bible Reading</a>
+</nav>
 
-  <main>
-    <section id="todaysVerse">
-      <h2>📖 Today's Verse</h2>
-      <select id="translationSelect"></select>
-      <div id="todaysVerseBox">Loading verse…</div>
-      <img id="dailyVerseImage" src="" alt="Verse of the Day Image" class="verse-image"/>
-    </section>
-
-    <!-- Purpose and theme sections remain untouched -->
-    <section id="purpose">
-      <h2>Purpose of the Journey</h2>
-      <p>This journey from July to December is a sacred commitment to seek God's face with intentionality...</p>
-      <p>July focuses on seeking God's face, developing a habit of daily intimacy through prayer...</p>
-      <p>August focuses on turning back to God with humble hearts, walking in obedience...</p>
-      <p>September centers on cultivating intimacy with God and building spiritual strength...</p>
-    </section>
-
-    <section id="month-theme">
-      <h2>Month & Theme</h2>
-      <p><strong>July 2025</strong></p>
-      <p><em>Theme: Seeking God's Face</em></p>
-      <p><strong>August 2025</strong></p>
-      <p><em>Theme: Repentance, Obedience, Discipline, Following Christ's Examples & Following God's Instructions</em></p>
-      <p><strong>September 2025</strong></p>
-      <p><em>Theme: Intimacy with God, Spiritual Heart Check and Keeping the Faith, Endurance and Obedience</em></p>
-    </section>
-  </main>
-
-  <section class="footer-prayer">
-    <strong>The Lord's Prayer</strong>
-    <div id="lordsPrayer"></div>
+<main>
+  <section class="reminder" id="reminderSection">
+    <span id="announcement"></span>
   </section>
 
+  <section id="todaysVerse">
+    <h2>📖 Today's Verse</h2>
+    <select id="translationSelect"></select>
+    <div id="todaysVerseBox">Loading verse…</div>
+    <img id="dailyVerseImage" src="" alt="Verse of the Day Image" class="verse-image"/>
+  </section>
+</main>
+
+<section class="footer-prayer">
+  <strong>The Lord's Prayer</strong>
+  <div id="lordsPrayer"></div>
+</section>
+
 <script>
-  const verseBox = document.getElementById('todaysVerseBox');
-  const verseImage = document.getElementById('dailyVerseImage');
-  const translationSelect = document.getElementById('translationSelect');
-
-  const today = new Date();
-  const year = today.getFullYear();
-  const month = String(today.getMonth()+1).padStart(2,'0');
-  const day = String(today.getDate()).padStart(2,'0');
-  const dateStr = `${year}-${month}-${day}`;
-
-  // Verse data
-  const verses = {
-    "2025-09-23": {
-      "reference": "1 Corinthians 15:58",
-      "MSG": "With all this going for us, my dear, dear friends, stand your ground...",
-      "NLT": "Therefore, my dear brothers and sisters, stand firm...",
-      "NIV": "Therefore, my dear brothers and sisters, stand firm...",
-    },
-    "2025-09-24": {
-      "reference": "James 2:14–26",
-      "MSG": "Does merely talking about faith indicate that a person really has it? …",
-      "NLT": "What good is it, my brothers and sisters, if someone claims to have faith...",
-      "GNT": "What good is it, my brothers and sisters, if someone claims to have faith...",
-    },
-    "2025-09-25": {
-      "reference": "Matthew 24:13",
-      "MSG": "Staying with it—that’s what God requires...",
-    },
-    "2025-09-26": {
-      "reference": "2 Thessalonians 3:13",
-      "MSG": "And don’t get tired of doing what is good...",
-    },
-    "2025-09-27": {
-      "reference": "1 Peter 1:6-7",
-      "MSG": "Pure gold put in the fire comes out of it proved pure...",
-    },
-    "2025-09-28": {
-      "reference": "Romans 10:17",
-      "MSG": "The point is, before you trust, you have to listen...",
-    },
-    "2025-09-29": {
-      "reference": "Mark 11:22–25",
-      "MSG": "Jesus was matter-of-fact: ‘Embrace this God-life…’",
-    },
-    "2025-09-30": {
-      "reference": "2 Corinthians 5:7 & Colossians 1:11–12",
-      "MSG": "It’s what we trust in but don’t yet see that keeps us going...",
+  // Announcement bar
+  const announcementMessage = ""; 
+  const announcementEl = document.getElementById("announcement");
+  const reminderSection = document.getElementById("reminderSection");
+  if(!announcementMessage.trim()){ reminderSection.style.display="none"; } 
+  else {
+    let words=announcementMessage.split(' '), lines=[], currentLine='';
+    words.forEach(word=>{
+      if((currentLine+word).length>50){ lines.push(currentLine.trim()); currentLine=word+' '; } 
+      else currentLine+=word+' ';
+    });
+    if(currentLine) lines.push(currentLine.trim());
+    let lineIndex=0, charIndex=0;
+    function typeLine(){
+      if(lineIndex>=lines.length) return;
+      announcementEl.textContent = lines.slice(0,lineIndex).join('\n') + '\n' + lines[lineIndex].substring(0,charIndex);
+      charIndex++;
+      if(charIndex<=lines[lineIndex].length) setTimeout(typeLine,50);
+      else { lineIndex++; charIndex=0; setTimeout(typeLine,200);}
     }
+    typeLine();
+  }
+
+  // Fasting banner example
+  (function(){
+    const channelName='faithsteps_fast';
+    const bannerId='fasting-banner-auto';
+    const soundId='fasting-sound-element';
+    function makeBanner(){
+      if(document.getElementById(bannerId)) return;
+      const banner=document.createElement('div');
+      banner.id=bannerId;
+      banner.style.position='fixed';
+      banner.style.bottom='20px';
+      banner.style.right='20px';
+      banner.style.zIndex=99999;
+      banner.style.padding='14px 18px';
+      banner.style.borderRadius='10px';
+      banner.style.boxShadow='0 8px 30px rgba(0,0,0,0.18)';
+      banner.style.background='#6b21a8';
+      banner.style.color='#fff';
+      banner.style.fontFamily="'DM Sans',sans-serif";
+      banner.style.fontWeight='700';
+      banner.style.cursor='pointer';
+      banner.innerHTML=`<div style="font-size:1rem">Fasting Day</div><div style="font-weight:400; font-size:0.85rem; margin-top:4px">Water fast: 12:00 AM – 5:00 PM — click for details</div>`;
+      banner.addEventListener('click',()=>{ window.location.href='fasting.html'; });
+      document.body.appendChild(banner);
+    }
+    function removeBanner(){ const el=document.getElementById(bannerId); if(el) el.remove(); }
+    function playBeep(){ if(document.getElementById(soundId)) return; const audio=document.createElement('audio'); audio.id=soundId; audio.src="data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAESsAACJWAAACABAAZGF0YQAAAAA="; audio.play().catch(()=>{}); }
+
+    function handlePayload(payload){ if(!payload) return; if(payload.fasting){ makeBanner(); playBeep(); flashTitle('Fasting Day — Click for details'); } else { removeBanner(); restoreTitle(); } }
+    let titleInterval=null; const origTitle=document.title;
+    function flashTitle(msg){ if(titleInterval) clearInterval(titleInterval); let on=false; titleInterval=setInterval(()=>{ document.title=on?msg:origTitle; on=!on; },1200); setTimeout(()=>{ if(titleInterval){ clearInterval(titleInterval); titleInterval=null; document.title=origTitle;} },20000); }
+    function restoreTitle(){ if(titleInterval){ clearInterval(titleInterval); titleInterval=null; document.title=origTitle;} }
+
+    if('BroadcastChannel' in window){ const bc=new BroadcastChannel(channelName); bc.addEventListener('message',ev=>handlePayload(ev.data)); window._faith_bc=bc; }
+    window.addEventListener('storage',(e)=>{ if(e.key==='faithsteps_fasting'&&e.newValue){ try{ handlePayload(JSON.parse(e.newValue)); } catch(e){} } });
+    try{ const raw=localStorage.getItem('faithsteps_fasting'); if(raw) handlePayload(JSON.parse(raw)); } catch(e){}
+    window.removeFastingBanner=removeBanner;
+  })();
+
+  // Verse of the day with translation selector
+  const verseBox=document.getElementById('todaysVerseBox');
+  const verseImage=document.getElementById('dailyVerseImage');
+  const translationSelect=document.getElementById('translationSelect');
+  const today=new Date(), year=today.getFullYear(), month=String(today.getMonth()+1).padStart(2,'0'), day=String(today.getDate()).padStart(2,'0');
+  const dateStr=`${year}-${month}-${day}`;
+  const imagePath=`images/${month}${day}.jpg`;
+  verseImage.src=imagePath;
+  verseImage.onerror=()=>{verseImage.style.display='none';};
+
+  // Verses object with translations
+  const verses={
+    "2025-09-23": {
+      "MSG":"“With all this going for us, my dear, dear friends, stand your ground. And don’t hold back. Throw yourselves into the work of the Master, confident that nothing you do for him is a waste of time or effort.” — 1 Corinthians 15:58",
+      "NLT":"“So, my dear brothers and sisters, be steadfast, immovable, always excelling in the Lord’s work, because you know that your labor in the Lord is not in vain.” — 1 Corinthians 15:58",
+      "NIV":"“Therefore, my dear brothers and sisters, stand firm. Let nothing move you. Always give yourselves fully to the work of the Lord, because you know that your labor in the Lord is not in vain.” — 1 Corinthians 15:58",
+      "GNT":"“So, my dear brothers, be firm, immovable, always devoted to the work of the Lord, knowing that in the Lord your labor is not in vain.” — 1 Corinthians 15:58",
+      "NKJV":"“Therefore, my beloved brethren, be steadfast, immovable, always abounding in the work of the Lord, knowing that your labor is not in vain in the Lord.” — 1 Corinthians 15:58",
+      "NORTHERN SOUTH":"Verse not available",
+      "SISWATI":"Verse not available"
+    }
+    // Add more dates similarly
   };
 
-  // Verse image fallback
-  const imagePath = `images/${month}${day}.jpg`;
-  verseImage.src = imagePath;
-  verseImage.onerror = () => { verseImage.style.display='none'; };
+  // Build translation selector dynamically
+  const todaysVerses=verses[dateStr]||{"MSG":"Stay rooted in the Word. Verse coming soon."};
+  Object.keys(todaysVerses).forEach(ver=>{
+    const option=document.createElement('option');
+    option.value=ver;
+    option.textContent=ver;
+    if(todaysVerses[ver]==="Verse not available") option.disabled=true;
+    translationSelect.appendChild(option);
+  });
 
-  // Populate translation selector dynamically
-  function populateTranslations() {
-    translationSelect.innerHTML = '';
-    const todayVerse = verses[dateStr];
-    if (!todayVerse) {
-      const opt = document.createElement('option');
-      opt.value = 'MSG';
-      opt.textContent = 'MSG';
-      translationSelect.appendChild(opt);
-      return;
-    }
-    Object.keys(todayVerse).forEach(tr => {
-      if(tr !== 'reference') {
-        const opt = document.createElement('option');
-        opt.value = tr;
-        opt.textContent = tr;
-        translationSelect.appendChild(opt);
-      }
-    });
-    if (!todayVerse.MSG) {
-      const opt = document.createElement('option');
-      opt.value = 'MSG';
-      opt.textContent = 'MSG';
-      translationSelect.appendChild(opt);
-    }
-  }
+  // Set default translation to MSG or first available
+  const defaultTranslation="MSG";
+  translationSelect.value=defaultTranslation in todaysVerses && todaysVerses[defaultTranslation]!=="Verse not available"? defaultTranslation:Object.keys(todaysVerses).find(v=>todaysVerses[v]!=="Verse not available");
+  verseBox.textContent=todaysVerses[translationSelect.value];
 
-  // Update verse display
-  function updateVerse() {
-    const translation = translationSelect.value;
-    const v = verses[dateStr];
-    if(v) {
-      const text = v[translation] ? v[translation] : v.MSG;
-      verseBox.textContent = `“${text}” — ${v.reference} (${translation})`;
-    } else {
-      verseBox.textContent = "Stay rooted in the Word. Verse coming soon.";
-    }
-  }
+  translationSelect.addEventListener('change',()=>{
+    const val=translationSelect.value;
+    if(todaysVerses[val]==="Verse not available") verseBox.textContent=todaysVerses["MSG"];
+    else verseBox.textContent=todaysVerses[val];
+  });
 
-  populateTranslations();
-  updateVerse();
-  translationSelect.addEventListener('change', updateVerse);
-
-  // Lord's Prayer typing
+  // Lord's Prayer animation
   const prayerLines=[
     "Our Father, who art in heaven,",
     "hallowed be Thy name.",
@@ -301,13 +342,12 @@
   function typePrayer(){
     if(pLine>=prayerLines.length) return;
     built[pLine]=prayerLines[pLine].substring(0,pChar);
-    prayerEl.textContent = built.join("\n");
+    prayerEl.textContent=built.join("\n");
     pChar++;
     if(pChar<=prayerLines[pLine].length) setTimeout(typePrayer,60);
     else { pLine++; pChar=0; setTimeout(typePrayer,400);}
   }
   typePrayer();
 </script>
-
 </body>
 </html>
