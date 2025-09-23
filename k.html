@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FaithSteps – Walk with God</title>
+
+<!-- Preload font for faster first paint -->
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg: linear-gradient(to bottom right,#fde2ff,#ffe6f0);
+  --primary:#d63384; --secondary:#ff69b4; --highlight:#fff0f5;
+  --text:#2d1e45; --white:#fff; --shadow:rgba(0,0,0,.07);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:'DM Sans',sans-serif;
+  background:var(--bg);color:var(--text);
+  min-height:100vh;display:flex;flex-direction:column;overflow-x:hidden;
+}
+
+/* ---------- Header ---------- */
+header{
+  background:url('https://images.unsplash.com/photo-1554355409-7d69eaad80d9?q=80&w=1200&auto=format&fit=crop') center/cover no-repeat;
+  color:var(--white);text-align:center;padding:5rem 2rem;position:relative;
+}
+header h1{font-size:3rem;text-shadow:2px 2px 6px #000;margin-bottom:.3rem}
+header p{font-size:1.3rem;text-shadow:1px 1px 5px #000}
+@media(max-width:600px){header h1{font-size:2.2rem}header p{font-size:1rem}}
+
+/* ---------- Navigation ---------- */
+nav{
+  position:sticky;top:0;z-index:10;
+  background:var(--primary);
+  display:flex;flex-wrap:wrap;justify-content:center;gap:.6rem;
+  padding:1rem;box-shadow:0 4px 8px var(--shadow);
+}
+nav a{
+  color:var(--white);font-weight:700;font-size:1.1rem;
+  text-decoration:none;margin:.5rem 1.2rem;
+  transition:color .2s;
+}
+nav a:hover{color:var(--secondary);text-decoration:underline}
+@media(max-width:600px){nav a{margin:.5rem .8rem;font-size:1rem}}
+
+/* ---------- Layout ---------- */
+main{max-width:900px;margin:2rem auto 4rem;padding:0 1rem}
+section{
+  background:var(--white);
+  border-radius:12px;
+  padding:2rem;margin-bottom:2rem;
+  box-shadow:0 6px 18px var(--shadow);
+}
+section h2{
+  text-align:center;color:var(--primary);
+  font-weight:700;font-size:1.8rem;margin-bottom:1rem;
+}
+@media(max-width:600px){
+  main{margin:1rem auto 3rem}
+  section{padding:1.2rem}
+  section h2{font-size:1.5rem}
+}
+
+/* ---------- Verse ---------- */
+#todaysVerseBox{
+  font-size:1.1rem;font-weight:500;
+  background:var(--highlight);
+  padding:1.2rem 1.8rem;border-radius:10px;
+  box-shadow:inset 0 0 10px #ffd6f0;
+  margin-bottom:1.5rem;line-height:1.5;text-align:center;
+  word-wrap:break-word;
+}
+#bibleVersion{margin:.5rem auto 1rem;display:block;padding:.4rem .6rem;border-radius:6px;border:1px solid #ccc}
+
+/* ---------- Reminder ---------- */
+.reminder{
+  background:linear-gradient(to right,var(--secondary),var(--primary));
+  color:var(--white);font-weight:700;
+  padding:1rem 1.2rem;border-radius:10px;margin-bottom:2rem;
+  text-align:center;border:2px dotted var(--white);
+}
+#announcement{border-right:2px solid var(--white);padding-right:2px;animation:blink 0.7s step-end infinite}
+@keyframes blink{50%{border-color:transparent}}
+
+/* ---------- Footer Prayer ---------- */
+.footer-prayer{
+  background:var(--highlight);color:var(--primary);
+  text-align:center;padding:2rem;
+  font-size:1rem;line-height:1.8;font-weight:500;
+  border-top:2px solid var(--secondary);
+  box-shadow:0 -2px 12px var(--shadow);
+  border-radius:0 0 12px 12px;
+  max-width:900px;margin:0 auto 2rem;
+  white-space:pre-line;
+}
+.footer-prayer strong{display:block;margin-bottom:1rem;font-size:1.3rem}
+
+/* ---------- Verse Image ---------- */
+.verse-image{
+  display:block;max-width:320px;width:100%;
+  margin:1rem auto 2rem;
+  border-radius:12px;box-shadow:0 6px 16px var(--shadow);
+  object-fit:cover;
+}
+</style>
+</head>
+<body>
+<header>
+  <h1>FaithSteps: Walk With God</h1>
+  <p>6 months of Seeking God's Face • Scripture • Fasting • Prayer • Journaling</p>
+</header>
+
+<nav>
+  <a href="index.html">Home</a>
+  <a href="journal.html">Journal</a>
+  <a href="verses.html">Verses</a>
+  <a href="fasting.html">Fasting</a>
+  <a href="BibleBook.html">Monthly Bible Reading</a>
+</nav>
+
+<main>
+  <section class="reminder" id="reminderSection"><span id="announcement"></span></section>
+
+  <section id="todaysVerse">
+    <h2>📖 Today's Verse</h2>
+    <select id="bibleVersion"><option>Loading versions…</option></select>
+    <div id="todaysVerseBox">Loading verse…</div>
+  </section>
+
+  <img id="dailyVerseImage" src="" alt="Verse of the Day" class="verse-image" loading="lazy">
+
+  <section id="purpose">
+    <h2>Purpose of the Journey</h2>
+    <p>July–December is a sacred commitment to seek God's face through fasting, scripture, prayer, and reflection…</p>
+  </section>
+
+  <section id="month-theme">
+    <h2>Month & Theme</h2>
+    <p><strong>July 2025</strong> – <em>Seeking God's Face</em></p>
+    <p><strong>August 2025</strong> – <em>Repentance, Obedience, Discipline…</em></p>
+    <p><strong>September 2025</strong> – <em>Intimacy with God, Spiritual Heart Check…</em></p>
+  </section>
+</main>
+
+<section class="footer-prayer">
+  <strong>The Lord's Prayer</strong>
+  <div id="lordsPrayer"></div>
+</section>
+
+<script>
+/* ----------------- Announcement ----------------- */
+const announcementMessage = "";
+const announcementEl = document.getElementById("announcement");
+if(!announcementMessage.trim()) document.getElementById("reminderSection").style.display="none";
+else{
+  let i=0; (function type(){
+    announcementEl.textContent = announcementMessage.slice(0,i++);
+    if(i<=announcementMessage.length) setTimeout(type,50);
+  })();
+}
+
+/* ----------------- AO Lab Bible API -----------------
+   Docs: https://bible.helloao.org/docs/reference/
+------------------------------------------------------*/
+(async()=>{
+  const verseBox = document.getElementById("todaysVerseBox");
+  const versionSelect = document.getElementById("bibleVersion");
+
+  // Daily verse reference (rotate or compute dynamically if desired)
+  const refBook="John", refChap=3, refVerse=16;
+
+  // Populate versions
+  try{
+    const tRes = await fetch("https://bible.helloao.org/api/available_translations.json");
+    const {translations} = await tRes.json();
+    versionSelect.innerHTML="";
+    translations.forEach(t=>{
+      const o=document.createElement("option");
+      o.value=t.id; o.textContent=`${t.name} (${t.language})`;
+      versionSelect.appendChild(o);
+    });
+    fetchVerse(versionSelect.value);
+  }catch(e){
+    versionSelect.innerHTML="<option>Default (MSG)</option>";
+    verseBox.textContent="Unable to load translations.";
+  }
+
+  async function fetchVerse(ver){
+    verseBox.textContent="Loading verse…";
+    try{
+      const url=`https://bible.helloao.org/api/${ver}/${refBook}/${refChap}.json`;
+      const r=await fetch(url); const j=await r.json();
+      const v=j.chapter.content.find(x=>x.type==="verse" && x.number===refVerse);
+      const text=(v.content||[]).map(c=>typeof c==="string"?c:c.text||"").join("");
+      verseBox.innerHTML=`<strong>${refBook} ${refChap}:${refVerse} (${ver})</strong><br><br>${text}`;
+    }catch(e){ verseBox.textContent="Verse unavailable right now."; }
+  }
+  versionSelect.addEventListener("change",()=>fetchVerse(versionSelect.value));
+})();
+
+/* ----------------- Local Verse Image ----------------- */
+const d=new Date();
+const mm=String(d.getMonth()+1).padStart(2,'0');
+const dd=String(d.getDate()).padStart(2,'0');
+const img=document.getElementById("dailyVerseImage");
+img.src=`images/${mm}${dd}.jpg`;
+img.onerror=()=>img.style.display="none";
+
+/* ----------------- Lord's Prayer Animation ----------------- */
+const prayerLines=[
+ "Our Father, who art in heaven,","hallowed be Thy name.","Thy kingdom come,",
+ "Thy will be done, on earth as it is in heaven.","","Give us this day our daily bread,",
+ "and forgive us our debts, as we forgive our debtors.","",
+ "And lead us not into temptation, but deliver us from evil.","",
+ "For Thine is the kingdom, and the power, and the glory, forever.","Amen."
+];
+const prayerEl=document.getElementById("lordsPrayer");
+let l=0,c=0,acc=[];
+(function typePrayer(){
+  if(l>=prayerLines.length) return;
+  acc[l]=prayerLines[l].slice(0,c++);
+  prayerEl.textContent=acc.join("\n");
+  if(c<=prayerLines[l].length) setTimeout(typePrayer,60);
+  else {l++;c=0;setTimeout(typePrayer,400);}
+})();
+</script>
+</body>
+</html>
