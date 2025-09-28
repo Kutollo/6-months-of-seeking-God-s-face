@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>FaithSteps – Updates in Progress</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: linear-gradient(to bottom right, #e6f4e7, #d4edd5);
+    --primary: #228B22;
+    --secondary: #2e8b57;
+    --text: #1c2a1c;
+    --white: #fff;
+    --shadow: rgba(0,0,0,0.1);
+    --highlight: #f0fff0;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:2rem;
+  }
+
+  header h1 {
+    font-size:2.5rem;
+    color: var(--primary);
+    margin-bottom:1rem;
+  }
+
+  header p {
+    font-size:1.2rem;
+    max-width:600px;
+    margin:0 auto 2rem;
+    line-height:1.6;
+  }
+
+  .update-box {
+    background: var(--white);
+    padding:2rem;
+    border-radius:14px;
+    box-shadow:0 6px 18px var(--shadow);
+    max-width:700px;
+    margin:auto 0 2rem;
+  }
+  .update-box h2 {
+    color: var(--primary);
+    font-size:1.8rem;
+    margin-bottom:1rem;
+  }
+  .update-box p {
+    font-size:1.1rem;
+    margin-bottom:1rem;
+  }
+
+  .theme-section {
+    margin-top:1rem;
+    padding:1.5rem;
+    border-radius:12px;
+    background: var(--highlight);
+    color: var(--text);
+    max-width:700px;
+  }
+  .theme-section h3 {
+    font-size:1.6rem;
+    margin-bottom:0.5rem;
+    color: var(--primary);
+  }
+  .theme-section p {
+    margin:0.5rem 0;
+    font-size:1.1rem;
+  }
+
+  form {
+    background: var(--white);
+    padding:2rem;
+    border-radius:14px;
+    box-shadow:0 6px 18px var(--shadow);
+    max-width:700px;
+    margin:2rem auto;
+    text-align:left;
+    border-top: 5px solid var(--primary);
+  }
+  form h3 {
+    color: var(--primary);
+    margin-bottom:1rem;
+    font-size:1.6rem;
+    text-align:center;
+  }
+  form label {
+    display:block;
+    margin-bottom:0.3rem;
+    font-weight:600;
+  }
+  form .note {
+    font-size:0.9rem;
+    margin-bottom:0.5rem;
+    color: var(--secondary);
+  }
+  form input, form textarea {
+    width:100%;
+    padding:0.7rem;
+    margin-bottom:1rem;
+    border-radius:8px;
+    border:1px solid #ccc;
+    font-size:1rem;
+  }
+  form input:focus, form textarea:focus {
+    border-color: var(--primary);
+    outline:none;
+    box-shadow:0 0 5px var(--primary);
+  }
+  form input[type="submit"] {
+    background: var(--primary);
+    color: #fff;
+    font-weight:700;
+    border:none;
+    cursor:pointer;
+    transition:0.3s;
+    font-size:1.1rem;
+    padding:0.8rem 1.2rem;
+  }
+  form input[type="submit"]:hover {
+    background: var(--secondary);
+  }
+
+  footer {
+    margin-top:2rem;
+    font-size:0.95rem;
+    color: var(--secondary);
+  }
+
+  @media(max-width:600px){
+    header h1{font-size:2rem;}
+    header p{font-size:1rem;}
+    .update-box, .theme-section, form{padding:1.2rem;}
+    .update-box h2, .theme-section h3, form h3{font-size:1.4rem;}
+    .update-box p, .theme-section p, form label{font-size:1rem;}
+  }
+</style>
+</head>
+<body>
+  <header>
+    <h1>FaithSteps: Walk With God</h1>
+    <p>We’re taking a short pause to prepare something special for you this October.</p>
+  </header>
+
+  <div class="update-box">
+    <h2>🚧 Website Offline</h2>
+    <p>Our site is temporarily offline while we make updates and add new features to help you grow in faith.</p>
+    <p>Please check back soon. We can’t wait to share what’s coming next!</p>
+    <p>Thank you for your patience and prayers 🌿</p>
+  </div>
+
+  <div class="theme-section">
+    <h3>Verses for September 30</h3>
+    <p><strong>Theme (October):</strong> Renewed Strength</p>
+    <p><em>2 Corinthians 5:7</em> — "For we live by faith, not by sight."</p>
+    <p><em>Colossians 1:11-12</em> — "Being strengthened with all power according to his glorious might so that you may have great endurance and patience, and giving joyful thanks to the Father, who has qualified you to share in the inheritance of his holy people in the kingdom of light."</p>
+  </div>
+
+  <!-- Combined form with redirect to thank-you page -->
+  <form action="https://formsubmit.co/kutollochix@gmail.com" method="POST">
+    <input type="hidden" name="_next" value="thankyou.html">
+    <h3>Submit Your Input for October</h3>
+    <p class="note">Share your theme, verses, suggested fast dates, and ideas for improving the site. Dates for each verse are optional.</p>
+
+    <label for="theme">Your Theme <span style="color:red">*</span></label>
+    <input type="text" id="theme" name="theme" required placeholder="Enter theme for October verse">
+
+    <script>
+      for(let i=1;i<=10;i++){
+        document.write(`<label for="verse${i}">Verse ${i} <span style="color:red">*</span></label>`);
+        document.write(`<textarea id="verse${i}" name="verse${i}" required rows="2" placeholder="Enter verse ${i}"></textarea>`);
+        document.write(`<label for="date${i}">Optional Date for Verse ${i}</label>`);
+        document.write(`<input type="date" id="date${i}" name="date${i}">`);
+        document.write(`<p class="note">Choose a date if you want this verse read on a specific day, otherwise leave blank.</p>`);
+      }
+    </script>
+
+    <label for="fastDates">Suggested Dates for 7-Day Fast</label>
+    <input type="text" id="fastDates" name="fastDates" placeholder="E.g., 10–16 October or 20–26 October">
+
+    <label for="feedback">Changes, Upgrades, or Suggestions</label>
+    <textarea id="feedback" name="feedback" rows="4" placeholder="Share your suggestions or ideas here…"></textarea>
+
+    <input type="hidden" name="_captcha" value="false">
+    <input type="submit" value="Submit All">
+  </form>
+
+  <footer>
+    &copy; 2025 FaithSteps • All Rights Reserved
+  </footer>
+</body>
+</html>
