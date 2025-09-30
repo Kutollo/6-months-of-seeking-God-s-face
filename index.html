@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>FaithSteps – Walk with God</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+ :root {
+    --bg: linear-gradient(to bottom right, #e6f4e7, #d4edd5);
+    --primary: #228B22;
+    --secondary: #2e8b57;
+    --text: #1c2a1c;
+    --white: #fff;
+    --shadow: rgba(0,0,0,0.1);
+    --highlight: #f0fff0;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+  }
+
+  header {
+    position: relative;
+    background: url('https://images.unsplash.com/photo-1586800530994-79abd9d49abb?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDQ2fHx8ZW58MHx8fHx8') no-repeat center/cover;
+    color: var(--white);
+    text-align: center;
+    padding: 5rem 2rem;
+  }
+  header h1, header p { position: relative; z-index:1; }
+  header h1 { font-size:3rem; text-shadow:2px 2px 6px #000; margin-bottom:0.3rem;}
+  header p { font-size:1.3rem; text-shadow:1px 1px 5px #000; }
+
+  nav {
+    position: sticky; top:0;
+    background: var(--primary);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 1rem;
+    box-shadow: 0 4px 8px var(--shadow);
+    gap:0.6rem;
+    z-index:10;
+  }
+  nav a {
+    color: var(--white);
+    margin:0.5rem 1.2rem;
+    text-decoration:none;
+    font-weight:700;
+    font-size:1.1rem;
+  }
+  nav a:hover { color: var(--secondary); text-decoration: underline; }
+
+  main { max-width:900px; margin:2rem auto 4rem; padding:0 1rem; }
+
+  section {
+    background: var(--white);
+    border-radius:12px;
+    padding:2rem;
+    margin-bottom:2rem;
+    box-shadow:0 6px 18px var(--shadow);
+  }
+  section h2 {
+    color: var(--primary);
+    margin-bottom:1rem;
+    font-weight:700;
+    font-size:1.8rem;
+    text-align:center;
+  }
+
+  #todaysVerseBox {
+    font-size:1.1rem;
+    font-weight:500;
+    background: var(--highlight);
+    padding:1.2rem 1.8rem;
+    border-radius:10px;
+    box-shadow: inset 0 0 10px #ffd6f0;
+    margin-bottom:1.5rem;
+    line-height:1.5;
+    word-wrap: break-word;
+    text-align:center;
+  }
+
+  .verse-image {
+    display:block;
+    max-width:320px;
+    width:100%;
+    margin:1rem auto 2rem;
+    border-radius:12px;
+    box-shadow:0 6px 16px var(--shadow);
+    object-fit:cover;
+  }
+
+  #translationSelect {
+    display:block;
+    margin:0 auto 1rem;
+    padding:0.6rem 1rem;
+    border-radius:8px;
+    border:2px solid var(--primary);
+    background: var(--highlight);
+    font-size:1rem;
+    font-weight:600;
+    color: var(--text);
+    cursor:pointer;
+    transition: border 0.3s, box-shadow 0.3s;
+  }
+  #translationSelect:hover {
+    border-color: var(--secondary);
+    box-shadow: 0 0 8px var(--shadow);
+  }
+
+  /* Announcement */
+  .reminder {
+    background: linear-gradient(to right, var(--secondary), var(--primary));
+    color: var(--white);
+    font-weight: 700;
+    padding: 1rem 1.2rem;
+    border-radius: 10px;
+    margin-bottom:2rem;
+    position: relative;
+    max-width: 100%;
+    overflow: hidden;
+    min-height: 60px;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    white-space: pre-wrap;
+    text-align: center;
+    border: 2px dotted var(--white);
+  }
+  #announcement {
+    display:inline-block;
+    border-right:2px solid var(--white);
+    padding-right:2px;
+    animation: blink-caret 0.7s step-end infinite;
+    width: 100%;
+  }
+  @keyframes blink-caret { 50% { border-color: transparent; } }
+
+  .footer-prayer {
+    background: var(--highlight);
+    color: var(--primary);
+    text-align:center;
+    padding:2rem;
+    font-size:1rem;
+    line-height:1.8;
+    border-top:2px solid var(--secondary);
+    white-space: pre-line;
+    font-weight:500;
+    box-shadow:0 -2px 12px var(--shadow);
+    border-radius:0 0 12px 12px;
+    max-width:900px;
+    margin:0 auto 2rem;
+  }
+  .footer-prayer strong {
+    display:block;
+    margin-bottom:1rem;
+    font-size:1.3rem;
+  }
+
+  @media(max-width:600px){
+    header h1{font-size:2.2rem;}
+    nav a{margin:0.5rem 0.8rem;font-size:1rem;}
+    main{margin:1rem auto 3rem;}
+    section{padding:1.2rem 1.2rem;}
+    section h2{font-size:1.5rem;}
+    header p{font-size:1rem;}
+    #todaysVerseBox{font-size:1rem;padding:1rem 1.2rem;}
+    .verse-image{max-width:100%;height:auto;}
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>FaithSteps: Walk With God</h1>
+  <p>6 months of Seeking God's Face • Scripture • Fasting • Prayer • Journaling</p>
+</header>
+
+<nav>
+  <a href="index.html">Home</a>
+  <a href="journal.html">Journal</a>
+  <a href="verses.html">Verses</a>
+  <a href="fasting.html">Fasting</a>
+</nav>
+
+<main>
+  <section class="reminder" id="reminderSection">
+    <span id="announcement"></span>
+  </section>
+
+  <section id="todaysVerse">
+    <h2>📖 Today's Verse</h2>
+    <select id="translationSelect"></select>
+    <div id="todaysVerseBox">Loading verse…</div>
+    <img id="dailyVerseImage" src="" alt="Verse of the Day Image" class="verse-image"/>
+  </section>
+
+ <section id="purpose">
+  <h2>Purpose of the Journey</h2>
+  <p>
+    This journey from July to December is a sacred commitment to seek God's face with intentionality. Through fasting, daily scripture, prayer, and reflection, we aim to deepen our relationship with the Lord, grow in spiritual discipline, and align our lives with His divine purpose.
+  </p>
+
+  <p>
+    <strong>July (Completed):</strong> Focused on seeking God's face, developing a habit of daily intimacy through prayer, scripture, and reflection. This month was one of connection, focus, and intentional pursuit of His presence.
+  </p>
+
+  <p>
+    <strong>August (Completed):</strong> Focused on turning back to God with humble hearts, walking in obedience, and aligning with His Word. This month was one of repentance, renewal, and redirection.
+  </p>
+
+  <p>
+    <strong>September (Completed):</strong> Centered on cultivating intimacy with God and building spiritual strength. This month encouraged us to draw near to Him, rely on His power, and grow in steadfast faith, allowing His presence to shape our daily lives and decisions.
+  </p>
+
+  <p>
+    <strong>October:</strong> Theme – Strengthened in Prayer. This month focuses on deepening our prayer life, relying on God’s power, and growing in spiritual endurance. Let October be a time of boldness, perseverance, and drawing near to Him through constant and fervent prayer.
+  </p>
+</section>
+
+<section id="month-theme">
+  <h2>Month & Theme</h2>
+  
+  <p><strong>July 2025</strong></p>
+  <p><em>Theme: Seeking God's Face</em></p>
+  
+  <p><strong>August 2025</strong></p>
+  <p><em>Theme: Repentance, Obedience, Discipline, Following Christ's Examples & Following God's Instructions</em></p>
+  
+  <p><strong>September 2025</strong></p>
+  <p><em>Theme: Intimacy with God, Spiritual Heart Check, Keeping the Faith, Endurance, and Obedience</em></p>
+  
+  <p><strong>October 2025</strong></p>
+  <p><em>Theme: Strengthened in Prayer</em></p>
+</section>
+
+
+</main>
+
+<section class="footer-prayer">
+  <strong>The Lord's Prayer</strong>
+  <div id="lordsPrayer"></div>
+</section>
+
+<script>
+  // Announcement bar
+  const announcementMessage = ""; 
+  const announcementEl = document.getElementById("announcement");
+  const reminderSection = document.getElementById("reminderSection");
+  if(!announcementMessage.trim()){ reminderSection.style.display="none"; } 
+  else {
+    let words=announcementMessage.split(' '), lines=[], currentLine='';
+    words.forEach(word=>{
+      if((currentLine+word).length>50){ lines.push(currentLine.trim()); currentLine=word+' '; } 
+      else currentLine+=word+' ';
+    });
+    if(currentLine) lines.push(currentLine.trim());
+    let lineIndex=0, charIndex=0;
+    function typeLine(){
+      if(lineIndex>=lines.length) return;
+      announcementEl.textContent = lines.slice(0,lineIndex).join('\n') + '\n' + lines[lineIndex].substring(0,charIndex);
+      charIndex++;
+      if(charIndex<=lines[lineIndex].length) setTimeout(typeLine,50);
+      else { lineIndex++; charIndex=0; setTimeout(typeLine,200);}
+    }
+    typeLine();
+  }
+
+  // Fasting banner example
+  (function(){
+    const channelName='faithsteps_fast';
+    const bannerId='fasting-banner-auto';
+    const soundId='fasting-sound-element';
+    function makeBanner(){
+      if(document.getElementById(bannerId)) return;
+      const banner=document.createElement('div');
+      banner.id=bannerId;
+      banner.style.position='fixed';
+      banner.style.bottom='20px';
+      banner.style.right='20px';
+      banner.style.zIndex=99999;
+      banner.style.padding='14px 18px';
+      banner.style.borderRadius='10px';
+      banner.style.boxShadow='0 8px 30px rgba(0,0,0,0.18)';
+      banner.style.background='#6b21a8';
+      banner.style.color='#fff';
+      banner.style.fontFamily="'DM Sans',sans-serif";
+      banner.style.fontWeight='700';
+      banner.style.cursor='pointer';
+      banner.innerHTML=`<div style="font-size:1rem">Fasting Day</div><div style="font-weight:400; font-size:0.85rem; margin-top:4px">Water fast: 12:00 AM – 5:00 PM — click for details</div>`;
+      banner.addEventListener('click',()=>{ window.location.href='fasting.html'; });
+      document.body.appendChild(banner);
+    }
+    function removeBanner(){ const el=document.getElementById(bannerId); if(el) el.remove(); }
+    function playBeep(){ if(document.getElementById(soundId)) return; const audio=document.createElement('audio'); audio.id=soundId; audio.src="data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAESsAACJWAAACABAAZGF0YQAAAAA="; audio.play().catch(()=>{}); }
+
+    function handlePayload(payload){ if(!payload) return; if(payload.fasting){ makeBanner(); playBeep(); flashTitle('Fasting Day — Click for details'); } else { removeBanner(); restoreTitle(); } }
+    let titleInterval=null; const origTitle=document.title;
+    function flashTitle(msg){ if(titleInterval) clearInterval(titleInterval); let on=false; titleInterval=setInterval(()=>{ document.title=on?msg:origTitle; on=!on; },1200); setTimeout(()=>{ if(titleInterval){ clearInterval(titleInterval); titleInterval=null; document.title=origTitle;} },20000); }
+    function restoreTitle(){ if(titleInterval){ clearInterval(titleInterval); titleInterval=null; document.title=origTitle;} }
+
+    if('BroadcastChannel' in window){ const bc=new BroadcastChannel(channelName); bc.addEventListener('message',ev=>handlePayload(ev.data)); window._faith_bc=bc; }
+    window.addEventListener('storage',(e)=>{ if(e.key==='faithsteps_fasting'&&e.newValue){ try{ handlePayload(JSON.parse(e.newValue)); } catch(e){} } });
+    try{ const raw=localStorage.getItem('faithsteps_fasting'); if(raw) handlePayload(JSON.parse(raw)); } catch(e){}
+    window.removeFastingBanner=removeBanner;
+  })();
+
+  // Verse of the day with translation selector
+  const verseBox=document.getElementById('todaysVerseBox');
+  const verseImage=document.getElementById('dailyVerseImage');
+  const translationSelect=document.getElementById('translationSelect');
+  const today=new Date(), year=today.getFullYear(), month=String(today.getMonth()+1).padStart(2,'0'), day=String(today.getDate()).padStart(2,'0');
+  const dateStr=`${year}-${month}-${day}`;
+  const imagePath=`images/${month}${day}.jpg`;
+  verseImage.src=imagePath;
+  verseImage.onerror=()=>{verseImage.style.display='none';};
+
+  // Verses object with translations
+ const verses = {
+  "2025-10-01": {
+    "MSG": "Then Jesus told His disciples a parable to show them that they should always pray and not give up. — Luke 18:1",
+    "NLT": "One day Jesus told His disciples a story to show that they should always pray and never give up. — Luke 18:1",
+    "NIV": "Then Jesus told His disciples a parable to show them that they should always pray and not give up. — Luke 18:1",
+    "GNT": "Then Jesus told his disciples a parable to teach them that they should always pray and never become discouraged. — Luke 18:1",
+    "NKJV": "Then He spoke a parable to them, that men always ought to pray and not lose heart. — Luke 18:1",
+    "SEPEDI": "Jesu a botša barutiwa ba gagwe seswantšho, a ba ruta gore motho o swanetše go dula a rapela le gona a sa fele pelo - Lukase 18:1",
+    "siSWATI": "Jesu wase ubatjela lomfanekiso abafundzisa kutsi kufanele bathandaze sonkhe sikhatsi bangadzinwa. - Lukha 18:1"
+  },
+  "2025-10-02": { "MSG": "", "NLT": "", "NIV": "", "GNT": "", "NKJV": "", "SEPEDI": "Verse not available", "siSWATI": "Verse not available" },
+  "2025-10-03": {
+    "MSG": "Then Jesus told His disciples a parable to show them that they should always pray and not give up. — **Luke 18:1**",
+    "NLT": "One day Jesus told His disciples a story to show that they should always pray and never give up. — **Luke 18:1**",
+    "NIV": "Then Jesus told His disciples a parable to show them that they should always pray and not give up. — **Luke 18:1**",
+    "GNT": "Then Jesus told his disciples a parable to teach them that they should always pray and never become discouraged. — **Luke 18:1**",
+    "NKJV": "Then He spoke a parable to them, that men always ought to pray and not lose heart. — **Luke 18:1**",
+    "SEPEDI": "Verse not available",
+    "siSWATI": "Verse not available"
+  },
+  "2025-10-04": { "MSG": "", "NLT": "", "NIV": "", "GNT": "", "NKJV": "", "SEPEDI": "Verse not available", "siSWATI": "Verse not available" },
+  "2025-10-05": { "MSG": "", "NLT": "", "NIV": "", "GNT": "", "NKJV": "", "SEPEDI": "Verse not available", "siSWATI": "Verse not available" },
+  "2025-10-06": {
+    "MSG": "The Lord is near to all who call on Him, to all who call on Him in truth. — **Psalm 145:18**",
+    "NLT": "The Lord is close to all who call on him, yes, to all who call on him in truth. — **Psalm 145:18**",
+    "NIV": "The Lord is near to all who call on him, to all who call on him in truth. — **Psalm 145:18**",
+    "GNT": "He is near to those who call to him, who call to him with sincerity. — **Psalm 145:18**",
+    "NKJV": "The Lord is near to all who call upon Him, To all who call upon Him in truth. — **Psalm 145:18**",
+    "SEPEDI": "Verse not available",
+    "siSWATI": "Verse not available"
+  },
+  "2025-10-07": { "MSG": "", "NLT": "", "NIV": "", "GNT": "", "NKJV": "", "SEPEDI": "Verse not available", "siSWATI": "Verse not available" },
+  "2025-10-08": { "MSG": "", "NLT": "", "NIV": "", "GNT": "", "NKJV": "", "SEPEDI": "Verse not available", "siSWATI": "Verse not available" },
+  "2025-10-09": {
+    "MSG": "Then you will call on Me and come and pray to Me, and I will listen to you. — **Jeremiah 29:12**",
+    "NLT": "In those days when you pray, I will listen. — **Jeremiah 29:12**",
+    "NIV": "Then you will call on me and come and pray to me, and I will listen to you. — **Jeremiah 29:12**",
+    "GNT": "Then you will call to me. You will come and pray to me, and I will answer you. — **Jeremiah 29:12**",
+    "NKJV": "Then you will call upon Me and go and pray to Me, and I will listen to you. — **Jeremiah 29:12**",
+    "SEPEDI": "Verse not available",
+    "siSWATI": "Verse not available"
+  },
+  "2025-10-10": { "MSG": "", "NLT": "", "NIV": "", "GNT": "", "NKJV": "", "SEPEDI": "Verse not available", "siSWATI": "Verse not available" },
+  "2025-10-11": { "MSG": "", "NLT": "", "NIV": "", "GNT": "", "NKJV": "", "SEPEDI": "Verse not available", "siSWATI": "Verse not available" },
+  "2025-10-12": {
+    "MSG": "Watch and pray so that you will not fall into temptation. The spirit is willing, but the flesh is weak. — **Matthew 26:41**",
+    "NLT": "Keep watch and pray, so that you will not give in to temptation. For the spirit is willing, but the body is weak! — **Matthew 26:41**",
+    "NIV": "Watch and pray so that you will not fall into temptation. The spirit is willing, but the flesh is weak. — **Matthew 26:41**",
+    "GNT": "Keep watch and pray that you will not fall into temptation. The spirit is willing, but the flesh is weak. — **Matthew 26:41**",
+    "NKJV": "Watch and pray, lest you enter into temptation. The spirit indeed is willing, but the flesh is weak. — **Matthew 26:41**",
+    "SEPEDI": "Verse not available",
+    "siSWATI": "Verse not available"
+  },
+  "2025-10-13": { "MSG": "", "NLT": "", "NIV": "", "GNT": "", "NKJV": "", "SEPEDI": "Verse not available", "siSWATI": "Verse not available" },
+  "2025-10-14": { "MSG": "", "NLT": "", "NIV": "", "GNT": "", "NKJV": "", "SEPEDI": "Verse not available", "siSWATI": "Verse not available" },
+  "2025-10-15": {
+    "MSG": "The prayer of a righteous person is powerful and effective. — **James 5:16**",
+    "NLT": "The earnest prayer of a righteous person has great power and produces wonderful results. — **James 5:16**",
+    "NIV": "The prayer of a righteous person is powerful and effective. — **James 5:16**",
+    "GNT": "The prayer of a good person has a powerful effect. — **James 5:16**",
+    "NKJV": "The effective, fervent prayer of a righteous man avails much. — **James 5:16**",
+    "SEPEDI": "Verse not available",
+    "siSWATI": "Verse not available"
+  },
+  "2025-10-16": { "MSG": "", "NLT": "", "NIV": "", "GNT": "", "NKJV": "", "SEPEDI": "Verse not available", "siSWATI": "Verse not available" },
+  "2025-10-17": { "MSG": "", "NLT": "", "NIV": "", "GNT": "", "NKJV": "", "SEPEDI": "Verse not available", "siSWATI": "Verse not available" },
+  "2025-10-18": {
+    "MSG": "Devote yourselves to prayer, being watchful and thankful. — **Colossians 4:2**",
+    "NLT": "Devote yourselves to prayer, being watchful and thankful. — **Colossians 4:2**",
+    "NIV": "Devote yourselves to prayer, being watchful and thankful. — **Colossians 4:2**",
+    "GNT": "Be devoted to prayer, and watch it with thanksgiving. — **Colossians 4:2**",
+    "NKJV": "Continue earnestly in prayer, being vigilant in it with thanksgiving. — **Colossians 4:2**",
+    "SEPEDI": "Verse not available",
+    "siSWATI": "Verse not available"
+  },
+  "2025-10-19": { "MSG": "", "NLT": "", "NIV": "", "GNT": "", "NKJV": "", "SEPEDI": "Verse not available", "siSWATI": "Verse not available" },
+  "2025-10-20": { "MSG": "", "NLT": "", "NIV": "", "GNT": "", "NKJV": "", "SEPEDI": "Verse not available", "siSWATI": "Verse not available" },
+  "2025-10-21": {
+    "MSG": "Be joyful in hope, patient in affliction, faithful in prayer. — **Romans 12:12**",
+    "NLT": "Be joyful in hope, patient in affliction, faithful in prayer. — **Romans 12:12**",
+    "NIV": "Be joyful in hope, patient in affliction, faithful in prayer. — **Romans 12:12**",
+    "GNT": "Be joyful in hope, patient under pressure, faithful in prayer. — **Romans 12:12**",
+    "NKJV": "Rejoicing in hope, patient in tribulation, continuing steadfastly in prayer. — **Romans 12:12**",
+    "SEPEDI": "Verse not available",
+    "siSWATI": "Verse not available"
+  },
+  "2025-10-22": { "MSG": "", "NLT": "", "NIV": "", "GNT": "", "NKJV": "", "SEPEDI": "Verse not available", "siSWATI": "Verse not available" },
+  "2025-10-23": { "MSG": "", "NLT": "", "NIV": "", "GNT": "", "NKJV": "", "SEPEDI": "Verse not available", "siSWATI": "Verse not available" },
+  "2025-10-24": {
+    "MSG": "Rejoice always, pray continually, give thanks in all circumstances. — **1 Thessalonians 5:16-18**",
+    "NLT": "Be joyful always, pray continually, give thanks in all circumstances. — **1 Thessalonians 5:16-18**",
+    "NIV": "Rejoice always, pray continually, give thanks in all circumstances; for this is God’s will for you in Christ Jesus. — **1 Thessalonians 5:16-18**",
+    "GNT": "Be joyful always; pray constantly; give thanks in all circumstances. — **1 Thessalonians 5:16-18**",
+    "NKJV": "Rejoice always, pray without ceasing, in everything give thanks; for this is the will of God in Christ Jesus for you. — **1 Thessalonians 5:16-18**",
+    "SEPEDI": "Verse not available",
+    "siSWATI": "Verse not available"
+  },
+  "2025-10-25": { "MSG": "", "NLT": "", "NIV": "", "GNT": "", "NKJV": "", "SEPEDI": "Verse not available", "siSWATI": "Verse not available" },
+  "2025-10-26": { "MSG": "", "NLT": "", "NIV": "", "GNT": "", "NKJV": "", "SEPEDI": "Verse not available", "siSWATI": "Verse not available" },
+  "2025-10-27": {
+    "MSG": "Pray in the Spirit on all occasions with all kinds of prayers and requests. — **Ephesians 6:18**",
+    "NLT": "Pray in the Spirit on all occasions with all kinds of prayers and requests. — **Ephesians 6:18**",
+    "NIV": "Pray in the Spirit on all occasions with all kinds of prayers and requests. — **Ephesians 6:18**",
+    "GNT": "Pray at all times in the Spirit, with all kinds of prayers and requests. — **Ephesians 6:18**",
+    "NKJV": "Praying always with all prayer and supplication in the Spirit. — **Ephesians 6:18**",
+    "SEPEDI": "Verse not available",
+    "siSWATI": "Verse not available"
+  },
+  "2025-10-28": { "MSG": "", "NLT": "", "NIV": "", "GNT": "", "NKJV": "", "SEPEDI": "Verse not available", "siSWATI": "Verse not available" },
+  "2025-10-29": { "MSG": "", "NLT": "", "NIV": "", "GNT": "", "NKJV": "", "SEPEDI": "Verse not available", "siSWATI": "Verse not available" },
+  "2025-10-30": {
+    "MSG": "Do not be anxious about anything, but in every situation, by prayer and petition, with thanksgiving, present your requests to God. — **Philippians 4:6-7**",
+    "NLT": "Do not be anxious about anything, but in every situation, by prayer and petition, with thanksgiving, present your requests to God. — **Philippians 4:6-7**",
+    "NIV": "Do not be anxious about anything, but in every situation, by prayer and petition, with thanksgiving, present your requests to God. — **Philippians 4:6-7**",
+    "GNT": "Do not worry about anything, but in everything, by prayer and petition, with thanksgiving, present your requests to God. — **Philippians 4:6-7**",
+    "NKJV": "Be anxious for nothing, but in everything by prayer and supplication, with thanksgiving, let your requests be made known to God. — **Philippians 4:6-7**",
+    "SEPEDI": "Verse not available",
+    "siSWATI": "Verse not available"
+  },
+  "2025-10-31": { "MSG": "", "NLT": "", "NIV": "", "GNT": "", "NKJV": "", "SEPEDI": "Verse not available", "siSWATI": "Verse not available" }
+};
+
+
+  // Build translation selector dynamically
+const todaysVerses = verses[dateStr] || { "NLT": "Stay rooted in the Word. Verse coming soon." };
+Object.keys(todaysVerses).forEach(ver => {
+  const option = document.createElement('option');
+  option.value = ver;
+  option.textContent = ver;
+  if (todaysVerses[ver] === "Verse not available") option.disabled = true; // fixed typo
+  translationSelect.appendChild(option);
+});
+
+// Set default translation to NLT or first available
+const defaultTranslation = "NLT";
+const firstAvailable = Object.keys(todaysVerses).find(v => todaysVerses[v] !== "Verse not available");
+translationSelect.value = (defaultTranslation in todaysVerses && todaysVerses[defaultTranslation] !== "Verse not available")
+  ? defaultTranslation
+  : firstAvailable;
+
+verseBox.textContent = todaysVerses[translationSelect.value];
+
+// Update verse on selection change
+translationSelect.addEventListener('change', () => {
+  const val = translationSelect.value;
+  if (todaysVerses[val] === "Verse not available") {
+    verseBox.textContent = firstAvailable ? todaysVerses[firstAvailable] : "Verse coming soon.";
+  } else {
+    verseBox.textContent = todaysVerses[val];
+  }
+});
+
+
+  // Lord's Prayer animation
+  const prayerLines=[
+    "Our Father, who art in heaven,",
+    "hallowed be Thy name.",
+    "Thy kingdom come,",
+    "Thy will be done,",
+    "on earth as it is in heaven.",
+    "",
+    "Give us this day our daily bread,",
+    "and forgive us our debts,",
+    "as we forgive our debtors.",
+    "",
+    "And lead us not into temptation,",
+    "but deliver us from evil.",
+    "",
+    "For Thine is the kingdom,",
+    "and the power,",
+    "and the glory, forever.",
+    "Amen."
+  ];
+  const prayerEl=document.getElementById("lordsPrayer");
+  let pLine=0, pChar=0, built=[];
+  function typePrayer(){
+    if(pLine>=prayerLines.length) return;
+    built[pLine]=prayerLines[pLine].substring(0,pChar);
+    prayerEl.textContent=built.join("\n");
+    pChar++;
+    if(pChar<=prayerLines[pLine].length) setTimeout(typePrayer,60);
+    else { pLine++; pChar=0; setTimeout(typePrayer,400);}
+  }
+  typePrayer();
+</script>
+</body>
+</html>
