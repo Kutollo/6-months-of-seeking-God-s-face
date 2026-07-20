@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>FaithSteps – Daily Verses for September</title>
+<title>FaithSteps – Daily Verses for July</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap" rel="stylesheet" />
 <style>
    :root {
@@ -147,7 +147,7 @@
   </nav>
 
   <main>
-    <h2>Daily Verses for October</h2>
+    <h2>Daily Verses for July</h2>
     <ul class="verse-list" id="verseList"></ul>
   </main>
 
@@ -190,13 +190,13 @@ const verses = [
       const today = new Date();
       const currentMonth = today.getMonth(); 
       const currentDay = today.getDate();
-      const isOctober = currentMonth === 9; 
+      const isJuly = currentMonth === 6; 
 
       verses.forEach(({day, ref}) => {
         const li = document.createElement('li');
-        li.textContent = `October ${day}: ${ref}`;
+        li.textContent = `July ${day}: ${ref}`;
 
-        if (isOctober) {
+        if (isJuly) {
           if (day < currentDay) li.classList.add('past');
           else if (day === currentDay) li.classList.add('today');
           else li.classList.add('future');
