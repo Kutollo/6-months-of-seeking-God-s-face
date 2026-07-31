@@ -4,16 +4,18 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>FaithSteps – Journal</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
 <style>
    :root {
-    --bg: linear-gradient(to bottom right, #e6f4e7, #d4edd5);
-    --primary: #228B22;
-    --secondary: #2e8b57;
-    --text: #1c2a1c;
-    --white: #fff;
-    --shadow: rgba(0,0,0,0.1);
-    --highlight: #f0fff0;
+    /* August palette — "The Road Home": dusk fading into golden dawn,
+       echoing repentance, renewal, and the walk back to the Father's house */
+    --bg: linear-gradient(to bottom right, #fbeedc, #f2d5a3);
+    --primary: #b5651d;
+    --secondary: #8c4a3d;
+    --text: #3b2417;
+    --white: #fffaf2;
+    --shadow: rgba(80,40,10,0.16);
+    --highlight: #fbe8c4;
   }
 
   * {
@@ -24,7 +26,7 @@
 
   body {
     font-family: 'DM Sans', sans-serif;
-    background-color: var(--bg);
+    background: var(--bg);
     color: var(--text);
     line-height: 1.6;
     min-height: 100vh;
@@ -32,8 +34,13 @@
     flex-direction: column;
   }
 
+  h1, h2, .display-font { font-family: 'Cormorant Garamond', serif; }
+
   header {
-    background: url('https://images.unsplash.com/photo-1586800530994-79abd9d49abb?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDQ2fHx8ZW58MHx8fHx8') no-repeat center center/cover;
+    background:
+      linear-gradient(to bottom, rgba(30,15,8,0.45), rgba(60,25,10,0.55)),
+      url('https://images.unsplash.com/photo-1708171448944-077ff4120e1a?w=1200&auto=format&fit=crop&q=60&ixlib=rb-4.1.0')
+      no-repeat center center/cover;
     color: var(--white);
     text-align: center;
     padding: 5rem 2rem;
@@ -41,13 +48,15 @@
   }
 
   header h1 {
-    font-size: 3rem;
-    text-shadow: 2px 2px 6px #000;
-    margin-bottom: 0.3rem;
+    font-size: 3.4rem;
+    font-weight: 700;
+    text-shadow: 2px 2px 8px #000;
+    margin-bottom: 0.4rem;
+    letter-spacing: 0.5px;
   }
 
   header p {
-    font-size: 1.3rem;
+    font-size: 1.25rem;
     font-weight: 500;
     text-shadow: 1px 1px 5px #000;
   }
@@ -72,7 +81,7 @@
 
   nav a:hover {
     text-decoration: underline;
-    color: var(--secondary);
+    color: var(--highlight);
   }
 
   main {
@@ -84,9 +93,9 @@
 
   section {
     background: var(--white);
-    border-radius: 10px;
+    border-radius: 12px;
     padding: 2rem;
-    box-shadow: 0 4px 15px var(--shadow);
+    box-shadow: 0 6px 18px var(--shadow);
     margin-bottom: 2rem;
   }
 
@@ -94,7 +103,7 @@
     color: var(--primary);
     margin-bottom: 1rem;
     font-weight: 700;
-    font-size: 1.8rem;
+    font-size: 2rem;
   }
 
   #journal-date {
@@ -106,7 +115,7 @@
   #journal-verse {
     margin-bottom: 0.7rem;
     font-weight: 600;
-    color: black;
+    color: var(--text);
   }
 
   /* Journaling sections container */
@@ -117,8 +126,9 @@
   }
 
   .journaling-letter {
+    font-family: 'Cormorant Garamond', serif;
     font-size: 3rem;
-    font-weight: 900;
+    font-weight: 700;
     color: var(--primary);
     flex-shrink: 0;
     width: 60px;
@@ -149,6 +159,7 @@
     resize: vertical;
     color: var(--text);
     line-height: 1.4;
+    background: #fffdf9;
     transition: border-color 0.3s ease;
   }
 
@@ -177,32 +188,39 @@
   }
 
   button:hover {
-    background: #1c9e02;
+    background: #6e3a30;
   }
 
   button.clear {
-    background: #3ce775;
+    background: var(--primary);
   }
 
   button.clear:hover {
-    background: #0ce230;
+    background: #944f16;
   }
 
   .footer-prayer {
-    background: #e0f7f1;
+    background: var(--highlight);
     color: var(--primary);
     text-align: center;
     padding: 1.5rem 2rem;
     font-size: 1rem;
     line-height: 1.6;
-    border-top: 1px solid var(--highlight);
+    border-top: 2px solid var(--secondary);
     white-space: pre-line;
     user-select: text;
     font-weight: 500;
-    box-shadow: 0 -2px 8px var(--shadow);
-    border-radius: 0 0 10px 10px;
+    box-shadow: 0 -2px 12px var(--shadow);
+    border-radius: 0 0 12px 12px;
     max-width: 900px;
     margin: 0 auto 2rem;
+  }
+
+  .footer-prayer strong {
+    display: block;
+    margin-bottom: 0.6rem;
+    font-size: 1.4rem;
+    font-family: 'Cormorant Garamond', serif;
   }
 
   /* Explanation links */
@@ -221,9 +239,9 @@
     border-radius: 10px;
     padding: 1rem 1.5rem;
     font-size: 1rem;
-    color: var(--primary);
+    color: var(--secondary);
     line-height: 1.4;
-    box-shadow: inset 0 0 6px #69ff7d;
+    box-shadow: inset 0 0 8px rgba(181,101,29,0.25);
     display: none;
     margin-bottom: 1.5rem;
   }
@@ -233,15 +251,16 @@
     font-size: 1.2rem;
     padding: 0.4rem 0.8rem;
     border-radius: 6px;
-    border: 2px solid var(--highlight);
+    border: 2px solid var(--primary);
+    background: var(--highlight);
     margin-bottom: 1.5rem;
-    color: var(--primary);
+    color: var(--text);
     font-weight: 600;
   }
 
   @media (max-width: 600px) {
     header h1 {
-      font-size: 2rem;
+      font-size: 2.3rem;
     }
     nav a {
       margin: 0 0.7rem;
@@ -515,7 +534,38 @@
   "2026-07-28": "\"Nothing can ever separate us from God's love.\" — Romans 8:39",
   "2026-07-29": "\"His mercies begin afresh each morning.\" — Lamentations 3:22-23",
   "2026-07-30": "\"Look! I stand at the door and knock. If you hear my voice and open the door, I will come in.\" — Revelation 3:20",
-  "2026-07-31": "\"I have loved you with an everlasting love.\" — Jeremiah 31:3"
+  "2026-07-31": "\"I have loved you with an everlasting love.\" — Jeremiah 31:3",
+  "2026-08-01": "\"Repent of your sins and turn to God, so that your sins may be wiped away.\" — Acts 3:19",
+  "2026-08-02": "\"Don't tear your clothing in your grief; instead, tear your hearts. Return to the Lord your God.\" — Joel 2:13",
+  "2026-08-03": "\"I will give you a new heart, and I will put a new spirit in you.\" — Ezekiel 36:26",
+  "2026-08-04": "\"The sacrifice you desire is a broken spirit. You will not reject a broken and repentant heart.\" — Psalm 51:17",
+  "2026-08-05": "\"Though your sins are like scarlet, I will make them as white as snow.\" — Isaiah 1:18",
+  "2026-08-06": "\"Come, let us return to the Lord. He has torn us to pieces; now he will heal us.\" — Hosea 6:1",
+  "2026-08-07": "\"Return to me, and I will return to you, says the Lord.\" — Zechariah 1:3",
+  "2026-08-08": "\"People who conceal their sins will not prosper, but if they confess and turn from them, they will receive mercy.\" — Proverbs 28:13",
+  "2026-08-09": "\"Anyone who belongs to Christ has become a new person. The old life is gone; a new life has begun!\" — 2 Corinthians 5:17",
+  "2026-08-10": "\"Let God transform you into a new person by changing the way you think.\" — Romans 12:2",
+  "2026-08-11": "\"Forget the former things; do not dwell on the past. See, I am doing a new thing!\" — Isaiah 43:18-19",
+  "2026-08-12": "\"Search me, O God, and know my heart. Lead me along the path of everlasting life.\" — Psalm 139:23-24",
+  "2026-08-13": "\"Humble yourselves before the Lord, and he will lift you up in honor.\" — James 4:10",
+  "2026-08-14": "\"I will go home to my father and say, Father, I have sinned.\" — Luke 15:18",
+  "2026-08-15": "\"Do what is right, love mercy, and walk humbly with your God.\" — Micah 6:8",
+  "2026-08-16": "\"Forgetting the past and looking forward to what lies ahead, I press on.\" — Philippians 3:13-14",
+  "2026-08-17": "\"I confessed my sins and stopped trying to hide my guilt... And you forgave me!\" — Psalm 32:5",
+  "2026-08-18": "\"In repentance and rest is your salvation; in quietness and confidence is your strength.\" — Isaiah 30:15",
+  "2026-08-19": "\"My wayward children, come back to me, and I will heal your wandering hearts.\" — Jeremiah 3:22",
+  "2026-08-20": "\"They should repent of their sins and turn to God, proving their repentance by their actions.\" — Acts 26:20",
+  "2026-08-21": "\"Put all your rebellion behind you, and get yourselves a new heart and a new spirit.\" — Ezekiel 18:31",
+  "2026-08-22": "\"He is patient with you, not wanting anyone to perish, but wanting everyone to repent.\" — 2 Peter 3:9",
+  "2026-08-23": "\"He renews my strength. He guides me along right paths, bringing honor to his name.\" — Psalm 23:3",
+  "2026-08-24": "\"Return to me, and I will return to you, says the Lord of Heaven's Armies.\" — Malachi 3:7",
+  "2026-08-25": "\"He saved us through the washing of rebirth and renewal by the Holy Spirit.\" — Titus 3:5",
+  "2026-08-26": "\"Let the wicked change their ways... Let them turn to the Lord.\" — Isaiah 55:7",
+  "2026-08-27": "\"Satisfy us each morning with your unfailing love, so we may sing for joy.\" — Psalm 90:14",
+  "2026-08-28": "\"You have stripped off your old sinful nature... put on your new nature, and be renewed.\" — Colossians 3:9-10",
+  "2026-08-29": "\"In your anger, remember your mercy.\" — Habakkuk 3:2",
+  "2026-08-30": "\"You are a God of forgiveness, gracious and merciful.\" — Nehemiah 9:17",
+  "2026-08-31": "\"The Lord your God is gracious and merciful. If you return to him, he will not turn his face from you.\" — 2 Chronicles 30:9"
 };
 
 
@@ -636,12 +686,12 @@
         let y = margin;
 
         doc.setFontSize(16);
-        doc.setTextColor(199, 21, 133); // Medium violet-red
+        doc.setTextColor(181, 101, 29); // Amber — matches site's August palette
         doc.text(`FaithSteps Journal - ${dateStr}`, margin, y);
         y += lineHeight + 5;
 
         doc.setFontSize(12);
-        doc.setTextColor(255, 105, 180); // Hot pink
+        doc.setTextColor(140, 74, 61); // Rust/terracotta
         doc.text('Verse:', margin, y);
         y += lineHeight;
         const verseLines = doc.splitTextToSize(verseText, maxLineWidth);
@@ -676,12 +726,12 @@
         const explanation = explanations[currentMethod];
 
         doc.setFontSize(14);
-        doc.setTextColor(199, 21, 133); // Medium violet-red
+        doc.setTextColor(181, 101, 29); // Amber
         doc.text(`${currentMethod.toUpperCase()} Journaling Method Explanation:`, margin, y);
         y += lineHeight + 3;
 
         doc.setFontSize(11);
-        doc.setTextColor(255, 105, 180); // Hot pink
+        doc.setTextColor(140, 74, 61); // Rust/terracotta
         explanation.forEach(({letter, title, desc}) => {
           doc.setFont(undefined, 'bold');
           doc.text(`${letter} — ${title}:`, margin, y);
@@ -694,7 +744,7 @@
 
         y += 5;
         doc.setFontSize(14);
-        doc.setTextColor(199, 21, 133); // Medium violet-red
+        doc.setTextColor(181, 101, 29); // Amber
         doc.text('Your Journal Entry:', margin, y);
         y += lineHeight + 3;
 
