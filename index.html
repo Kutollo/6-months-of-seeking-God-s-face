@@ -4,16 +4,19 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>FaithSteps – Walk with God</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
 <style>
  :root {
-    --bg: linear-gradient(to bottom right, #e6f4e7, #d4edd5);
-    --primary: #228B22;
-    --secondary: #2e8b57;
-    --text: #1c2a1c;
-    --white: #fff;
-    --shadow: rgba(0,0,0,0.1);
-    --highlight: #f0fff0;
+    /* August palette — "The Road Home": dusk fading into golden dawn,
+       echoing repentance, renewal, and the walk back to the Father's house */
+    --bg: linear-gradient(to bottom right, #fbeedc, #f2d5a3);
+    --primary: #b5651d;
+    --secondary: #8c4a3d;
+    --text: #3b2417;
+    --white: #fffaf2;
+    --shadow: rgba(80,40,10,0.16);
+    --highlight: #fbe8c4;
+    --ink: #2c1810;
   }
 
   * { margin:0; padding:0; box-sizing:border-box; }
@@ -27,16 +30,21 @@
     overflow-x: hidden;
   }
 
+  h1, h2, .display-font { font-family: 'Cormorant Garamond', serif; }
+
   header {
     position: relative;
-    background: url('https://images.unsplash.com/photo-1586800530994-79abd9d49abb?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDQ2fHx8ZW58MHx8fHx8') no-repeat center/cover;
+    background:
+      linear-gradient(to bottom, rgba(30,15,8,0.45), rgba(60,25,10,0.55)),
+      url('https://images.unsplash.com/photo-1708171448944-077ff4120e1a?w=1200&auto=format&fit=crop&q=60&ixlib=rb-4.1.0')
+      no-repeat center/cover;
     color: var(--white);
     text-align: center;
     padding: 5rem 2rem;
   }
   header h1, header p { position: relative; z-index:1; }
-  header h1 { font-size:3rem; text-shadow:2px 2px 6px #000; margin-bottom:0.3rem;}
-  header p { font-size:1.3rem; text-shadow:1px 1px 5px #000; }
+  header h1 { font-size:3.4rem; font-weight:700; text-shadow:2px 2px 8px #000; margin-bottom:0.4rem; letter-spacing:0.5px; }
+  header p { font-size:1.25rem; text-shadow:1px 1px 5px #000; font-weight:500; }
 
   nav {
     position: sticky; top:0;
@@ -56,7 +64,7 @@
     font-weight:700;
     font-size:1.1rem;
   }
-  nav a:hover { color: var(--secondary); text-decoration: underline; }
+  nav a:hover { color: var(--highlight); text-decoration: underline; }
 
   main { max-width:900px; margin:2rem auto 4rem; padding:0 1rem; }
 
@@ -71,7 +79,7 @@
     color: var(--primary);
     margin-bottom:1rem;
     font-weight:700;
-    font-size:1.8rem;
+    font-size:2rem;
     text-align:center;
   }
 
@@ -81,7 +89,7 @@
     background: var(--highlight);
     padding:1.2rem 1.8rem;
     border-radius:10px;
-    box-shadow: inset 0 0 10px #ffd6f0;
+    box-shadow: inset 0 0 10px rgba(181,101,29,0.25);
     margin-bottom:1.5rem;
     line-height:1.5;
     word-wrap: break-word;
@@ -144,6 +152,40 @@
   }
   @keyframes blink-caret { 50% { border-color: transparent; } }
 
+  /* Signature element: "The Road Home" — a wayfinding divider between
+     sections, marking this month's theme of turning back and walking on */
+  .road-divider {
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:0.9rem;
+    margin: -0.5rem 0 2rem;
+    padding: 0 0.5rem;
+  }
+  .road-divider .line {
+    flex:1;
+    height:0;
+    border-top: 3px dotted var(--secondary);
+    opacity:0.55;
+    max-width:220px;
+  }
+  .road-divider .sun {
+    width:16px; height:16px;
+    border-radius:50%;
+    background: radial-gradient(circle at 35% 35%, #ffe3a1, var(--primary));
+    box-shadow: 0 0 12px rgba(181,101,29,0.55);
+    flex-shrink:0;
+  }
+  .road-divider .label {
+    font-family:'Cormorant Garamond', serif;
+    font-weight:600;
+    font-style:italic;
+    color: var(--secondary);
+    font-size:1.15rem;
+    white-space:nowrap;
+    flex-shrink:0;
+  }
+
   .footer-prayer {
     background: var(--highlight);
     color: var(--primary);
@@ -162,18 +204,21 @@
   .footer-prayer strong {
     display:block;
     margin-bottom:1rem;
-    font-size:1.3rem;
+    font-size:1.4rem;
+    font-family:'Cormorant Garamond', serif;
   }
 
   @media(max-width:600px){
-    header h1{font-size:2.2rem;}
+    header h1{font-size:2.3rem;}
     nav a{margin:0.5rem 0.8rem;font-size:1rem;}
     main{margin:1rem auto 3rem;}
     section{padding:1.2rem 1.2rem;}
-    section h2{font-size:1.5rem;}
+    section h2{font-size:1.6rem;}
     header p{font-size:1rem;}
     #todaysVerseBox{font-size:1rem;padding:1rem 1.2rem;}
     .verse-image{max-width:100%;height:auto;}
+    .road-divider .line{max-width:70px;}
+    .road-divider .label{font-size:1rem;}
   }
 </style>
 </head>
@@ -209,20 +254,28 @@
   </p>
 
   <p>
-    <strong>July (In progress):</strong> Focused on seeking God's face, developing a habit of daily intimacy through prayer, scripture, and reflection. This month was one of connection, focus, and intentional pursuit of His presence.
+    <strong>July:</strong> Focused on seeking God's face, developing a habit of daily intimacy through prayer, scripture, and reflection. This month was one of connection, focus, and intentional pursuit of His presence.
   </p>
 
   <p>
-    <strong>August:</strong> Focused on turning back to God with humble hearts, walking in obedience, and aligning with His Word. This month was one of repentance, renewal, and redirection.
+    <strong>August (In progress):</strong> Focused on turning back to God with humble hearts, walking in obedience, and aligning with His Word. This month was one of repentance, renewal, and redirection.
   </p>
 </section>
 
+<div class="road-divider" aria-hidden="true">
+  <span class="line"></span>
+  <span class="sun"></span>
+  <span class="label">The Road Home</span>
+  <span class="sun"></span>
+  <span class="line"></span>
+</div>
+
 <section id="month-theme">
-  <h2>Month & Theme</h2>
-  
-  <p><strong>July 2026</strong></p>
-  <p><em>Theme: Returning to God</em></p>
- 
+  <h2>Month &amp; Theme</h2>
+
+  <p><strong>August 2026</strong></p>
+  <p><em>Theme: Turning Back — Repentance &amp; Renewal</em></p>
+
 </section>
 
 
@@ -273,7 +326,7 @@
       banner.style.padding='14px 18px';
       banner.style.borderRadius='10px';
       banner.style.boxShadow='0 8px 30px rgba(0,0,0,0.18)';
-      banner.style.background='#6b21a8';
+      banner.style.background='#8c4a3d';
       banner.style.color='#fff';
       banner.style.fontFamily="'DM Sans',sans-serif";
       banner.style.fontWeight='700';
@@ -426,6 +479,316 @@ const verses = {
     "NKJV": "Yes, I have loved you with an everlasting love. — Jeremiah 31:3",
     "SEPEDI": "Ke go ratile ka lerato la neng le neng. — Jeremia 31:3",
     "siSWATI": "Ngikutsandzile ngelutsandvo lwaphakadze. — Jeremiya 31:3"
+  },
+
+  "2026-08-01": {
+    "MSG": "Change your ways! Turn to face God so he can wipe away your sins. — Acts 3:19",
+    "NLT": "Repent of your sins and turn to God, so that your sins may be wiped away. — Acts 3:19",
+    "NIV": "Repent, then, and turn to God, so that your sins may be wiped out. — Acts 3:19",
+    "GNT": "Turn from your sins and turn to God, so that he will wipe away your sins. — Acts 3:19",
+    "NKJV": "Repent therefore and be converted, that your sins may be blotted out. — Acts 3:19",
+    "SEPEDI": "Sokologang, le boele go Modimo, gore dibe tša lena di phumolwe. — Ditiro 3:19",
+    "siSWATI": "Phendukani, nibuyele kuNkulunkulu, kuze tono tenu tesulwe. — Imisebenti 3:19"
+  },
+
+  "2026-08-02": {
+    "MSG": "Change your life, not just your clothes. Come back to God, your God. — Joel 2:13",
+    "NLT": "Don't tear your clothing in your grief; instead, tear your hearts. Return to the Lord your God. — Joel 2:13",
+    "NIV": "Rend your heart and not your garments. Return to the Lord your God. — Joel 2:13",
+    "GNT": "Let your broken heart show your sorrow; come back to the Lord your God. — Joel 2:13",
+    "NKJV": "So rend your heart, and not your garments; return to the Lord your God. — Joel 2:13",
+    "SEPEDI": "Sotlang dipelo tša lena, e sego diaparo tša lena, le boele go MORENA Modimo wa lena. — Joele 2:13",
+    "siSWATI": "Dvabulani inhlitiyo yenu, hhayi tingubo tenu, nibuyele eNkosini Nkulunkulu wenu. — Joweli 2:13"
+  },
+
+  "2026-08-03": {
+    "MSG": "I'll give you a new heart, put a new spirit in you. — Ezekiel 36:26",
+    "NLT": "I will give you a new heart, and I will put a new spirit in you. — Ezekiel 36:26",
+    "NIV": "I will give you a new heart and put a new spirit in you. — Ezekiel 36:26",
+    "GNT": "I will give you a new heart and a new mind. — Ezekiel 36:26",
+    "NKJV": "I will give you a new heart and put a new spirit within you. — Ezekiel 36:26",
+    "SEPEDI": "Ke tla le nea pelo e mpsha le moya o mofsa ka gare ga lena. — Hesekiele 36:26",
+    "siSWATI": "Ngitakupha inhlitiyo lensha nemoya lomusha ngiwufake ngekhatsi kuwe. — Hezekiyeli 36:26"
+  },
+
+  "2026-08-04": {
+    "MSG": "Heart-shattered lives ready for love don't for a moment escape God's notice. — Psalm 51:17",
+    "NLT": "The sacrifice you desire is a broken spirit. You will not reject a broken and repentant heart. — Psalm 51:17",
+    "NIV": "My sacrifice, O God, is a broken spirit; a broken and contrite heart you will not despise. — Psalm 51:17",
+    "GNT": "My sacrifice is a humble spirit, O God; you will not reject a humble and repentant heart. — Psalm 51:17",
+    "NKJV": "The sacrifices of God are a broken spirit, a broken and a contrite heart. — Psalm 51:17",
+    "SEPEDI": "Sehlabelo sa Modimo ke moya o robegilego; pelo e robegilego Modimo ga a e nyatše. — Psalme 51:17",
+    "siSWATI": "Umhlatjelo waNkulunkulu ngumoya lophukile; inhlitiyo lephukile Nkulunkulu angeke ayidzelele. — Tihlabelelo 51:17"
+  },
+
+  "2026-08-05": {
+    "MSG": "Though your sins are blood-red, they'll turn as white as snow. — Isaiah 1:18",
+    "NLT": "Though your sins are like scarlet, I will make them as white as snow. — Isaiah 1:18",
+    "NIV": "Though your sins are like scarlet, they shall be as white as snow. — Isaiah 1:18",
+    "GNT": "Although your sins are like scarlet, you will be as white as snow. — Isaiah 1:18",
+    "NKJV": "Though your sins are like scarlet, they shall be as white as snow. — Isaiah 1:18",
+    "SEPEDI": "Le ge dibe tša lena e le tše kgwibidu, di tla šweufala go swana le lehlwa. — Jesaya 1:18",
+    "siSWATI": "Nakuba tono tenu tibovu, titakuba mhlophe njengeliqhwa. — Isaya 1:18"
+  },
+
+  "2026-08-06": {
+    "MSG": "Come, let's go back to God. He hurt us, but he'll heal us. — Hosea 6:1",
+    "NLT": "Come, let us return to the Lord. He has torn us to pieces; now he will heal us. — Hosea 6:1",
+    "NIV": "Come, let us return to the Lord. He has torn us to pieces but he will heal us. — Hosea 6:1",
+    "GNT": "Let us return to the Lord. He wounded us, but he will bandage our wounds. — Hosea 6:1",
+    "NKJV": "Come, and let us return to the Lord; for He has torn, but He will heal us. — Hosea 6:1",
+    "SEPEDI": "Etlang re boele go MORENA; o re gagotše, eupša o tla re fodiša. — Hosea 6:1",
+    "siSWATI": "Wotani sibuyele eNkosini; wasidzabula, kodvwa utawusiphilisa. — Hoseya 6:1"
+  },
+
+  "2026-08-07": {
+    "MSG": "Return to me and I will return to you. — Zechariah 1:3",
+    "NLT": "Return to me, and I will return to you, says the Lord. — Zechariah 1:3",
+    "NIV": "Return to me, declares the Lord Almighty, and I will return to you. — Zechariah 1:3",
+    "GNT": "Turn back to me, and I will turn to you. — Zechariah 1:3",
+    "NKJV": "Return to Me, says the Lord of hosts, and I will return to you. — Zechariah 1:3",
+    "SEPEDI": "Boelang go nna, le nna ke tla boela go lena, gorewa MORENA. — Sakaria 1:3",
+    "siSWATI": "Buyelani kimi, nami ngitawubuyela kini, kusho Simakadze. — Zakariya 1:3"
+  },
+
+  "2026-08-08": {
+    "MSG": "You can't whitewash your sins and get by with it; you find mercy by admitting and leaving them. — Proverbs 28:13",
+    "NLT": "People who conceal their sins will not prosper, but if they confess and turn from them, they will receive mercy. — Proverbs 28:13",
+    "NIV": "Whoever conceals their sins does not prosper, but the one who confesses and renounces them finds mercy. — Proverbs 28:13",
+    "GNT": "You will never succeed if you hide your sins; confess them and give them up. — Proverbs 28:13",
+    "NKJV": "He who covers his sins will not prosper, but whoever confesses and forsakes them will have mercy. — Proverbs 28:13",
+    "SEPEDI": "Yo a khupetšago dibe tša gagwe a ka se atlege, eupša yo a di bolelago o tla hwetša kgaugelo. — Diema 28:13",
+    "siSWATI": "Lofihla tono takhe ngeke aphumelele, kodvwa lovuma futsi atishiye utawutfola sihawu. — Taga 28:13"
+  },
+
+  "2026-08-09": {
+    "MSG": "Now anyone united with the Messiah gets a new life. — 2 Corinthians 5:17",
+    "NLT": "Anyone who belongs to Christ has become a new person. The old life is gone; a new life has begun! — 2 Corinthians 5:17",
+    "NIV": "If anyone is in Christ, the new creation has come: The old has gone, the new is here! — 2 Corinthians 5:17",
+    "GNT": "Anyone joined to Christ is a new being; the old is gone, the new has come. — 2 Corinthians 5:17",
+    "NKJV": "If anyone is in Christ, he is a new creation; old things have passed away. — 2 Corinthians 5:17",
+    "SEPEDI": "Ge motho a le go Kriste, ke sebopiwa se seswa; tša kgale di fetile, tše mpsha di tlile. — 2 Bakorinthe 5:17",
+    "siSWATI": "Nangabe umuntfu asekuKrestu, singumdalwa lomusha; tekucala setidlulile, kwetsa kufikile. — 2 Khorinte 5:17"
+  },
+
+  "2026-08-10": {
+    "MSG": "Fix your attention on God. You'll be changed from the inside out. — Romans 12:2",
+    "NLT": "Let God transform you into a new person by changing the way you think. — Romans 12:2",
+    "NIV": "Be transformed by the renewing of your mind. — Romans 12:2",
+    "GNT": "Let God transform you inwardly by a complete change of your mind. — Romans 12:2",
+    "NKJV": "Be transformed by the renewing of your mind. — Romans 12:2",
+    "SEPEDI": "Le fetogisiwe ka go mpshafatšwa ga monagano wa lena. — Baroma 12:2",
+    "siSWATI": "Niphendvuke ngekwenta lusha kwengcondvo yenu. — Roma 12:2"
+  },
+
+  "2026-08-11": {
+    "MSG": "Forget about what's happened. I'm about to do something brand-new. — Isaiah 43:18-19",
+    "NLT": "Forget the former things; do not dwell on the past. See, I am doing a new thing! — Isaiah 43:18-19",
+    "NIV": "Forget the former things; do not dwell on the past. See, I am doing a new thing! — Isaiah 43:18-19",
+    "GNT": "Do not cling to events of the past. Watch for the new thing I am going to do. — Isaiah 43:18-19",
+    "NKJV": "Do not remember the former things. Behold, I will do a new thing. — Isaiah 43:18-19",
+    "SEPEDI": "Se gopoleng dilo tša kgale... Bonang, ke dira selo se seswa. — Jesaya 43:18-19",
+    "siSWATI": "Ningakhumbuli tintfo tekucala... Bukani, ngenta intfo lensha. — Isaya 43:18-19"
+  },
+
+  "2026-08-12": {
+    "MSG": "Investigate my life, O God, then guide me on the road to eternal life. — Psalm 139:23-24",
+    "NLT": "Search me, O God, and know my heart. Lead me along the path of everlasting life. — Psalm 139:23-24",
+    "NIV": "Search me, God, and know my heart... lead me in the way everlasting. — Psalm 139:23-24",
+    "GNT": "Examine me, O God, and know my mind; lead me in the way you have always known. — Psalm 139:23-24",
+    "NKJV": "Search me, O God, and know my heart... lead me in the way everlasting. — Psalm 139:23-24",
+    "SEPEDI": "Ntlhotlhomiše, Modimo, o tsebe pelo ya ka; o ntsamaiše tseleng ya go ya go ile. — Psalme 139:23-24",
+    "siSWATI": "Ngihlolisise, Nkulunkulu, wati inhlitiyo yami; ungihole ngendlela lengunaphakade. — Tihlabelelo 139:23-24"
+  },
+
+  "2026-08-13": {
+    "MSG": "Get down on your knees before the Master; it's the only way you'll get on your feet. — James 4:10",
+    "NLT": "Humble yourselves before the Lord, and he will lift you up in honor. — James 4:10",
+    "NIV": "Humble yourselves before the Lord, and he will lift you up. — James 4:10",
+    "GNT": "Humble yourselves before the Lord, and he will lift you up. — James 4:10",
+    "NKJV": "Humble yourselves in the sight of the Lord, and He will lift you up. — James 4:10",
+    "SEPEDI": "Ikokobetšeng pele ga Morena, gomme o tla le phagamiša. — Jakobo 4:10",
+    "siSWATI": "Titfobeni embikwaSimakadze, futsi utaniphakamisa. — Jakobe 4:10"
+  },
+
+  "2026-08-14": {
+    "MSG": "I'll get right up and go to my Father. — Luke 15:18",
+    "NLT": "I will go home to my father and say, Father, I have sinned. — Luke 15:18",
+    "NIV": "I will set out and go back to my father and say to him: Father, I have sinned. — Luke 15:18",
+    "GNT": "I will get up and go to my father. — Luke 15:18",
+    "NKJV": "I will arise and go to my father, and will say to him, Father, I have sinned. — Luke 15:18",
+    "SEPEDI": "Ke tla tsoga ka ya go tate, ka re: Tate, ke sentše. — Lukase 15:18",
+    "siSWATI": "Ngitasukuma ngiye kubabe, ngitsi: Babe, ngonile. — Lukha 15:18"
+  },
+
+  "2026-08-15": {
+    "MSG": "Don't take yourself too seriously — take God seriously. — Micah 6:8",
+    "NLT": "Do what is right, love mercy, and walk humbly with your God. — Micah 6:8",
+    "NIV": "Act justly and love mercy and walk humbly with your God. — Micah 6:8",
+    "GNT": "Do what is right, show constant love, and live in humble fellowship with your God. — Micah 6:8",
+    "NKJV": "Do justly, love mercy, and walk humbly with your God. — Micah 6:8",
+    "SEPEDI": "Dira tše di lokilego, rata kgaugelo, o sepele ka boikokobetšo le Modimo wa gago. — Mika 6:8",
+    "siSWATI": "Yenta lokulungile, tsandza umusa, uhambe ngekutitfoba naNkulunkulu wakho. — Mika 6:8"
+  },
+
+  "2026-08-16": {
+    "MSG": "I'm off and running, and I'm not turning back. — Philippians 3:13-14",
+    "NLT": "Forgetting the past and looking forward to what lies ahead, I press on. — Philippians 3:13-14",
+    "NIV": "Forgetting what is behind and straining toward what is ahead, I press on. — Philippians 3:13-14",
+    "GNT": "I forget what is behind me; I run straight toward the goal. — Philippians 3:13-14",
+    "NKJV": "Forgetting those things which are behind... I press toward the goal. — Philippians 3:13-14",
+    "SEPEDI": "Ke lebala tša ka morago, ke katanela tše di ka pele, ke kgomarela nepo. — Bafilipi 3:13-14",
+    "siSWATI": "Ngikhohlwa lokungemuva, ngitiyeka kulokuphambili, ngigijimela emkhawulweni. — Filipi 3:13-14"
+  },
+
+  "2026-08-17": {
+    "MSG": "I said, 'I'll come clean about my failures to God.' Suddenly the pressure was gone. — Psalm 32:5",
+    "NLT": "I confessed my sins and stopped trying to hide my guilt... And you forgave me! — Psalm 32:5",
+    "NIV": "I said, I will confess my transgressions to the Lord. And you forgave the guilt of my sin. — Psalm 32:5",
+    "GNT": "So I confessed my sins to you, and you forgave all my sins. — Psalm 32:5",
+    "NKJV": "I acknowledged my sin to You... and You forgave the iniquity of my sin. — Psalm 32:5",
+    "SEPEDI": "Ke ipoletše dibe tša ka go MORENA, gomme wa lebalela bokgopo bja sebe sa ka. — Psalme 32:5",
+    "siSWATI": "Ngavuma tono tami eNkosini, wena wangitsetselela sono sami. — Tihlabelelo 32:5"
+  },
+
+  "2026-08-18": {
+    "MSG": "Your salvation lies in repentance and rest, your strength in quiet trust. — Isaiah 30:15",
+    "NLT": "In repentance and rest is your salvation; in quietness and confidence is your strength. — Isaiah 30:15",
+    "NIV": "In repentance and rest is your salvation, in quietness and trust is your strength. — Isaiah 30:15",
+    "GNT": "Stop your rebellion and turn back to me; in quiet trust your strength lies. — Isaiah 30:15",
+    "NKJV": "In returning and rest you shall be saved; in quietness and confidence shall be your strength. — Isaiah 30:15",
+    "SEPEDI": "Poloko ya lena e le go sokologa le go khutša; matla a lena e le boikhutšo le kholofelo. — Jesaya 30:15",
+    "siSWATI": "Insindziso yenu isekuphenduka nasekuphumula; emandla enu asekuthula nasekwetsemba. — Isaya 30:15"
+  },
+
+  "2026-08-19": {
+    "MSG": "Come back, wayward children. I will heal your wayward hearts. — Jeremiah 3:22",
+    "NLT": "My wayward children, come back to me, and I will heal your wandering hearts. — Jeremiah 3:22",
+    "NIV": "Return, faithless people; I will cure you of backsliding. — Jeremiah 3:22",
+    "GNT": "Return, my rebellious people, and I will cure you of your rebelliousness. — Jeremiah 3:22",
+    "NKJV": "Return, you backsliding children, and I will heal your backslidings. — Jeremiah 3:22",
+    "SEPEDI": "Boelang, bana ba go furalela, ke tla fodiša go furalela ga lena. — Jeremia 3:22",
+    "siSWATI": "Buyelani, bantfwana labahlubukile, ngitawunelapha kuhlubuka kwenu. — Jeremiya 3:22"
+  },
+
+  "2026-08-20": {
+    "MSG": "Turn to God, act like it by putting your repentance into practice. — Acts 26:20",
+    "NLT": "They should repent of their sins and turn to God, proving their repentance by their actions. — Acts 26:20",
+    "NIV": "They should repent and turn to God and demonstrate their repentance by their deeds. — Acts 26:20",
+    "GNT": "They should turn from their sins to God and do things that will show they have turned. — Acts 26:20",
+    "NKJV": "They should repent, turn to God, and do works befitting repentance. — Acts 26:20",
+    "SEPEDI": "Ba sokologe, ba boele go Modimo, ba bontšhe boitshokollo bja bona ka mediro. — Ditiro 26:20",
+    "siSWATI": "Baphendukele kuNkulunkulu, babonise kuphenduka kwabo ngemisebenti. — Imisebenti 26:20"
+  },
+
+  "2026-08-21": {
+    "MSG": "Get rid of your old sinful lives and get a new spirit. — Ezekiel 18:31",
+    "NLT": "Put all your rebellion behind you, and get yourselves a new heart and a new spirit. — Ezekiel 18:31",
+    "NIV": "Rid yourselves of all the offenses you have committed, and get a new heart and a new spirit. — Ezekiel 18:31",
+    "GNT": "Give up all the evil you have been doing, and get yourselves a new heart and a new spirit. — Ezekiel 18:31",
+    "NKJV": "Cast away from you all the transgressions... and get yourselves a new heart and a new spirit. — Ezekiel 18:31",
+    "SEPEDI": "Latlhelang thoko ditlolo tša lena tšohle, le itirele pelo e mpsha le moya o mofsa. — Hesekiele 18:31",
+    "siSWATI": "Lahlani tono tenu tonkhe, nititselele inhlitiyo lensha nemoya lomusha. — Hezekiyeli 18:31"
+  },
+
+  "2026-08-22": {
+    "MSG": "God isn't late with his promise... He's giving everyone space and time to change. — 2 Peter 3:9",
+    "NLT": "He is patient with you, not wanting anyone to perish, but wanting everyone to repent. — 2 Peter 3:9",
+    "NIV": "He is patient with you, not wanting anyone to perish, but everyone to come to repentance. — 2 Peter 3:9",
+    "GNT": "He is patient with you, not wanting anyone to die, but wanting all to turn away from sin. — 2 Peter 3:9",
+    "NKJV": "The Lord is longsuffering, not willing that any should perish but that all should come to repentance. — 2 Peter 3:9",
+    "SEPEDI": "O na le pelotelele go lena, a sa nyake gore le o tee a lahlege, eupša ba sokologe ka moka. — 2 Petro 3:9",
+    "siSWATI": "Unesineke ngani, angafuni kutsi kubhubhe ngisho namunye, kodvwa kutsi bonkhe baphendukele. — 2 Phetro 3:9"
+  },
+
+  "2026-08-23": {
+    "MSG": "True to your word, you let me catch my breath and send me in the right direction. — Psalm 23:3",
+    "NLT": "He renews my strength. He guides me along right paths, bringing honor to his name. — Psalm 23:3",
+    "NIV": "He refreshes my soul. He guides me along the right paths for his name's sake. — Psalm 23:3",
+    "GNT": "He gives me new strength; he guides me in the right paths. — Psalm 23:3",
+    "NKJV": "He restores my soul; He leads me in the paths of righteousness for His name's sake. — Psalm 23:3",
+    "SEPEDI": "O sepedišetša moya wa ka; o ntsamaiša ditseleng tša toka ka baka la leina la gagwe. — Psalme 23:3",
+    "siSWATI": "Ubuyisela umphefumulo wami; ungihola etindleleni telungiso ngenca yelibito lakhe. — Tihlabelelo 23:3"
+  },
+
+  "2026-08-24": {
+    "MSG": "Come back to me and I will come back to you. — Malachi 3:7",
+    "NLT": "Return to me, and I will return to you, says the Lord of Heaven's Armies. — Malachi 3:7",
+    "NIV": "Return to me, and I will return to you, says the Lord Almighty. — Malachi 3:7",
+    "GNT": "Turn back to me, and I will turn to you. — Malachi 3:7",
+    "NKJV": "Return to Me, and I will return to you, says the Lord of hosts. — Malachi 3:7",
+    "SEPEDI": "Boelang go nna, le nna ke tla boela go lena, gorewa MORENA wa mabotho. — Maleaki 3:7",
+    "siSWATI": "Buyelani kimi, nami ngitawubuyela kini, kusho Simakadze wemabandla. — Malakhi 3:7"
+  },
+
+  "2026-08-25": {
+    "MSG": "He gave us a bath, and we came out of it new people. — Titus 3:5",
+    "NLT": "He saved us through the washing of rebirth and renewal by the Holy Spirit. — Titus 3:5",
+    "NIV": "He saved us through the washing of rebirth and renewal by the Holy Spirit. — Titus 3:5",
+    "GNT": "He saved us through the Holy Spirit, who gives us new birth and new life. — Titus 3:5",
+    "NKJV": "He saved us, through the washing of regeneration and renewing of the Holy Spirit. — Titus 3:5",
+    "SEPEDI": "O re phološitše ka tlhapišo ya go tswalwa gape le go mpshafatšwa ka Moya o Mokgethwa. — Tito 3:5",
+    "siSWATI": "Wasisindzisa ngekugezwa kwekutalwa kabusha nekwenta lusha kwaMoya Longcwele. — Thithusi 3:5"
+  },
+
+  "2026-08-26": {
+    "MSG": "Let the wicked abandon their way of life... let them turn back to God. — Isaiah 55:7",
+    "NLT": "Let the wicked change their ways... Let them turn to the Lord. — Isaiah 55:7",
+    "NIV": "Let the wicked forsake their way... let them turn to the Lord, and he will have mercy on them. — Isaiah 55:7",
+    "GNT": "Let the wicked leave their evil ways; let them turn to the Lord. — Isaiah 55:7",
+    "NKJV": "Let the wicked forsake his way... let him return to the Lord, and He will have mercy. — Isaiah 55:7",
+    "SEPEDI": "Yo kgopo a lese tsela ya gagwe, a boele go MORENA, gomme o tla mo gaugela. — Jesaya 55:7",
+    "siSWATI": "Lomubi akashiye indlela yakhe, abuyele eNkosini, futsi utamuhawukela. — Isaya 55:7"
+  },
+
+  "2026-08-27": {
+    "MSG": "Surprise us with love at daybreak; won't you do it every day? — Psalm 90:14",
+    "NLT": "Satisfy us each morning with your unfailing love, so we may sing for joy. — Psalm 90:14",
+    "NIV": "Satisfy us in the morning with your unfailing love, that we may sing for joy. — Psalm 90:14",
+    "GNT": "Fill us each morning with your constant love, so that we may sing and be glad. — Psalm 90:14",
+    "NKJV": "Oh, satisfy us early with Your mercy, that we may rejoice and be glad. — Psalm 90:14",
+    "SEPEDI": "Re kgorišeng mesong ka lerato la gago le sa fetogego, gore re thabe. — Psalme 90:14",
+    "siSWATI": "Sanelise ekuseni ngemusa wakho longapheli, kuze sitsabe. — Tihlabelelo 90:14"
+  },
+
+  "2026-08-28": {
+    "MSG": "Kick out the old life, put on the new life, and be renewed. — Colossians 3:9-10",
+    "NLT": "You have stripped off your old sinful nature... put on your new nature, and be renewed. — Colossians 3:9-10",
+    "NIV": "You have taken off your old self and have put on the new self, which is being renewed. — Colossians 3:9-10",
+    "GNT": "You have put off the old self and have put on the new self, constantly renewed. — Colossians 3:9-10",
+    "NKJV": "Put on the new man who is renewed in knowledge according to the image of Him who created him. — Colossians 3:9-10",
+    "SEPEDI": "Le apere motho o mofsa yo a mpshafatšwago ka tsebo ya go swana le seswantšho sa Yena. — Bakolose 3:9-10",
+    "siSWATI": "Nembathise umuntfu lomusha lowentwa lusha ngelwati kufanana nesimo salowo wamdala. — Khokhoseve 3:9-10"
+  },
+
+  "2026-08-29": {
+    "MSG": "In your anger, remember mercy. — Habakkuk 3:2",
+    "NLT": "In your anger, remember your mercy. — Habakkuk 3:2",
+    "NIV": "In wrath remember mercy. — Habakkuk 3:2",
+    "GNT": "Remember mercy even when you are angry. — Habakkuk 3:2",
+    "NKJV": "In wrath remember mercy. — Habakkuk 3:2",
+    "SEPEDI": "Le ge o galefile, gopola kgaugelo. — Habakuku 3:2",
+    "siSWATI": "Nangabe utfukutsele, khumbula umusa. — Habakhuki 3:2"
+  },
+
+  "2026-08-30": {
+    "MSG": "You're a forgiving God, generous and merciful. — Nehemiah 9:17",
+    "NLT": "You are a God of forgiveness, gracious and merciful. — Nehemiah 9:17",
+    "NIV": "You are a forgiving God, gracious and compassionate. — Nehemiah 9:17",
+    "GNT": "You are a forgiving God, full of mercy and grace. — Nehemiah 9:17",
+    "NKJV": "You are God, ready to pardon, gracious and merciful. — Nehemiah 9:17",
+    "SEPEDI": "O Modimo yo a swarelago, wa botho le wa kgaugelo. — Nehemia 9:17",
+    "siSWATI": "UnguNkulunkulu lotsetselelako, lonemusa nesihawu. — Nehemiya 9:17"
+  },
+
+  "2026-08-31": {
+    "MSG": "God is gracious and compassionate. If you come back to him, he will welcome you. — 2 Chronicles 30:9",
+    "NLT": "The Lord your God is gracious and merciful. If you return to him, he will not turn his face from you. — 2 Chronicles 30:9",
+    "NIV": "The Lord your God is gracious and merciful. He will not turn his face from you if you return to him. — 2 Chronicles 30:9",
+    "GNT": "The Lord your God is loving and merciful, and if you turn back to him, he will not turn away. — 2 Chronicles 30:9",
+    "NKJV": "The Lord your God is gracious and merciful, and will not turn His face from you if you return to Him. — 2 Chronicles 30:9",
+    "SEPEDI": "MORENA Modimo wa lena o na le botho le kgaugelo; ga a na go le furalela ge le boela go yena. — 2 Koronika 30:9",
+    "siSWATI": "Simakadze Nkulunkulu wenu unemusa nesihawu; angeke aniphendulele buso nangabe nibuyela kuye. — 2 Tikhronike 30:9"
   }
 };
 
@@ -494,3 +857,4 @@ translationSelect.addEventListener('change', () => {
 </script>
 </body>
 </html>
+
