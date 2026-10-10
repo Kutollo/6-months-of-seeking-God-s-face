@@ -6,855 +6,302 @@
 <title>FaithSteps – Walk with God</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
 <style>
- :root {
-    /* August palette — "The Road Home": dusk fading into golden dawn,
-       echoing repentance, renewal, and the walk back to the Father's house */
-    --bg: linear-gradient(to bottom right, #fbeedc, #f2d5a3);
-    --primary: #b5651d;
-    --secondary: #8c4a3d;
-    --text: #3b2417;
-    --white: #fffaf2;
-    --shadow: rgba(80,40,10,0.16);
-    --highlight: #fbe8c4;
-    --ink: #2c1810;
-  }
-
-  * { margin:0; padding:0; box-sizing:border-box; }
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    overflow-x: hidden;
-  }
-
-  h1, h2, .display-font { font-family: 'Cormorant Garamond', serif; }
-
-  header {
-    position: relative;
-    background:
-      linear-gradient(to bottom, rgba(30,15,8,0.45), rgba(60,25,10,0.55)),
-      url('https://images.unsplash.com/photo-1708171448944-077ff4120e1a?w=1200&auto=format&fit=crop&q=60&ixlib=rb-4.1.0')
-      no-repeat center/cover;
-    color: var(--white);
-    text-align: center;
-    padding: 5rem 2rem;
-  }
-  header h1, header p { position: relative; z-index:1; }
-  header h1 { font-size:3.4rem; font-weight:700; text-shadow:2px 2px 8px #000; margin-bottom:0.4rem; letter-spacing:0.5px; }
-  header p { font-size:1.25rem; text-shadow:1px 1px 5px #000; font-weight:500; }
-
-  nav {
-    position: sticky; top:0;
-    background: var(--primary);
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    padding: 1rem;
-    box-shadow: 0 4px 8px var(--shadow);
-    gap:0.6rem;
-    z-index:10;
-  }
-  nav a {
-    color: var(--white);
-    margin:0.5rem 1.2rem;
-    text-decoration:none;
-    font-weight:700;
-    font-size:1.1rem;
-  }
-  nav a:hover { color: var(--highlight); text-decoration: underline; }
-
-  main { max-width:900px; margin:2rem auto 4rem; padding:0 1rem; }
-
-  section {
-    background: var(--white);
-    border-radius:12px;
-    padding:2rem;
-    margin-bottom:2rem;
-    box-shadow:0 6px 18px var(--shadow);
-  }
-  section h2 {
-    color: var(--primary);
-    margin-bottom:1rem;
-    font-weight:700;
-    font-size:2rem;
-    text-align:center;
-  }
-
-  #todaysVerseBox {
-    font-size:1.1rem;
-    font-weight:500;
-    background: var(--highlight);
-    padding:1.2rem 1.8rem;
-    border-radius:10px;
-    box-shadow: inset 0 0 10px rgba(181,101,29,0.25);
-    margin-bottom:1.5rem;
-    line-height:1.5;
-    word-wrap: break-word;
-    text-align:center;
-  }
-
-  .verse-image {
-    display:block;
-    max-width:320px;
-    width:100%;
-    margin:1rem auto 2rem;
-    border-radius:12px;
-    box-shadow:0 6px 16px var(--shadow);
-    object-fit:cover;
-  }
-
-  #translationSelect {
-    display:block;
-    margin:0 auto 1rem;
-    padding:0.6rem 1rem;
-    border-radius:8px;
-    border:2px solid var(--primary);
-    background: var(--highlight);
-    font-size:1rem;
-    font-weight:600;
-    color: var(--text);
-    cursor:pointer;
-    transition: border 0.3s, box-shadow 0.3s;
-  }
-  #translationSelect:hover {
-    border-color: var(--secondary);
-    box-shadow: 0 0 8px var(--shadow);
-  }
-
-  /* Announcement */
-  .reminder {
-    background: linear-gradient(to right, var(--secondary), var(--primary));
-    color: var(--white);
-    font-weight: 700;
-    padding: 1rem 1.2rem;
-    border-radius: 10px;
-    margin-bottom:2rem;
-    position: relative;
-    max-width: 100%;
-    overflow: hidden;
-    min-height: 60px;
-    display:flex;
-    align-items: center;
-    justify-content: center;
-    white-space: pre-wrap;
-    text-align: center;
-    border: 2px dotted var(--white);
-  }
-  #announcement {
-    display:inline-block;
-    border-right:2px solid var(--white);
-    padding-right:2px;
-    animation: blink-caret 0.7s step-end infinite;
-    width: 100%;
-  }
-  @keyframes blink-caret { 50% { border-color: transparent; } }
-
-  /* Signature element: "The Road Home" — a wayfinding divider between
-     sections, marking this month's theme of turning back and walking on */
-  .road-divider {
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:0.9rem;
-    margin: -0.5rem 0 2rem;
-    padding: 0 0.5rem;
-  }
-  .road-divider .line {
-    flex:1;
-    height:0;
-    border-top: 3px dotted var(--secondary);
-    opacity:0.55;
-    max-width:220px;
-  }
-  .road-divider .sun {
-    width:16px; height:16px;
-    border-radius:50%;
-    background: radial-gradient(circle at 35% 35%, #ffe3a1, var(--primary));
-    box-shadow: 0 0 12px rgba(181,101,29,0.55);
-    flex-shrink:0;
-  }
-  .road-divider .label {
-    font-family:'Cormorant Garamond', serif;
-    font-weight:600;
-    font-style:italic;
-    color: var(--secondary);
-    font-size:1.15rem;
-    white-space:nowrap;
-    flex-shrink:0;
-  }
-
-  .footer-prayer {
-    background: var(--highlight);
-    color: var(--primary);
-    text-align:center;
-    padding:2rem;
-    font-size:1rem;
-    line-height:1.8;
-    border-top:2px solid var(--secondary);
-    white-space: pre-line;
-    font-weight:500;
-    box-shadow:0 -2px 12px var(--shadow);
-    border-radius:0 0 12px 12px;
-    max-width:900px;
-    margin:0 auto 2rem;
-  }
-  .footer-prayer strong {
-    display:block;
-    margin-bottom:1rem;
-    font-size:1.4rem;
-    font-family:'Cormorant Garamond', serif;
-  }
-
-  @media(max-width:600px){
-    header h1{font-size:2.3rem;}
-    nav a{margin:0.5rem 0.8rem;font-size:1rem;}
-    main{margin:1rem auto 3rem;}
-    section{padding:1.2rem 1.2rem;}
-    section h2{font-size:1.6rem;}
-    header p{font-size:1rem;}
-    #todaysVerseBox{font-size:1rem;padding:1rem 1.2rem;}
-    .verse-image{max-width:100%;height:auto;}
-    .road-divider .line{max-width:70px;}
-    .road-divider .label{font-size:1rem;}
-  }
+:root{--bg:linear-gradient(to bottom right,#f8ead6,#efd3ad);--primary:#a4501f;--secondary:#6b3a4a;--text:#33201a;--white:#fffaf2;--shadow:rgba(60,30,15,.18);--highlight:#f7e3c6;--highlightFullWeek:#e0a458;}
+/* October palette — "Come Home": harvest amber and deep plum, a season of returning to God */
+*{margin:0;padding:0;box-sizing:border-box}
+h1,h2,h3,.display-font{font-family:'Cormorant Garamond',serif}
+nav{background:var(--primary);display:flex;flex-wrap:wrap;justify-content:center;padding:1rem;box-shadow:0 4px 8px var(--shadow)}
+nav a{color:var(--white);margin:.5rem 1.2rem;text-decoration:none;font-weight:700;font-size:1.1rem}
+nav a:hover{color:var(--highlight);text-decoration:underline}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;display:flex;flex-direction:column;overflow-x:hidden}
+header{background:linear-gradient(to bottom,rgba(30,15,8,.45),rgba(60,25,10,.55)),url('https://images.unsplash.com/photo-1708171448944-077ff4120e1a?w=1200&auto=format&fit=crop&q=60&ixlib=rb-4.1.0') no-repeat center/cover;color:var(--white);text-align:center;padding:5rem 2rem}
+header h1{font-size:3.4rem;font-weight:700;text-shadow:2px 2px 8px #000;margin-bottom:.4rem}
+header p{font-size:1.25rem;text-shadow:1px 1px 5px #000;font-weight:500}
+nav{position:sticky;top:0;z-index:10}
+main{max-width:900px;margin:2rem auto 4rem;padding:0 1rem}
+section{background:var(--white);border-radius:12px;padding:2rem;margin-bottom:2rem;box-shadow:0 6px 18px var(--shadow)}
+section h2{color:var(--primary);margin-bottom:1rem;font-size:2rem;text-align:center}
+section p{margin-bottom:1rem;line-height:1.6}
+#todaysVerseBox{font-size:1.1rem;font-weight:500;background:var(--highlight);padding:1.2rem 1.8rem;border-radius:10px;box-shadow:inset 0 0 10px rgba(164,80,31,.25);margin-bottom:1.5rem;line-height:1.5;text-align:center}
+.verse-image{display:block;max-width:320px;width:100%;margin:1rem auto 2rem;border-radius:12px;box-shadow:0 6px 16px var(--shadow);object-fit:cover}
+#translationSelect{display:block;margin:0 auto 1rem;padding:.6rem 1rem;border-radius:8px;border:2px solid var(--primary);background:var(--highlight);font-size:1rem;font-weight:600;color:var(--text);cursor:pointer}
+.reminder{background:linear-gradient(to right,var(--secondary),var(--primary));color:var(--white);font-weight:700;padding:1rem 1.2rem;border-radius:10px;min-height:60px;display:flex;align-items:center;justify-content:center;white-space:pre-wrap;text-align:center;border:2px dotted var(--white)}
+#announcement{display:inline-block;border-right:2px solid var(--white);padding-right:2px;animation:blink .7s step-end infinite;width:100%}
+@keyframes blink{50%{border-color:transparent}}
+.road-divider{display:flex;align-items:center;justify-content:center;gap:.9rem;margin:-.5rem 0 2rem;padding:0 .5rem}
+.road-divider .line{flex:1;border-top:3px dotted var(--secondary);opacity:.55;max-width:220px}
+.road-divider .sun{width:16px;height:16px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#ffd98a,var(--primary));box-shadow:0 0 12px rgba(164,80,31,.55);flex-shrink:0}
+.road-divider .label{font-family:'Cormorant Garamond',serif;font-weight:600;font-style:italic;color:var(--secondary);font-size:1.15rem;white-space:nowrap}
+.footer-prayer{background:var(--highlight);color:var(--primary);text-align:center;padding:2rem;line-height:1.8;border-top:2px solid var(--secondary);white-space:pre-line;font-weight:500;box-shadow:0 -2px 12px var(--shadow);border-radius:0 0 12px 12px;max-width:900px;margin:0 auto 2rem}
+.footer-prayer strong{display:block;margin-bottom:1rem;font-size:1.4rem;font-family:'Cormorant Garamond',serif}
+@media(max-width:600px){header h1{font-size:2.3rem}header p{font-size:1rem}nav a{margin:.5rem .8rem;font-size:1rem}main{margin:1rem auto 3rem}section{padding:1.2rem}section h2{font-size:1.6rem}.verse-image{max-width:100%;height:auto}.road-divider .line{max-width:70px}.road-divider .label{font-size:1rem}}
 </style>
 </head>
 <body>
-<header>
-  <h1>FaithSteps: Walk With God</h1>
-  <p>6 months of Seeking God's Face • Scripture • Fasting • Prayer • Journaling</p>
-</header>
-
-<nav>
-  <a href="index.html">Home</a>
-  <a href="journal.html">Journal</a>
-  <a href="verses.html">Verses</a>
-  <a href="fasting.html">Fasting</a>
-</nav>
-
+<header><h1>FaithSteps: Walk With God</h1><p>6 months of Seeking God's Face • Scripture • Fasting • Prayer • Journaling</p></header>
+<nav><a href="index.html" aria-current="page">Home</a><a href="journal.html">Journal</a><a href="verses.html">Verses</a><a href="fasting.html">Fasting</a></nav>
 <main>
-  <section class="reminder" id="reminderSection">
-    <span id="announcement"></span>
-  </section>
-
+  <section class="reminder" id="reminderSection"><span id="announcement"></span></section>
   <section id="todaysVerse">
     <h2>📖 Today's Verse</h2>
     <select id="translationSelect"></select>
     <div id="todaysVerseBox">Loading verse…</div>
     <img id="dailyVerseImage" src="" alt="Verse of the Day Image" class="verse-image"/>
   </section>
-
- <section id="purpose">
-  <h2>Purpose of the Journey</h2>
-  <p>
-    This journey from July to December is a sacred commitment to seek God's face with intentionality. Through fasting, daily scripture, prayer, and reflection, we aim to deepen our relationship with the Lord, grow in spiritual discipline, and align our lives with His divine purpose.
-  </p>
-
-  <p>
-    <strong>July:</strong> Focused on seeking God's face, developing a habit of daily intimacy through prayer, scripture, and reflection. This month was one of connection, focus, and intentional pursuit of His presence.
-  </p>
-
-  <p>
-    <strong>August (In progress):</strong> Focused on turning back to God with humble hearts, walking in obedience, and aligning with His Word. This month was one of repentance, renewal, and redirection.
-  </p>
-</section>
-
-<div class="road-divider" aria-hidden="true">
-  <span class="line"></span>
-  <span class="sun"></span>
-  <span class="label">The Road Home</span>
-  <span class="sun"></span>
-  <span class="line"></span>
-</div>
-
-<section id="month-theme">
-  <h2>Month &amp; Theme</h2>
-
-  <p><strong>August 2026</strong></p>
-  <p><em>Theme: Turning Back — Repentance &amp; Renewal</em></p>
-
-</section>
-
-
+  <section id="purpose">
+    <h2>Purpose of the Journey</h2>
+    <p>This journey from July to December is a sacred commitment to seek God's face with intentionality. Through fasting, daily scripture, prayer, and reflection, we aim to deepen our relationship with the Lord, grow in spiritual discipline, and align our lives with His divine purpose.</p>
+    <p><strong>July:</strong> Focused on seeking God's face, developing a habit of daily intimacy through prayer, scripture, and reflection. This month was one of connection, focus, and intentional pursuit of His presence.</p>
+    <p><strong>August:</strong> Focused on turning back to God with humble hearts, walking in obedience, and aligning with His Word. This month was one of repentance, renewal, and redirection.</p>
+    <p><strong>October (In progress):</strong> Focused on returning to God with our whole hearts: coming home to His presence, resting in His mercy, and drawing near to Him each day. This month is one of return, restoration, and rest.</p>
+  </section>
+  <div class="road-divider" aria-hidden="true"><span class="line"></span><span class="sun"></span><span class="label">Return to Him</span><span class="sun"></span><span class="line"></span></div>
+  <section id="month-theme">
+    <h2>Month &amp; Theme</h2>
+    <p><strong>October 2026</strong></p>
+    <p><em>Theme: Return to God</em></p>
+  </section>
 </main>
-
-<section class="footer-prayer">
-  <strong>The Lord's Prayer</strong>
-  <div id="lordsPrayer"></div>
-</section>
-
+<section class="footer-prayer"><strong>The Lord's Prayer</strong><div id="lordsPrayer"></div></section>
 <script>
-  // Announcement bar
-  const announcementMessage = ""; 
-  const announcementEl = document.getElementById("announcement");
-  const reminderSection = document.getElementById("reminderSection");
-  if(!announcementMessage.trim()){ reminderSection.style.display="none"; } 
-  else {
-    let words=announcementMessage.split(' '), lines=[], currentLine='';
-    words.forEach(word=>{
-      if((currentLine+word).length>50){ lines.push(currentLine.trim()); currentLine=word+' '; } 
-      else currentLine+=word+' ';
-    });
-    if(currentLine) lines.push(currentLine.trim());
-    let lineIndex=0, charIndex=0;
-    function typeLine(){
-      if(lineIndex>=lines.length) return;
-      announcementEl.textContent = lines.slice(0,lineIndex).join('\n') + '\n' + lines[lineIndex].substring(0,charIndex);
-      charIndex++;
-      if(charIndex<=lines[lineIndex].length) setTimeout(typeLine,50);
-      else { lineIndex++; charIndex=0; setTimeout(typeLine,200);}
-    }
-    typeLine();
-  }
-
-  // Fasting banner example
-  (function(){
-    const channelName='faithsteps_fast';
-    const bannerId='fasting-banner-auto';
-    const soundId='fasting-sound-element';
-    function makeBanner(){
-      if(document.getElementById(bannerId)) return;
-      const banner=document.createElement('div');
-      banner.id=bannerId;
-      banner.style.position='fixed';
-      banner.style.bottom='20px';
-      banner.style.right='20px';
-      banner.style.zIndex=99999;
-      banner.style.padding='14px 18px';
-      banner.style.borderRadius='10px';
-      banner.style.boxShadow='0 8px 30px rgba(0,0,0,0.18)';
-      banner.style.background='#8c4a3d';
-      banner.style.color='#fff';
-      banner.style.fontFamily="'DM Sans',sans-serif";
-      banner.style.fontWeight='700';
-      banner.style.cursor='pointer';
-      banner.innerHTML=`<div style="font-size:1rem">Fasting Day</div><div style="font-weight:400; font-size:0.85rem; margin-top:4px">Water fast: 12:00 AM – 5:00 PM — click for details</div>`;
-      banner.addEventListener('click',()=>{ window.location.href='fasting.html'; });
-      document.body.appendChild(banner);
-    }
-    function removeBanner(){ const el=document.getElementById(bannerId); if(el) el.remove(); }
-    function playBeep(){ if(document.getElementById(soundId)) return; const audio=document.createElement('audio'); audio.id=soundId; audio.src="data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAESsAACJWAAACABAAZGF0YQAAAAA="; audio.play().catch(()=>{}); }
-
-    function handlePayload(payload){ if(!payload) return; if(payload.fasting){ makeBanner(); playBeep(); flashTitle('Fasting Day — Click for details'); } else { removeBanner(); restoreTitle(); } }
-    let titleInterval=null; const origTitle=document.title;
-    function flashTitle(msg){ if(titleInterval) clearInterval(titleInterval); let on=false; titleInterval=setInterval(()=>{ document.title=on?msg:origTitle; on=!on; },1200); setTimeout(()=>{ if(titleInterval){ clearInterval(titleInterval); titleInterval=null; document.title=origTitle;} },20000); }
-    function restoreTitle(){ if(titleInterval){ clearInterval(titleInterval); titleInterval=null; document.title=origTitle;} }
-
-    if('BroadcastChannel' in window){ const bc=new BroadcastChannel(channelName); bc.addEventListener('message',ev=>handlePayload(ev.data)); window._faith_bc=bc; }
-    window.addEventListener('storage',(e)=>{ if(e.key==='faithsteps_fasting'&&e.newValue){ try{ handlePayload(JSON.parse(e.newValue)); } catch(e){} } });
-    try{ const raw=localStorage.getItem('faithsteps_fasting'); if(raw) handlePayload(JSON.parse(raw)); } catch(e){}
-    window.removeFastingBanner=removeBanner;
+const pad=n=>String(n).padStart(2,'0');const isoOf=d=>`${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
+// Announcement bar (leave empty to hide)
+const announcementMessage="";
+const announcementEl=document.getElementById("announcement"),reminderSection=document.getElementById("reminderSection");
+if(!announcementMessage.trim()){reminderSection.style.display="none";}
+else{
+  let words=announcementMessage.split(' '),lines=[],cur='';
+  words.forEach(w=>{if((cur+w).length>50){lines.push(cur.trim());cur=w+' ';}else cur+=w+' ';});
+  if(cur)lines.push(cur.trim());
+  let li=0,ci=0;
+  (function typeLine(){
+    if(li>=lines.length)return;
+    announcementEl.textContent=lines.slice(0,li).join('\n')+'\n'+lines[li].substring(0,ci);
+    ci++;
+    if(ci<=lines[li].length)setTimeout(typeLine,50);else{li++;ci=0;setTimeout(typeLine,200);}
   })();
+}
 
-  // Verse of the day with translation selector
-  const verseBox=document.getElementById('todaysVerseBox');
-  const verseImage=document.getElementById('dailyVerseImage');
-  const translationSelect=document.getElementById('translationSelect');
-  const today=new Date(), year=today.getFullYear(), month=String(today.getMonth()+1).padStart(2,'0'), day=String(today.getDate()).padStart(2,'0');
-  const dateStr=`${year}-${month}-${day}`;
-  const imagePath=`images/${month}${day}.jpg`;
-  verseImage.src=imagePath;
-  verseImage.onerror=()=>{verseImage.style.display='none';};
-
-  // Verses object with translations
-const verses = {
-  "2026-07-20": {
-    "MSG": "Come back to me and really mean it! Come fasting and weeping, sorry for your sins. — Joel 2:12",
-    "NLT": "Turn to me now, while there is time. Give me your hearts. Come with fasting, weeping, and mourning. — Joel 2:12",
-    "NIV": "Return to me with all your heart, with fasting and weeping and mourning. — Joel 2:12",
-    "GNT": "The Lord says, 'Turn to me now, with all your heart.' — Joel 2:12",
-    "NKJV": "Return to Me with all your heart, with fasting, with weeping, and with mourning. — Joel 2:12",
-    "SEPEDI": "Boelang go nna ka dipelo tša lena ka moka. — Joele 2:12",
-    "siSWATI": "Buyelani kimi ngayo yonkhe inhlitiyo yenu. — Joweli 2:12"
-  },
-
-  "2026-07-21": {
-    "MSG": "Say a quiet yes to God and he'll be there in no time. — James 4:8",
-    "NLT": "Come close to God, and God will come close to you. — James 4:8",
-    "NIV": "Come near to God and he will come near to you. — James 4:8",
-    "GNT": "Come near to God, and he will come near to you. — James 4:8",
-    "NKJV": "Draw near to God and He will draw near to you. — James 4:8",
-    "SEPEDI": "Batamelang Modimo, gomme le yena o tla le batamela. — Jakobo 4:8",
-    "siSWATI": "Sondzelani kuNkulunkulu, naye utawusondzela kini. — Jakobe 4:8"
-  },
-
-  "2026-07-22": {
-    "MSG": "If we admit our sins, make a clean breast of them, he won't let us down. — 1 John 1:9",
-    "NLT": "If we confess our sins, he is faithful and just to forgive us our sins. — 1 John 1:9",
-    "NIV": "If we confess our sins, he is faithful and just and will forgive us our sins. — 1 John 1:9",
-    "GNT": "If we confess our sins to God, he will forgive us. — 1 John 1:9",
-    "NKJV": "If we confess our sins, He is faithful and just to forgive us our sins. — 1 John 1:9",
-    "SEPEDI": "Ge re ipolela dibe tša rena, Modimo o a re lebalela. — 1 Johane 1:9",
-    "siSWATI": "Nangabe sivuma tono tetfu, yena uthembekile kutsi utasitsetselela. — 1 Johane 1:9"
-  },
-
-  "2026-07-23": {
-    "MSG": "When you come looking for me, you'll find me. — Jeremiah 29:13",
-    "NLT": "If you look for me wholeheartedly, you will find me. — Jeremiah 29:13",
-    "NIV": "You will seek me and find me when you seek me with all your heart. — Jeremiah 29:13",
-    "GNT": "You will seek me, and you will find me. — Jeremiah 29:13",
-    "NKJV": "You will seek Me and find Me, when you search for Me with all your heart. — Jeremiah 29:13",
-    "SEPEDI": "Le tla nnyaka la ba la mphumana ge le nnyaka ka dipelo tša lena ka moka. — Jeremia 29:13",
-    "siSWATI": "Nitangifuna ningitfole naningifuna ngenhlitiyo yenu yonkhe. — Jeremiya 29:13"
-  },
-
-  "2026-07-24": {
-    "MSG": "God, make a fresh start in me. — Psalm 51:10",
-    "NLT": "Create in me a clean heart, O God. Renew a loyal spirit within me. — Psalm 51:10",
-    "NIV": "Create in me a pure heart, O God, and renew a steadfast spirit within me. — Psalm 51:10",
-    "GNT": "Create a pure heart in me, O God. — Psalm 51:10",
-    "NKJV": "Create in me a clean heart, O God. — Psalm 51:10",
-    "SEPEDI": "Modimo, hlola pelo e sekilego ka go nna. — Psalme 51:10",
-    "siSWATI": "Nkulunkulu, dala inhlitiyo lehlantekile kimi. — Tihlabelelo 51:10"
-  },
-
-  "2026-07-25": {
-    "MSG": "Seek God while he's here to be found. — Isaiah 55:6",
-    "NLT": "Seek the Lord while you can find him. — Isaiah 55:6",
-    "NIV": "Seek the Lord while he may be found. — Isaiah 55:6",
-    "GNT": "Turn to the Lord and pray to him, now that he is near. — Isaiah 55:6",
-    "NKJV": "Seek the Lord while He may be found. — Isaiah 55:6",
-    "SEPEDI": "Nyakang Morena ge a sa hwetšwa. — Jesaya 55:6",
-    "siSWATI": "Funani Simakadze asesengatfolakala. — Isaya 55:6"
-  },
-
-  "2026-07-26": {
-    "MSG": "His father saw him and ran to him, embraced him, and kissed him. — Luke 15:20",
-    "NLT": "His father saw him coming. Filled with love and compassion, he ran to his son. — Luke 15:20",
-    "NIV": "While he was still a long way off, his father saw him and was filled with compassion for him. — Luke 15:20",
-    "GNT": "His father saw him and was filled with pity. — Luke 15:20",
-    "NKJV": "His father saw him and had compassion, and ran and fell on his neck and kissed him. — Luke 15:20",
-    "SEPEDI": "Tatagwe o ile a mmona gomme a mo kwela bohloko. — Lukase 15:20",
-    "siSWATI": "Uyise wambona wamuhawukela wagijima wamugona. — Lukha 15:20"
-  },
-
-  "2026-07-27": {
-    "MSG": "If my people humble themselves, pray, seek my face... I'll forgive their sins. — 2 Chronicles 7:14",
-    "NLT": "If my people who are called by my name humble themselves and pray... I will forgive their sins. — 2 Chronicles 7:14",
-    "NIV": "If my people... humble themselves and pray and seek my face... then I will forgive their sin. — 2 Chronicles 7:14",
-    "GNT": "If they pray to me and repent, I will forgive them. — 2 Chronicles 7:14",
-    "NKJV": "If My people... humble themselves, and pray and seek My face... I will forgive their sin. — 2 Chronicles 7:14",
-    "SEPEDI": "Ge setšhaba sa ka se ikokobetša gomme sa rapela, ke tla se lebalela. — 2 Koronika 7:14",
-    "siSWATI": "Nangabe bantfu bami batitfoba futsi bathandaza, ngitawubatsetselela. — 2 Tikhronike 7:14"
-  },
-
-  "2026-07-28": {
-    "MSG": "Nothing can separate us from God's love. — Romans 8:39",
-    "NLT": "Nothing can ever separate us from God's love. — Romans 8:39",
-    "NIV": "Nothing will be able to separate us from the love of God. — Romans 8:39",
-    "GNT": "Nothing can separate us from God's love. — Romans 8:39",
-    "NKJV": "Nothing shall be able to separate us from the love of God. — Romans 8:39",
-    "SEPEDI": "Ga go selo se ka re aroganyago le lerato la Modimo. — Baroma 8:39",
-    "siSWATI": "Kute lutfo lolungasehlukanisa nelutsandvo lwaNkulunkulu. — Roma 8:39"
-  },
-
-  "2026-07-29": {
-    "MSG": "God's loyal love couldn't have run out... they're created new every morning. — Lamentations 3:22-23",
-    "NLT": "His mercies begin afresh each morning. — Lamentations 3:22-23",
-    "NIV": "His compassions never fail. They are new every morning. — Lamentations 3:22-23",
-    "GNT": "His love is fresh every morning. — Lamentations 3:22-23",
-    "NKJV": "His compassions fail not. They are new every morning. — Lamentations 3:22-23",
-    "SEPEDI": "Kgaugelo ya gagwe e mpsha mesong ye mengwe le ye mengwe. — Dillo 3:22-23",
-    "siSWATI": "Sihawu sakhe sisha njalo ekuseni. — Sililo 3:22-23"
-  },
-
-  "2026-07-30": {
-    "MSG": "I'm standing at the door, knocking. If you hear me call and open the door, I'll come right in. — Revelation 3:20",
-    "NLT": "Look! I stand at the door and knock. If you hear my voice and open the door, I will come in. — Revelation 3:20",
-    "NIV": "Here I am! I stand at the door and knock. — Revelation 3:20",
-    "GNT": "Listen! I stand at the door and knock. — Revelation 3:20",
-    "NKJV": "Behold, I stand at the door and knock. — Revelation 3:20",
-    "SEPEDI": "Bonang, ke eme mo mojako gomme ke a kokota. — Kutollo 3:20",
-    "siSWATI": "Buka, ngime emnyango ngiyanconcotsa. — Sambulo 3:20"
-  },
-
-  "2026-07-31": {
-    "MSG": "God says, 'I'll never quit loving you.' — Jeremiah 31:3",
-    "NLT": "I have loved you with an everlasting love. — Jeremiah 31:3",
-    "NIV": "I have loved you with an everlasting love. — Jeremiah 31:3",
-    "GNT": "I have always loved you. — Jeremiah 31:3",
-    "NKJV": "Yes, I have loved you with an everlasting love. — Jeremiah 31:3",
-    "SEPEDI": "Ke go ratile ka lerato la neng le neng. — Jeremia 31:3",
-    "siSWATI": "Ngikutsandzile ngelutsandvo lwaphakadze. — Jeremiya 31:3"
-  },
-
-  "2026-08-01": {
-    "MSG": "Change your ways! Turn to face God so he can wipe away your sins. — Acts 3:19",
-    "NLT": "Repent of your sins and turn to God, so that your sins may be wiped away. — Acts 3:19",
-    "NIV": "Repent, then, and turn to God, so that your sins may be wiped out. — Acts 3:19",
-    "GNT": "Turn from your sins and turn to God, so that he will wipe away your sins. — Acts 3:19",
-    "NKJV": "Repent therefore and be converted, that your sins may be blotted out. — Acts 3:19",
-    "SEPEDI": "Sokologang, le boele go Modimo, gore dibe tša lena di phumolwe. — Ditiro 3:19",
-    "siSWATI": "Phendukani, nibuyele kuNkulunkulu, kuze tono tenu tesulwe. — Imisebenti 3:19"
-  },
-
-  "2026-08-02": {
-    "MSG": "Change your life, not just your clothes. Come back to God, your God. — Joel 2:13",
-    "NLT": "Don't tear your clothing in your grief; instead, tear your hearts. Return to the Lord your God. — Joel 2:13",
-    "NIV": "Rend your heart and not your garments. Return to the Lord your God. — Joel 2:13",
-    "GNT": "Let your broken heart show your sorrow; come back to the Lord your God. — Joel 2:13",
-    "NKJV": "So rend your heart, and not your garments; return to the Lord your God. — Joel 2:13",
-    "SEPEDI": "Sotlang dipelo tša lena, e sego diaparo tša lena, le boele go MORENA Modimo wa lena. — Joele 2:13",
-    "siSWATI": "Dvabulani inhlitiyo yenu, hhayi tingubo tenu, nibuyele eNkosini Nkulunkulu wenu. — Joweli 2:13"
-  },
-
-  "2026-08-03": {
-    "MSG": "I'll give you a new heart, put a new spirit in you. — Ezekiel 36:26",
-    "NLT": "I will give you a new heart, and I will put a new spirit in you. — Ezekiel 36:26",
-    "NIV": "I will give you a new heart and put a new spirit in you. — Ezekiel 36:26",
-    "GNT": "I will give you a new heart and a new mind. — Ezekiel 36:26",
-    "NKJV": "I will give you a new heart and put a new spirit within you. — Ezekiel 36:26",
-    "SEPEDI": "Ke tla le nea pelo e mpsha le moya o mofsa ka gare ga lena. — Hesekiele 36:26",
-    "siSWATI": "Ngitakupha inhlitiyo lensha nemoya lomusha ngiwufake ngekhatsi kuwe. — Hezekiyeli 36:26"
-  },
-
-  "2026-08-04": {
-    "MSG": "Heart-shattered lives ready for love don't for a moment escape God's notice. — Psalm 51:17",
-    "NLT": "The sacrifice you desire is a broken spirit. You will not reject a broken and repentant heart. — Psalm 51:17",
-    "NIV": "My sacrifice, O God, is a broken spirit; a broken and contrite heart you will not despise. — Psalm 51:17",
-    "GNT": "My sacrifice is a humble spirit, O God; you will not reject a humble and repentant heart. — Psalm 51:17",
-    "NKJV": "The sacrifices of God are a broken spirit, a broken and a contrite heart. — Psalm 51:17",
-    "SEPEDI": "Sehlabelo sa Modimo ke moya o robegilego; pelo e robegilego Modimo ga a e nyatše. — Psalme 51:17",
-    "siSWATI": "Umhlatjelo waNkulunkulu ngumoya lophukile; inhlitiyo lephukile Nkulunkulu angeke ayidzelele. — Tihlabelelo 51:17"
-  },
-
-  "2026-08-05": {
-    "MSG": "Though your sins are blood-red, they'll turn as white as snow. — Isaiah 1:18",
-    "NLT": "Though your sins are like scarlet, I will make them as white as snow. — Isaiah 1:18",
-    "NIV": "Though your sins are like scarlet, they shall be as white as snow. — Isaiah 1:18",
-    "GNT": "Although your sins are like scarlet, you will be as white as snow. — Isaiah 1:18",
-    "NKJV": "Though your sins are like scarlet, they shall be as white as snow. — Isaiah 1:18",
-    "SEPEDI": "Le ge dibe tša lena e le tše kgwibidu, di tla šweufala go swana le lehlwa. — Jesaya 1:18",
-    "siSWATI": "Nakuba tono tenu tibovu, titakuba mhlophe njengeliqhwa. — Isaya 1:18"
-  },
-
-  "2026-08-06": {
-    "MSG": "Come, let's go back to God. He hurt us, but he'll heal us. — Hosea 6:1",
-    "NLT": "Come, let us return to the Lord. He has torn us to pieces; now he will heal us. — Hosea 6:1",
-    "NIV": "Come, let us return to the Lord. He has torn us to pieces but he will heal us. — Hosea 6:1",
-    "GNT": "Let us return to the Lord. He wounded us, but he will bandage our wounds. — Hosea 6:1",
-    "NKJV": "Come, and let us return to the Lord; for He has torn, but He will heal us. — Hosea 6:1",
-    "SEPEDI": "Etlang re boele go MORENA; o re gagotše, eupša o tla re fodiša. — Hosea 6:1",
-    "siSWATI": "Wotani sibuyele eNkosini; wasidzabula, kodvwa utawusiphilisa. — Hoseya 6:1"
-  },
-
-  "2026-08-07": {
-    "MSG": "Return to me and I will return to you. — Zechariah 1:3",
-    "NLT": "Return to me, and I will return to you, says the Lord. — Zechariah 1:3",
-    "NIV": "Return to me, declares the Lord Almighty, and I will return to you. — Zechariah 1:3",
-    "GNT": "Turn back to me, and I will turn to you. — Zechariah 1:3",
-    "NKJV": "Return to Me, says the Lord of hosts, and I will return to you. — Zechariah 1:3",
-    "SEPEDI": "Boelang go nna, le nna ke tla boela go lena, gorewa MORENA. — Sakaria 1:3",
-    "siSWATI": "Buyelani kimi, nami ngitawubuyela kini, kusho Simakadze. — Zakariya 1:3"
-  },
-
-  "2026-08-08": {
-    "MSG": "You can't whitewash your sins and get by with it; you find mercy by admitting and leaving them. — Proverbs 28:13",
-    "NLT": "People who conceal their sins will not prosper, but if they confess and turn from them, they will receive mercy. — Proverbs 28:13",
-    "NIV": "Whoever conceals their sins does not prosper, but the one who confesses and renounces them finds mercy. — Proverbs 28:13",
-    "GNT": "You will never succeed if you hide your sins; confess them and give them up. — Proverbs 28:13",
-    "NKJV": "He who covers his sins will not prosper, but whoever confesses and forsakes them will have mercy. — Proverbs 28:13",
-    "SEPEDI": "Yo a khupetšago dibe tša gagwe a ka se atlege, eupša yo a di bolelago o tla hwetša kgaugelo. — Diema 28:13",
-    "siSWATI": "Lofihla tono takhe ngeke aphumelele, kodvwa lovuma futsi atishiye utawutfola sihawu. — Taga 28:13"
-  },
-
-  "2026-08-09": {
-    "MSG": "Now anyone united with the Messiah gets a new life. — 2 Corinthians 5:17",
-    "NLT": "Anyone who belongs to Christ has become a new person. The old life is gone; a new life has begun! — 2 Corinthians 5:17",
-    "NIV": "If anyone is in Christ, the new creation has come: The old has gone, the new is here! — 2 Corinthians 5:17",
-    "GNT": "Anyone joined to Christ is a new being; the old is gone, the new has come. — 2 Corinthians 5:17",
-    "NKJV": "If anyone is in Christ, he is a new creation; old things have passed away. — 2 Corinthians 5:17",
-    "SEPEDI": "Ge motho a le go Kriste, ke sebopiwa se seswa; tša kgale di fetile, tše mpsha di tlile. — 2 Bakorinthe 5:17",
-    "siSWATI": "Nangabe umuntfu asekuKrestu, singumdalwa lomusha; tekucala setidlulile, kwetsa kufikile. — 2 Khorinte 5:17"
-  },
-
-  "2026-08-10": {
-    "MSG": "Fix your attention on God. You'll be changed from the inside out. — Romans 12:2",
-    "NLT": "Let God transform you into a new person by changing the way you think. — Romans 12:2",
-    "NIV": "Be transformed by the renewing of your mind. — Romans 12:2",
-    "GNT": "Let God transform you inwardly by a complete change of your mind. — Romans 12:2",
-    "NKJV": "Be transformed by the renewing of your mind. — Romans 12:2",
-    "SEPEDI": "Le fetogisiwe ka go mpshafatšwa ga monagano wa lena. — Baroma 12:2",
-    "siSWATI": "Niphendvuke ngekwenta lusha kwengcondvo yenu. — Roma 12:2"
-  },
-
-  "2026-08-11": {
-    "MSG": "Forget about what's happened. I'm about to do something brand-new. — Isaiah 43:18-19",
-    "NLT": "Forget the former things; do not dwell on the past. See, I am doing a new thing! — Isaiah 43:18-19",
-    "NIV": "Forget the former things; do not dwell on the past. See, I am doing a new thing! — Isaiah 43:18-19",
-    "GNT": "Do not cling to events of the past. Watch for the new thing I am going to do. — Isaiah 43:18-19",
-    "NKJV": "Do not remember the former things. Behold, I will do a new thing. — Isaiah 43:18-19",
-    "SEPEDI": "Se gopoleng dilo tša kgale... Bonang, ke dira selo se seswa. — Jesaya 43:18-19",
-    "siSWATI": "Ningakhumbuli tintfo tekucala... Bukani, ngenta intfo lensha. — Isaya 43:18-19"
-  },
-
-  "2026-08-12": {
-    "MSG": "Investigate my life, O God, then guide me on the road to eternal life. — Psalm 139:23-24",
-    "NLT": "Search me, O God, and know my heart. Lead me along the path of everlasting life. — Psalm 139:23-24",
-    "NIV": "Search me, God, and know my heart... lead me in the way everlasting. — Psalm 139:23-24",
-    "GNT": "Examine me, O God, and know my mind; lead me in the way you have always known. — Psalm 139:23-24",
-    "NKJV": "Search me, O God, and know my heart... lead me in the way everlasting. — Psalm 139:23-24",
-    "SEPEDI": "Ntlhotlhomiše, Modimo, o tsebe pelo ya ka; o ntsamaiše tseleng ya go ya go ile. — Psalme 139:23-24",
-    "siSWATI": "Ngihlolisise, Nkulunkulu, wati inhlitiyo yami; ungihole ngendlela lengunaphakade. — Tihlabelelo 139:23-24"
-  },
-
-  "2026-08-13": {
-    "MSG": "Get down on your knees before the Master; it's the only way you'll get on your feet. — James 4:10",
-    "NLT": "Humble yourselves before the Lord, and he will lift you up in honor. — James 4:10",
-    "NIV": "Humble yourselves before the Lord, and he will lift you up. — James 4:10",
-    "GNT": "Humble yourselves before the Lord, and he will lift you up. — James 4:10",
-    "NKJV": "Humble yourselves in the sight of the Lord, and He will lift you up. — James 4:10",
-    "SEPEDI": "Ikokobetšeng pele ga Morena, gomme o tla le phagamiša. — Jakobo 4:10",
-    "siSWATI": "Titfobeni embikwaSimakadze, futsi utaniphakamisa. — Jakobe 4:10"
-  },
-
-  "2026-08-14": {
-    "MSG": "I'll get right up and go to my Father. — Luke 15:18",
-    "NLT": "I will go home to my father and say, Father, I have sinned. — Luke 15:18",
-    "NIV": "I will set out and go back to my father and say to him: Father, I have sinned. — Luke 15:18",
-    "GNT": "I will get up and go to my father. — Luke 15:18",
-    "NKJV": "I will arise and go to my father, and will say to him, Father, I have sinned. — Luke 15:18",
-    "SEPEDI": "Ke tla tsoga ka ya go tate, ka re: Tate, ke sentše. — Lukase 15:18",
-    "siSWATI": "Ngitasukuma ngiye kubabe, ngitsi: Babe, ngonile. — Lukha 15:18"
-  },
-
-  "2026-08-15": {
-    "MSG": "Don't take yourself too seriously — take God seriously. — Micah 6:8",
-    "NLT": "Do what is right, love mercy, and walk humbly with your God. — Micah 6:8",
-    "NIV": "Act justly and love mercy and walk humbly with your God. — Micah 6:8",
-    "GNT": "Do what is right, show constant love, and live in humble fellowship with your God. — Micah 6:8",
-    "NKJV": "Do justly, love mercy, and walk humbly with your God. — Micah 6:8",
-    "SEPEDI": "Dira tše di lokilego, rata kgaugelo, o sepele ka boikokobetšo le Modimo wa gago. — Mika 6:8",
-    "siSWATI": "Yenta lokulungile, tsandza umusa, uhambe ngekutitfoba naNkulunkulu wakho. — Mika 6:8"
-  },
-
-  "2026-08-16": {
-    "MSG": "I'm off and running, and I'm not turning back. — Philippians 3:13-14",
-    "NLT": "Forgetting the past and looking forward to what lies ahead, I press on. — Philippians 3:13-14",
-    "NIV": "Forgetting what is behind and straining toward what is ahead, I press on. — Philippians 3:13-14",
-    "GNT": "I forget what is behind me; I run straight toward the goal. — Philippians 3:13-14",
-    "NKJV": "Forgetting those things which are behind... I press toward the goal. — Philippians 3:13-14",
-    "SEPEDI": "Ke lebala tša ka morago, ke katanela tše di ka pele, ke kgomarela nepo. — Bafilipi 3:13-14",
-    "siSWATI": "Ngikhohlwa lokungemuva, ngitiyeka kulokuphambili, ngigijimela emkhawulweni. — Filipi 3:13-14"
-  },
-
-  "2026-08-17": {
-    "MSG": "I said, 'I'll come clean about my failures to God.' Suddenly the pressure was gone. — Psalm 32:5",
-    "NLT": "I confessed my sins and stopped trying to hide my guilt... And you forgave me! — Psalm 32:5",
-    "NIV": "I said, I will confess my transgressions to the Lord. And you forgave the guilt of my sin. — Psalm 32:5",
-    "GNT": "So I confessed my sins to you, and you forgave all my sins. — Psalm 32:5",
-    "NKJV": "I acknowledged my sin to You... and You forgave the iniquity of my sin. — Psalm 32:5",
-    "SEPEDI": "Ke ipoletše dibe tša ka go MORENA, gomme wa lebalela bokgopo bja sebe sa ka. — Psalme 32:5",
-    "siSWATI": "Ngavuma tono tami eNkosini, wena wangitsetselela sono sami. — Tihlabelelo 32:5"
-  },
-
-  "2026-08-18": {
-    "MSG": "Your salvation lies in repentance and rest, your strength in quiet trust. — Isaiah 30:15",
-    "NLT": "In repentance and rest is your salvation; in quietness and confidence is your strength. — Isaiah 30:15",
-    "NIV": "In repentance and rest is your salvation, in quietness and trust is your strength. — Isaiah 30:15",
-    "GNT": "Stop your rebellion and turn back to me; in quiet trust your strength lies. — Isaiah 30:15",
-    "NKJV": "In returning and rest you shall be saved; in quietness and confidence shall be your strength. — Isaiah 30:15",
-    "SEPEDI": "Poloko ya lena e le go sokologa le go khutša; matla a lena e le boikhutšo le kholofelo. — Jesaya 30:15",
-    "siSWATI": "Insindziso yenu isekuphenduka nasekuphumula; emandla enu asekuthula nasekwetsemba. — Isaya 30:15"
-  },
-
-  "2026-08-19": {
-    "MSG": "Come back, wayward children. I will heal your wayward hearts. — Jeremiah 3:22",
-    "NLT": "My wayward children, come back to me, and I will heal your wandering hearts. — Jeremiah 3:22",
-    "NIV": "Return, faithless people; I will cure you of backsliding. — Jeremiah 3:22",
-    "GNT": "Return, my rebellious people, and I will cure you of your rebelliousness. — Jeremiah 3:22",
-    "NKJV": "Return, you backsliding children, and I will heal your backslidings. — Jeremiah 3:22",
-    "SEPEDI": "Boelang, bana ba go furalela, ke tla fodiša go furalela ga lena. — Jeremia 3:22",
-    "siSWATI": "Buyelani, bantfwana labahlubukile, ngitawunelapha kuhlubuka kwenu. — Jeremiya 3:22"
-  },
-
-  "2026-08-20": {
-    "MSG": "Turn to God, act like it by putting your repentance into practice. — Acts 26:20",
-    "NLT": "They should repent of their sins and turn to God, proving their repentance by their actions. — Acts 26:20",
-    "NIV": "They should repent and turn to God and demonstrate their repentance by their deeds. — Acts 26:20",
-    "GNT": "They should turn from their sins to God and do things that will show they have turned. — Acts 26:20",
-    "NKJV": "They should repent, turn to God, and do works befitting repentance. — Acts 26:20",
-    "SEPEDI": "Ba sokologe, ba boele go Modimo, ba bontšhe boitshokollo bja bona ka mediro. — Ditiro 26:20",
-    "siSWATI": "Baphendukele kuNkulunkulu, babonise kuphenduka kwabo ngemisebenti. — Imisebenti 26:20"
-  },
-
-  "2026-08-21": {
-    "MSG": "Get rid of your old sinful lives and get a new spirit. — Ezekiel 18:31",
-    "NLT": "Put all your rebellion behind you, and get yourselves a new heart and a new spirit. — Ezekiel 18:31",
-    "NIV": "Rid yourselves of all the offenses you have committed, and get a new heart and a new spirit. — Ezekiel 18:31",
-    "GNT": "Give up all the evil you have been doing, and get yourselves a new heart and a new spirit. — Ezekiel 18:31",
-    "NKJV": "Cast away from you all the transgressions... and get yourselves a new heart and a new spirit. — Ezekiel 18:31",
-    "SEPEDI": "Latlhelang thoko ditlolo tša lena tšohle, le itirele pelo e mpsha le moya o mofsa. — Hesekiele 18:31",
-    "siSWATI": "Lahlani tono tenu tonkhe, nititselele inhlitiyo lensha nemoya lomusha. — Hezekiyeli 18:31"
-  },
-
-  "2026-08-22": {
-    "MSG": "God isn't late with his promise... He's giving everyone space and time to change. — 2 Peter 3:9",
-    "NLT": "He is patient with you, not wanting anyone to perish, but wanting everyone to repent. — 2 Peter 3:9",
-    "NIV": "He is patient with you, not wanting anyone to perish, but everyone to come to repentance. — 2 Peter 3:9",
-    "GNT": "He is patient with you, not wanting anyone to die, but wanting all to turn away from sin. — 2 Peter 3:9",
-    "NKJV": "The Lord is longsuffering, not willing that any should perish but that all should come to repentance. — 2 Peter 3:9",
-    "SEPEDI": "O na le pelotelele go lena, a sa nyake gore le o tee a lahlege, eupša ba sokologe ka moka. — 2 Petro 3:9",
-    "siSWATI": "Unesineke ngani, angafuni kutsi kubhubhe ngisho namunye, kodvwa kutsi bonkhe baphendukele. — 2 Phetro 3:9"
-  },
-
-  "2026-08-23": {
-    "MSG": "True to your word, you let me catch my breath and send me in the right direction. — Psalm 23:3",
-    "NLT": "He renews my strength. He guides me along right paths, bringing honor to his name. — Psalm 23:3",
-    "NIV": "He refreshes my soul. He guides me along the right paths for his name's sake. — Psalm 23:3",
-    "GNT": "He gives me new strength; he guides me in the right paths. — Psalm 23:3",
-    "NKJV": "He restores my soul; He leads me in the paths of righteousness for His name's sake. — Psalm 23:3",
-    "SEPEDI": "O sepedišetša moya wa ka; o ntsamaiša ditseleng tša toka ka baka la leina la gagwe. — Psalme 23:3",
-    "siSWATI": "Ubuyisela umphefumulo wami; ungihola etindleleni telungiso ngenca yelibito lakhe. — Tihlabelelo 23:3"
-  },
-
-  "2026-08-24": {
-    "MSG": "Come back to me and I will come back to you. — Malachi 3:7",
-    "NLT": "Return to me, and I will return to you, says the Lord of Heaven's Armies. — Malachi 3:7",
-    "NIV": "Return to me, and I will return to you, says the Lord Almighty. — Malachi 3:7",
-    "GNT": "Turn back to me, and I will turn to you. — Malachi 3:7",
-    "NKJV": "Return to Me, and I will return to you, says the Lord of hosts. — Malachi 3:7",
-    "SEPEDI": "Boelang go nna, le nna ke tla boela go lena, gorewa MORENA wa mabotho. — Maleaki 3:7",
-    "siSWATI": "Buyelani kimi, nami ngitawubuyela kini, kusho Simakadze wemabandla. — Malakhi 3:7"
-  },
-
-  "2026-08-25": {
-    "MSG": "He gave us a bath, and we came out of it new people. — Titus 3:5",
-    "NLT": "He saved us through the washing of rebirth and renewal by the Holy Spirit. — Titus 3:5",
-    "NIV": "He saved us through the washing of rebirth and renewal by the Holy Spirit. — Titus 3:5",
-    "GNT": "He saved us through the Holy Spirit, who gives us new birth and new life. — Titus 3:5",
-    "NKJV": "He saved us, through the washing of regeneration and renewing of the Holy Spirit. — Titus 3:5",
-    "SEPEDI": "O re phološitše ka tlhapišo ya go tswalwa gape le go mpshafatšwa ka Moya o Mokgethwa. — Tito 3:5",
-    "siSWATI": "Wasisindzisa ngekugezwa kwekutalwa kabusha nekwenta lusha kwaMoya Longcwele. — Thithusi 3:5"
-  },
-
-  "2026-08-26": {
-    "MSG": "Let the wicked abandon their way of life... let them turn back to God. — Isaiah 55:7",
-    "NLT": "Let the wicked change their ways... Let them turn to the Lord. — Isaiah 55:7",
-    "NIV": "Let the wicked forsake their way... let them turn to the Lord, and he will have mercy on them. — Isaiah 55:7",
-    "GNT": "Let the wicked leave their evil ways; let them turn to the Lord. — Isaiah 55:7",
-    "NKJV": "Let the wicked forsake his way... let him return to the Lord, and He will have mercy. — Isaiah 55:7",
-    "SEPEDI": "Yo kgopo a lese tsela ya gagwe, a boele go MORENA, gomme o tla mo gaugela. — Jesaya 55:7",
-    "siSWATI": "Lomubi akashiye indlela yakhe, abuyele eNkosini, futsi utamuhawukela. — Isaya 55:7"
-  },
-
-  "2026-08-27": {
-    "MSG": "Surprise us with love at daybreak; won't you do it every day? — Psalm 90:14",
-    "NLT": "Satisfy us each morning with your unfailing love, so we may sing for joy. — Psalm 90:14",
-    "NIV": "Satisfy us in the morning with your unfailing love, that we may sing for joy. — Psalm 90:14",
-    "GNT": "Fill us each morning with your constant love, so that we may sing and be glad. — Psalm 90:14",
-    "NKJV": "Oh, satisfy us early with Your mercy, that we may rejoice and be glad. — Psalm 90:14",
-    "SEPEDI": "Re kgorišeng mesong ka lerato la gago le sa fetogego, gore re thabe. — Psalme 90:14",
-    "siSWATI": "Sanelise ekuseni ngemusa wakho longapheli, kuze sitsabe. — Tihlabelelo 90:14"
-  },
-
-  "2026-08-28": {
-    "MSG": "Kick out the old life, put on the new life, and be renewed. — Colossians 3:9-10",
-    "NLT": "You have stripped off your old sinful nature... put on your new nature, and be renewed. — Colossians 3:9-10",
-    "NIV": "You have taken off your old self and have put on the new self, which is being renewed. — Colossians 3:9-10",
-    "GNT": "You have put off the old self and have put on the new self, constantly renewed. — Colossians 3:9-10",
-    "NKJV": "Put on the new man who is renewed in knowledge according to the image of Him who created him. — Colossians 3:9-10",
-    "SEPEDI": "Le apere motho o mofsa yo a mpshafatšwago ka tsebo ya go swana le seswantšho sa Yena. — Bakolose 3:9-10",
-    "siSWATI": "Nembathise umuntfu lomusha lowentwa lusha ngelwati kufanana nesimo salowo wamdala. — Khokhoseve 3:9-10"
-  },
-
-  "2026-08-29": {
-    "MSG": "In your anger, remember mercy. — Habakkuk 3:2",
-    "NLT": "In your anger, remember your mercy. — Habakkuk 3:2",
-    "NIV": "In wrath remember mercy. — Habakkuk 3:2",
-    "GNT": "Remember mercy even when you are angry. — Habakkuk 3:2",
-    "NKJV": "In wrath remember mercy. — Habakkuk 3:2",
-    "SEPEDI": "Le ge o galefile, gopola kgaugelo. — Habakuku 3:2",
-    "siSWATI": "Nangabe utfukutsele, khumbula umusa. — Habakhuki 3:2"
-  },
-
-  "2026-08-30": {
-    "MSG": "You're a forgiving God, generous and merciful. — Nehemiah 9:17",
-    "NLT": "You are a God of forgiveness, gracious and merciful. — Nehemiah 9:17",
-    "NIV": "You are a forgiving God, gracious and compassionate. — Nehemiah 9:17",
-    "GNT": "You are a forgiving God, full of mercy and grace. — Nehemiah 9:17",
-    "NKJV": "You are God, ready to pardon, gracious and merciful. — Nehemiah 9:17",
-    "SEPEDI": "O Modimo yo a swarelago, wa botho le wa kgaugelo. — Nehemia 9:17",
-    "siSWATI": "UnguNkulunkulu lotsetselelako, lonemusa nesihawu. — Nehemiya 9:17"
-  },
-
-  "2026-08-31": {
-    "MSG": "God is gracious and compassionate. If you come back to him, he will welcome you. — 2 Chronicles 30:9",
-    "NLT": "The Lord your God is gracious and merciful. If you return to him, he will not turn his face from you. — 2 Chronicles 30:9",
-    "NIV": "The Lord your God is gracious and merciful. He will not turn his face from you if you return to him. — 2 Chronicles 30:9",
-    "GNT": "The Lord your God is loving and merciful, and if you turn back to him, he will not turn away. — 2 Chronicles 30:9",
-    "NKJV": "The Lord your God is gracious and merciful, and will not turn His face from you if you return to Him. — 2 Chronicles 30:9",
-    "SEPEDI": "MORENA Modimo wa lena o na le botho le kgaugelo; ga a na go le furalela ge le boela go yena. — 2 Koronika 30:9",
-    "siSWATI": "Simakadze Nkulunkulu wenu unemusa nesihawu; angeke aniphendulele buso nangabe nibuyela kuye. — 2 Tikhronike 30:9"
+// Fasting banner
+(function(){
+  const bannerId='fasting-banner-auto',soundId='fasting-sound-element';
+  function makeBanner(){
+    if(document.getElementById(bannerId))return;
+    const b=document.createElement('div');b.id=bannerId;
+    Object.assign(b.style,{position:'fixed',bottom:'20px',right:'20px',zIndex:99999,padding:'14px 18px',borderRadius:'10px',boxShadow:'0 8px 30px rgba(0,0,0,.18)',background:'#6b3a4a',color:'#fff',fontFamily:"'DM Sans',sans-serif",fontWeight:'700',cursor:'pointer'});
+    b.innerHTML='<div style="font-size:1rem">Fasting Day</div><div style="font-weight:400;font-size:.85rem;margin-top:4px">Water fast: 12:00 AM – 5:00 PM — click for details</div>';
+    b.addEventListener('click',()=>{window.location.href='fasting.html';});
+    document.body.appendChild(b);
   }
+  function removeBanner(){const el=document.getElementById(bannerId);if(el)el.remove();}
+  function playBeep(){if(document.getElementById(soundId))return;const a=document.createElement('audio');a.id=soundId;a.src="data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAESsAACJWAAACABAAZGF0YQAAAAA=";a.play().catch(()=>{});}
+  let ti=null;const orig=document.title;
+  function flashTitle(m){if(ti)clearInterval(ti);let on=false;ti=setInterval(()=>{document.title=on?m:orig;on=!on;},1200);setTimeout(()=>{if(ti){clearInterval(ti);ti=null;document.title=orig;}},20000);}
+  function restoreTitle(){if(ti){clearInterval(ti);ti=null;document.title=orig;}}
+  function handle(p){if(!p)return;if(p.fasting){makeBanner();playBeep();flashTitle('Fasting Day — Click for details');}else{removeBanner();restoreTitle();}}
+  if('BroadcastChannel' in window){const bc=new BroadcastChannel('faithsteps_fast');bc.addEventListener('message',e=>handle(e.data));window._faith_bc=bc;}
+  window.addEventListener('storage',e=>{if(e.key==='faithsteps_fasting'&&e.newValue){try{handle(JSON.parse(e.newValue));}catch(_){}}});
+  try{const raw=localStorage.getItem('faithsteps_fasting');if(raw)handle(JSON.parse(raw));}catch(_){}
+  window.removeFastingBanner=removeBanner;
+})();
+
+// Verse of the day
+const verseBox=document.getElementById('todaysVerseBox'),verseImage=document.getElementById('dailyVerseImage'),sel=document.getElementById('translationSelect');
+const today=new Date(),dateStr=isoOf(today);
+verseImage.src=`images/${pad(today.getMonth()+1)}${pad(today.getDate())}.jpg`;
+verseImage.onerror=()=>{verseImage.style.display='none';};
+const verses={
+ "2026-10-01": {
+  "NLT": "Return, O Israel, to the Lord your God, for your sins have brought you down. — Hosea 14:1",
+  "NIV": "Return, Israel, to the Lord your God. Your sins have been your downfall! — Hosea 14:1",
+  "NKJV": "O Israel, return to the Lord your God, for you have stumbled because of your iniquity; — Hosea 14:1"
+ },
+ "2026-10-02": {
+  "NLT": "But from there you will search again for the Lord your God. And if you search for him with all your heart and soul, you will find him. — Deuteronomy 4:29",
+  "NIV": "But if from there you seek the Lord your God, you will find him if you seek him with all your heart and with all your soul. — Deuteronomy 4:29",
+  "NKJV": "But from there you will seek the Lord your God, and you will find Him if you seek Him with all your heart and with all your soul. — Deuteronomy 4:29"
+ },
+ "2026-10-03": {
+  "NLT": "Let us examine our ways and return to the Lord. — Lamentations 3:40",
+  "NIV": "Let us examine our ways and test them, and let us return to the Lord. — Lamentations 3:40",
+  "NKJV": "Let us search out and examine our ways, and turn back to the Lord; — Lamentations 3:40"
+ },
+ "2026-10-04": {
+  "NLT": "Restore to me the joy of your salvation, and make me willing to obey you. — Psalm 51:12",
+  "NIV": "Restore to me the joy of your salvation and grant me a willing spirit, to sustain me. — Psalm 51:12",
+  "NKJV": "Restore to me the joy of Your salvation, and uphold me by Your generous Spirit. — Psalm 51:12"
+ },
+ "2026-10-05": {
+  "NLT": "I have swept away your sins like a cloud. I have scattered your offenses like the morning mist. Oh, return to me, for I have paid the price to set you free. — Isaiah 44:22",
+  "NIV": "I have swept away your offenses like a cloud, your sins like the morning mist. Return to me, for I have redeemed you. — Isaiah 44:22",
+  "NKJV": "I have blotted out, like a thick cloud, your transgressions, and like a cloud, your sins. Return to Me, for I have redeemed you. — Isaiah 44:22"
+ },
+ "2026-10-06": {
+  "NLT": "I will give them hearts that recognize me as the Lord. They will be my people, and I will be their God, for they will return to me wholeheartedly. — Jeremiah 24:7",
+  "NIV": "I will give them a heart to know me, that I am the Lord. They will be my people, and I will be their God, for they will return to me with all their heart. — Jeremiah 24:7",
+  "NKJV": "Then I will give them a heart to know Me, that I am the Lord; and they shall be My people, and I will be their God, for they shall return to Me with their whole heart. — Jeremiah 24:7"
+ },
+ "2026-10-07": {
+  "NLT": "For this son of mine was dead and has now returned to life. He was lost, but now he is found. — Luke 15:24",
+  "NIV": "For this son of mine was dead and is alive again; he was lost and is found. — Luke 15:24",
+  "NKJV": "for this my son was dead and is alive again; he was lost and is found. — Luke 15:24"
+ },
+ "2026-10-08": {
+  "NLT": "Let my soul be at rest again, for the Lord has been good to me. — Psalm 116:7",
+  "NIV": "Return to your rest, my soul, for the Lord has been good to you. — Psalm 116:7",
+  "NKJV": "Return to your rest, O my soul, for the Lord has dealt bountifully with you. — Psalm 116:7"
+ },
+ "2026-10-09": {
+  "NLT": "Turn us again to yourself, O God. Make your face shine down upon us. Only then will we be saved. — Psalm 80:3",
+  "NIV": "Restore us, O God; make your face shine on us, that we may be saved. — Psalm 80:3",
+  "NKJV": "Restore us, O God; cause Your face to shine, and we shall be saved! — Psalm 80:3"
+ },
+ "2026-10-10": {
+  "NLT": "I pondered the direction of my life, and I turned to follow your laws. — Psalm 119:59",
+  "NIV": "I have considered my ways and have turned my steps to your statutes. — Psalm 119:59",
+  "NKJV": "I thought about my ways, and turned my feet to Your testimonies. — Psalm 119:59"
+ },
+ "2026-10-11": {
+  "NLT": "So let us come boldly to the throne of our gracious God. There we will receive his mercy, and we will find grace to help us when we need it most. — Hebrews 4:16",
+  "NIV": "Let us then approach God's throne of grace with confidence, so that we may receive mercy and find grace to help us in our time of need. — Hebrews 4:16",
+  "NKJV": "Let us therefore come boldly to the throne of grace, that we may obtain mercy and find grace to help in time of need. — Hebrews 4:16"
+ },
+ "2026-10-12": {
+  "NLT": "The Lord is close to the brokenhearted; he rescues those whose spirits are crushed. — Psalm 34:18",
+  "NIV": "The Lord is close to the brokenhearted and saves those who are crushed in spirit. — Psalm 34:18",
+  "NKJV": "The Lord is near to those who have a broken heart, and saves such as have a contrite spirit. — Psalm 34:18"
+ },
+ "2026-10-13": {
+  "NLT": "Teach me your ways, O Lord, that I may live according to your truth! Grant me purity of heart, so that I may honor you. — Psalm 86:11",
+  "NIV": "Teach me your way, Lord, that I may rely on your faithfulness; give me an undivided heart, that I may fear your name. — Psalm 86:11",
+  "NKJV": "Teach me Your way, O Lord; I will walk in Your truth; unite my heart to fear Your name. — Psalm 86:11"
+ },
+ "2026-10-14": {
+  "NLT": "Trust in the Lord with all your heart; do not depend on your own understanding. Seek his will in all you do, and he will show you which path to take. — Proverbs 3:5-6",
+  "NIV": "Trust in the Lord with all your heart and lean not on your own understanding; in all your ways submit to him, and he will make your paths straight. — Proverbs 3:5-6",
+  "NKJV": "Trust in the Lord with all your heart, and lean not on your own understanding; in all your ways acknowledge Him, and He shall direct your paths. — Proverbs 3:5-6"
+ },
+ "2026-10-15": {
+  "NLT": "Come to me, all of you who are weary and carry heavy burdens, and I will give you rest. — Matthew 11:28",
+  "NIV": "Come to me, all you who are weary and burdened, and I will give you rest. — Matthew 11:28",
+  "NKJV": "Come to Me, all you who labor and are heavy laden, and I will give you rest. — Matthew 11:28"
+ },
+ "2026-10-16": {
+  "NLT": "O God, you are my God; I earnestly search for you. My soul thirsts for you; my whole body longs for you in this parched and weary land where there is no water. — Psalm 63:1",
+  "NIV": "You, God, are my God, earnestly I seek you; I thirst for you, my whole being longs for you, in a dry and parched land where there is no water. — Psalm 63:1",
+  "NKJV": "O God, You are my God; early will I seek You; my soul thirsts for You; my flesh longs for You in a dry and thirsty land where there is no water. — Psalm 63:1"
+ },
+ "2026-10-17": {
+  "NLT": "Show me the right path, O Lord; point out the road for me to follow. Lead me by your truth and teach me, for you are the God who saves me. All day long I put my hope in you. — Psalm 25:4-5",
+  "NIV": "Show me your ways, Lord, teach me your paths. Guide me in your truth and teach me, for you are God my Savior, and my hope is in you all day long. — Psalm 25:4-5",
+  "NKJV": "Show me Your ways, O Lord; teach me Your paths. Lead me in Your truth and teach me, for You are the God of my salvation; on You I wait all the day. — Psalm 25:4-5"
+ },
+ "2026-10-18": {
+  "NLT": "My heart has heard you say, “Come and talk with me.” And my heart responds, “Lord, I am coming.” — Psalm 27:8",
+  "NIV": "My heart says of you, “Seek his face!” Your face, Lord, I will seek. — Psalm 27:8",
+  "NKJV": "When You said, “Seek My face,” my heart said to You, “Your face, Lord, I will seek.” — Psalm 27:8"
+ },
+ "2026-10-19": {
+  "NLT": "As the deer longs for streams of water, so I long for you, O God. I thirst for God, the living God. When can I go and stand before him? — Psalm 42:1-2",
+  "NIV": "As the deer pants for streams of water, so my soul pants for you, my God. My soul thirsts for God, for the living God. When can I go and meet with God? — Psalm 42:1-2",
+  "NKJV": "As the deer pants for the water brooks, so pants my soul for You, O God. My soul thirsts for God, for the living God. When shall I come and appear before God? — Psalm 42:1-2"
+ },
+ "2026-10-20": {
+  "NLT": "You will keep in perfect peace all who trust in you, all whose thoughts are fixed on you! — Isaiah 26:3",
+  "NIV": "You will keep in perfect peace those whose minds are steadfast, because they trust in you. — Isaiah 26:3",
+  "NKJV": "You will keep him in perfect peace, whose mind is stayed on You, because he trusts in You. — Isaiah 26:3"
+ },
+ "2026-10-21": {
+  "NLT": "However, those the Father has given me will come to me, and I will never reject them. — John 6:37",
+  "NIV": "All those the Father gives me will come to me, and whoever comes to me I will never drive away. — John 6:37",
+  "NKJV": "All that the Father gives Me will come to Me, and the one who comes to Me I will by no means cast out. — John 6:37"
+ },
+ "2026-10-22": {
+  "NLT": "Once you were like sheep who wandered away. But now you have turned to your Shepherd, the Guardian of your souls. — 1 Peter 2:25",
+  "NIV": "For “you were like sheep going astray,” but now you have returned to the Shepherd and Overseer of your souls. — 1 Peter 2:25",
+  "NKJV": "For you were like sheep going astray, but have now returned to the Shepherd and Overseer of your souls. — 1 Peter 2:25"
+ },
+ "2026-10-23": {
+  "NLT": "You will show me the way of life, granting me the joy of your presence and the pleasures of living with you forever. — Psalm 16:11",
+  "NIV": "You make known to me the path of life; you will fill me with joy in your presence, with eternal pleasures at your right hand. — Psalm 16:11",
+  "NKJV": "You will show me the path of life; in Your presence is fullness of joy; at Your right hand are pleasures forevermore. — Psalm 16:11"
+ },
+ "2026-10-24": {
+  "NLT": "But as for me, how good it is to be near God! I have made the Sovereign Lord my shelter, and I will tell everyone about the wonderful things you do. — Psalm 73:28",
+  "NIV": "But as for me, it is good to be near God. I have made the Sovereign Lord my refuge; I will tell of all your deeds. — Psalm 73:28",
+  "NKJV": "But it is good for me to draw near to God; I have put my trust in the Lord God, that I may declare all Your works. — Psalm 73:28"
+ },
+ "2026-10-25": {
+  "NLT": "Since you have been raised to new life with Christ, set your sights on the realities of heaven, where Christ sits in the place of honor at God's right hand. Think about the things of heaven, not the things of earth. — Colossians 3:1-2",
+  "NIV": "Since, then, you have been raised with Christ, set your hearts on things above, where Christ is, seated at the right hand of God. Set your minds on things above, not on earthly things. — Colossians 3:1-2",
+  "NKJV": "If then you were raised with Christ, seek those things which are above, where Christ is, sitting at the right hand of God. Set your mind on things above, not on things on the earth. — Colossians 3:1-2"
+ },
+ "2026-10-26": {
+  "NLT": "I wait quietly before God, for my victory comes from him. — Psalm 62:1",
+  "NIV": "Truly my soul finds rest in God; my salvation comes from him. — Psalm 62:1",
+  "NKJV": "Truly my soul silently waits for God; from Him comes my salvation. — Psalm 62:1"
+ },
+ "2026-10-27": {
+  "NLT": "He has removed our sins as far from us as the east is from the west. — Psalm 103:12",
+  "NIV": "as far as the east is from the west, so far has he removed our transgressions from us. — Psalm 103:12",
+  "NKJV": "As far as the east is from the west, so far has He removed our transgressions from us. — Psalm 103:12"
+ },
+ "2026-10-28": {
+  "NLT": "Restore us to yourself, O Lord, that we may return! Renew our days as of old, — Lamentations 5:21",
+  "NIV": "Restore us to yourself, Lord, that we may return; renew our days as of old — Lamentations 5:21",
+  "NKJV": "Turn us back to You, O Lord, and we will be restored; renew our days as of old, — Lamentations 5:21"
+ },
+ "2026-10-29": {
+  "NLT": "And I am certain that God, who began the good work within you, will continue his work until it is finally finished on the day when Christ Jesus returns. — Philippians 1:6",
+  "NIV": "being confident of this, that he who began a good work in you will carry it on to completion until the day of Christ Jesus. — Philippians 1:6",
+  "NKJV": "being confident of this very thing, that He who has begun a good work in you will complete it until the day of Jesus Christ; — Philippians 1:6"
+ },
+ "2026-10-30": {
+  "NLT": "The Lord is close to all who call on him, yes, to all who call on him in truth. — Psalm 145:18",
+  "NIV": "The Lord is near to all who call on him, to all who call on him in truth. — Psalm 145:18",
+  "NKJV": "The Lord is near to all who call upon Him, to all who call upon Him in truth. — Psalm 145:18"
+ },
+ "2026-10-31": {
+  "NLT": "Oh, that we might know the Lord! Let us press on to know him. He will respond to us as surely as the arrival of dawn or the coming of rains in early spring. — Hosea 6:3",
+  "NIV": "Let us acknowledge the Lord; let us press on to acknowledge him. As surely as the sun rises, he will appear; he will come to us like the winter rains, like the spring rains that water the earth. — Hosea 6:3",
+  "NKJV": "Let us know, let us pursue the knowledge of the Lord. His going forth is established as the morning; He will come to us like the rain, like the latter and former rain to the earth. — Hosea 6:3"
+ }
 };
+const tv=verses[dateStr]||{NLT:"Stay rooted in the Word. Verse coming soon."};
+Object.keys(tv).forEach(k=>{const o=document.createElement('option');o.value=k;o.textContent=k;sel.appendChild(o);});
+sel.value="NLT" in tv?"NLT":Object.keys(tv)[0];
+verseBox.textContent=tv[sel.value];
+sel.addEventListener('change',()=>{verseBox.textContent=tv[sel.value];});
 
-
-  // Build translation selector dynamically
-const todaysVerses = verses[dateStr] || { "NLT": "Stay rooted in the Word. Verse coming soon." };
-Object.keys(todaysVerses).forEach(ver => {
-  const option = document.createElement('option');
-  option.value = ver;
-  option.textContent = ver;
-  if (todaysVerses[ver] === "Verse not available") option.disabled = true; // fixed typo
-  translationSelect.appendChild(option);
-});
-
-// Set default translation to NLT or first available
-const defaultTranslation = "NLT";
-const firstAvailable = Object.keys(todaysVerses).find(v => todaysVerses[v] !== "Verse not available");
-translationSelect.value = (defaultTranslation in todaysVerses && todaysVerses[defaultTranslation] !== "Verse not available")
-  ? defaultTranslation
-  : firstAvailable;
-
-verseBox.textContent = todaysVerses[translationSelect.value];
-
-// Update verse on selection change
-translationSelect.addEventListener('change', () => {
-  const val = translationSelect.value;
-  if (todaysVerses[val] === "Verse not available") {
-    verseBox.textContent = firstAvailable ? todaysVerses[firstAvailable] : "Verse coming soon.";
-  } else {
-    verseBox.textContent = todaysVerses[val];
-  }
-});
-
-
-  // Lord's Prayer animation
-  const prayerLines=[
-    "Our Father, who art in heaven,",
-    "hallowed be Thy name.",
-    "Thy kingdom come,",
-    "Thy will be done,",
-    "on earth as it is in heaven.",
-    "",
-    "Give us this day our daily bread,",
-    "and forgive us our debts,",
-    "as we forgive our debtors.",
-    "",
-    "And lead us not into temptation,",
-    "but deliver us from evil.",
-    "",
-    "For Thine is the kingdom,",
-    "and the power,",
-    "and the glory, forever.",
-    "Amen."
-  ];
-  const prayerEl=document.getElementById("lordsPrayer");
-  let pLine=0, pChar=0, built=[];
-  function typePrayer(){
-    if(pLine>=prayerLines.length) return;
-    built[pLine]=prayerLines[pLine].substring(0,pChar);
-    prayerEl.textContent=built.join("\n");
-    pChar++;
-    if(pChar<=prayerLines[pLine].length) setTimeout(typePrayer,60);
-    else { pLine++; pChar=0; setTimeout(typePrayer,400);}
-  }
-  typePrayer();
+// Lord's Prayer animation
+const prayerLines=[
+ "Our Father, who art in heaven,",
+ "hallowed be Thy name.",
+ "Thy kingdom come,",
+ "Thy will be done,",
+ "on earth as it is in heaven.",
+ "",
+ "Give us this day our daily bread,",
+ "and forgive us our debts,",
+ "as we forgive our debtors.",
+ "",
+ "And lead us not into temptation,",
+ "but deliver us from evil.",
+ "",
+ "For Thine is the kingdom,",
+ "and the power,",
+ "and the glory, forever.",
+ "Amen."
+];
+const prayerEl=document.getElementById("lordsPrayer");
+let pLine=0,pChar=0,built=[];
+(function typePrayer(){
+  if(pLine>=prayerLines.length)return;
+  built[pLine]=prayerLines[pLine].substring(0,pChar);
+  prayerEl.textContent=built.join("\n");
+  pChar++;
+  if(pChar<=prayerLines[pLine].length)setTimeout(typePrayer,60);else{pLine++;pChar=0;setTimeout(typePrayer,400);}
+})();
 </script>
 </body>
 </html>
-
